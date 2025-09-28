@@ -348,15 +348,18 @@ export default (props: any) => {
 							{"How It Works"}
 						</span>
 						<div className="flex items-start pl-[19px] mb-[15px] gap-[51px]">
-							<div className="flex flex-col shrink-0 items-center relative mt-[21px]">
+							<div className="flex flex-col shrink-0 items-center relative mt-[21px]" style={{ height: '480px' }}>
 								<div className="flex flex-col items-center relative">
-									<div className="bg-[#F6F6F6] w-0.5 h-[336px]">
+									<div className="bg-[#F6F6F6] w-0.5 h-[480px]">
 									</div>
 									<span className="text-white text-[22px] absolute top-[94px] left-[-19px]" >
 										{"2"}
 									</span>
 									<span className="text-white text-[22px] absolute bottom-[86px] left-[-19px]" >
 										{"3"}
+									</span>
+									<span className="text-white text-[22px] absolute bottom-[-31px] left-[-19px]" >
+										{"4"}
 									</span>
 								</div>
 								<span className="text-white text-[22px] absolute top-[-21px] left-[-19px]" >
