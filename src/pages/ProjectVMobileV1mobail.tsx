@@ -285,7 +285,7 @@ export default (props: any) => {
 								{"Our cryogenic grinding process uses ultra-low temperatures and liquid nitrogen to protect delicate plant actives — keeping them intact, potent, and highly bioavailable. No oxidation, no nutrient loss."}
 							</span>
 						</div>
-						<div className="relative w-full max-w-[60%] h-[30%] mx-auto">
+						<div className="relative w-full max-w-[90%] h-[60%] mx-auto">
 							<img
 								src={"/figma/250b8f6ff327cfd4.png"}
 								className="w-full h-full rounded-2xl object-fill"
@@ -379,18 +379,9 @@ export default (props: any) => {
 								<span className="text-[#1F2429] text-2xl font-bold mb-2.5" >
 									{"Begin"}
 								</span>
-								<span className="text-[#1F2429] text-lg w-[259px]" >
+								<span className="text-[#1F2429] text-lg w-[259px] mb-8" >
 									{"Receive your luxury formulations straight to your door - ready for your daily ritual"}
 								</span>
-							</div>
-						</div>
-						<div className="flex items-start mb-[31px] gap-8">
-							<div className="flex flex-col shrink-0 items-center">
-								<span className="text-white text-[22px]" >
-									{"4"}
-								</span>
-							</div>
-							<div className="flex flex-col shrink-0 items-start gap-2.5">
 								<span className="text-[#1F2429] text-2xl font-bold" >
 									{"Elevate"}
 								</span>
@@ -420,7 +411,7 @@ export default (props: any) => {
 				</div>
 
 				{/* Made In France Section */}
-				<div className="self-stretch">
+				<div className="self-stretch" style={{     marginBottom: '40px' }}>
 					<div className="flex flex-col items-start self-stretch bg-[url('/figma/3efb4492240092ed.png')] bg-cover bg-center pt-[200px] pb-20 gap-6">
 						<span className="text-white text-[32px] font-bold w-full ml-4" >
 							{"Made In France.\nTrusted Worldwide."}
@@ -482,7 +473,6 @@ export default (props: any) => {
 						</div>
 					</div>
 				</div>
-
 				<TestimonialsCarousel />
 
 				{/* Fashion Week Section */}
