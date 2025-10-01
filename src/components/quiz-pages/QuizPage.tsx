@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import QuizStartPage from "./QuizStartPage";
-import PersonalDetailsIntro from "../personal-details/PersonalDetailsIntro";
+import StartQuizBlok from "./StartQuizBlok";
 import QuestionForm from "../quiz-forms/QuestionForm";
 import { createQuizSteps } from "../../config/quizConfig";
+import { usePage } from "../../App";
 
 export default function QuizPage() {
+    const { setPage } = usePage();
     const [currentStep, setCurrentStep] = useState<number>(-1);
     const [answers, setAnswers] = useState<Record<string, any>>(() => {
         // Clear any existing answers when starting fresh
@@ -22,8 +24,9 @@ export default function QuizPage() {
         setAnswers,
         setCurrentStep,
         currentStep,
-        PersonalDetailsIntro,
-        QuestionForm
+        StartQuizBlok,
+        QuestionForm,
+        () => setPage('landing')
     );
 
     // Show original start page first, then go to personal details intro
@@ -31,7 +34,7 @@ export default function QuizPage() {
         return (
             <QuizStartPage
                 onNext={() => setCurrentStep(0)}
-                onPrevious={() => window.location.href = '/landing'}
+                onPrevious={() => setPage('landing')}
             />
         );
     }

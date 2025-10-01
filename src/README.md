@@ -10,7 +10,7 @@
 src/
 ├── components/
 │   ├── personal-details/          # Компоненты для персональных данных
-│   │   ├── PersonalDetailsIntro.tsx
+│   │   ├── StartQuizBlok.tsx
 │   │   └── index.ts
 │   ├── quiz-forms/                # Общие компоненты форм опроса
 │   │   ├── QuestionForm.tsx       # Адаптивный компонент формы
@@ -47,7 +47,7 @@ src/
 
 ```typescript
 // Импорт компонентов
-import { PersonalDetailsIntro } from './components/personal-details';
+import { StartQuizBlok } from './components/personal-details';
 import { QuestionForm } from './components/quiz-forms';
 import { QuizPage } from './components/quiz-pages';
 

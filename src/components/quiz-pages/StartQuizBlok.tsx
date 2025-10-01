@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { PersonalDetailsIntroProps } from "../../types/quiz";
 
-export default function PersonalDetailsIntro({ onBegin }: PersonalDetailsIntroProps) {
+export default function StartQuizBlok({ onBegin, backgroundImageUrl, titleLines, bodyLines, buttonLabel }: PersonalDetailsIntroProps) {
 	const [isImageVisible, setIsImageVisible] = useState(false);
 	const [isButtonVisible, setIsButtonVisible] = useState(false);
 
@@ -22,17 +22,28 @@ export default function PersonalDetailsIntro({ onBegin }: PersonalDetailsIntroPr
 		};
 	}, []);
 
+	// Defaults ensure backward compatibility and allow fixed manual line breaks
+	const effectiveBackground = backgroundImageUrl ?? "/women/yellow_woman.png";
+	const effectiveTitleLines = titleLines ?? ["PERSONAL", "DETAILS"];
+	const effectiveBodyLines = bodyLines ?? [
+		"Let's start with a few quick",
+		"details – to tailor your",
+		"wellness wardrobe",
+		"perfectly.",
+	];
+	const effectiveButtonLabel = buttonLabel ?? "Begin Survey";
+
 	return (
 		<div className="bg-white flex flex-col relative overflow-hidden min-h-screen">
 			{/* Right image */}
 			<div
-				className={`absolute inset-y-0 right-0 w-1/2 pointer-events-none bg-no-repeat transition-all duration-1000 ease-out ${
+				className={`absolute inset-y-0 right-0 w-[60%] z-100 pointer-events-none bg-no-repeat transition-all duration-1000 ease-out ${
 					isImageVisible 
 						? 'opacity-100 translate-x-0' 
 						: 'opacity-0 translate-x-full'
 				}`}
 				style={{ 
-					backgroundImage: "url('/women/yellow_woman.png')", 
+					backgroundImage: `url('${effectiveBackground}')`, 
 					backgroundSize: "auto 100%",
 					backgroundPosition: "right top"
 				}}
@@ -44,20 +55,17 @@ export default function PersonalDetailsIntro({ onBegin }: PersonalDetailsIntroPr
 				<div className="flex justify-center p-6 flex-1">
 					<div className="w-full max-w-3xl">
 						<div className="text-left max-w-xl">
-							<h1 className=" text-4xl md:text-6xl text-[#1F2429] pt-10">PERSONAL</h1> 
-							<h1 className=" text-4xl md:text-6xl text-[#1F2429] pb-6">DETAILS</h1>
-							<div className="w-full text-left">
-								Let's start with a few quick							
-							</div>
-							<div className="w-full text-left">
-								details – to tailor your 							
-							</div>
-							<div className="w-full text-left">
-								wellness wardrobe 							
-							</div>
-							<div className="w-full text-left">
-								perfectly.							
-							</div>
+							{effectiveTitleLines.map((line, index) => (
+								<h1 key={`title-${index}`} className={` text-4xl md:text-6xl text-[#1F2429] ${index === 0 ? 'pt-10' : ''}`}>
+									{line}
+								</h1>
+							))}
+							<div className="pb-6"></div>
+							{effectiveBodyLines.map((line, index) => (
+								<div key={`body-${index}`} className="w-full text-[14px] text-left">
+									{line}
+								</div>
+							))}
 						</div>
 					</div>
 				</div>
@@ -78,7 +86,7 @@ export default function PersonalDetailsIntro({ onBegin }: PersonalDetailsIntroPr
 													: 'opacity-0 translate-y-8'
 											}`}
 										>
-											Begin Survey
+											{effectiveButtonLabel}
 										</button>
 									</div>
 								</div>
@@ -90,3 +98,5 @@ export default function PersonalDetailsIntro({ onBegin }: PersonalDetailsIntroPr
 		</div>
 	);
 }
+
+

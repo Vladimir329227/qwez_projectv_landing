@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { usePage } from "../../App";
 import ProductCarousel from "../../bloks/ProductCarousel";
 import InfiniteScroller from "../../bloks/InfiniteScroller";
 import ExpertsCarousel from "../../bloks/ExpertsCarousel";
 import TestimonialsCarousel from "../../bloks/TestimonialsCarousel";
 export default () => {
+	const { setPage } = usePage();
 	const reviews = [
 		{
 			logo: "/figma/feea408cc3f29c3b.png",
@@ -124,7 +126,7 @@ export default () => {
 							</div>
 						</div>
 						<button className="flex flex-col items-start bg-[#00A8E2] text-left py-[15px] px-[79px] rounded-[1000px] border-0"
-							onClick={()=>window.location.href = '/quiz'}>
+							onClick={()=>setPage('quiz')}>
 							<span className="text-white text-base font-bold" >
 								{"Take Quiz"}
 							</span>
@@ -299,7 +301,7 @@ export default () => {
     {/* Кнопка */}
     <button 
       className="w-full sm:w-auto bg-[#1F2429] text-white py-3 px-8 lg:py-[15px] lg:px-[79px] rounded-full border-0 text-base font-bold hover:bg-gray-800 transition-colors self-start"
-      onClick={() => window.location.href = '/quiz'}
+      onClick={() => setPage('quiz')}
     >
       Take Quiz
     </button>
@@ -463,10 +465,10 @@ export default () => {
 						</div>
 
 						{/* Кнопка */}
-						<button 
-						className="w-full sm:w-auto bg-[#1F2429] text-white py-3 px-8 lg:py-[15px] lg:px-[79px] rounded-full border-0 text-base font-bold hover:bg-gray-800 transition-colors"
-						onClick={() => window.location.href = '/quiz'}
-						>
+					<button 
+					className="w-full sm:w-auto bg-[#1F2429] text-white py-3 px-8 lg:py-[15px] lg:px-[79px] rounded-full border-0 text-base font-bold hover:bg-gray-800 transition-colors"
+					onClick={() => setPage('quiz')}
+					>
 						Take Quiz
 						</button>
 					</div>
@@ -531,8 +533,8 @@ export default () => {
 									{"Wide range of comprehensive coverage across the body"}
 								</span>
 							</div>
-							<button className="flex flex-col items-start bg-[#1F2429] text-left py-[15px] px-[79px] rounded-[100000px] border-0"
-								onClick={()=>window.location.href = '/quiz'}>
+						<button className="flex flex-col items-start bg-[#1F2429] text-left py-[15px] px-[79px] rounded-[100000px] border-0"
+							onClick={()=>setPage('quiz')}>
 								<span className="text-white text-base font-bold" >
 									{"Take Quiz"}
 								</span>

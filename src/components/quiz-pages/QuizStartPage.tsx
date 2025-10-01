@@ -60,7 +60,7 @@ export default function QuizStartPage({ onNext, onPrevious }: QuizStartPageProps
 	return (
 		<div className="min-h-screen bg-white flex flex-col">
 			{/* Main Content */}
-			<div className="flex-1 flex items-center justify-center p-0 md:p-6 relative">
+			<div className="flex-1 flex items-center justify-center p-0 pb-24 md:p-6 relative">
 				{/* Desktop Background Image */}
 				<div className="hidden md:block absolute inset-0 overflow-hidden">
 					<img
@@ -96,13 +96,13 @@ export default function QuizStartPage({ onNext, onPrevious }: QuizStartPageProps
 							{typingDone && !subtitleTypingDone && (<span className="animate-pulse">|</span>)}
 						</p>
 
-						{/* Buttons next to text */}
-						<div className="px-4 md:px-0 w-full max-w-md">
+						{/* Buttons next to text (desktop/tablet) */}
+						<div className="hidden md:block px-4 md:px-0 w-full max-w-md relative z-20">
 							<div className={`flex gap-4 transition-all duration-700 ease-out ${
 								isButtonsVisible 
 									? 'opacity-100 translate-y-0' 
 									: 'opacity-0 translate-y-8'
-							}`}>
+							}`}> 
 								<button 
 									onClick={onPrevious}
 									className="flex-1 bg-white text-[#1F2429] border-2 border-[#1F2429] py-3 rounded-full hover:bg-gray-50 transition-colors"
@@ -117,6 +117,30 @@ export default function QuizStartPage({ onNext, onPrevious }: QuizStartPageProps
 								</button>
 							</div>
 						</div>
+					</div>
+				</div>
+			</div>
+
+			{/* Mobile fixed bottom actions */}
+			<div className="md:hidden fixed bottom-0 inset-x-0 z-20 bg-white/95 backdrop-blur border-gray-200">
+				<div className="mx-auto w-full max-w-md px-4 py-3">
+					<div className={`flex gap-4 transition-all duration-700 ease-out ${
+						isButtonsVisible 
+							? 'opacity-100 translate-y-0' 
+							: 'opacity-0 translate-y-4'
+					}`}> 
+						<button 
+							onClick={onPrevious}
+							className="flex-1 bg-white text-[#1F2429] border-2 border-[#1F2429] py-3 rounded-full hover:bg-gray-50 transition-colors"
+						>
+							Previous
+						</button>
+						<button 
+							onClick={onNext}
+							className="flex-1 bg-[#1F2429] text-white py-3 rounded-full hover:bg-gray-800 transition-colors"
+						>
+							Next
+						</button>
 					</div>
 				</div>
 			</div>

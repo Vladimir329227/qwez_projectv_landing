@@ -1,1 +1,1 @@
-export { default as PersonalDetailsIntro } from './PersonalDetailsIntro';
+// (moved) StartQuizBlok now lives in components/quiz-pages

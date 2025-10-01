@@ -1,6 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { QuestionFormProps } from "../../types/quiz";
 
+// Функция для получения пути к логотипу блока (как в Desktop)
+const getBlockLogo = (sectionTitle: string): string | null => {
+	const logoMap: Record<string, string> = {
+		'MORNING ENERGY & CLARITY': '/blok_logo/MORNING ENERGY & CLARITY.png',
+		'MOVEMENT, FLEXIBILITY & BODY SUPPORT': '/blok_logo/MOVEMENT, FLEXIBILITY & BODY SUPPORT.png',
+		'NUTRITION, DIGESTION & DETOX': '/blok_logo/NUTRITION, DIGESTION & DETOX.png',
+		'SLEEP, STRESS & SELF-CARE': '/blok_logo/SLEEP, STRESS & SELF-CARE.png',
+		'INDULGENCE & BALANCE': '/blok_logo/INDULGENCE & BALANCE.png',
+		'ENVIRONMENT & POLLUTION': '/blok_logo/ENVIRONMENT & POLLUTION.png',
+	};
+
+	return logoMap[sectionTitle] || null;
+};
+
 export type QuestionOption = {
 	value: string | number;
 	label: string;
@@ -14,6 +28,9 @@ export default function QuestionFormMobile({
 	subtitle,
 	options,
 	selectedValue,
+    isMulti,
+    selectedValues,
+    onToggleSelect,
 	onSelect,
 	onPrevious,
 	onNext,
@@ -22,6 +39,10 @@ export default function QuestionFormMobile({
 	children,
 }: QuestionFormProps) {
 	const [isButtonsVisible, setIsButtonsVisible] = useState(false);
+
+	const isNextDisabled = isMulti
+		? ((selectedValues ?? []).length === 0)
+		: (selectedValue === undefined || selectedValue === null);
 
 	useEffect(() => {
 		// Анимация кнопок - задержка 500ms
@@ -39,9 +60,18 @@ export default function QuestionFormMobile({
 			{/* Header */}
 			<div className="px-4 pt-4 pb-2">
 				<div className="flex items-center justify-between pb-4 pt-4">
-					<h2 className="text-base text-[#1F2429] tracking-wide font-semibold">
-						{sectionTitle}
-					</h2>
+					<div className="flex items-center gap-2">
+						{getBlockLogo(sectionTitle) && (
+							<img
+								src={getBlockLogo(sectionTitle)!}
+								alt={`${sectionTitle} logo`}
+								className="w-6 h-6 object-contain"
+							/>
+						)}
+						<h2 className="text-base text-[#1F2429] tracking-wide font-semibold">
+							{sectionTitle}
+						</h2>
+					</div>
 					<div className="text-base text-white rounded-full px-4 py-1 bg-gray-500">{questionIndex + 1}/{totalQuestions}</div>
 				</div>
 				<div className="mt-2 flex items-center gap-3" aria-hidden>
@@ -63,21 +93,33 @@ export default function QuestionFormMobile({
 
 					<div className="pb-4"></div>
 
-					{options && options.length > 0 ? (
-						<div className={question.toLowerCase().includes('gender') ? "grid grid-cols-2 gap-3" : "grid gap-3"}>
-							{options.map((opt) => (
-								<button
-									key={String(opt.value)}
-									onClick={() => onSelect && onSelect(opt.value)}
-									className={`w-full p-4 border-2 rounded-lg text-left text-base transition-colors ${
-										selectedValue === opt.value ? "border-[#00A8E2] bg-blue-50" : "border-gray-200 hover:border-[#00A8E2] hover:bg-blue-50"
-									}`}
-								>
-									{opt.label}
-								</button>
-							))}
-						</div>
-					) : (
+                    {options && options.length > 0 ? (
+                        <div className={(question.toLowerCase().includes('gender') || question.toLowerCase().includes('goal')) ? "grid grid-cols-2 gap-3" : "grid gap-3"}>
+                            {options.map((opt) => {
+                                const isSelected = isMulti
+                                    ? (selectedValues ?? []).includes(opt.value)
+                                    : selectedValue === opt.value;
+                                const handleClick = () => {
+                                    if (isMulti) {
+                                        onToggleSelect && onToggleSelect(opt.value);
+                                    } else {
+                                        onSelect && onSelect(opt.value);
+                                    }
+                                };
+                                return (
+                                    <button
+                                        key={String(opt.value)}
+                                        onClick={handleClick}
+                                        className={`w-full p-4 border-2 rounded-lg text-left text-base transition-colors ${
+                                            isSelected ? "border-[#00A8E2] bg-blue-50" : "border-gray-200 hover:border-[#00A8E2] hover:bg-blue-50"
+                                        }`}
+                                    >
+                                        {opt.label}
+                                    </button>
+                                );
+                            })}
+                        </div>
+                    ) : (
 						children
 					)}
 
@@ -102,8 +144,9 @@ export default function QuestionFormMobile({
 							Previous
 						</button>
 						<button
-							onClick={onNext}
-							className="flex-1 bg-[#1F2429] text-white py-3 rounded-full hover:bg-gray-800 transition-colors text-base"
+							onClick={() => { if (isNextDisabled) return; onNext(); }}
+							disabled={isNextDisabled}
+							className={`flex-1 py-3 rounded-full transition-colors text-base ${isNextDisabled ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-[#1F2429] text-white hover:bg-gray-800'}`}
 						>
 							{nextLabel}
 						</button>

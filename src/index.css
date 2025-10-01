@@ -44,6 +44,11 @@ button:hover {
     transform: scale(1.05);
 }
 
+/* Shrink back on click */
+button:active {
+  transform: scale(0.98);
+}
+
 /* Smooth scrolling and animations */
 .carousel-track {
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
