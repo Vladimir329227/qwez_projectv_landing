@@ -95,33 +95,32 @@ export default function QuizStartPage({ onNext, onPrevious }: QuizStartPageProps
 							{subtitleDisplayed}
 							{typingDone && !subtitleTypingDone && (<span className="animate-pulse">|</span>)}
 						</p>
+
+						{/* Buttons next to text */}
+						<div className="px-4 md:px-0 w-full max-w-md">
+							<div className={`flex gap-4 transition-all duration-700 ease-out ${
+								isButtonsVisible 
+									? 'opacity-100 translate-y-0' 
+									: 'opacity-0 translate-y-8'
+							}`}>
+								<button 
+									onClick={onPrevious}
+									className="flex-1 bg-white text-[#1F2429] border-2 border-[#1F2429] py-3 rounded-full hover:bg-gray-50 transition-colors"
+								>
+									Previous
+								</button>
+								<button 
+									onClick={onNext}
+									className="flex-1 bg-[#1F2429] text-white py-3 rounded-full hover:bg-gray-800 transition-colors"
+								>
+									Next
+								</button>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 
-			{/* Fixed Bottom Buttons */}
-			<div className="fixed bottom-0 left-0 right-0 bg-white border-gray-200 p-4">
-				<div className="max-w-md mx-auto">
-					<div className={`flex gap-4 transition-all duration-700 ease-out ${
-						isButtonsVisible 
-							? 'opacity-100 translate-y-0' 
-							: 'opacity-0 translate-y-8'
-					}`}>
-						<button 
-							onClick={onPrevious}
-							className="flex-1 bg-white text-[#1F2429] border-2 border-[#1F2429] py-3 rounded-full hover:bg-gray-50 transition-colors"
-						>
-							Previous
-						</button>
-						<button 
-							onClick={onNext}
-							className="flex-1 bg-[#1F2429] text-white py-3 rounded-full hover:bg-gray-800 transition-colors"
-						>
-							Next
-						</button>
-					</div>
-				</div>
-			</div>
 		</div>
 	);
 }
