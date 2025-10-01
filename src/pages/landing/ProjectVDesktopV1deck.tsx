@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import ProductCarousel from "../ProductCarousel";
-import InfiniteScroller from "../InfiniteScroller";
-import ExpertsCarousel from "../ExpertsCarousel";
-import TestimonialsCarousel from "../TestimonialsCarousel";
+import ProductCarousel from "../../bloks/ProductCarousel";
+import InfiniteScroller from "../../bloks/InfiniteScroller";
+import ExpertsCarousel from "../../bloks/ExpertsCarousel";
+import TestimonialsCarousel from "../../bloks/TestimonialsCarousel";
 export default () => {
 	const reviews = [
 		{
@@ -124,7 +124,7 @@ export default () => {
 							</div>
 						</div>
 						<button className="flex flex-col items-start bg-[#00A8E2] text-left py-[15px] px-[79px] rounded-[1000px] border-0"
-							onClick={()=>alert("Pressed!")}>
+							onClick={()=>window.location.href = '/quiz'}>
 							<span className="text-white text-base font-bold" >
 								{"Take Quiz"}
 							</span>
@@ -299,7 +299,7 @@ export default () => {
     {/* Кнопка */}
     <button 
       className="w-full sm:w-auto bg-[#1F2429] text-white py-3 px-8 lg:py-[15px] lg:px-[79px] rounded-full border-0 text-base font-bold hover:bg-gray-800 transition-colors self-start"
-      onClick={() => alert("Pressed!")}
+      onClick={() => window.location.href = '/quiz'}
     >
       Take Quiz
     </button>
@@ -465,7 +465,7 @@ export default () => {
 						{/* Кнопка */}
 						<button 
 						className="w-full sm:w-auto bg-[#1F2429] text-white py-3 px-8 lg:py-[15px] lg:px-[79px] rounded-full border-0 text-base font-bold hover:bg-gray-800 transition-colors"
-						onClick={() => alert("Pressed!")}
+						onClick={() => window.location.href = '/quiz'}
 						>
 						Take Quiz
 						</button>
@@ -532,7 +532,7 @@ export default () => {
 								</span>
 							</div>
 							<button className="flex flex-col items-start bg-[#1F2429] text-left py-[15px] px-[79px] rounded-[100000px] border-0"
-								onClick={()=>alert("Pressed!")}>
+								onClick={()=>window.location.href = '/quiz'}>
 								<span className="text-white text-base font-bold" >
 									{"Take Quiz"}
 								</span>

@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import './index.css'; 
+import '../index.css'; 
 
 const InfiniteScroller = () => {
   const containerRef = useRef(null);

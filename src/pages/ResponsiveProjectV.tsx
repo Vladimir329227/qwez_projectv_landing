@@ -1,7 +1,7 @@
 import React from "react";
-import ProjectVDesktopV1deck from "./ProjectVDesktopV1deck";
-import ProjectVDesktopV1 from "./ProjectVDesktopV1";
-import ProjectVMobileV1mobail from "./ProjectVMobileV1mobail";
+import ProjectVDesktopV1deck from "./landing/ProjectVDesktopV1deck";
+import ProjectVDesktopV1 from "./landing/ProjectVDesktopV1";
+import ProjectVMobileV1mobail from "./landing/ProjectVMobileV1mobail";
 
 export default function ResponsiveProjectV() {
 	return (
