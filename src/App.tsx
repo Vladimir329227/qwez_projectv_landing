@@ -1,8 +1,10 @@
 import React, { useEffect, useMemo, useState, useContext } from 'react';
 import ResponsiveProjectV from './pages/ResponsiveProjectV';
 import QuizPage from './components/quiz-pages/QuizPage';
+import QuizResult from './components/quiz-result/QuizResult';
+import ProductPage from './components/product-page/ProductPage';
 
-type Page = 'landing' | 'quiz';
+type Page = 'landing' | 'quiz' | 'results' | 'product';
 
 function getCookie(name: string): string | undefined {
   const value = `; ${document.cookie}`;
@@ -20,6 +22,13 @@ function setCookie(name: string, value: string, days: number) {
   document.cookie = `${name}=${value}; ${expires}; path=/`;
 }
 
+// Utility function to navigate to product page
+export function navigateToProduct(productName: string) {
+  setCookie('page', 'product', 365);
+  setCookie('productName', productName, 365);
+  window.location.reload(); // Force page reload to trigger the new page
+}
+
 const PageContext = React.createContext<{ page: Page; setPage: (page: Page) => void } | undefined>(undefined);
 
 export function usePage() {
@@ -31,7 +40,10 @@ export function usePage() {
 function App() {
   const initialPage: Page = useMemo(() => {
     const fromCookie = getCookie('page');
-    return fromCookie === 'quiz' ? 'quiz' : 'landing';
+    if (fromCookie === 'quiz') return 'quiz';
+    if (fromCookie === 'results') return 'results';
+    if (fromCookie === 'product') return 'product';
+    return 'landing';
   }, []);
 
   const [page, setPage] = useState<Page>(initialPage);
@@ -42,7 +54,32 @@ function App() {
 
   return (
     <PageContext.Provider value={{ page, setPage }}>
-      {page === 'quiz' ? <QuizPage /> : <ResponsiveProjectV />}
+      {page === 'quiz' ? (
+        <QuizPage />
+      ) : page === 'results' ? (
+        <QuizResult answers={(() => {
+          try {
+            const raw = localStorage.getItem('quiz.answers');
+            return raw ? JSON.parse(raw) : {};
+          } catch {
+            return {};
+          }
+        })()} />
+      ) : page === 'product' ? (
+        <ProductPage 
+          productName={getCookie('productName') || 'Antiox'}
+          answers={(() => {
+            try {
+              const raw = localStorage.getItem('quiz.answers');
+              return raw ? JSON.parse(raw) : {};
+            } catch {
+              return {};
+            }
+          })()} 
+        />
+      ) : (
+        <ResponsiveProjectV />
+      )}
     </PageContext.Provider>
   );
 }

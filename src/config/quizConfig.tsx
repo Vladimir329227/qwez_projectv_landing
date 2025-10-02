@@ -644,7 +644,14 @@ export const createQuizSteps = (
         title: '',
         content: (
             <DisclaimerForm
-                onNext={() => setCurrentStep(currentStep + 1)}
+                onNext={() => {
+                    try {
+                        localStorage.setItem('quiz.answers', JSON.stringify(answers));
+                    } catch {}
+                    document.cookie = `page=results; path=/; max-age=${60 * 60 * 24 * 365}`;
+                    // Jump to synthetic final step to maintain flow if needed
+                    setCurrentStep(currentStep + 1);
+                }}
                 onPrevious={() => setCurrentStep(currentStep - 1)}
             />
         )

@@ -18,6 +18,18 @@ export default function QuizPage() {
         localStorage.setItem("quiz.answers", JSON.stringify(answers));
     }, [answers]);
 
+    // If cookie set to results, jump there immediately
+    useEffect(() => {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; page=`);
+        if (parts.length === 2) {
+            const pageValue = parts.pop()?.split(';').shift();
+            if (pageValue === 'results') {
+                setPage('results');
+            }
+        }
+    }, [setPage]);
+
     // Build steps: Intro + 5 questions + Complete
     const quizSteps = createQuizSteps(
         answers,
