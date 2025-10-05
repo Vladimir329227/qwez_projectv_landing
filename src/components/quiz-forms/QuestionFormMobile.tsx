@@ -76,7 +76,7 @@ export default function QuestionFormMobile({
 				</div>
 				<div className="mt-2 flex items-center gap-3" aria-hidden>
 					{Array.from({ length: totalQuestions }).map((_, idx) => (
-						<div key={idx} className={`h-0.5 flex-1 rounded ${idx === questionIndex ? "bg-[#00A8E2]9]" : "bg-gray-300"}`}></div>
+						<div key={idx} className={`h-0.5 flex-1 rounded ${idx === questionIndex ? "bg-[#00A8E2]" : "bg-gray-300"}`}></div>
 					))}
 				</div>
 			</div>

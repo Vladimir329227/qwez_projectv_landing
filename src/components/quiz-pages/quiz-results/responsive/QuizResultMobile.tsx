@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { navigateToProduct } from "../../App";
+import { navigateToProduct } from "../../../../App";
 
 export default (props: any) => {
 	const [input1, onChangeInput1] = useState('');

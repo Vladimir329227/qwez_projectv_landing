@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import QuizStartPage from "./QuizStartPage";
+import QuizStartPage from "./quiz-start/QuizStartPage";
 import QuizSectionIntro from "./QuizSectionIntro";
 import QuestionForm from "../quiz-forms/QuestionForm";
 import { createQuizSteps } from "../../config/quizConfig";

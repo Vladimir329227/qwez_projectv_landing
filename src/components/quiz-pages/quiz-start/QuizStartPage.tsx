@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { QuizStartPageProps } from "../../types/quiz";
+import { QuizStartPageProps } from "../../../types/quiz";
 import QuizStartDesktop from "./responsive/QuizStartDesktop";
 import QuizStartTablet from "./responsive/QuizStartTablet";
 import QuizStartMobile from "./responsive/QuizStartMobile";

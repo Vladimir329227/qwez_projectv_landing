@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState, useContext } from 'react';
 import ResponsiveProjectV from './pages/ResponsiveProjectV';
 import QuizPage from './components/quiz-pages/QuizPage';
-import QuizResult from './components/quiz-result/QuizResult';
+import QuizResult from './components/quiz-pages/quiz-results/QuizResult';
 import ProductPage from './components/product-page/ProductPage';
 
 type Page = 'landing' | 'quiz' | 'results' | 'product';

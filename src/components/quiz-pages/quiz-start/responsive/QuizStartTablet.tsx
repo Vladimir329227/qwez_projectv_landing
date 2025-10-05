@@ -1,5 +1,5 @@
 import React from "react";
-import { QuizStartPageProps } from "../../../types/quiz";
+import { QuizStartPageProps } from "../../../../types/quiz";
 
 interface QuizStartTabletProps extends QuizStartPageProps {
 	isTitleVisible: boolean;
