@@ -108,10 +108,16 @@ export default (props: any) => {
 												{"Gives you focused alertness—without spikes or crashes and enhances stamina and recovery."}
 											</span>
 										</div>
+									<button
+										aria-label="View product"
+										onClick={() => navigateToProduct('Antiox')}
+										className="flex items-center bg-[#1F2429] hover:bg-[#0f1215] transition-colors duration-200 rounded-[12px] py-2 pl-4 pr-3 w-[88px]"
+									>
 										<img
 											src="/quiz-result-images/icon_arrow_up.png"
-											className="w-6 h-6 rounded-xl object-fill"
+											className="ml-auto w-2 h-2 object-contain"
 										/>
+									</button>
 									</div>
 									<div className="flex items-center bg-white py-4 px-[18px] rounded-xl"
 										style={{
@@ -143,10 +149,16 @@ export default (props: any) => {
 												{"Protects cells from damage, supports collagen, and brightens the skin from within."}
 											</span>
 										</div>
+									<button
+										aria-label="View product"
+										onClick={() => navigateToProduct('Antiox')}
+										className="flex items-center bg-[#1F2429] hover:bg-[#0f1215] transition-colors duration-200 rounded-[12px] py-2 pl-4 pr-3 w-[88px]"
+									>
 										<img
 											src="/quiz-result-images/icon_arrow_up.png"
-											className="w-6 h-6 rounded-xl object-fill"
+											className="ml-auto w-2 h-2 object-contain"
 										/>
+									</button>
 									</div>
 									<div className="flex items-center bg-white py-[19px] px-[18px] rounded-xl"
 										style={{
@@ -178,10 +190,16 @@ export default (props: any) => {
 												{"Soothes stress without sedating."}
 											</span>
 										</div>
+									<button
+										aria-label="View product"
+										onClick={() => navigateToProduct('Antiox')}
+										className="flex items-center bg-[#1F2429] hover:bg-[#0f1215] transition-colors duration-200 rounded-[12px] py-2 pl-4 pr-3 w-[88px]"
+									>
 										<img
 											src="/quiz-result-images/icon_arrow_up.png"
-											className="w-6 h-6 rounded-xl object-fill"
+											className="ml-auto w-2 h-2 object-contain"
 										/>
+									</button>
 									</div>
 								</div>
 							</div>

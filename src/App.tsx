@@ -23,9 +23,18 @@ function setCookie(name: string, value: string, days: number) {
 }
 
 // Utility function to navigate to product page
-export function navigateToProduct(productName: string) {
+export function navigateToProduct(productNameOrKey: string) {
   setCookie('page', 'product', 365);
-  setCookie('productName', productName, 365);
+  // Keep backward compatibility: productName remains for UI text
+  setCookie('productName', productNameOrKey, 365);
+  // New: also store normalized productKey used by registry
+  setCookie('productKey', productNameOrKey.toUpperCase(), 365);
+  window.location.reload();
+}
+
+// Utility function to navigate to results page
+export function navigateToResults() {
+  setCookie('page', 'results', 365);
   window.location.reload(); // Force page reload to trigger the new page
 }
 
@@ -68,6 +77,7 @@ function App() {
       ) : page === 'product' ? (
         <ProductPage 
           productName={getCookie('productName') || 'Antiox'}
+          productKey={getCookie('productKey')}
           answers={(() => {
             try {
               const raw = localStorage.getItem('quiz.answers');

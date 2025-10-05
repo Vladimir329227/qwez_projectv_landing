@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { navigateToProduct } from "../../../../App";
 export default (props: any) => {
 	const [input1, onChangeInput1] = useState('');
 	const [input2, onChangeInput2] = useState('');
@@ -115,10 +116,16 @@ export default (props: any) => {
 								</div>
 								<div className="flex flex-col items-end self-stretch">
 									<div className="flex flex-col items-start mr-4">
+									<button
+										aria-label="View product"
+										onClick={() => navigateToProduct('Antiox')}
+										className="flex items-center bg-[#1F2429] hover:bg-[#0f1215] transition-colors duration-200 rounded-[12px] py-2 pl-4 pr-3 w-[88px]"
+									>
 										<img
 											src="/quiz-result-images/icon_arrow_up.png"
-											className="w-6 h-6 object-fill"
+											className="ml-auto w-2 h-2 object-contain"
 										/>
+									</button>
 									</div>
 								</div>
 							</div>
@@ -158,10 +165,16 @@ export default (props: any) => {
 								</div>
 								<div className="flex flex-col items-end self-stretch">
 									<div className="flex flex-col items-start mr-4">
+									<button
+										aria-label="View product"
+										onClick={() => navigateToProduct('Antiox')}
+										className="flex items-center bg-[#1F2429] hover:bg-[#0f1215] transition-colors duration-200 rounded-[12px] py-2 pl-4 pr-3 w-[88px]"
+									>
 										<img
 											src="/quiz-result-images/icon_arrow_up.png"
-											className="w-6 h-6 object-fill"
+											className="ml-auto w-2 h-2 object-contain"
 										/>
+									</button>
 									</div>
 								</div>
 							</div>
@@ -201,10 +214,16 @@ export default (props: any) => {
 								</div>
 								<div className="flex flex-col items-end self-stretch">
 									<div className="flex flex-col items-start mr-4">
+									<button
+										aria-label="View product"
+										onClick={() => navigateToProduct('power_of_mind')}
+										className="flex items-center bg-[#1F2429] hover:bg-[#0f1215] transition-colors duration-200 rounded-[12px] py-2 pl-4 pr-3 w-[88px]"
+									>
 										<img
 											src="/quiz-result-images/icon_arrow_up.png"
-											className="w-6 h-6 object-fill"
+											className="ml-auto w-2 h-2 object-contain"
 										/>
+									</button>
 									</div>
 								</div>
 							</div>
