@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import QuizResultDesc from "./responsive/QuizResultDesc";
+import QuizResultDesktop from "./responsive/QuizResultDesktop";
 import QuizResultTablet from "./responsive/QuizResultTablet";
 import QuizResultMobile from "./responsive/QuizResultMobile";
 
@@ -24,7 +24,7 @@ export default function QuizResult({ answers = {} as Record<string, any> }) {
 		<div className="flex flex-col bg-white">
 			{device === "mobile" && <QuizResultMobile answers={answers} />}
 			{device === "tablet" && <QuizResultTablet  answers={answers} />}
-			{device === "desktop" && <QuizResultDesc answers={answers} />}
+			{device === "desktop" && <QuizResultDesktop answers={answers} />}
 		</div>
 	);
 }

@@ -6,11 +6,11 @@ export default ({ answers = {}, productName = 'Antiox' }: { answers?: Record<str
 				<div className="self-stretch">
 					<div className="flex flex-col items-start self-stretch bg-[url('/product-page-images/product-image-8.png')] bg-cover bg-center pt-[50px] pb-[434px]">
 						<button className="flex flex-col items-start bg-[#1F2429] text-left py-[3px] ml-[351px] rounded-[40px] border border-solid border-white"
-							onClick={()=>alert("Pressed!")}>
-												<img
-													src="/product-page-images/product-image-9.png" 
-													className="w-[23px] h-[23px] mx-[3px] rounded-[40px] object-fill"
-												/>
+							onClick={() => alert("Pressed!")}>
+							<img
+								src="/product-page-images/product-image-9.png"
+								className="w-[23px] h-[23px] mx-[3px] rounded-[40px] object-fill"
+							/>
 						</button>
 					</div>
 					<div className="flex flex-col items-center self-stretch bg-white py-16 px-[50px] gap-16 rounded-[32px]">
@@ -22,10 +22,10 @@ export default ({ answers = {}, productName = 'Antiox' }: { answers?: Record<str
 											{"Grape Seeds"}
 										</span>
 										<div className="flex flex-col items-start">
-															<img
-																src="/product-page-images/product-image-10.png" 
-																className="w-[62px] h-10 object-fill"
-															/>
+											<img
+												src="/product-page-images/product-image-10.png"
+												className="w-[62px] h-10 object-fill"
+											/>
 										</div>
 										<span className="text-[#1F2429] text-xl" >
 											{"80 mg"}
@@ -36,10 +36,10 @@ export default ({ answers = {}, productName = 'Antiox' }: { answers?: Record<str
 											{"Vitamin C"}
 										</span>
 										<div className="flex flex-col items-start">
-															<img
-																src="/product-page-images/product-image-11.png" 
-																className="w-[54px] h-[54px] object-fill"
-															/>
+											<img
+												src="/product-page-images/product-image-11.png"
+												className="w-[54px] h-[54px] object-fill"
+											/>
 										</div>
 										<span className="text-[#1F2429] text-xl" >
 											{"65 mg"}
@@ -50,10 +50,10 @@ export default ({ answers = {}, productName = 'Antiox' }: { answers?: Record<str
 											{"Zinc"}
 										</span>
 										<div className="flex flex-col items-start">
-															<img
-																src="/product-page-images/product-image-12.png" 
-																className="w-[42px] h-[42px] object-fill"
-															/>
+											<img
+												src="/product-page-images/product-image-12.png"
+												className="w-[42px] h-[42px] object-fill"
+											/>
 										</div>
 										<span className="text-[#1F2429] text-xl" >
 											{"15 mg"}
@@ -66,20 +66,20 @@ export default ({ answers = {}, productName = 'Antiox' }: { answers?: Record<str
 							</div>
 							<div className="flex flex-col items-center w-[362px] pt-3 px-[62px] gap-6">
 								<div className="flex flex-col items-center self-stretch">
-														<img
-															src="/product-page-images/product-image-13.png" 
-															className="w-[237px] h-[225px] object-fill"
-														/>
+									<img
+										src="/product-page-images/product-image-13.png"
+										className="w-[237px] h-[225px] object-fill"
+									/>
 								</div>
 								<span className="text-[#EA4B94] text-[28px] font-bold" >
 									{productName}
 								</span>
 							</div>
 						</div>
-										<img
-											src="/product-page-images/product-image-14.png" 
-											className="w-[1000px] h-[563px] rounded-[32px] object-fill"
-										/>
+						<img
+							src="/product-page-images/product-image-14.png"
+							className="w-[1000px] h-[563px] rounded-[32px] object-fill"
+						/>
 						<div className="flex items-start self-stretch gap-6">
 							<div className="flex flex-col items-start bg-white w-[658px] pt-4 pb-24 gap-4 rounded-xl border border-solid border-[#E1E9FD]">
 								<div className="flex flex-col items-start w-[509px] ml-4 mr-[133px] gap-6">
@@ -117,7 +117,7 @@ export default ({ answers = {}, productName = 'Antiox' }: { answers?: Record<str
 							</div>
 						</div>
 						<button className="flex flex-col items-center bg-[#1F2429] text-left w-[362px] py-[15px] rounded-[100000px] border-0"
-							onClick={()=>alert("Pressed!")}>
+							onClick={() => alert("Pressed!")}>
 							<div className="flex flex-col items-start">
 								<span className="text-white text-[15px]" >
 									{`Buy ${productName} Now!`}

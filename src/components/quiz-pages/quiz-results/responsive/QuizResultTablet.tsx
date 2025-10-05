@@ -7,7 +7,7 @@ export default (props: any) => {
 	const [input5, onChangeInput5] = useState('');
 	const [input6, onChangeInput6] = useState('');
 	return (
-		<div className="items-start bg-white">
+		<div className="items-start bg-white mx-auto">
 			<div className="flex flex-col items-start bg-white w-[834px]">
 				<div className="flex justify-between items-center self-stretch mt-[50px] mb-8 mx-[50px]">
 					<div className="flex justify-between items-center w-52">
@@ -59,8 +59,8 @@ export default (props: any) => {
 							boxShadow: "0px 12px 35px #3E5BB926"
 						}}
 						onClick={()=>alert("Pressed!")}>
-														<img
-															src="/quiz-result-images/image-49.png" 
+                                                        <img
+                                                            src="/quiz-result-images/logo_blue_wreath.png" 
 															className="w-[124px] h-[70px] rounded-2xl object-fill"
 														/>
 						<span className="text-[#00A8E2] text-[32px]" >
@@ -84,8 +84,8 @@ export default (props: any) => {
 							}}>
 							<div className="flex flex-col items-start self-stretch py-1 mx-4 gap-5">
 								<div className="flex flex-col items-start ml-0.5">
-																<img
-																	src="/quiz-result-images/image-50.png" 
+                                                            <img
+                                                                src="/quiz-result-images/jar_red_ch.png" 
 																	className="w-[76px] h-[72px] object-fill"
 																/>
 								</div>
@@ -112,8 +112,8 @@ export default (props: any) => {
 							</div>
 							<div className="flex flex-col items-end self-stretch">
 								<div className="flex flex-col items-start mr-4">
-																<img
-																	src="/quiz-result-images/image-51.png" 
+                                                            <img
+                                                                src="/quiz-result-images/icon_arrow_up.png" 
 																	className="w-6 h-6 object-fill"
 																/>
 								</div>
@@ -125,8 +125,8 @@ export default (props: any) => {
 							}}>
 							<div className="flex flex-col items-start self-stretch py-1 mx-4 gap-5">
 								<div className="flex flex-col items-start ml-0.5">
-																<img
-																	src="/quiz-result-images/image-52.png" 
+                                                            <img
+                                                                src="/quiz-result-images/jar_pink_a.png" 
 																	className="w-[76px] h-[72px] object-fill"
 																/>
 								</div>
@@ -153,8 +153,8 @@ export default (props: any) => {
 							</div>
 							<div className="flex flex-col items-end self-stretch">
 								<div className="flex flex-col items-start mr-4">
-																<img
-																	src="/quiz-result-images/image-53.png" 
+                                                            <img
+                                                                src="/quiz-result-images/icon_arrow_up.png" 
 																	className="w-6 h-6 object-fill"
 																/>
 								</div>
@@ -166,8 +166,8 @@ export default (props: any) => {
 							}}>
 							<div className="flex flex-col items-start self-stretch py-1 mx-4 gap-5">
 								<div className="flex flex-col items-start ml-0.5">
-																<img
-																	src="/quiz-result-images/image-54.png" 
+                                                            <img
+                                                                src="/quiz-result-images/jar_purple_p.png" 
 																	className="w-[76px] h-[72px] object-fill"
 																/>
 								</div>
@@ -194,8 +194,8 @@ export default (props: any) => {
 							</div>
 							<div className="flex flex-col items-end self-stretch">
 								<div className="flex flex-col items-start mr-4">
-																<img
-																	src="/quiz-result-images/image-55.png" 
+                                                            <img
+                                                                src="/quiz-result-images/icon_arrow_up.png" 
 																	className="w-6 h-6 object-fill"
 																/>
 								</div>
@@ -212,8 +212,8 @@ export default (props: any) => {
 					<div className="flex items-start self-stretch gap-2.5">
 						<div className="flex items-center bg-[#F0F6F7] w-[238px] py-4 rounded-xl">
 							<div className="flex flex-col items-center w-6 ml-4 mr-3">
-																<img
-																	src="/quiz-result-images/image-56.png" 
+                                                        <img
+                                                            src="/quiz-result-images/icon_blue_symbols.png" 
 																	className="w-6 h-6 object-fill"
 																/>
 							</div>
@@ -226,8 +226,8 @@ export default (props: any) => {
 						</div>
 						<div className="flex items-center bg-[#F0F6F7] w-[238px] py-4 rounded-xl">
 							<div className="flex flex-col items-center w-6 ml-4 mr-3">
-																<img
-																	src="/quiz-result-images/image-57.png" 
+                                                        <img
+                                                            src="/quiz-result-images/icon_blue_symbols.png" 
 																	className="w-6 h-6 object-fill"
 																/>
 							</div>
@@ -240,8 +240,8 @@ export default (props: any) => {
 						</div>
 						<div className="flex items-center bg-[#F0F6F7] w-[238px] py-4 rounded-xl">
 							<div className="flex flex-col items-center w-6 ml-4 mr-3">
-																<img
-																	src="/quiz-result-images/image-58.png" 
+                                                        <img
+                                                            src="/quiz-result-images/icon_blue_symbols.png" 
 																	className="w-6 h-6 object-fill"
 																/>
 							</div>
@@ -258,8 +258,8 @@ export default (props: any) => {
 				</div>
 				<div className="flex items-start self-stretch mb-8 mx-[50px] gap-4">
 					<div className="flex flex-col items-start w-[278px] gap-4">
-															<img
-																src="/quiz-result-images/image-59.png" 
+                                                    <img
+                                                        src="/quiz-result-images/icon_blue_symbols.png" 
 																className="w-8 h-8 object-fill"
 															/>
 						<div className="flex flex-col items-start self-stretch gap-2">
@@ -274,8 +274,8 @@ export default (props: any) => {
 							</span>
 						</div>
 					</div>
-															<img
-																src="/quiz-result-images/image-60.png" 
+                                                    <img
+                                                        src="/quiz-result-images/photo_woman_laptop.png" 
 																className="w-[440px] h-64 object-fill"
 															/>
 				</div>
@@ -295,28 +295,34 @@ export default (props: any) => {
 						</div>
 					</div>
 					<div className="flex items-start mx-[17px] gap-4">
-																<img
-																	src="/quiz-result-images/image-61.png" 
-																	className="w-[70px] h-12 object-fill"
-																/>
+								<button className="flex flex-col items-center bg-white text-left w-[70px] py-[15px] rounded-md border border-solid border-[#E1E9FD]"
+									onClick={()=>alert("Pressed!")}>
+									<img
+										src="/quiz-result-images/logo_visa.png" 
+										className="w-auto h-auto object-fill"
+									/>
+								</button>
 						<button className="flex flex-col items-center bg-white text-left w-[70px] py-2.5 rounded-md border border-solid border-[#E1E9FD]"
 							onClick={()=>alert("Pressed!")}>
-																	<img
-																		src="/quiz-result-images/image-62.png" 
+                                                                <img
+                                                                    src="/quiz-result-images/logo_mastercard.png" 
 																		className="w-[45px] h-[27px] object-fill"
 																	/>
 						</button>
 						<button className="flex flex-col items-center bg-white text-left w-[70px] py-[15px] rounded-md border border-solid border-[#E1E9FD]"
 							onClick={()=>alert("Pressed!")}>
-																	<img
-																		src="/quiz-result-images/image-63.png" 
+                                                                <img
+                                                                    src="/quiz-result-images/logo_gpay.png" 
 																		className="w-[49px] h-5 object-fill"
 																	/>
 						</button>
-																<img
-																	src="/quiz-result-images/image-64.png" 
-																	className="w-[70px] h-12 object-fill"
-																/>
+								<button className="flex flex-col items-center bg-white text-left w-[70px] py-[15px] rounded-md border border-solid border-[#E1E9FD]"
+									onClick={()=>alert("Pressed!")}>
+									<img
+										src="/quiz-result-images/logo_applepay.png" 
+										className="w-auto h-auto object-fill"
+									/>
+								</button>
 					</div>
 				</div>
 				<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-8 mx-[50px]">
@@ -383,42 +389,47 @@ export default (props: any) => {
 				</div>
 				<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-8 mx-[50px]">
 				</div>
-				<div className="flex items-start self-stretch mb-8 gap-2">
+				<div className="flex flex-wrap justify-center items-start self-stretch mb-8 gap-2">
 					<div className="flex justify-between items-center bg-white w-[369px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
 						<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
-																<img
-																	src="/quiz-result-images/image-65.png" 
-																	className="w-[60px] h-[60px] ml-[15px] object-fill"
-																/>
-							<span className="text-[#1F2429] text-sm text-center" >
-								{"Sarah Smith"}
+							<img
+								src="/quiz-result-images/lady1.png"
+								className="w-[60px] h-[60px] ml-[15px] object-fill"
+							/>
+							<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
+								{"Mia Robinson"}
 							</span>
 						</div>
-						<span className="text-[#1F2429] text-base w-[227px] mr-[18px]" >
-							{"These supplements have helped me feel more balanced and energized throughout the day"}
+						<span className="text-[#1F2429] text-sm w-[227px] mr-[18px]" >
+							{"Sleep quality improved and I wake up less groggy"}
 						</span>
 					</div>
 					<div className="flex justify-between items-center bg-white w-[369px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
 						<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
-																<img
-																	src="/quiz-result-images/image-66.png" 
-																	className="w-[60px] h-[60px] ml-[15px] object-fill"
-																/>
-							<span className="text-[#1F2429] text-sm text-center" >
+							<img
+								src="/quiz-result-images/lady2.png"
+								className="w-[60px] h-[60px] ml-[15px] object-fill"
+							/>
+							<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
 								{"Sarah Smith"}
 							</span>
 						</div>
-						<span className="text-[#1F2429] text-base w-[227px] mr-[18px]" >
+						<span className="text-[#1F2429] text-sm w-[227px] mr-[18px]" >
 							{"These supplements have helped me feel more balanced and energized throughout the day"}
 						</span>
 					</div>
-					<div className="flex flex-col items-start bg-white w-[372px] py-4 gap-2 rounded-2xl border border-solid border-[#E1E9FD]">
-																<img
-																	src="/quiz-result-images/image-67.png" 
-																	className="w-[60px] h-[60px] ml-[31px] object-fill"
-																/>
-						<span className="text-[#1F2429] text-sm ml-[23px]" >
-							{"Sarah Smith"}
+					<div className="flex justify-between items-center bg-white w-[372px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
+						<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
+							<img
+								src="/quiz-result-images/lady3.png"
+								className="w-[60px] h-[60px] ml-[15px] object-fill"
+							/>
+							<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
+								{"Isabella Rossi"}
+							</span>
+						</div>
+						<span className="text-[#1F2429] text-sm w-[227px] mr-[21px]" >
+							{"Sleep tracker shows longer deep sleep windows."}
 						</span>
 					</div>
 				</div>
@@ -434,8 +445,8 @@ export default (props: any) => {
 								<span className="flex-1 text-[#1F2429] text-[15px] font-bold" >
 									{"What makes Project V different from regular supplements?"}
 								</span>
-																<img
-																	src="/quiz-result-images/image-68.png" 
+                                                            <img
+                                                                src="/quiz-result-images/icon_arrow_up.png" 
 																	className="w-6 h-6 object-fill"
 																/>
 							</div>
@@ -448,8 +459,8 @@ export default (props: any) => {
 							<span className="flex-1 text-[#1F2429] text-[15px] font-bold" >
 								{"Are your supplements suitable for my age and lifestyle?"}
 							</span>
-																<img
-																	src="/quiz-result-images/image-69.png" 
+                                                            <img
+                                                                src="/quiz-result-images/icon_arrow_up.png" 
 																	className="w-6 h-6 object-fill"
 																/>
 						</button>
@@ -458,8 +469,8 @@ export default (props: any) => {
 							<span className="flex-1 text-[#1F2429] text-[15px] font-bold" >
 								{"How long does it take to see results?"}
 							</span>
-																<img
-																	src="/quiz-result-images/image-70.png" 
+                                                            <img
+                                                                src="/quiz-result-images/icon_arrow_up.png" 
 																	className="w-6 h-6 object-fill"
 																/>
 						</button>
@@ -468,8 +479,8 @@ export default (props: any) => {
 							<span className="flex-1 text-[#1F2429] text-[15px] font-bold" >
 								{"Are the ingredients natural and safe?"}
 							</span>
-																<img
-																	src="/quiz-result-images/image-71.png" 
+                                                            <img
+                                                                src="/quiz-result-images/icon_arrow_up.png" 
 																	className="w-6 h-6 object-fill"
 																/>
 						</button>
@@ -478,8 +489,8 @@ export default (props: any) => {
 							<span className="flex-1 text-[#1F2429] text-[15px] font-bold" >
 								{"Who creates your formulas?"}
 							</span>
-																<img
-																	src="/quiz-result-images/image-72.png" 
+                                                            <img
+                                                                src="/quiz-result-images/icon_arrow_up.png" 
 																	className="w-6 h-6 object-fill"
 																/>
 						</button>
