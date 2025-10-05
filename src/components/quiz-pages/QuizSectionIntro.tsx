@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { PersonalDetailsIntroProps } from "../../types/quiz";
 
-export default function StartQuizBlok({ onBegin, backgroundImageUrl, titleLines, bodyLines, buttonLabel }: PersonalDetailsIntroProps) {
+export default function QuizSectionIntro({ onBegin, backgroundImageUrl, titleLines, bodyLines, buttonLabel }: PersonalDetailsIntroProps) {
 	const [isImageVisible, setIsImageVisible] = useState(false);
 	const [isButtonVisible, setIsButtonVisible] = useState(false);
 
@@ -98,5 +98,6 @@ export default function StartQuizBlok({ onBegin, backgroundImageUrl, titleLines,
 		</div>
 	);
 }
+
 
 

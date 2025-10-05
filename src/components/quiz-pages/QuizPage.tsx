@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import QuizStartPage from "./QuizStartPage";
-import StartQuizBlok from "./StartQuizBlok";
+import QuizSectionIntro from "./QuizSectionIntro";
 import QuestionForm from "../quiz-forms/QuestionForm";
 import { createQuizSteps } from "../../config/quizConfig";
 import { usePage } from "../../App";
@@ -36,7 +36,7 @@ export default function QuizPage() {
         setAnswers,
         setCurrentStep,
         currentStep,
-        StartQuizBlok,
+        QuizSectionIntro,
         QuestionForm,
         () => setPage('landing')
     );

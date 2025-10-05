@@ -81,7 +81,7 @@ export default function QuestionFormDesktop({
 				</div>
 				<div className="mt-3 flex items-center gap-2 justify-center" aria-hidden>
 					{Array.from({ length: totalQuestions }).map((_, idx) => (
-						<div key={idx} className={`h-1 w-10 rounded ${idx === questionIndex ? "bg-[#1F2429]" : "bg-gray-300"}`}></div>
+						<div key={idx} className={`h-1 w-10 rounded ${idx === questionIndex ? "bg-[#00A8E2]" : "bg-gray-300"}`}></div>
 					))}
 				</div>
 			</div>

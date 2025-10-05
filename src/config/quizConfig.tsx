@@ -359,7 +359,7 @@ export const createQuizSteps = (
     setAnswers: (answers: Record<string, any>) => void,
     setCurrentStep: (step: number) => void,
     currentStep: number,
-    StartQuizBlok: React.ComponentType<{ onBegin: () => void; backgroundImageUrl?: string; titleLines?: string[]; bodyLines?: string[]; buttonLabel?: string }>,
+    QuizSectionIntro: React.ComponentType<{ onBegin: () => void; backgroundImageUrl?: string; titleLines?: string[]; bodyLines?: string[]; buttonLabel?: string }>,
     QuestionForm: React.ComponentType<any>,
     goToLanding: () => void
 ): QuizStep[] => {
@@ -367,7 +367,7 @@ export const createQuizSteps = (
         {
             title: "",
             content: (
-                <StartQuizBlok 
+                <QuizSectionIntro 
                     onBegin={() => setCurrentStep(1)}
                     backgroundImageUrl={'/women/yellow_woman.png'}
                     titleLines={["PERSONAL", "DETAILS"]}
@@ -482,7 +482,7 @@ export const createQuizSteps = (
     steps.push({
         title: '',
         content: (
-            <StartQuizBlok
+            <QuizSectionIntro
                 onBegin={() => setCurrentStep(currentStep + 1)}
                 backgroundImageUrl={'/women/orange_woman.jpg'}
                 titleLines={["MORNING", "ENERGY", "& CLARITY"]}
@@ -505,7 +505,7 @@ export const createQuizSteps = (
     steps.push({
         title: '',
         content: (
-            <StartQuizBlok
+            <QuizSectionIntro
                 onBegin={() => setCurrentStep(currentStep + 1)}
                 backgroundImageUrl={'/women/yellow-orange_woman.png'}
                 titleLines={["MOVEMENT,","FLEXIBILITY", "& BODY", "SUPPORT"]}
@@ -528,7 +528,7 @@ export const createQuizSteps = (
     steps.push({
         title: '',
         content: (
-            <StartQuizBlok
+            <QuizSectionIntro
                 onBegin={() => setCurrentStep(currentStep + 1)}
                 backgroundImageUrl={'/women/green_woman.png'}
                 titleLines={["NUTRITION,", "DIGESTION &", "DETOX"]}
@@ -549,7 +549,7 @@ export const createQuizSteps = (
     steps.push({
         title: '',
         content: (
-            <StartQuizBlok
+            <QuizSectionIntro
                 onBegin={() => setCurrentStep(currentStep + 1)}
                 backgroundImageUrl={'/women/purple_woman.png'}
                 titleLines={["SLEEP, STRESS", "& SELF-CARE"]}
@@ -570,7 +570,7 @@ export const createQuizSteps = (
     steps.push({
         title: '',
         content: (
-            <StartQuizBlok
+            <QuizSectionIntro
                 onBegin={() => setCurrentStep(currentStep + 1)}
                 backgroundImageUrl={'/women/red_woman.png'}
                 titleLines={["INDULGENCE &", "BALANCE"]}
@@ -591,7 +591,7 @@ export const createQuizSteps = (
     steps.push({
         title: '',
         content: (
-            <StartQuizBlok
+            <QuizSectionIntro
                 onBegin={() => setCurrentStep(currentStep + 1)}
                 backgroundImageUrl={'/women/pink_woman.jpg'}
                 titleLines={["ENVIRONMENT", "& POLLUTION"]}

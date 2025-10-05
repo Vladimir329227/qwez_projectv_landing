@@ -1,150 +1,97 @@
 import React, { useState, useEffect } from "react";
 import { QuizStartPageProps } from "../../types/quiz";
+import QuizStartDesktop from "./responsive/QuizStartDesktop";
+import QuizStartTablet from "./responsive/QuizStartTablet";
+import QuizStartMobile from "./responsive/QuizStartMobile";
 
 export default function QuizStartPage({ onNext, onPrevious }: QuizStartPageProps) {
-	const [displayedText, setDisplayedText] = useState("");
-	const [typingDone, setTypingDone] = useState(false);
-	const fullText = "We know how to make that happen!";
-
-	// Subtitle typing state
-	const [subtitleDisplayed, setSubtitleDisplayed] = useState("");
-	const [subtitleTypingDone, setSubtitleTypingDone] = useState(false);
-	const subtitleFullText = "Life is 99 problems, but your fitness routine doesn't have to be one.";
-
-	// Buttons animation state
+	// Animation states
+	const [isTitleVisible, setIsTitleVisible] = useState(false);
+	const [isSubtitleVisible, setIsSubtitleVisible] = useState(false);
 	const [isButtonsVisible, setIsButtonsVisible] = useState(false);
+
+	// Responsive device detection aligned with Tailwind breakpoints
+	// mobile: <768px, tablet: >=768px && <1280px, desktop: >=1280px
+	const [device, setDevice] = useState<"mobile" | "tablet" | "desktop">("mobile");
+
+	useEffect(() => {
+		const computeDevice = () => {
+			if (typeof window === "undefined") return "mobile" as const;
+			if (window.matchMedia("(min-width: 1280px)").matches) return "desktop" as const;
+			if (window.matchMedia("(min-width: 768px)").matches) return "tablet" as const;
+			return "mobile" as const;
+		};
+
+		// set on mount
+		setDevice(computeDevice());
+
+		// listen to resize
+		const handleResize = () => setDevice(computeDevice());
+		window.addEventListener("resize", handleResize);
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
+	
+	const fullText = "We know how to make that happen!";
+	const subtitleFullText = "Life is 99 problems, but your fitness routine doesn't have to be one.";
 	
 	useEffect(() => {
-		let index = 0;
-		const timer = setInterval(() => {
-			if (index < fullText.length) {
-				setDisplayedText(fullText.slice(0, index + 1));
-				index++;
-			} else {
-				setTypingDone(true);
-				clearInterval(timer);
-			}
-		}, 50);
-		
-		return () => clearInterval(timer);
-	}, []);
+		// Title appears first
+		const titleTimer = setTimeout(() => {
+			setIsTitleVisible(true);
+		}, 300);
 
-	// Start subtitle typing after title finishes
-	useEffect(() => {
-		if (!typingDone) return;
-		let idx = 0;
-		const subtitleTimer = setInterval(() => {
-			if (idx < subtitleFullText.length) {
-				setSubtitleDisplayed(subtitleFullText.slice(0, idx + 1));
-				idx++;
-			} else {
-				setSubtitleTypingDone(true);
-				clearInterval(subtitleTimer);
-			}
-		}, 30);
+		// Subtitle appears after title
+		const subtitleTimer = setTimeout(() => {
+			setIsSubtitleVisible(true);
+		}, 800);
 
-		return () => clearInterval(subtitleTimer);
-	}, [typingDone]);
-
-	// Start buttons animation after subtitle finishes
-	useEffect(() => {
-		if (!subtitleTypingDone) return;
+		// Buttons appear after subtitle
 		const buttonTimer = setTimeout(() => {
 			setIsButtonsVisible(true);
-		}, 500);
+		}, 1300);
 
 		return () => {
+			clearTimeout(titleTimer);
+			clearTimeout(subtitleTimer);
 			clearTimeout(buttonTimer);
 		};
-	}, [subtitleTypingDone]);
+	}, []);
+
 	return (
 		<div className="min-h-screen bg-white flex flex-col">
-			{/* Main Content */}
-			<div className="flex-1 flex items-center justify-center p-0 pb-24 md:p-6 relative">
-				{/* Desktop Background Image */}
-				<div className="hidden md:block absolute inset-0 overflow-hidden">
-					<img
-						src="/figma/qwez_start_image.png"
-						alt="Quiz Background"
-						className="w-full h-full object-cover object-center"
-					/>
-					<div className="absolute inset-0 bg-black bg-opacity-20"></div>
-				</div>
-
-				<div className="w-full max-w-4xl relative z-10">
-					<div className="flex flex-col items-center md:items-start">
-						{/* Title with Animation */}
-						<div className="px-4 md:px-0 md:text-left mb-4">
-							<h1 className="text-3xl md:text-6xl lg:text-7xl font-bold text-[#1F2429] leading-tight">
-								{displayedText}
-								{!typingDone && (<span className="animate-pulse">|</span>)}
-							</h1>
-						</div>
-
-						{/* Mobile Image - Full Width */}
-						<div className="md:hidden w-full mb-3">
-							<img
-								src="/figma/qwez_start_image.png"
-								alt="Quiz Background"
-								className="block w-full h-auto object-contain"
-							/>
-						</div>
-
-						{/* Subtitle with Animation (starts after title typing) */}
-						<p className="px-4 md:px-0 text-base md:text-xl text-gray-600 mb-4 md:mb-8 md:text-left max-w-md">
-							{subtitleDisplayed}
-							{typingDone && !subtitleTypingDone && (<span className="animate-pulse">|</span>)}
-						</p>
-
-						{/* Buttons next to text (desktop/tablet) */}
-						<div className="hidden md:block px-4 md:px-0 w-full max-w-md relative z-20">
-							<div className={`flex gap-4 transition-all duration-700 ease-out ${
-								isButtonsVisible 
-									? 'opacity-100 translate-y-0' 
-									: 'opacity-0 translate-y-8'
-							}`}> 
-								<button 
-									onClick={onPrevious}
-									className="flex-1 bg-white text-[#1F2429] border-2 border-[#1F2429] py-3 rounded-full hover:bg-gray-50 transition-colors"
-								>
-									Previous
-								</button>
-								<button 
-									onClick={onNext}
-									className="flex-1 bg-[#1F2429] text-white py-3 rounded-full hover:bg-gray-800 transition-colors"
-								>
-									Next
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			{/* Mobile fixed bottom actions */}
-			<div className="md:hidden fixed bottom-0 inset-x-0 z-20 bg-white/95 backdrop-blur border-gray-200">
-				<div className="mx-auto w-full max-w-md px-4 py-3">
-					<div className={`flex gap-4 transition-all duration-700 ease-out ${
-						isButtonsVisible 
-							? 'opacity-100 translate-y-0' 
-							: 'opacity-0 translate-y-4'
-					}`}> 
-						<button 
-							onClick={onPrevious}
-							className="flex-1 bg-white text-[#1F2429] border-2 border-[#1F2429] py-3 rounded-full hover:bg-gray-50 transition-colors"
-						>
-							Previous
-						</button>
-						<button 
-							onClick={onNext}
-							className="flex-1 bg-[#1F2429] text-white py-3 rounded-full hover:bg-gray-800 transition-colors"
-						>
-							Next
-						</button>
-					</div>
-				</div>
-			</div>
-
+			{device === "desktop" && (
+				<QuizStartDesktop
+					onNext={onNext}
+					onPrevious={onPrevious}
+					isTitleVisible={isTitleVisible}
+					isSubtitleVisible={isSubtitleVisible}
+					isButtonsVisible={isButtonsVisible}
+					fullText={fullText}
+					subtitleFullText={subtitleFullText}
+				/>
+			)}
+			{device === "tablet" && (
+				<QuizStartTablet
+					onNext={onNext}
+					onPrevious={onPrevious}
+					isTitleVisible={isTitleVisible}
+					isSubtitleVisible={isSubtitleVisible}
+					isButtonsVisible={isButtonsVisible}
+					fullText={fullText}
+					subtitleFullText={subtitleFullText}
+				/>
+			)}
+			{device === "mobile" && (
+				<QuizStartMobile
+					onNext={onNext}
+					onPrevious={onPrevious}
+					isTitleVisible={isTitleVisible}
+					isSubtitleVisible={isSubtitleVisible}
+					isButtonsVisible={isButtonsVisible}
+					fullText={fullText}
+					subtitleFullText={subtitleFullText}
+				/>
+			)}
 		</div>
 	);
 }
