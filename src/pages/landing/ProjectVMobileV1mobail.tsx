@@ -38,7 +38,7 @@ export default (props: any) => {
 	return (
 		<div className="flex flex-col bg-white w-full overflow-x-hidden">
 			<div className="flex flex-col items-start self-stretch bg-white w-full">
-				<div className="flex flex-col items-start self-stretch bg-[url('/figma/a2faa45b0644ed10.png')] bg-cover bg-no-repeat bg-top py-12 gap-12">
+				<div className="flex flex-col items-start self-stretch bg-[url('/figma/a2faa45b0644ed10.jpg')] bg-cover bg-no-repeat bg-top py-12 gap-12">
 					<div className="flex flex-col items-center pb-[1px] ml-4">
 						<img
 							src={"/figma/11b7ebdd11d07cee.png"} 

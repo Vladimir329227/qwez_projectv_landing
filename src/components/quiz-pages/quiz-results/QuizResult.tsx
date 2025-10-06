@@ -21,7 +21,7 @@ export default function QuizResult({ answers = {} as Record<string, any> }) {
 	}, []);
 
 	return (
-		<div className="flex flex-col bg-white">
+		<div className="flex flex-col bg-white m-0 p-0 w-full h-full">
 			{device === "mobile" && <QuizResultMobile answers={answers} />}
 			{device === "tablet" && <QuizResultTablet  answers={answers} />}
 			{device === "desktop" && <QuizResultDesktop answers={answers} />}

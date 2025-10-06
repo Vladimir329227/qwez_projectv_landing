@@ -2,6 +2,7 @@ import { QuestionOption } from '../types/quiz';
 import React from 'react';
 import AgeCarousel from '../components/personal-details/AgeCarousel';
 import { EmailForm, NameForm, DisclaimerForm } from '../components/quiz-forms';
+import QuizResult from '../components/quiz-pages/quiz-results/QuizResult';
 
 export interface PersonalDetailsQuestion {
     key: string;
@@ -657,54 +658,12 @@ export const createQuizSteps = (
         )
     });
 
-    // Final step (existing)
+    // Final step - QuizResult
     steps.push(
         {
-            title: "Quiz Complete!",
-            subtitle: "Your personalized recommendations are ready",
+            title: "",
             content: (
-                <div className="flex flex-col items-center gap-8">
-                    <div className="w-24 h-24 bg-green-500 rounded-full flex items-center justify-center">
-                        <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                    </div>
-                    <div className="text-center">
-                        <h2 className="text-3xl font-bold text-[#1F2429] mb-4">
-                            Thank you for completing the quiz!
-                        </h2>
-                        <p className="text-lg text-gray-600 max-w-md mb-6">
-                            Based on your answers, we've prepared a personalized selection of Project V supplements just for you.
-                        </p>
-                        <div className="bg-gray-50 p-4 rounded-lg mb-6">
-                            <h3 className="font-bold text-[#1F2429] mb-2">Your Profile:</h3>
-                            {answers.name && <p className="text-sm text-gray-600">Name: {answers.name}</p>}
-                            {answers.email && <p className="text-sm text-gray-600">Email: {answers.email}</p>}
-                            <p className="text-sm text-gray-600">Gender: {answers.gender}</p>
-                            <p className="text-sm text-gray-600">Age: {answers.age}</p>
-                            <p className="text-sm text-gray-600">Height: {answers.height} cm</p>
-                            <p className="text-sm text-gray-600">Weight: {answers.weight} kg</p>
-                            <p className="text-sm text-gray-600">Activity: {answers.activity}</p>
-                        </div>
-                    </div>
-                    <div className="flex gap-4">
-                        <button 
-                            onClick={() => {
-                                setCurrentStep(0);
-                                setAnswers({});
-                            }}
-                            className="bg-gray-500 text-white px-6 py-3 rounded-full font-bold hover:bg-gray-600 transition-colors"
-                        >
-                            Retake Quiz
-                        </button>
-                        <button 
-                            onClick={goToLanding}
-                            className="bg-[#00A8E2] text-white px-6 py-3 rounded-full font-bold hover:bg-blue-600 transition-colors"
-                        >
-                            View Recommendations
-                        </button>
-                    </div>
-                </div>
+                <QuizResult answers={answers} />
             )
         }
     );

@@ -37,7 +37,7 @@ export default (props: any) => {
 	return (
 		<div className="flex flex-col bg-white">
 				<div className="flex flex-col items-start self-stretch bg-white">
-				<div className="flex flex-col items-start self-stretch bg-[url('https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/82a6d02a-d243-459b-a34f-2e6867c2229c')] bg-cover bg-center py-12">
+				<div className="flex flex-col items-start self-stretch bg-[url('/figma/main_woman.png')] bg-cover bg-center py-12">
 					<div className="flex flex-col items-center pb-[1px] mb-24 ml-24">
 						<img
 							src={"https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/f712b188-06a5-4e83-a515-9fbd9128f837"} 
