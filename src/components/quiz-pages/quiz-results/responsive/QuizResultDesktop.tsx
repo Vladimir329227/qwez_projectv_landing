@@ -13,31 +13,35 @@ export default (props: any) => {
 				<div className="flex flex-col items-center self-stretch mt-[50px] mb-16 mx-[50px]">
 					<div className="flex justify-between items-center self-stretch mb-10">
 						<div className="flex justify-between items-center w-52">
-							<div className="flex flex-col items-center w-[90px] ml-[1px]">
+							<div className="flex flex-col items-center ml-[1px]">
 								<span className="text-[#1F2429] text-base font-bold" >
 									{"Final Results"}
 								</span>
 							</div>
-							<button className="flex flex-col items-center bg-[#626669] text-left w-[83px] py-1.5 rounded-[40px] border-0"
-								onClick={() => alert("Pressed!")}>
+							<button className="flex flex-col items-center bg-[#626669] text-left w-[83px] py-1.5 rounded-[40px] border-0">
 								<span className="text-white text-sm font-bold" >
 									{"94 points"}
 								</span>
 							</button>
 						</div>
-						<div className="flex items-center w-[300px] gap-6">
+						<div className="flex items-center gap-6">
 							<div className="flex items-center bg-[#E1E9FD] w-[96px] py-1.5 rounded-[100000px]">
 								<div className="flex flex-col items-center w-4 ml-3.5 mr-[11px]">
-									<span className="text-[#006283] text-base font-bold" >
-										{"timer"}
-									</span>
+									<svg 
+										className="w-4 h-4 text-[#006283]" 
+										fill="currentColor" 
+										viewBox="0 0 24 24"
+									>
+										<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+										<path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+									</svg>
 								</div>
-								<span className="text-[#1F2429] text-[15px] mr-[11px]" >
+								<span className="text-[#1F2429] font-bold text-[15px] mr-[11px]" >
 									{"09:55"}
 								</span>
 							</div>
-							<div className="flex items-start bg-[#1F2429] w-[180px] py-[15px] rounded-[100000px]">
-								<div className="flex flex-col items-center w-[79px] ml-5 mr-2.5">
+							<div className="flex items-start bg-[#1F2429] py-[15px] rounded-[100000px]">
+								<div className="flex flex-col items-center ml-5 mr-2.5">
 									<span className="text-white text-[15px]" >
 										{"Get My Plan"}
 									</span>
@@ -59,8 +63,7 @@ export default (props: any) => {
 						<button className="flex flex-col items-center bg-[#FCFDFF] text-left w-[719px] py-[50px] px-[193px] gap-4 rounded-2xl border border-solid border-[#E1E9FD]"
 							style={{
 								boxShadow: "0px 12px 35px #3E5BB926"
-							}}
-							onClick={() => alert("Pressed!")}>
+							}}>
 							<img
 								src="/quiz-result-images/logo_blue_wreath.png"
 								className="w-[124px] h-[70px] rounded-2xl object-fill"
@@ -314,29 +317,25 @@ export default (props: any) => {
 								</div>
 							</div>
 							<div className="flex items-start ml-[17px] gap-4">
-								<button className="flex flex-col items-center bg-white text-left w-[70px] py-[15px] rounded-md border border-solid border-[#E1E9FD]"
-									onClick={() => alert("Pressed!")}>
+								<button className="flex flex-col items-center bg-white text-left w-[70px] py-[15px] rounded-md border border-solid border-[#E1E9FD]">
 									<img
 										src="/quiz-result-images/logo_visa.png"
 										className="w-auto h-auto object-fill"
 									/>
 								</button>
-								<button className="flex flex-col items-center bg-white text-left w-[70px] py-2.5 rounded-md border border-solid border-[#E1E9FD]"
-									onClick={() => alert("Pressed!")}>
+								<button className="flex flex-col items-center bg-white text-left w-[70px] py-2.5 rounded-md border border-solid border-[#E1E9FD]">
 									<img
 										src="/quiz-result-images/logo_mastercard.png"
 										className="w-[45px] h-[27px] object-fill"
 									/>
 								</button>
-								<button className="flex flex-col items-center bg-white text-left w-[70px] py-[15px] rounded-md border border-solid border-[#E1E9FD]"
-									onClick={() => alert("Pressed!")}>
+								<button className="flex flex-col items-center bg-white text-left w-[70px] py-[15px] rounded-md border border-solid border-[#E1E9FD]">
 									<img
 										src="/quiz-result-images/logo_gpay.png"
 										className="w-[49px] h-5 object-fill"
 									/>
 								</button>
-								<button className="flex flex-col items-center bg-white text-left w-[70px] py-[15px] rounded-md border border-solid border-[#E1E9FD]"
-									onClick={() => alert("Pressed!")}>
+								<button className="flex flex-col items-center bg-white text-left w-[70px] py-[15px] rounded-md border border-solid border-[#E1E9FD]">
 									<img
 										src="/quiz-result-images/logo_applepay.png"
 										className="w-auto h-auto object-fill"
@@ -361,8 +360,7 @@ export default (props: any) => {
 						<span className="text-[#1F2429] text-lg text-center" >
 							{"Project V creates innovative products helping millions of people strengthen their health and improve their quality of life on a daily basis. By using the healing powers of nature, new research and technologies, we aim to give everyone the chance to be healthy and happy."}
 						</span>
-						<button className="flex flex-col items-start bg-transparent text-left py-[15px] px-[42px] rounded-[100000px] border border-solid border-[#626669]"
-							onClick={() => alert("Pressed!")}>
+						<button className="flex flex-col items-start bg-transparent text-left py-[15px] px-[42px] rounded-[100000px] border border-solid border-[#626669]">
 							<span className="text-[#626669] text-[15px]" >
 								{"Learn More"}
 							</span>
@@ -492,8 +490,7 @@ export default (props: any) => {
 									{"Our products are made in France using organic, plant-based ingredients and cryogenic technology for better absorption and real results—no fillers, no fluff."}
 								</span>
 							</div>
-							<button className="flex items-center self-stretch bg-[#FCFDFF] text-left p-4 rounded-2xl border border-solid border-[#E1E9FD]"
-								onClick={() => alert("Pressed!")}>
+							<button className="flex items-center self-stretch bg-[#FCFDFF] text-left p-4 rounded-2xl border border-solid border-[#E1E9FD]">
 								<span className="flex-1 text-[#1F2429] text-2xl" >
 									{"Are your supplements suitable for my age and lifestyle?"}
 								</span>
@@ -502,8 +499,7 @@ export default (props: any) => {
 									className="w-6 h-6 object-fill"
 								/>
 							</button>
-							<button className="flex items-center self-stretch bg-[#FCFDFF] text-left p-4 rounded-2xl border border-solid border-[#E1E9FD]"
-								onClick={() => alert("Pressed!")}>
+							<button className="flex items-center self-stretch bg-[#FCFDFF] text-left p-4 rounded-2xl border border-solid border-[#E1E9FD]">
 								<span className="flex-1 text-[#1F2429] text-2xl" >
 									{"How long does it take to see results?"}
 								</span>
@@ -512,8 +508,7 @@ export default (props: any) => {
 									className="w-6 h-6 object-fill"
 								/>
 							</button>
-							<button className="flex items-center self-stretch bg-[#FCFDFF] text-left p-4 rounded-2xl border border-solid border-[#E1E9FD]"
-								onClick={() => alert("Pressed!")}>
+							<button className="flex items-center self-stretch bg-[#FCFDFF] text-left p-4 rounded-2xl border border-solid border-[#E1E9FD]">
 								<span className="flex-1 text-[#1F2429] text-2xl" >
 									{"Are the ingredients natural and safe?"}
 								</span>
@@ -522,8 +517,7 @@ export default (props: any) => {
 									className="w-6 h-6 object-fill"
 								/>
 							</button>
-							<button className="flex items-center self-stretch bg-[#FCFDFF] text-left p-4 rounded-2xl border border-solid border-[#E1E9FD]"
-								onClick={() => alert("Pressed!")}>
+							<button className="flex items-center self-stretch bg-[#FCFDFF] text-left p-4 rounded-2xl border border-solid border-[#E1E9FD]">
 								<span className="flex-1 text-[#1F2429] text-2xl" >
 									{"Who creates your formulas?"}
 								</span>

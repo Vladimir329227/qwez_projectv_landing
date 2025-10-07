@@ -8,6 +8,8 @@ import TestimonialsCarousel from "../../bloks/TestimonialsCarousel";
 export default (props: any) => {
 	const { setPage } = usePage();
 	const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+	const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+	const videoRef = React.useRef<HTMLVideoElement>(null);
 	
 	const faqData = [
 		{
@@ -288,15 +290,50 @@ export default (props: any) => {
 							</span>
 						</div>
 						<div className="relative w-full max-w-[90%] h-[60%] mx-auto">
-							<img
-								src={"/figma/250b8f6ff327cfd4.png"}
-								className="w-full h-full rounded-2xl object-fill"
+							<video
+								ref={videoRef}
+								onEnded={() => setIsVideoPlaying(false)}
+								onPlay={() => setIsVideoPlaying(true)}
+								onPause={() => setIsVideoPlaying(false)}
+								onClick={() => {
+									if (videoRef.current && isVideoPlaying) {
+										videoRef.current.pause();
+									}
+								}}
+								src={"/vidio/2..mp4"}
+								className="w-full h-full rounded-2xl object-cover cursor-pointer"
+								loop
+								muted
+								playsInline
 							/>
-							<img
-								src={"/figma/image_run.png"}
-								className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-								style={{ width: '10%', height: '20%' }}
-							/>
+							{!isVideoPlaying && (
+								<button
+									onClick={() => {
+										if (videoRef.current) {
+											videoRef.current.play();
+										}
+									}}
+									className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full p-4 shadow-lg hover:scale-110 transition-all duration-300"
+								>
+									<svg
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M8 5V19L19 12L8 5Z"
+											fill="#00A8E2"
+										/>
+									</svg>
+								</button>
+							)}
+							{isVideoPlaying && (
+								<div className="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+									Click on the video to pause
+								</div>
+							)}
 						</div>
 					</div>
 					<div className="flex flex-col self-stretch mx-4 gap-6">

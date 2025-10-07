@@ -23,7 +23,7 @@ export default function QuizStartDesktop({
 			{/* Left Content */}
 			<div className="flex flex-col items-start w-[492px] mr-[191px] flex-shrink-0 z-10 pl-12">
 				{/* Logo */}
-				<div className="flex flex-col items-start mb-[180px] ml-5 mt-16">
+				<div className="flex flex-col items-start mb-[20%] ml-5 mt-16">
 					<img
 						src="/Logo/Black.svg"
 						className="w-[250px] h-[70px] object-fill"
@@ -50,7 +50,7 @@ export default function QuizStartDesktop({
 				</div>
 				
 				{/* Buttons Container */}
-				<div className={`flex flex-col items-start pt-12 pb-[34px] mb-[159px] transition-all duration-700 ease-out ${
+				<div className={`flex flex-col items-start pt-12 pb-[34px] mb-[10%] transition-all duration-700 ease-out ${
 					isButtonsVisible 
 						? 'opacity-100 translate-y-0' 
 						: 'opacity-0 translate-y-8'
@@ -66,7 +66,7 @@ export default function QuizStartDesktop({
 						</div>
 					</button>
 				</div>
-				
+
 				{/* Info Text */}
 				<div className="flex items-start bg-[#E5F6FC] text-left py-4 ml-5 rounded-2xl border border-solid border-[#00A8E2]">
 					<img
@@ -78,7 +78,9 @@ export default function QuizStartDesktop({
 						We ask this to better understand your daily rhythms and how they might relate to your focus, habits, and overall well-being.
 					</span>
 				</div>
+				
 			</div>
+			
 			
 			{/* Right Image - Desktop version */}
 			<div className="absolute right-0 top-0 w-3/4 h-full overflow-hidden">

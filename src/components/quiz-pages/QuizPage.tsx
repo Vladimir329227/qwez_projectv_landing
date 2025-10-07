@@ -53,6 +53,14 @@ export default function QuizPage() {
 
 	const currentStepData = quizSteps[currentStep];
 
+	// Check if this is the final step (QuizResult)
+	const isFinalStep = currentStep === quizSteps.length - 1;
+
+	// For the final step, render QuizResult directly without wrapper
+	if (isFinalStep) {
+		return currentStepData.content;
+	}
+
 	return (
 		<div className="min-h-screen bg-white flex flex-col">
 
