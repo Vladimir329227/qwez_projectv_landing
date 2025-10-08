@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { navigateToProduct } from "../../../../App";
+
+
 export default (props: any) => {
 	const [input1, onChangeInput1] = useState('');
 	const [input2, onChangeInput2] = useState('');
@@ -7,25 +9,56 @@ export default (props: any) => {
 	const [input4, onChangeInput4] = useState('');
 	const [input5, onChangeInput5] = useState('');
 	const [input6, onChangeInput6] = useState('');
+
+	const faqData = [
+		{
+			question: "What makes Project V different from regular supplements?",
+			answer: "Our products are made in France using organic, plant-based ingredients and cryogenic technology for better absorption and real results—no fillers, no fluff. We use ultra-low temperature processing to preserve the natural potency of active ingredients, ensuring maximum bioavailability and effectiveness."
+		},
+		{
+			question: "Are your supplements suitable for my age and lifestyle?",
+			answer: "Yes! Our supplements are designed for adults of all ages and lifestyles. We offer personalized recommendations through our quiz system that takes into account your age, lifestyle, health goals, and dietary preferences. Whether you're a busy professional, athlete, or focused on healthy aging, we have formulations tailored to your specific needs."
+		},
+		{
+			question: "How long does it take to see results?",
+			answer: "Most customers begin to notice improvements within 2-4 weeks of consistent use. However, optimal results typically appear after 8-12 weeks as your body builds up nutrient stores and cellular function improves. Individual results may vary based on your starting point, lifestyle, and adherence to the recommended dosage."
+		},
+		{
+			question: "Are the ingredients natural and safe?",
+			answer: "Absolutely! All our ingredients are 100% natural, organic-certified, and rigorously tested for purity and safety. We use no artificial fillers, preservatives, or synthetic additives. Every ingredient is sourced from trusted suppliers and undergoes third-party testing to ensure the highest quality and safety standards."
+		},
+		{
+			question: "Who creates your formulas?",
+			answer: "Our formulas are developed by a team of expert nutritionists, neuroscientists, and medical professionals with decades of experience in functional medicine. Each formulation is backed by scientific research and clinical studies, ensuring that every product delivers measurable health benefits and supports your long-term wellness goals."
+		}
+	];
+	
+	const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+	
+	const toggleFAQ = (index: number) => {
+		setOpenFAQ(openFAQ === index ? null : index);
+	};
+
+
 	return (
 		<div className="items-start bg-white">
-			<div className="bg-white w-[1440px] mx-auto">
+			<div className="bg-white mx-auto">
 				<div className="flex flex-col items-center self-stretch mt-[50px] mb-16 mx-[50px]">
 					<div className="flex justify-between items-center self-stretch mb-10">
-						<div className="flex justify-between items-center w-52">
+						<div className="flex justify-between items-center gap-6">
 							<div className="flex flex-col items-center ml-[1px]">
-								<span className="text-[#1F2429] text-base font-bold" >
+								<span className="text-[#1F2429] text-base text-2xl font-bold" >
 									{"Final Results"}
 								</span>
 							</div>
 							<button className="flex flex-col items-center bg-[#626669] text-left w-[83px] py-1.5 rounded-[40px] border-0">
-								<span className="text-white text-sm font-bold" >
+								<span className="text-white text-sm text-2xl font-bold" >
 									{"94 points"}
 								</span>
 							</button>
 						</div>
-						<div className="flex items-center gap-6">
-							<div className="flex items-center bg-[#E1E9FD] w-[96px] py-1.5 rounded-[100000px]">
+						<div className="flex items-center gap-6 pr-4">
+							<div className="flex items-center bg-[#E1E9FD] py-1.5 rounded-[100000px]">
 								<div className="flex flex-col items-center w-4 ml-3.5 mr-[11px]">
 									<svg 
 										className="w-4 h-4 text-[#006283]" 
@@ -60,7 +93,7 @@ export default (props: any) => {
 						<span className="flex-1 text-[#1F2429] text-5xl mr-[103px]" >
 							{"Hey Anna, here is your wellness profile revealed:"}
 						</span>
-						<button className="flex flex-col items-center bg-[#FCFDFF] text-left w-[719px] py-[50px] px-[193px] gap-4 rounded-2xl border border-solid border-[#E1E9FD]"
+						<button className="flex flex-col items-center bg-[#FCFDFF] text-left w-[50%] py-[50px] px-[193px] gap-4 rounded-2xl border border-solid border-[#E1E9FD]"
 							style={{
 								boxShadow: "0px 12px 35px #3E5BB926"
 							}}>
@@ -83,7 +116,7 @@ export default (props: any) => {
 							{"Your Recommended Supplements forBetter Sleep & Anti-stress"}
 						</span>
 						<div className="flex items-start self-stretch gap-4">
-							<div className="flex flex-col bg-white w-[436px] py-4 gap-6 rounded-xl"
+							<div className="flex flex-col bg-white w-[33%] py-4 gap-6 rounded-xl"
 								style={{
 									boxShadow: "0px 12px 35px #3E5BB926"
 								}}>
@@ -101,7 +134,7 @@ export default (props: any) => {
 											</span>
 											<div className="flex items-center">
 												<div className="flex flex-col items-center w-[9px] ml-[1px] mr-1.5">
-													<span className="text-[#1F2429] text-[9px] font-bold" >
+													<span className="text-[#1F2429] text-[15px] font-bold" >
 														{"🌿"}
 													</span>
 												</div>
@@ -122,7 +155,7 @@ export default (props: any) => {
 									<button
 										aria-label="View product"
 										onClick={() => navigateToProduct('Antiox')}
-										className="flex items-center bg-[#1F2429] hover:bg-[#0f1215] transition-colors duration-200 rounded-[12px] py-2 pl-4 pr-3 w-[88px]"
+										className="flex items-center bg-[#1F2429] hover:bg-[#0f1215] transition-colors duration-200 rounded-[120000000px] p-4"
 									>
 										<img
 											src="/quiz-result-images/icon_arrow_up.png"
@@ -132,7 +165,7 @@ export default (props: any) => {
 									</div>
 								</div>
 							</div>
-							<div className="flex flex-col bg-white w-[436px] py-4 gap-6 rounded-xl"
+							<div className="flex flex-col bg-white w-[33%] py-4 gap-6 rounded-xl"
 								style={{
 									boxShadow: "0px 12px 35px #3E5BB926"
 								}}>
@@ -150,7 +183,7 @@ export default (props: any) => {
 											</span>
 											<div className="flex items-center">
 												<div className="flex flex-col items-center w-[9px] ml-[1px] mr-1.5">
-													<span className="text-[#1F2429] text-[9px] font-bold" >
+													<span className="text-[#1F2429] text-[15px] font-bold" >
 														{"🌿"}
 													</span>
 												</div>
@@ -171,7 +204,7 @@ export default (props: any) => {
 									<button
 										aria-label="View product"
 										onClick={() => navigateToProduct('Antiox')}
-										className="flex items-center bg-[#1F2429] hover:bg-[#0f1215] transition-colors duration-200 rounded-[12px] py-2 pl-4 pr-3 w-[88px]"
+										className="flex items-center bg-[#1F2429] hover:bg-[#0f1215] transition-colors duration-200 rounded-[120000000px] p-4"
 									>
 										<img
 											src="/quiz-result-images/icon_arrow_up.png"
@@ -181,7 +214,7 @@ export default (props: any) => {
 									</div>
 								</div>
 							</div>
-							<div className="flex flex-col bg-white w-[436px] py-4 gap-[49px] rounded-xl"
+							<div className="flex flex-col bg-white w-[33%] py-4 gap-[49px] rounded-xl"
 								style={{
 									boxShadow: "0px 12px 35px #3E5BB926"
 								}}>
@@ -199,7 +232,7 @@ export default (props: any) => {
 											</span>
 											<div className="flex items-center">
 												<div className="flex flex-col items-center w-[9px] ml-[1px] mr-1.5">
-													<span className="text-[#1F2429] text-[9px] font-bold" >
+													<span className="text-[#1F2429] text-[15px] font-bold" >
 														{"🌿"}
 													</span>
 												</div>
@@ -220,7 +253,7 @@ export default (props: any) => {
 									<button
 										aria-label="View product"
 										onClick={() => navigateToProduct('power_of_mind')}
-										className="flex items-center bg-[#1F2429] hover:bg-[#0f1215] transition-colors duration-200 rounded-[12px] py-2 pl-4 pr-3 w-[88px]"
+										className="flex items-center bg-[#1F2429] hover:bg-[#0f1215] transition-colors duration-200 rounded-[12000000000px] p-4"
 									>
 										<img
 											src="/quiz-result-images/icon_arrow_up.png"
@@ -239,7 +272,7 @@ export default (props: any) => {
 							{"Expected Outcomes"}
 						</span>
 						<div className="flex items-start self-stretch gap-2.5">
-							<div className="flex items-center bg-[#F0F6F7] w-[440px] py-[27px] rounded-xl">
+							<div className="flex items-center bg-[#F0F6F7] w-[33%] py-[27px] rounded-xl">
 								<div className="flex flex-col items-center w-6 ml-4 mr-3">
 									<img
 										src="/quiz-result-images/icon_blue_symbols.png"
@@ -253,7 +286,7 @@ export default (props: any) => {
 									className="flex-1 self-stretch text-[#1F2429] bg-transparent text-lg border-0"
 								/>
 							</div>
-							<div className="flex items-center bg-[#F0F6F7] w-[440px] py-[27px] rounded-xl">
+							<div className="flex items-center bg-[#F0F6F7] w-[33%] py-[27px] rounded-xl">
 								<div className="flex flex-col items-center w-6 ml-4 mr-3">
 									<img
 										src="/quiz-result-images/icon_blue_symbols.png"
@@ -267,7 +300,7 @@ export default (props: any) => {
 									className="flex-1 self-stretch text-[#1F2429] bg-transparent text-lg border-0"
 								/>
 							</div>
-							<div className="flex items-center bg-[#F0F6F7] w-[440px] py-[27px] rounded-xl">
+							<div className="flex items-center bg-[#F0F6F7] w-[33%] py-[27px] rounded-xl">
 								<div className="flex flex-col items-center w-6 ml-4 mr-3">
 									<img
 										src="/quiz-result-images/icon_blue_symbols.png"
@@ -286,25 +319,25 @@ export default (props: any) => {
 					<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-10">
 					</div>
 					<div className="flex justify-between items-center self-stretch mb-[31px]">
-						<div className="flex flex-col items-start w-[413px]">
+						<div className="flex flex-col items-start w-[35%]">
 							<div className="flex flex-col items-start self-stretch mb-[50px] gap-4">
 								<img
 									src="/quiz-result-images/icon_blue_symbols.png"
 									className="w-8 h-8 object-fill"
 								/>
-								<div className="flex flex-col items-start w-[397px] mr-4 gap-4">
+								<div className="flex flex-col items-start mr-4 gap-4">
 									<span className="text-[#1F2429] text-xl" >
 										{"Nutrients Extraction"}
 									</span>
 									<span className="text-[#1F2429] text-[32px]" >
 										{"Cryogenic Method"}
 									</span>
-									<span className="text-[#1F2429] text-base w-[397px]" >
+									<span className="text-[#1F2429] text-base" >
 										{"We use cryogenic extraction to preserve the full strength and purity of every ingredient.\nNo heat damage\nMaximum nutrient retention\nEnhanced bioavailability\nCleaner, purer extracts\nBetter absorption. Better results."}
 									</span>
 								</div>
 							</div>
-							<div className="flex items-start bg-[#1F2429] w-[362px] py-[15px] mb-10 mr-[51px] rounded-[100000px]">
+							<div className="flex items-start bg-[#1F2429] py-[15px] mb-10 mr-[51px] rounded-[100000px]">
 								<div className="flex flex-1 flex-col items-start ml-5 mr-3">
 									<span className="text-white text-[15px]" >
 										{"Get Full Package Now"}
@@ -345,12 +378,12 @@ export default (props: any) => {
 						</div>
 						<img
 							src="/quiz-result-images/photo_woman_laptop.png"
-							className="w-[877px] h-[511px] object-fill"
+							className="w-[60%] max-w-[800px] object-fill"
 						/>
 					</div>
 					<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-10">
 					</div>
-					<div className="flex flex-col items-center w-[854px] mb-10 gap-6">
+					<div className="flex flex-col items-center w-[50%] mb-10 gap-6">
 						<span className="text-[#1F2429] text-[15px] font-bold" >
 							{"Our Mission"}
 						</span>
@@ -369,7 +402,7 @@ export default (props: any) => {
 					<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-10">
 					</div>
 					<div className="flex items-start self-stretch mb-10 gap-2.5">
-						<div className="flex items-center bg-[#F0F6F7] w-[440px] py-[27px] rounded-xl">
+						<div className="flex items-center bg-[#F0F6F7] w-[33%] py-[27px] rounded-xl">
 							<div className="flex flex-col items-center w-[9px] ml-5 mr-[19px]">
 								<span className="text-[#00A8E2] text-xl" >
 									{"2"}
@@ -382,7 +415,7 @@ export default (props: any) => {
 								className="flex-1 self-stretch text-[#1F2429] bg-transparent text-lg border-0"
 							/>
 						</div>
-						<div className="flex items-center bg-[#F0F6F7] w-[440px] py-[27px] rounded-xl">
+						<div className="flex items-center bg-[#F0F6F7] w-[33%] py-[27px] rounded-xl">
 							<div className="flex flex-col items-center w-[19px] mx-3.5">
 								<span className="text-[#00A8E2] text-xl" >
 									{"19"}
@@ -395,7 +428,7 @@ export default (props: any) => {
 								className="flex-1 self-stretch text-[#1F2429] bg-transparent text-lg border-0"
 							/>
 						</div>
-						<div className="flex items-center bg-[#F0F6F7] w-[440px] py-[27px] rounded-xl">
+						<div className="flex items-center bg-[#F0F6F7] w-[33%] py-[27px] rounded-xl">
 							<div className="flex flex-col items-center w-5 ml-3.5 mr-[13px]">
 								<span className="text-[#00A8E2] text-xl" >
 									{"48"}
@@ -471,61 +504,37 @@ export default (props: any) => {
 					</div>
 					<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-10">
 					</div>
-					<div className="flex flex-col items-center w-[954px] gap-3">
+					<div className="flex flex-col w-[70%] items-center gap-3">
 						<span className="text-[#1F2429] text-[32px]" >
 							{"FAQ"}
 						</span>
-						<div className="flex flex-col self-stretch gap-1">
-							<div className="flex flex-col items-start self-stretch bg-[#FCFDFF] p-4 gap-[13px] rounded-2xl border border-solid border-[#E1E9FD]">
-								<div className="flex items-center self-stretch">
-									<span className="flex-1 text-[#1F2429] text-2xl" >
-										{"What makes Project V different from regular supplements?"}
-									</span>
-									<img
-										src="/quiz-result-images/icon_arrow_up.png"
-										className="w-6 h-6 object-fill"
-									/>
-								</div>
-								<span className="text-[#1F2429] text-lg w-[855px]" >
-									{"Our products are made in France using organic, plant-based ingredients and cryogenic technology for better absorption and real results—no fillers, no fluff."}
-								</span>
-							</div>
-							<button className="flex items-center self-stretch bg-[#FCFDFF] text-left p-4 rounded-2xl border border-solid border-[#E1E9FD]">
-								<span className="flex-1 text-[#1F2429] text-2xl" >
-									{"Are your supplements suitable for my age and lifestyle?"}
-								</span>
-								<img
-									src="/quiz-result-images/icon_arrow_up.png"
-									className="w-6 h-6 object-fill"
-								/>
-							</button>
-							<button className="flex items-center self-stretch bg-[#FCFDFF] text-left p-4 rounded-2xl border border-solid border-[#E1E9FD]">
-								<span className="flex-1 text-[#1F2429] text-2xl" >
-									{"How long does it take to see results?"}
-								</span>
-								<img
-									src="/quiz-result-images/icon_arrow_up.png"
-									className="w-6 h-6 object-fill"
-								/>
-							</button>
-							<button className="flex items-center self-stretch bg-[#FCFDFF] text-left p-4 rounded-2xl border border-solid border-[#E1E9FD]">
-								<span className="flex-1 text-[#1F2429] text-2xl" >
-									{"Are the ingredients natural and safe?"}
-								</span>
-								<img
-									src="/quiz-result-images/icon_arrow_up.png"
-									className="w-6 h-6 object-fill"
-								/>
-							</button>
-							<button className="flex items-center self-stretch bg-[#FCFDFF] text-left p-4 rounded-2xl border border-solid border-[#E1E9FD]">
-								<span className="flex-1 text-[#1F2429] text-2xl" >
-									{"Who creates your formulas?"}
-								</span>
-								<img
-									src="/quiz-result-images/icon_arrow_up.png"
-									className="w-6 h-6 object-fill"
-								/>
-							</button>
+						<div className="flex flex-1 flex-col w-[100%] gap-4">
+							{faqData.map((faq, index) => (
+								<button 
+									key={index}
+									className={`flex flex-col self-stretch bg-[#FCFDFF] py-4 gap-3 rounded-2xl border border-solid border-[#E1E9FD] transition-all duration-300 ${
+										openFAQ === index ? 'shadow-lg' : ''
+									}`}
+									onClick={() => toggleFAQ(index)}
+								>
+									<div className="flex items-start self-stretch mx-4">
+										<span className="flex-1 text-[#1F2429] text-lg font-bold text-left">
+											{faq.question}
+										</span>
+										<img
+											src={openFAQ === index ? "/figma/171705bc9ae38148.png" : "/figma/beac637ba3d38921.png"} 
+											className={`w-6 h-6 object-fill transition-transform duration-300 ${
+												openFAQ === index ? 'rotate-180' : ''
+											}`}
+										/>
+									</div>
+									{openFAQ === index && (
+										<div className="text-[#1F2429] text-base mx-4 text-left animate-fadeIn">
+											{faq.answer}
+										</div>
+									)}
+								</button>
+							))}
 						</div>
 					</div>
 				</div>
