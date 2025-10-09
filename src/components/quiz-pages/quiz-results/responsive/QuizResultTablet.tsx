@@ -39,9 +39,9 @@ export default (props: any) => {
 
 
 	return (
-		<div className="items-start bg-white mx-auto">
-			<div className="flex flex-col items-center bg-white">
-				<div className="flex justify-between items-center self-stretch mt-[50px] mb-8 px-8">
+		<div className="items-start bg-white mx-auto overflow-x-hidden">
+			<div className="flex flex-col items-center bg-white max-w-full">
+				<div className="flex justify-between items-center self-stretch mt-[50px] mb-8 px-4 sm:px-8">
 					<div className="flex items-center gap-6">
 						<div className="flex flex-col items-center ml-[1px]">
 							<span className="text-[#1F2429] text-base font-bold" >
@@ -85,13 +85,13 @@ export default (props: any) => {
 						</div>
 					</div>
 				</div>
-				<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-8 px-8">
+				<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-8 px-4 sm:px-8">
 				</div>
-				<div className="flex flex-col items-center self-stretch mb-8 px-8 gap-6">
+				<div className="flex flex-col items-center self-stretch mb-8 px-4 sm:px-8 gap-6">
 					<span className="text-[#1F2429] text-2xl" >
 						{"Hey Anna, here is your wellness profile revealed:"}
 					</span>
-					<button className="flex flex-col items-center self-stretch bg-[#FCFDFF] text-left py-6 px-[201px] gap-4 rounded-2xl border border-solid border-[#E1E9FD]"
+					<button className="flex flex-col items-center self-stretch bg-[#FCFDFF] text-left py-6 px-8 sm:px-[201px] gap-4 rounded-2xl border border-solid border-[#E1E9FD]"
 						style={{
 							boxShadow: "0px 12px 35px #3E5BB926"
 						}}
@@ -108,14 +108,14 @@ export default (props: any) => {
 						</span>
 					</button>
 				</div>
-				<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-8 mx-[50px]">
+				<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-8 mx-4 sm:mx-[50px]">
 				</div>
-				<div className="flex flex-col items-start self-stretch mb-8 mx-[50px] gap-6">
-					<span className="text-[#1F2429] text-xl w-[331px]" >
+				<div className="flex flex-col items-start self-stretch mb-8 mx-4 sm:mx-[50px] gap-6">
+					<span className="text-[#1F2429] text-xl" >
 						{"Your Recommended Supplements forBetter Sleep & Anti-stress"}
 					</span>
-					<div className="flex items-start self-stretch gap-4">
-						<div className="bg-white w-[33%] py-4 rounded-xl"
+					<div className="flex items-start self-stretch gap-2 sm:gap-4">
+						<div className="bg-white flex-1 min-w-0 py-4 rounded-xl"
 							style={{
 								boxShadow: "0px 12px 35px #3E5BB926"
 							}}>
@@ -162,7 +162,7 @@ export default (props: any) => {
                                 </div>
                             </div>
 						</div>
-						<div className="flex flex-col bg-white w-[33%] py-4 gap-5 rounded-xl"
+						<div className="flex flex-col bg-white flex-1 min-w-0 py-4 gap-5 rounded-xl"
 							style={{
 								boxShadow: "0px 12px 35px #3E5BB926"
 							}}>
@@ -209,7 +209,7 @@ export default (props: any) => {
                                 </div>
                             </div>
 						</div>
-						<div className="flex flex-col bg-white w-[33%] py-4 gap-10 rounded-xl"
+						<div className="flex flex-col bg-white flex-1 min-w-0 py-4 gap-10 rounded-xl"
 							style={{
 								boxShadow: "0px 12px 35px #3E5BB926"
 							}}>
@@ -258,14 +258,14 @@ export default (props: any) => {
 						</div>
 					</div>
 				</div>
-				<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-8 mx-[50px]">
+				<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-8 mx-4 sm:mx-[50px]">
 				</div>
-				<div className="flex flex-col items-start self-stretch mb-8 mx-[50px] gap-6">
+				<div className="flex flex-col items-start self-stretch mb-8 mx-4 sm:mx-[50px] gap-6">
 					<span className="text-[#1F2429] text-xl" >
 						{"Expected Outcomes"}
 					</span>
-					<div className="flex items-start self-stretch gap-2.5">
-						<div className="flex items-center bg-[#F0F6F7] w-[238px] py-4 rounded-xl">
+					<div className="flex items-start self-stretch gap-1 sm:gap-2.5">
+						<div className="flex items-center bg-[#F0F6F7] flex-1 min-w-0 py-4 rounded-xl">
 							<div className="flex flex-col items-center w-6 ml-4 mr-3">
 								<img
 									src="/quiz-result-images/icon_blue_symbols.png"
@@ -279,7 +279,7 @@ export default (props: any) => {
 								className="flex-1 self-stretch text-[#1F2429] bg-transparent text-sm py-0.5 border-0"
 							/>
 						</div>
-						<div className="flex items-center bg-[#F0F6F7] w-[238px] py-4 rounded-xl">
+						<div className="flex items-center bg-[#F0F6F7] flex-1 min-w-0 py-4 rounded-xl">
 							<div className="flex flex-col items-center w-6 ml-4 mr-3">
 								<img
 									src="/quiz-result-images/icon_blue_symbols.png"
@@ -293,7 +293,7 @@ export default (props: any) => {
 								className="flex-1 self-stretch text-[#1F2429] bg-transparent text-sm py-0.5 border-0"
 							/>
 						</div>
-						<div className="flex items-center bg-[#F0F6F7] w-[238px] py-4 rounded-xl">
+						<div className="flex items-center bg-[#F0F6F7] flex-1 min-w-0 py-4 rounded-xl">
 							<div className="flex flex-col items-center w-6 ml-4 mr-3">
 								<img
 									src="/quiz-result-images/icon_blue_symbols.png"
@@ -309,10 +309,10 @@ export default (props: any) => {
 						</div>
 					</div>
 				</div>
-				<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-8 mx-[50px]">
+				<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-8 mx-4 sm:mx-[50px]">
 				</div>
-				<div className="flex items-start self-stretch mb-8 mx-[50px] gap-4">
-					<div className="flex flex-col items-start w-[278px] gap-4">
+				<div className="flex items-start self-stretch mb-8 mx-4 sm:mx-[50px] gap-4">
+					<div className="flex flex-col items-start flex-1 min-w-0 gap-4">
 						<img
 							src="/quiz-result-images/icon_blue_symbols.png"
 							className="w-8 h-8 object-fill"
@@ -324,20 +324,20 @@ export default (props: any) => {
 							<span className="text-[#1F2429] text-2xl" >
 								{"Cryogenic Method"}
 							</span>
-							<span className="text-[#1F2429] text-sm w-[270px]" >
+							<span className="text-[#1F2429] text-sm" >
 								{"We use cryogenic extraction to preserve the full strength and purity of every ingredient.\nNo heat damage\nMaximum nutrient retention\nEnhanced bioavailability\nCleaner, purer extracts\nBetter absorption. Better results."}
 							</span>
 						</div>
 					</div>
 					<img
 						src="/quiz-result-images/photo_woman_laptop.png"
-						className="w-[440px] h-64 object-fill"
+						className="w-full max-w-[440px] h-64 object-fill"
 					/>
 				</div>
-				<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-8 mx-[50px]">
+				<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-8 mx-4 sm:mx-[50px]">
 				</div>
-				<div className="flex flex-col items-start mb-8 mx-[236px] gap-10">
-					<div className="flex items-start bg-[#1F2429] w-[362px] py-[15px] rounded-[100000px]">
+				<div className="flex flex-col items-start mb-8 mx-4 sm:mx-[236px] gap-10">
+					<div className="flex items-start bg-[#1F2429] w-full max-w-[362px] py-[15px] rounded-[100000px]">
 						<div className="flex flex-1 flex-col items-start ml-5 mr-3">
 							<span className="text-white text-[15px]" >
 								{"Get Full Package Now"}
@@ -380,16 +380,16 @@ export default (props: any) => {
 						</button>
 					</div>
 				</div>
-				<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-8 mx-[50px]">
+				<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-8 mx-4 sm:mx-[50px]">
 				</div>
-				<div className="flex flex-col items-start self-stretch mb-8 mx-[50px] gap-4">
+				<div className="flex flex-col items-start self-stretch mb-8 mx-4 sm:mx-[50px] gap-4">
 					<span className="text-[#1F2429] text-[15px] font-bold" >
 						{"Our Mission"}
 					</span>
 					<span className="text-[#1F2429] text-2xl" >
 						{"Taking care of people's beauty and health"}
 					</span>
-					<span className="text-[#1F2429] text-sm w-[732px]" >
+					<span className="text-[#1F2429] text-sm" >
 						{"Project V creates innovative products helping millions of people strengthen their health and improve their quality of life on a daily basis. By using the healing powers of nature, new research and technologies, we aim to give everyone the chance to be healthy and happy."}
 					</span>
 					<button className="flex flex-col items-start bg-transparent text-left py-3 px-[23px] rounded-[100000px] border border-solid border-[#1F2429]"
@@ -399,10 +399,10 @@ export default (props: any) => {
 						</span>
 					</button>
 				</div>
-				<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-8 mx-[50px]">
+				<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-8 mx-4 sm:mx-[50px]">
 				</div>
-				<div className="flex items-start self-stretch mb-8 mx-[50px] gap-2.5">
-					<div className="flex items-center bg-[#F0F6F7] w-[220px] py-4 rounded-xl">
+				<div className="flex items-start self-stretch mb-8 mx-4 sm:mx-[50px] gap-1 sm:gap-2.5">
+					<div className="flex items-center bg-[#F0F6F7] flex-1 min-w-0 py-4 rounded-xl">
 						<div className="flex flex-col items-center w-[9px] ml-5 mr-[19px]">
 							<span className="text-[#00A8E2] text-xl" >
 								{"2"}
@@ -415,7 +415,7 @@ export default (props: any) => {
 							className="flex-1 self-stretch text-[#1F2429] bg-transparent text-sm py-0.5 border-0"
 						/>
 					</div>
-					<div className="flex items-center bg-[#F0F6F7] w-[274px] py-4 rounded-xl">
+					<div className="flex items-center bg-[#F0F6F7] flex-1 min-w-0 py-4 rounded-xl">
 						<div className="flex flex-col items-center w-[19px] mx-3.5">
 							<span className="text-[#00A8E2] text-xl" >
 								{"19"}
@@ -428,7 +428,7 @@ export default (props: any) => {
 							className="flex-1 self-stretch text-[#1F2429] bg-transparent text-sm py-0.5 border-0"
 						/>
 					</div>
-					<div className="flex items-center bg-[#F0F6F7] w-[220px] py-4 rounded-xl">
+					<div className="flex items-center bg-[#F0F6F7] flex-1 min-w-0 py-4 rounded-xl">
 						<div className="flex flex-col items-center w-5 ml-3.5 mr-[13px]">
 							<span className="text-[#00A8E2] text-xl" >
 								{"48"}
@@ -442,10 +442,10 @@ export default (props: any) => {
 						/>
 					</div>
 				</div>
-				<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-8 mx-[50px]">
+				<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-8 mx-4 sm:mx-[50px]">
 				</div>
-				<div className="flex flex-wrap justify-center items-center self-stretch mb-8 gap-2">
-					<div className="flex justify-between items-center bg-white w-[45%] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
+				<div className="flex flex-wrap justify-center items-center self-stretch mb-8 gap-1 sm:gap-2">
+					<div className="flex justify-between items-center bg-white w-full sm:w-[45%] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
 						<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
 							<img
 								src="/quiz-result-images/lady1.png"
@@ -455,11 +455,11 @@ export default (props: any) => {
 								{"Mia Robinson"}
 							</span>
 						</div>
-						<span className="text-[#1F2429] text-sm w-[227px] mr-[18px]" >
+						<span className="text-[#1F2429] text-sm flex-1 mr-[18px]" >
 							{"Sleep quality improved and I wake up less groggy"}
 						</span>
 					</div>
-					<div className="flex justify-between items-center bg-white w-[45%] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
+					<div className="flex justify-between items-center bg-white w-full sm:w-[45%] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
 						<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
 							<img
 								src="/quiz-result-images/lady2.png"
@@ -469,11 +469,11 @@ export default (props: any) => {
 								{"Sarah Smith"}
 							</span>
 						</div>
-						<span className="text-[#1F2429] text-sm w-[227px] mr-[18px]" >
+						<span className="text-[#1F2429] text-sm flex-1 mr-[18px]" >
 							{"These supplements have helped me feel more balanced and energized throughout the day"}
 						</span>
 					</div>
-					<div className="flex justify-between items-center bg-white w-[372px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
+					<div className="flex justify-between items-center bg-white w-full max-w-[372px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
 						<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
 							<img
 								src="/quiz-result-images/lady3.png"
@@ -483,12 +483,12 @@ export default (props: any) => {
 								{"Isabella Rossi"}
 							</span>
 						</div>
-						<span className="text-[#1F2429] text-sm w-[227px] mr-[21px]" >
+						<span className="text-[#1F2429] text-sm flex-1 mr-[21px]" >
 							{"Sleep tracker shows longer deep sleep windows."}
 						</span>
 					</div>
 				</div>
-				<div className="flex flex-col w-[90%] items-center pb-6 gap-3">
+				<div className="flex flex-col w-full max-w-[90%] items-center pb-6 gap-3">
 					<span className="text-[#1F2429] text-[32px]" >
 						{"FAQ"}
 					</span>
@@ -521,7 +521,7 @@ export default (props: any) => {
 						))}
 					</div>
 				</div>
-				<div className="flex items-start bg-[#1F2429] w-[362px] py-[15px] mb-[50px] mx-[236px] rounded-[100000px]">
+				<div className="flex items-start bg-[#1F2429] w-full max-w-[362px] py-[15px] mb-[50px] mx-auto rounded-[100000px]">
 					<div className="flex flex-1 flex-col items-start ml-5 mr-3">
 						<span className="text-white text-[15px]" >
 							{"Get Full Package Now"}
