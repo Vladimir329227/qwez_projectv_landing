@@ -151,7 +151,7 @@ export default (props: any) => {
                                 <div className="flex flex-col items-start mr-4">
                                     <button
                                         aria-label="View product"
-                                        onClick={() => navigateToProduct('Antiox')}
+                                        onClick={() => navigateToProduct('CHROMEVITAL')}
                                         className="flex items-center bg-[#1F2429] hover:bg-[#0f1215] transition-colors duration-200 rounded-[12px] py-2 pl-4 pr-3 w-[88px]"
                                     >
                                         <img
@@ -245,7 +245,7 @@ export default (props: any) => {
                                 <div className="flex flex-col items-start mr-4">
                                     <button
                                         aria-label="View product"
-                                        onClick={() => navigateToProduct('Antiox')}
+                                        onClick={() => navigateToProduct('POWER_OF_MIND')}
                                         className="flex items-center bg-[#1F2429] hover:bg-[#0f1215] transition-colors duration-200 rounded-[12px] py-2 pl-4 pr-3 w-[88px]"
                                     >
                                         <img

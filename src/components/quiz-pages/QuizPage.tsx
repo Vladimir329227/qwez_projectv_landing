@@ -6,80 +6,77 @@ import { createQuizSteps } from "../../config/quizConfig";
 import { usePage } from "../../App";
 
 export default function QuizPage() {
-    const { setPage } = usePage();
-    const [currentStep, setCurrentStep] = useState<number>(-1);
-    const [answers, setAnswers] = useState<Record<string, any>>(() => {
-        // Clear any existing answers when starting fresh
-        localStorage.removeItem("quiz.answers");
-        return {};
-    });
+  const { setPage } = usePage();
+  const [currentStep, setCurrentStep] = useState<number>(-1);
+  const [answers, setAnswers] = useState<Record<string, any>>(() => {
+    // Clear any existing answers when starting fresh
+    localStorage.removeItem("quiz.answers");
+    return {};
+  });
 
-    useEffect(() => {
-        localStorage.setItem("quiz.answers", JSON.stringify(answers));
-    }, [answers]);
+  useEffect(() => {
+    localStorage.setItem("quiz.answers", JSON.stringify(answers));
+  }, [answers]);
 
-    // If cookie set to results, jump there immediately
-    useEffect(() => {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; page=`);
-        if (parts.length === 2) {
-            const pageValue = parts.pop()?.split(';').shift();
-            if (pageValue === 'results') {
-                setPage('results');
-            }
-        }
-    }, [setPage]);
-
-    // Build steps: Intro + 5 questions + Complete
-    const quizSteps = createQuizSteps(
-        answers,
-        setAnswers,
-        setCurrentStep,
-        currentStep,
-        QuizSectionIntro,
-        QuestionForm,
-        () => setPage('landing')
-    );
-
-    // Show original start page first, then go to personal details intro
-    if (currentStep === -1) {
-        return (
-            <QuizStartPage
-                onNext={() => setCurrentStep(0)}
-                onPrevious={() => setPage('landing')}
-            />
-        );
+  // If cookie set to results, jump there immediately
+  useEffect(() => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; page=`);
+    if (parts.length === 2) {
+      const pageValue = parts.pop()?.split(";").shift();
+      if (pageValue === "results") {
+        setPage("results");
+      }
     }
+  }, [setPage]);
 
-	const currentStepData = quizSteps[currentStep];
+  // Build steps: Intro + 5 questions + Complete
+  const quizSteps = createQuizSteps(
+    answers,
+    setAnswers,
+    setCurrentStep,
+    currentStep,
+    QuizSectionIntro,
+    QuestionForm,
+    () => setPage("landing")
+  );
 
-	// Check if this is the final step (QuizResult)
-	const isFinalStep = currentStep === quizSteps.length - 1;
+  // Show original start page first, then go to personal details intro
+  if (currentStep === -1) {
+    return (
+      <QuizStartPage
+        onNext={() => setCurrentStep(0)}
+        onPrevious={() => setPage("landing")}
+      />
+    );
+  }
 
-	// For the final step, render QuizResult directly without wrapper
-	if (isFinalStep) {
-		return currentStepData.content;
-	}
+  const currentStepData = quizSteps[currentStep];
 
-	return (
-		<div className="min-h-screen bg-white flex flex-col">
+  // Check if this is the final step (QuizResult)
+  const isFinalStep = currentStep === quizSteps.length - 1;
 
-			{/* Main Content */}
-			<div className="flex-1 flex justify-center">
-				<div className="w-full max-w-2xl">
-					<div className="text-center">
-						{currentStepData.subtitle && (
-							<p className="text-xl text-gray-600">
-								{currentStepData.subtitle}
-							</p>
-						)}
-					</div>
-					
-					<div className="justify-center">
-						{currentStepData.content}
-					</div>
-				</div>
-			</div>
-		</div>
-	);
+  // For the final step, render QuizResult directly without wrapper
+  if (isFinalStep) {
+    return currentStepData.content;
+  }
+
+  return (
+    <div className="min-h-screen bg-white flex flex-col">
+      {/* Main Content */}
+      <div className="flex-1 flex justify-center">
+        <div className="w-full max-w-2xl">
+          <div className="text-center">
+            {currentStepData.subtitle && (
+              <p className="text-xl text-gray-600">
+                {currentStepData.subtitle}
+              </p>
+            )}
+          </div>
+
+          <div className="justify-center">{currentStepData.content}</div>
+        </div>
+      </div>
+    </div>
+  );
 }

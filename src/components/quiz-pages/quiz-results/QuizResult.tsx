@@ -4,29 +4,31 @@ import QuizResultTablet from "./responsive/QuizResultTablet";
 import QuizResultMobile from "./responsive/QuizResultMobile";
 
 export default function QuizResult({ answers = {} as Record<string, any> }) {
-	const [device, setDevice] = useState<"mobile" | "tablet" | "desktop">("mobile");
+  const [device, setDevice] = useState<"mobile" | "tablet" | "desktop">(
+    "mobile"
+  );
 
-	useEffect(() => {
-		const computeDevice = () => {
-			if (typeof window === "undefined") return "mobile" as const;
-			if (window.matchMedia("(min-width: 1280px)").matches) return "desktop" as const; // xl
-			if (window.matchMedia("(min-width: 768px)").matches) return "tablet" as const; // md
-			return "mobile" as const;
-		};
+  useEffect(() => {
+    const computeDevice = () => {
+      if (typeof window === "undefined") return "mobile" as const;
+      if (window.matchMedia("(min-width: 1280px)").matches)
+        return "desktop" as const; // xl
+      if (window.matchMedia("(min-width: 768px)").matches)
+        return "tablet" as const; // md
+      return "mobile" as const;
+    };
 
-		setDevice(computeDevice());
-		const onResize = () => setDevice(computeDevice());
-		window.addEventListener("resize", onResize);
-		return () => window.removeEventListener("resize", onResize);
-	}, []);
+    setDevice(computeDevice());
+    const onResize = () => setDevice(computeDevice());
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
-	return (
-		<div className="flex flex-col bg-white m-0 p-0 w-full h-full">
-			{device === "mobile" && <QuizResultMobile answers={answers} />}
-			{device === "tablet" && <QuizResultTablet  answers={answers} />}
-			{device === "desktop" && <QuizResultDesktop answers={answers} />}
-		</div>
-	);
+  return (
+    <div className="flex flex-col bg-white m-0 p-0 w-full h-full">
+      {device === "mobile" && <QuizResultMobile answers={answers} />}
+      {device === "tablet" && <QuizResultTablet answers={answers} />}
+      {device === "desktop" && <QuizResultDesktop answers={answers} />}
+    </div>
+  );
 }
-
-

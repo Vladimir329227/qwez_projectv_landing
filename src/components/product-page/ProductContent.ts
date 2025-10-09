@@ -31,24 +31,24 @@ export const PRODUCTS: Record<string, ProductContent> = {
     key: "ANTIOX",
     productName: "Antiox",
     productNameColor: "#EA4B94",
-    heroBackgroundSrc: "/product-page-images/capsule_vitamins.png",
+    heroBackgroundSrc: "/product-page-images/product_A/bg_capsule_a.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
-    jarImageSrc: "/product-page-images/jar_pink_a.png",
-    promoBannerSrc: "/product-page-images/promo_banner_a.png",
+    jarImageSrc: "/product-page-images/product_A/capsule_vitamins_a.png",
+    promoBannerSrc: "/product-page-images/product_A/promo_banner_a.png",
     ingredients: [
       {
         title: "Grape Seeds",
-        imageSrc: "/product-page-images/fruit_pomegranate.png",
+        imageSrc: "/product-page-images/product_A/fruit_pomegranate.png",
         amount: "80 mg",
       },
       {
         title: "Vitamin C",
-        imageSrc: "/product-page-images/fruit_lemon.png",
+        imageSrc: "/product-page-images/product_A/fruit_lemon.png",
         amount: "65 mg",
       },
       {
         title: "Zinc",
-        imageSrc: "/product-page-images/icon_zinc_zn.png",
+        imageSrc: "/product-page-images/product_A/icon_zinc_zn.png",
         amount: "15 mg",
       },
     ],
@@ -70,35 +70,102 @@ export const PRODUCTS: Record<string, ProductContent> = {
     ],
     capsulesBlock: {
       title: "30 capsules",
-      text:
-        "An antioxidant formula that protects against infections, toxins and premature aging. Reduces the risk of developing chronic diseases. Slows down the aging process. Promotes cell regeneration. Supports immunity Prevents the development of oxidative processes. Each capsule of A contains 80 mg of grape seed extract and, when taken daily, helps reduce the risk of cardiovascular disease, cleanse blood vessels and neutralize oxidative processes.",
+      text: "An antioxidant formula that protects against infections, toxins and premature aging. Reduces the risk of developing chronic diseases. Slows down the aging process. Promotes cell regeneration. Supports immunity Prevents the development of oxidative processes. Each capsule of A contains 80 mg of grape seed extract and, when taken daily, helps reduce the risk of cardiovascular disease, cleanse blood vessels and neutralize oxidative processes.",
     },
   },
 };
-
 
 PRODUCTS.POWER_OF_MIND = {
   key: "POWER_OF_MIND",
   productName: "Power of Mind",
   productNameColor: "#442682",
-  heroBackgroundSrc: "/product-page-images/capsule_vitamins.png",
+  heroBackgroundSrc: "/product-page-images/product_P/bg_capsule_p.png",
   closeIconSrc: "/product-page-images/icon_close_x.png",
-  jarImageSrc: "/product-page-images/power_of_mind-product.png",
+  jarImageSrc: "/product-page-images/product_P/capsule_vitamins_p.png",
   promoBannerSrc: "/product-page-images/promo_banner_a.png",
   ingredients: [
-    { title: "Lavender", imageSrc: "/product-page-images/icon_magnesium.png", amount: "300 mg" },
-    { title: "Melissa", imageSrc: "/product-page-images/icon_b6.png", amount: "10 mg" },
-    { title: "Valerian", imageSrc: "/product-page-images/icon_zinc_zn.png", amount: "15 mg" }
+    {
+      title: "Lavender",
+      imageSrc: "/product-page-images/product_P/lavanda.png",
+      amount: "15 mg",
+    },
+    {
+      title: "Melissa",
+      imageSrc: "/product-page-images/product_P/mellisa.png",
+      amount: "10 mg",
+    },
+    {
+      title: "Valerian",
+      imageSrc: "/product-page-images/product_P/valerian.png",
+      amount: "0.6 mg",
+    },
+  ],
+  description:
+    "Each P capsule contains 100 mg of lavender flower extract, which, when taken daily, helps relieve tension and anxiety.",
+  features: [
+    {
+      title: "Fast action",
+      text: "The usage of highly active extracts with improved bioavailability.",
+    },
+    {
+      title: "Efficiency",
+      text: "The complex includes well-known and well-studied components that have undergone prolonged clinical studies.",
+    },
+    {
+      title: "Plant-derived capsule",
+      text: "Suitable for vegetarians, does not contain paraffins.",
+    },
+  ],
+  capsulesBlock: {
+    title: "60 capsules",
+    text: "An antioxidant formula that protects against infections, toxins and premature aging. Reduces the risk of developing chronic diseases. Slows down the aging process. Promotes cell regeneration. Supports immunity Prevents the development of oxidative processes. Each capsule of A contains 80 mg of grape seed extract and, when taken daily, helps reduce the risk of cardiovascular disease, cleanse blood vessels and neutralize oxidative processes.",
+  },
+};
+
+PRODUCTS.CHROMEVITAL = {
+  key: "CHROMEVITAL",
+  productName: "Chromevital",
+  productNameColor: "#EC6358",
+  heroBackgroundSrc: "/product-page-images/product_CH/bg_capsule_ch.png",
+  closeIconSrc: "/product-page-images/icon_close_x.png",
+  jarImageSrc: "/product-page-images/product_CH/capsule_vitamins_ch.png",
+  promoBannerSrc: "/product-page-images/promo_banner_a.png",
+  ingredients: [
+    { title: "Guarana", 
+      imageSrc: "/product-page-images/product_CH/guarana.png", 
+      amount: "10 mg" 
+    },
+    {
+      title: "Spirulina",
+      imageSrc: "/product-page-images/product_CH/organic-spirulin.png",
+      amount: "15 mg",
+    },
+    {
+      title: "Extract eleutherococcus",
+      imageSrc: "/product-page-images/product_CH/eleuterokokka.png",
+      amount: "15 mg",
+    },
   ],
   description: "Soothes stress without sedating",
   features: [
-    { title: "Fast action", text: "The usage of highly active extracts with improved bioavailability." },
-    { title: "Efficiency", text: "The complex includes well-known and well-studied components that have undergone prolonged clinical studies." },
-    { title: "Plant-derived capsule", text: "Suitable for vegetarians, does not contain paraffins." }
+    {
+      title: "Fast action",
+      text: "The usage of highly active extracts with improved bioavailability.",
+    },
+    {
+      title: "Efficiency",
+      text: "The complex includes well-known and well-studied components that have undergone prolonged clinical studies.",
+    },
+    {
+      title: "Plant-derived capsule",
+      text: "Suitable for vegetarians, does not contain paraffins.",
+    },
   ],
-  capsulesBlock: { title: "30 capsules", text: "An antioxidant formula that protects against infections, toxins and premature aging. Reduces the risk of developing chronic diseases. Slows down the aging process. Promotes cell regeneration. Supports immunity Prevents the development of oxidative processes. Each capsule of A contains 80 mg of grape seed extract and, when taken daily, helps reduce the risk of cardiovascular disease, cleanse blood vessels and neutralize oxidative processes." }
+  capsulesBlock: {
+    title: "60 capsules",
+    text: "An antioxidant formula that protects against infections, toxins and premature aging. Reduces the risk of developing chronic diseases. Slows down the aging process. Promotes cell regeneration. Supports immunity Prevents the development of oxidative processes. Each capsule of A contains 80 mg of grape seed extract and, when taken daily, helps reduce the risk of cardiovascular disease, cleanse blood vessels and neutralize oxidative processes.",
+  },
 };
-
 
 export function getProductContent(
   key?: string,
@@ -126,6 +193,3 @@ export function registerProduct(content: ProductContent) {
     key: content.key.toUpperCase(),
   };
 }
-
-
-
