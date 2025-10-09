@@ -82,7 +82,7 @@ PRODUCTS.POWER_OF_MIND = {
   heroBackgroundSrc: "/product-page-images/product_P/bg_capsule_p.png",
   closeIconSrc: "/product-page-images/icon_close_x.png",
   jarImageSrc: "/product-page-images/product_P/capsule_vitamins_p.png",
-  promoBannerSrc: "/product-page-images/promo_banner_a.png",
+  promoBannerSrc: "/product-page-images/product_A/promo_banner_a.png",
   ingredients: [
     {
       title: "Lavender",
@@ -129,7 +129,7 @@ PRODUCTS.CHROMEVITAL = {
   heroBackgroundSrc: "/product-page-images/product_CH/bg_capsule_ch.png",
   closeIconSrc: "/product-page-images/icon_close_x.png",
   jarImageSrc: "/product-page-images/product_CH/capsule_vitamins_ch.png",
-  promoBannerSrc: "/product-page-images/promo_banner_a.png",
+  promoBannerSrc: "/product-page-images/product_A/promo_banner_a.png",
   ingredients: [
     { title: "Guarana", 
       imageSrc: "/product-page-images/product_CH/guarana.png", 
