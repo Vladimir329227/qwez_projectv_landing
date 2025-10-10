@@ -74,7 +74,7 @@ export default function QuizResultDesktop({ answers, recommendations }: QuizResu
 						</div>
 						<div className="flex items-center gap-6 pr-4">
 							<div className="flex items-center bg-[#E1E9FD] py-1.5 w-[80px] rounded-[100000px]">
-								<div className="flex flex-col items-center w-4 ml-3.5 mr-[11px]">
+								<div className="flex flex-col items-center w-4 ml-3.5 mr-[2px]">
 									<svg 
 										className="w-4 h-4 text-[#006283]" 
 										fill="currentColor" 
