@@ -127,12 +127,20 @@ export default () => {
 								</span>
 							</div>
 						</div>
-						<button className="flex flex-col items-start bg-[#00A8E2] text-left py-[15px] px-[79px] rounded-[1000px] border-0"
-							onClick={()=>setPage('quiz')}>
-							<span className="text-white text-base font-bold" >
-								{"Take Quiz"}
-							</span>
-						</button>
+						<div className="flex gap-4">
+							<button className="flex flex-col items-start bg-[#00A8E2] text-left py-[15px] px-[79px] rounded-[1000px] border-0"
+								onClick={()=>setPage('quiz')}>
+								<span className="text-white text-base font-bold" >
+									{"Take Quiz"}
+								</span>
+							</button>
+							<button className="flex flex-col items-start bg-[#FF6B35] text-left py-[15px] px-[79px] rounded-[1000px] border-0"
+								onClick={()=>setPage('test')}>
+								<span className="text-white text-base font-bold" >
+									{"Test Engine"}
+								</span>
+							</button>
+						</div>
 					</div>
 				</div>
 				<div className="flex justify-center items-center self-stretch bg-[#1F2429] py-4 w-full overflow-x-auto">

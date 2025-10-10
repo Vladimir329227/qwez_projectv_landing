@@ -98,7 +98,7 @@ export const morningEnergyQuestions: PersonalDetailsQuestion[] = [
         question: 'How sharp is your focus?',
         options: [
             { value: 'laser-sharp', label: 'Laser sharp' },
-            { value: 'Decent-drifty', label: 'Decent but drifty' },
+            { value: 'decent-drifty', label: 'Decent but drifty' },
             { value: 'where-am', label: 'Wait, what were we talking about? to focus' },
         ],
     },
@@ -477,6 +477,10 @@ export const createQuizSteps = (
     };
 
     // Personal Details block
+    // Record quiz start time if not already set
+    if (!answers.quizStartTime) {
+        setAnswers({ ...answers, quizStartTime: new Date().toISOString() });
+    }
     pushQuestionBlock('PERSONAL DETAILS', personalDetailsQuestions);
 
     // Morning Energy Intro

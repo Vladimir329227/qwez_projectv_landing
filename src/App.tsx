@@ -3,8 +3,9 @@ import ResponsiveProjectV from './pages/ResponsiveProjectV';
 import QuizPage from './components/quiz-pages/QuizPage';
 import QuizResult from './components/quiz-pages/quiz-results/QuizResult';
 import ProductPage from './components/product-page/ProductPage';
+import TestRecommendationEngine from './components/TestRecommendationEngine';
 
-type Page = 'landing' | 'quiz' | 'results' | 'product';
+type Page = 'landing' | 'quiz' | 'results' | 'product' | 'test';
 
 function getCookie(name: string): string | undefined {
   const value = `; ${document.cookie}`;
@@ -52,6 +53,7 @@ function App() {
     if (fromCookie === 'quiz') return 'quiz';
     if (fromCookie === 'results') return 'results';
     if (fromCookie === 'product') return 'product';
+    if (fromCookie === 'test') return 'test';
     return 'landing';
   }, []);
 
@@ -87,6 +89,8 @@ function App() {
             }
           })()} 
         />
+      ) : page === 'test' ? (
+        <TestRecommendationEngine />
       ) : (
         <ResponsiveProjectV />
       )}

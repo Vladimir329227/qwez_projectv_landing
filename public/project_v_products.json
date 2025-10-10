@@ -1,0 +1,850 @@
+{
+  "products": [
+    {
+      "id": "A",
+      "name": "A | Antioxidant Power",
+      "category": "Classic Hit",
+      "price_eur": 34,
+      "capsules": 30,
+      "main_purpose": "Antioxidant protection and cellular health",
+      "ingredients": {
+        "grape_seed_extract": {
+          "amount": "80mg",
+          "benefits": [
+            "antioxidant",
+            "cardiovascular_health",
+            "anti_aging"
+          ]
+        },
+        "vitamin_c": {
+          "amount": "65mg",
+          "benefits": [
+            "immune_support",
+            "collagen_formation",
+            "antioxidant"
+          ]
+        },
+        "zinc": {
+          "amount": "15mg",
+          "benefits": [
+            "immune_support",
+            "wound_healing",
+            "antioxidant"
+          ]
+        },
+        "vitamin_e": {
+          "amount": "12mg",
+          "benefits": [
+            "antioxidant",
+            "skin_health",
+            "cardiovascular"
+          ]
+        },
+        "ginkgo_biloba": {
+          "amount": "10mg",
+          "benefits": [
+            "brain_health",
+            "circulation",
+            "memory"
+          ]
+        },
+        "beta_carotene": {
+          "amount": "5mg",
+          "benefits": [
+            "vision",
+            "immune_support",
+            "skin_health"
+          ]
+        },
+        "selenium": {
+          "amount": "50mcg",
+          "benefits": [
+            "antioxidant",
+            "immune_support",
+            "thyroid"
+          ]
+        }
+      },
+      "target_goals": [
+        "clearer-skin",
+        "natural-immunity",
+        "longevity",
+        "detox"
+      ],
+      "target_demographics": {
+        "age_preference": {
+          "min": 25,
+          "max": 70,
+          "optimal": [
+            30,
+            60
+          ]
+        },
+        "gender_preference": "both"
+      },
+      "health_benefits": [
+        "powerful antioxidant protection",
+        "cellular regeneration",
+        "anti-aging effects",
+        "cardiovascular health",
+        "immune system support",
+        "improved circulation",
+        "protection against free radicals"
+      ],
+      "scoring_factors": {
+        "stress_level": {
+          "low": 0.8,
+          "medium": 1.0,
+          "high": 1.2
+        },
+        "energy_level": {
+          "low": 1.1,
+          "medium": 0.9,
+          "high": 0.7
+        },
+        "pollution_exposure": {
+          "low": 0.7,
+          "medium": 1.0,
+          "high": 1.3
+        },
+        "age_factor": {
+          "16-25": 0.7,
+          "26-40": 1.0,
+          "41-55": 1.2,
+          "56+": 1.4
+        }
+      }
+    },
+    {
+      "id": "CH",
+      "name": "CH | Charged and Energized",
+      "category": "Classic Hit",
+      "price_eur": 34,
+      "capsules": 60,
+      "main_purpose": "Energy boost and vitality",
+      "ingredients": {
+        "spirulina": {
+          "amount": "150mg",
+          "benefits": [
+            "energy",
+            "immune_support",
+            "detox",
+            "protein"
+          ]
+        },
+        "guarana": {
+          "amount": "75mg",
+          "benefits": [
+            "energy",
+            "focus",
+            "metabolism"
+          ]
+        },
+        "eleutherococcus": {
+          "amount": "50mg",
+          "benefits": [
+            "adaptogen",
+            "stress_resistance",
+            "energy"
+          ]
+        },
+        "vitamin_c": {
+          "amount": "84mg",
+          "benefits": [
+            "immune_support",
+            "energy_metabolism"
+          ]
+        },
+        "chromium": {
+          "amount": "200mcg",
+          "benefits": [
+            "metabolism",
+            "blood_sugar"
+          ]
+        }
+      },
+      "target_goals": [
+        "sustained-energy",
+        "sharper-focus",
+        "less-stress",
+        "natural-immunity"
+      ],
+      "target_demographics": {
+        "age_preference": {
+          "min": 18,
+          "max": 55,
+          "optimal": [
+            25,
+            45
+          ]
+        },
+        "gender_preference": "both"
+      },
+      "health_benefits": [
+        "increased energy levels",
+        "improved mental performance",
+        "enhanced physical endurance",
+        "stress resistance",
+        "immune system boost",
+        "faster recovery"
+      ],
+      "scoring_factors": {
+        "energy_level": {
+          "low": 1.5,
+          "medium": 1.0,
+          "high": 0.6
+        },
+        "focus_level": {
+          "low": 1.3,
+          "medium": 1.0,
+          "high": 0.7
+        },
+        "caffeine_intake": {
+          "none": 1.2,
+          "low": 1.0,
+          "high": 0.8
+        },
+        "activity_level": {
+          "low": 1.2,
+          "medium": 1.0,
+          "high": 1.1
+        }
+      }
+    },
+    {
+      "id": "M",
+      "name": "M | Healthy Heart and Sharp Mind",
+      "category": "Classic Hit",
+      "price_eur": 34,
+      "capsules": 60,
+      "main_purpose": "Cardiovascular and brain health",
+      "ingredients": {
+        "omega_3": {
+          "amount": "270mg",
+          "benefits": [
+            "heart_health",
+            "brain_health",
+            "anti_inflammatory"
+          ]
+        },
+        "epa": {
+          "amount": "162mg",
+          "benefits": [
+            "cardiovascular",
+            "anti_inflammatory"
+          ]
+        },
+        "dha": {
+          "amount": "108mg",
+          "benefits": [
+            "brain_health",
+            "memory",
+            "vision"
+          ]
+        }
+      },
+      "target_goals": [
+        "healthy-heart",
+        "sharper-focus",
+        "longevity",
+        "better-sleep"
+      ],
+      "target_demographics": {
+        "age_preference": {
+          "min": 30,
+          "max": 80,
+          "optimal": [
+            40,
+            70
+          ]
+        },
+        "gender_preference": "both"
+      },
+      "health_benefits": [
+        "cardiovascular health support",
+        "brain function improvement",
+        "memory enhancement",
+        "reduced inflammation",
+        "cholesterol management",
+        "blood pressure regulation"
+      ],
+      "scoring_factors": {
+        "age_factor": {
+          "16-25": 0.6,
+          "26-40": 0.8,
+          "41-55": 1.2,
+          "56+": 1.5
+        },
+        "focus_level": {
+          "low": 1.3,
+          "medium": 1.0,
+          "high": 0.8
+        },
+        "stress_level": {
+          "low": 0.8,
+          "medium": 1.0,
+          "high": 1.2
+        }
+      }
+    },
+    {
+      "id": "P",
+      "name": "P | Nervous System Balance",
+      "category": "Classic Hit",
+      "price_eur": 34,
+      "capsules": 60,
+      "main_purpose": "Stress relief and nervous system support",
+      "ingredients": {
+        "lavender": {
+          "amount": "100mg",
+          "benefits": [
+            "relaxation",
+            "sleep",
+            "anxiety_relief"
+          ]
+        },
+        "melissa": {
+          "amount": "50mg",
+          "benefits": [
+            "calming",
+            "stress_relief",
+            "sleep"
+          ]
+        },
+        "valerian": {
+          "amount": "30mg",
+          "benefits": [
+            "sleep",
+            "anxiety_relief",
+            "relaxation"
+          ]
+        },
+        "b_vitamins": {
+          "amount": "varies",
+          "benefits": [
+            "nervous_system",
+            "energy_metabolism",
+            "stress"
+          ]
+        }
+      },
+      "target_goals": [
+        "less-stress",
+        "better-sleep",
+        "sharper-focus"
+      ],
+      "target_demographics": {
+        "age_preference": {
+          "min": 18,
+          "max": 65,
+          "optimal": [
+            25,
+            55
+          ]
+        },
+        "gender_preference": "both"
+      },
+      "health_benefits": [
+        "stress reduction",
+        "improved sleep quality",
+        "anxiety relief",
+        "nervous system support",
+        "emotional balance",
+        "better concentration"
+      ],
+      "scoring_factors": {
+        "stress_level": {
+          "low": 0.6,
+          "medium": 1.0,
+          "high": 1.5
+        },
+        "sleep_quality": {
+          "good": 0.7,
+          "fair": 1.0,
+          "poor": 1.4
+        },
+        "stress_management": {
+          "good": 0.7,
+          "fair": 1.0,
+          "poor": 1.4
+        }
+      }
+    },
+    {
+      "id": "SV",
+      "name": "SV | Joyful and Beautiful",
+      "category": "Classic Hit",
+      "price_eur": 34,
+      "capsules": 60,
+      "main_purpose": "Weight management and metabolism",
+      "ingredients": {
+        "garcinia_cambogia": {
+          "amount": "300mg",
+          "benefits": [
+            "weight_loss",
+            "appetite_control",
+            "fat_burning"
+          ]
+        },
+        "hydroxycitric_acid": {
+          "amount": "150mg",
+          "benefits": [
+            "fat_synthesis_inhibition",
+            "appetite_suppression"
+          ]
+        },
+        "fucus_vesiculosus": {
+          "amount": "140mg",
+          "benefits": [
+            "thyroid_support",
+            "metabolism",
+            "iodine"
+          ]
+        },
+        "green_tea": {
+          "amount": "60mg",
+          "benefits": [
+            "metabolism",
+            "antioxidant",
+            "fat_burning"
+          ]
+        },
+        "chromium": {
+          "amount": "200mcg",
+          "benefits": [
+            "blood_sugar",
+            "appetite_control"
+          ]
+        }
+      },
+      "target_goals": [
+        "clearer-skin",
+        "better-digestion",
+        "sustained-energy"
+      ],
+      "target_demographics": {
+        "age_preference": {
+          "min": 20,
+          "max": 60,
+          "optimal": [
+            25,
+            50
+          ]
+        },
+        "gender_preference": "both"
+      },
+      "health_benefits": [
+        "metabolism support",
+        "weight management",
+        "appetite control",
+        "fat burning",
+        "thyroid support",
+        "blood sugar regulation"
+      ],
+      "scoring_factors": {
+        "diet_quality": {
+          "poor": 1.3,
+          "mixed": 1.0,
+          "good": 0.8
+        },
+        "cravings": {
+          "high": 1.4,
+          "medium": 1.0,
+          "low": 0.7
+        },
+        "metabolism_concerns": {
+          "yes": 1.3,
+          "no": 0.8
+        }
+      }
+    },
+    {
+      "id": "S",
+      "name": "S | Ease of Digestion",
+      "category": "Classic Hit",
+      "price_eur": 34,
+      "capsules": 30,
+      "main_purpose": "Digestive health and gut microbiome",
+      "ingredients": {
+        "fos": {
+          "amount": "300mg",
+          "benefits": [
+            "prebiotic",
+            "gut_health",
+            "digestion"
+          ]
+        },
+        "lactobacillus_rhamnosus": {
+          "amount": "40mg",
+          "benefits": [
+            "probiotic",
+            "immune_support",
+            "digestion"
+          ]
+        },
+        "probiotic_complex": {
+          "amount": "40mg",
+          "benefits": [
+            "gut_flora",
+            "immunity",
+            "digestion"
+          ]
+        }
+      },
+      "target_goals": [
+        "better-digestion",
+        "natural-immunity",
+        "detox"
+      ],
+      "target_demographics": {
+        "age_preference": {
+          "min": 16,
+          "max": 80,
+          "optimal": [
+            25,
+            65
+          ]
+        },
+        "gender_preference": "both"
+      },
+      "health_benefits": [
+        "digestive health improvement",
+        "gut microbiome support",
+        "immune system strengthening",
+        "nutrient absorption enhancement",
+        "bloating reduction",
+        "regular bowel movements"
+      ],
+      "scoring_factors": {
+        "digestion_quality": {
+          "poor": 1.5,
+          "fair": 1.0,
+          "good": 0.7
+        },
+        "gut_health_issues": {
+          "yes": 1.4,
+          "no": 0.8
+        },
+        "antibiotic_use": {
+          "recent": 1.3,
+          "occasional": 1.0,
+          "rare": 0.9
+        }
+      }
+    },
+    {
+      "id": "MGR",
+      "name": "MGR | Magic of Magnesium",
+      "category": "Classic Hit",
+      "price_eur": 34,
+      "capsules": 60,
+      "main_purpose": "Anti-stress and mood support",
+      "ingredients": {
+        "magnesium_bisglycinate": {
+          "amount": "46.87mg",
+          "benefits": [
+            "muscle_relaxation",
+            "sleep",
+            "stress"
+          ]
+        },
+        "st_johns_wort": {
+          "amount": "20mg",
+          "benefits": [
+            "mood",
+            "depression",
+            "anxiety"
+          ]
+        },
+        "hawthorn": {
+          "amount": "20mg",
+          "benefits": [
+            "heart_health",
+            "circulation",
+            "anxiety"
+          ]
+        },
+        "black_horehound": {
+          "amount": "20mg",
+          "benefits": [
+            "calming",
+            "heart_support"
+          ]
+        },
+        "b_vitamins": {
+          "amount": "varies",
+          "benefits": [
+            "nervous_system",
+            "energy",
+            "mood"
+          ]
+        }
+      },
+      "target_goals": [
+        "less-stress",
+        "better-sleep",
+        "healthy-heart"
+      ],
+      "target_demographics": {
+        "age_preference": {
+          "min": 20,
+          "max": 70,
+          "optimal": [
+            30,
+            60
+          ]
+        },
+        "gender_preference": "both"
+      },
+      "health_benefits": [
+        "stress reduction",
+        "mood improvement",
+        "muscle relaxation",
+        "better sleep quality",
+        "emotional balance",
+        "heart health support"
+      ],
+      "scoring_factors": {
+        "stress_level": {
+          "low": 0.7,
+          "medium": 1.0,
+          "high": 1.4
+        },
+        "mood_issues": {
+          "none": 0.8,
+          "mild": 1.0,
+          "significant": 1.3
+        },
+        "muscle_tension": {
+          "none": 0.8,
+          "some": 1.0,
+          "frequent": 1.3
+        }
+      }
+    },
+    {
+      "id": "D",
+      "name": "D | Body Detox",
+      "category": "Classic Hit",
+      "price_eur": 34,
+      "capsules": 60,
+      "main_purpose": "Detoxification and immune support",
+      "ingredients": {
+        "cats_claw": {
+          "amount": "200mg",
+          "benefits": [
+            "immune_support",
+            "detox",
+            "anti_inflammatory"
+          ]
+        },
+        "ginger_root": {
+          "amount": "50mg",
+          "benefits": [
+            "digestion",
+            "anti_inflammatory",
+            "detox"
+          ]
+        }
+      },
+      "target_goals": [
+        "detox",
+        "natural-immunity",
+        "clearer-skin"
+      ],
+      "target_demographics": {
+        "age_preference": {
+          "min": 18,
+          "max": 75,
+          "optimal": [
+            25,
+            60
+          ]
+        },
+        "gender_preference": "both"
+      },
+      "health_benefits": [
+        "cellular detoxification",
+        "immune system strengthening",
+        "anti-inflammatory effects",
+        "liver support",
+        "toxin elimination",
+        "antioxidant protection"
+      ],
+      "scoring_factors": {
+        "toxin_exposure": {
+          "low": 0.8,
+          "medium": 1.0,
+          "high": 1.3
+        },
+        "immune_issues": {
+          "rare": 0.8,
+          "occasional": 1.0,
+          "frequent": 1.3
+        },
+        "lifestyle_factors": {
+          "healthy": 0.8,
+          "mixed": 1.0,
+          "unhealthy": 1.2
+        }
+      }
+    },
+    {
+      "id": "N",
+      "name": "N | Genitourinary Health",
+      "category": "Classic Hit",
+      "price_eur": 34,
+      "capsules": 60,
+      "main_purpose": "Urinary and kidney health",
+      "ingredients": {
+        "angelica_sinensis": {
+          "amount": "100mg",
+          "benefits": [
+            "hormonal_balance",
+            "circulation",
+            "anti_inflammatory"
+          ]
+        },
+        "cherry_stalks": {
+          "amount": "70mg",
+          "benefits": [
+            "diuretic",
+            "kidney_health",
+            "detox"
+          ]
+        },
+        "witch_hazel": {
+          "amount": "60mg",
+          "benefits": [
+            "circulation",
+            "anti_inflammatory",
+            "vascular_health"
+          ]
+        },
+        "b_vitamins": {
+          "amount": "varies",
+          "benefits": [
+            "energy",
+            "nervous_system"
+          ]
+        },
+        "iron": {
+          "amount": "14mg",
+          "benefits": [
+            "energy",
+            "blood_health"
+          ]
+        }
+      },
+      "target_goals": [
+        "detox",
+        "healthy-heart",
+        "natural-immunity"
+      ],
+      "target_demographics": {
+        "age_preference": {
+          "min": 25,
+          "max": 70,
+          "optimal": [
+            35,
+            65
+          ]
+        },
+        "gender_preference": "both"
+      },
+      "health_benefits": [
+        "urinary tract health",
+        "kidney function support",
+        "detoxification",
+        "circulation improvement",
+        "anti-inflammatory effects",
+        "hormonal balance support"
+      ],
+      "scoring_factors": {
+        "urinary_issues": {
+          "none": 0.7,
+          "mild": 1.0,
+          "frequent": 1.4
+        },
+        "kidney_health": {
+          "good": 0.8,
+          "fair": 1.0,
+          "concerns": 1.3
+        },
+        "water_intake": {
+          "high": 0.9,
+          "adequate": 1.0,
+          "low": 1.2
+        }
+      }
+    },
+    {
+      "id": "G",
+      "name": "G | Health and Wellness Booster",
+      "category": "Classic Hit",
+      "price_eur": 34,
+      "capsules": 30,
+      "main_purpose": "Energy and cognitive enhancement",
+      "ingredients": {
+        "ginseng": {
+          "amount": "270mg",
+          "benefits": [
+            "energy",
+            "cognitive",
+            "adaptogen",
+            "immune"
+          ]
+        },
+        "ginger": {
+          "amount": "5mg",
+          "benefits": [
+            "digestion",
+            "anti_inflammatory"
+          ]
+        }
+      },
+      "target_goals": [
+        "sustained-energy",
+        "sharper-focus",
+        "natural-immunity"
+      ],
+      "target_demographics": {
+        "age_preference": {
+          "min": 20,
+          "max": 75,
+          "optimal": [
+            30,
+            65
+          ]
+        },
+        "gender_preference": "both"
+      },
+      "health_benefits": [
+        "energy enhancement",
+        "cognitive function improvement",
+        "stress adaptation",
+        "immune support",
+        "physical performance",
+        "mental clarity"
+      ],
+      "scoring_factors": {
+        "energy_needs": {
+          "low": 0.8,
+          "medium": 1.0,
+          "high": 1.3
+        },
+        "cognitive_demands": {
+          "low": 0.8,
+          "medium": 1.0,
+          "high": 1.2
+        },
+        "age_factor": {
+          "20-35": 0.9,
+          "36-50": 1.0,
+          "51-65": 1.2,
+          "66+": 1.3
+        }
+      }
+    }
+  ]
+}

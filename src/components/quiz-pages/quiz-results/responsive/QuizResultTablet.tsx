@@ -1,6 +1,23 @@
 import React, { useState } from "react";
 import { navigateToProduct } from "../../../../App";
-export default (props: any) => {
+import { RecommendationResult } from "../recommendationEngine";
+import { 
+  getProductImage, 
+  getProductIngredients, 
+  getProductDescription, 
+  getWellnessProfile, 
+  getWellnessDescription, 
+  getExpectedOutcomes,
+  getProductImage2,
+  getQuizDuration
+} from "../../../../utils/recommendationHelpers";
+
+interface QuizResultTabletProps {
+  answers: Record<string, any>;
+  recommendations: RecommendationResult;
+}
+
+export default function QuizResultTablet({ answers, recommendations }: QuizResultTabletProps) {
 	const [input1, onChangeInput1] = useState('');
 	const [input2, onChangeInput2] = useState('');
 	const [input3, onChangeInput3] = useState('');
@@ -52,7 +69,7 @@ export default (props: any) => {
 						<button className="flex flex-col items-center bg-[#626669] text-left w-[83px] py-1.5 rounded-[40px] border-0"
 							onClick={() => alert("Pressed!")}>
 							<span className="text-white text-sm font-bold" >
-								{"94 points"}
+								{`${recommendations.effectiveness_score} points`}
 							</span>
 						</button>
 					</div>
@@ -69,7 +86,7 @@ export default (props: any) => {
 								</svg>
 							</div>
 							<span className="text-[#1F2429] text-[15px] font-bold mr-[11px]" >
-								{"09:55"}
+								{getQuizDuration(answers)}
 							</span>
 						</div>
 						<div className="flex items-start bg-[#1F2429] py-[15px] rounded-[100000px]">
@@ -90,7 +107,7 @@ export default (props: any) => {
 				</div>
 				<div className="flex flex-col items-center self-stretch mb-8 px-4 sm:px-8 gap-6">
 					<span className="text-[#1F2429] text-2xl" >
-						{"Hey Anna, here is your wellness profile revealed:"}
+						{`Hey ${answers.name || 'there'}, here is your wellness profile revealed:`}
 					</span>
 					<button className="flex flex-col items-center self-stretch bg-[#FCFDFF] text-left py-6 px-8 sm:px-[201px] gap-4 rounded-2xl border border-solid border-[#E1E9FD]"
 						style={{
@@ -102,10 +119,10 @@ export default (props: any) => {
 							className="w-[124px] h-[70px] rounded-2xl object-fill"
 						/>
 						<span className="text-[#00A8E2] text-[32px]" >
-							{"The Icon"}
+							{getWellnessProfile(recommendations)}
 						</span>
 						<span className="text-[#1F2429] text-base text-center" >
-							{"You are the embodiment of wellness elegance."}
+							{getWellnessDescription(recommendations)}
 						</span>
 					</button>
 				</div>
@@ -113,147 +130,49 @@ export default (props: any) => {
 				</div>
 				<div className="flex flex-col items-start self-stretch mb-8 mx-4 sm:mx-[50px] gap-6">
 					<span className="text-[#1F2429] text-xl" >
-						{"Your Recommended Supplements forBetter Sleep & Anti-stress"}
+						{`Your Recommended Supplements for ${recommendations.key_benefits.slice(0, 2).join(' & ')}`}
 					</span>
 					<div className="flex flex-1 items-start self-stretch gap-2 sm:gap-4">
 						<div className="flex items-stretch self-stretch gap-2 sm:gap-4">
-							{/* Первая карточка */}
-							<div className="flex flex-col bg-white flex-1 min-w-0 py-4 rounded-xl h-full"
-								style={{
-								boxShadow: "0px 12px 35px #3E5BB926"
-								}}>
-								<div className="flex flex-col items-start self-stretch py-1 mx-4 gap-5 flex-grow">
-								<div className="flex flex-col items-start ml-0.5">
-									<img
-									src="/quiz-result-images/jar_red_ch.png"
-									className="w-[76px] h-[72px] object-fill"
-									/>
-								</div>
-								<div className="flex flex-col self-stretch gap-3">
-									<div className="flex flex-col items-start self-stretch gap-1.5">
-									<span className="text-[#1F2429] text-base font-bold" >
-										{"CH – Chromevital"}
-									</span>
-									<div className="flex items-center ml-[1px] gap-1.5">
-										<span className="text-[#1F2429] text-[15px] font-bold" >
-										{"🌿"}
-										</span>
-										<span className="text-[#1F2429] text-[15px]" >
-										{"Guarana, Spirulina"}
-										</span>
+							{recommendations.recommended_products.map((product, index) => (
+								<div key={product.product_id} className="flex flex-col bg-white flex-1 min-w-0 py-4 rounded-xl h-full"
+									style={{
+									boxShadow: "0px 12px 35px #3E5BB926"
+									}}>
+									<div className="flex flex-col items-start self-stretch py-1 mx-4 gap-5 flex-grow">
+									<div className="flex flex-col items-start ml-0.5">
+										<img
+										src={getProductImage2(product.product_id)}
+										className="w-[76px] h-[72px] object-fill"
+										/>
 									</div>
-									</div>
-									<div className="flex flex-col items-center self-stretch">
-									<span className="text-[#626669] text-[15px] w-[198px]" >
-										{"Gives you focused alertness—without spikes or crashes and enhances stamina and recovery."}
-									</span>
-									</div>
-								</div>
-								</div>
-								<div className="flex flex-col items-end self-stretch mt-auto">
-								<div className="flex flex-col items-start mr-4">
-									<button
-									aria-label="View product"
-									onClick={() => navigateToProduct('CHROMEVITAL')}
-									className="flex items-center bg-[#1F2429] hover:bg-[#0f1215] transition-colors duration-200 rounded-[1200000000px] p-4"
-									>
-									<img
-										src="/quiz-result-images/icon_arrow_up.png" 
-										className="ml-auto w-2 h-2 object-contain"
-									/>
-									</button>
-								</div>
-								</div>
-							</div>
-
-							{/* Вторая карточка */}
-							<div className="flex flex-col bg-white flex-1 min-w-0 py-4 rounded-xl h-full"
-								style={{
-								boxShadow: "0px 12px 35px #3E5BB926"
-								}}>
-								<div className="flex flex-col items-start self-stretch py-1 mx-4 gap-5 flex-grow">
-								<div className="flex flex-col items-start ml-0.5">
-									<img
-									src="/quiz-result-images/jar_pink_a.png"
-									className="w-[76px] h-[72px] object-fill"
-									/>
-								</div>
-								<div className="flex flex-col self-stretch gap-3">
-									<div className="flex flex-col items-start self-stretch gap-1.5">
+									<div className="flex flex-col self-stretch gap-3">
+										<div className="flex flex-col items-start self-stretch gap-1.5">
 										<span className="text-[#1F2429] text-base font-bold" >
-											{"A – Antiox"}
+											{product.product_name}
 										</span>
 										<div className="flex items-center ml-[1px] gap-1.5">
 											<span className="text-[#1F2429] text-[15px] font-bold" >
 											{"🌿"}
 											</span>
 											<span className="text-[#1F2429] text-[15px]" >
-											{"Grape Seed, C, E, Zinc"}
+											{getProductIngredients(product.product_id)}
 											</span>
 										</div>
-									</div>
+										</div>
 										<div className="flex flex-col items-center self-stretch">
-											<span className="text-[#626669] text-[15px]" >
-												{"Protects cells from damage, supports collagen, and brightens the skin from within."}
-											</span>
+										<span className="text-[#626669] text-[15px] w-[198px]" >
+											{getProductDescription(product)}
+										</span>
 										</div>
 									</div>
-								</div>
-								<div className="flex flex-col items-end self-stretch mt-auto">
+									</div>
+									<div className="flex flex-col items-end self-stretch mt-auto">
 									<div className="flex flex-col items-start mr-4">
 										<button
 										aria-label="View product"
-										onClick={() => navigateToProduct('Antiox')}
-										className="flex items-center bg-[#1F2429] hover:bg-[#0f1215] transition-colors duration-200 rounded-[1200000000px] p-4"
-										>
-											<img
-												src="/quiz-result-images/icon_arrow_up.png" 
-												className="ml-auto w-2 h-2 object-contain"
-											/>
-										</button>
-									</div>
-								</div>
-							</div>
-
-							{/* Третья карточка */}
-							<div className="flex flex-col bg-white flex-1 min-w-0 py-4 rounded-xl h-full"
-								style={{
-								boxShadow: "0px 12px 35px #3E5BB926"
-								}}>
-								<div className="flex flex-col items-start self-stretch py-1 mx-4 gap-5 flex-grow">
-									<div className="flex flex-col items-start ml-0.5">
-										<img
-										src="/quiz-result-images/jar_purple_p.png"
-										className="w-[76px] h-[72px] object-fill"
-										/>
-									</div>
-									<div className="flex flex-col items-start self-stretch gap-3">
-										<div className="flex flex-col items-start self-stretch gap-1.5">
-											<span className="text-[#1F2429] text-base font-bold" >
-												{"P – Power of Mind"}
-											</span>
-											<div className="flex items-center self-stretch mx-[1px] gap-1.5">
-												<span className="text-[#1F2429] text-[15px] font-bold" >
-												{"🌿"}
-												</span>
-												<span className="text-[#1F2429] text-[15px]" >
-												{"Lavender, Melissa, Valerian"}
-												</span>
-											</div>
-										</div>
-										<div className="flex flex-col items-start">
-											<span className="text-[#626669] text-[15px] w-[152px]" >
-												{"Soothes stress without sedating."}
-											</span>
-										</div>
-									</div>
-								</div>
-								<div className="flex flex-col items-end self-stretch mt-auto">
-									<div className="flex flex-col items-start mr-4">
-										<button
-										aria-label="View product"
-										onClick={() => navigateToProduct('POWER_OF_MIND')}
-										className="flex items-center bg-[#1F2429] hover:bg-[#0f1215] transition-colors duration-200 rounded-[1200000000px] p-4"
+										onClick={() => navigateToProduct(product.product_id)}
+										className="flex items-center bg-[#1F2429] hover:bg-[#0f1215] transition-colors duration-200 rounded-[1200000000px] p-2"
 										>
 										<img
 											src="/quiz-result-images/icon_arrow_up.png" 
@@ -261,8 +180,9 @@ export default (props: any) => {
 										/>
 										</button>
 									</div>
+									</div>
 								</div>
-							</div>
+							))}
 						</div>
 					</div>
 				</div>
@@ -273,48 +193,19 @@ export default (props: any) => {
 						{"Expected Outcomes"}
 					</span>
 					<div className="flex items-start self-stretch gap-1 sm:gap-2.5">
-						<div className="flex items-center bg-[#F0F6F7] flex-1 min-w-0 py-4 rounded-xl">
-							<div className="flex flex-col items-center w-6 ml-4 mr-3">
-								<img
-									src="/quiz-result-images/icon_blue_symbols.png"
-									className="w-6 h-6 object-fill"
-								/>
+						{getExpectedOutcomes(recommendations).map((outcome, index) => (
+							<div key={index} className="flex items-center bg-[#F0F6F7] flex-1 min-w-0 py-4 rounded-xl">
+								<div className="flex flex-col items-center w-6 ml-4 mr-3">
+									<img
+										src="/quiz-result-images/icon_blue_symbols.png"
+										className="w-6 h-6 object-fill"
+									/>
+								</div>
+								<div className="flex-1 self-stretch text-[#1F2429] bg-transparent text-sm py-0.5 border-0">
+									{outcome}
+								</div>
 							</div>
-							<input
-								placeholder={"Increased energy focus"}
-								value={input1}
-								onChange={(event) => onChangeInput1(event.target.value)}
-								className="flex-1 self-stretch text-[#1F2429] bg-transparent text-sm py-0.5 border-0"
-							/>
-						</div>
-						<div className="flex items-center bg-[#F0F6F7] flex-1 min-w-0 py-4 rounded-xl">
-							<div className="flex flex-col items-center w-6 ml-4 mr-3">
-								<img
-									src="/quiz-result-images/icon_blue_symbols.png"
-									className="w-6 h-6 object-fill"
-								/>
-							</div>
-							<input
-								placeholder={"Reduced inflammation"}
-								value={input2}
-								onChange={(event) => onChangeInput2(event.target.value)}
-								className="flex-1 self-stretch text-[#1F2429] bg-transparent text-sm py-0.5 border-0"
-							/>
-						</div>
-						<div className="flex items-center bg-[#F0F6F7] flex-1 min-w-0 py-4 rounded-xl">
-							<div className="flex flex-col items-center w-6 ml-4 mr-3">
-								<img
-									src="/quiz-result-images/icon_blue_symbols.png"
-									className="w-6 h-6 object-fill"
-								/>
-							</div>
-							<input
-								placeholder={"Improved sleep quality"}
-								value={input3}
-								onChange={(event) => onChangeInput3(event.target.value)}
-								className="flex-1 self-stretch text-[#1F2429] bg-transparent text-sm py-0.5 border-0"
-							/>
-						</div>
+						))}
 					</div>
 				</div>
 				<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-8 mx-4 sm:mx-[50px]">
