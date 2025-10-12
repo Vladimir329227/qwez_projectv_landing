@@ -72,7 +72,6 @@ const formatQuizResultsMessage = (data: QuizSubmissionData): string => {
   const userInfoText = `
 👤 <b>Пользователь:</b> ${userInfo.name || 'Не указано'}
 📧 <b>Email:</b> ${userInfo.email || 'Не указано'}
-👶 <b>Возраст:</b> ${userInfo.age || 'Не указано'}
 ⚧ <b>Пол:</b> ${userInfo.gender || 'Не указано'}
 🕐 <b>Время прохождения:</b> ${new Date(timestamp).toLocaleString('ru-RU')}
 `;

@@ -66,7 +66,7 @@ export default () => {
 	return (
 		<div className="flex flex-col bg-white w-full max-w-full overflow-x-hidden">
 			<div className="flex flex-col items-start self-stretch bg-white min-h-screen w-full">
-				<div className="flex flex-col items-start self-stretch bg-[url('/figma/e6c250bfc01d12d8.png')] bg-cover bg-center pt-12 pb-[177px]">
+				<div className="flex flex-col items-start self-stretch bg-[url('/figma/e6c250bfc01d12d8.png')] bg-cover bg-top pt-12 pb-[177px]">
 					<div className="flex flex-col items-center p-[1px] mb-24 ml-24">
 						<img
 							src={"/figma/94b86f1bce187b0c.png"} 
@@ -664,19 +664,19 @@ export default () => {
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 w-full">
 						<img
 							src={"/figma/73d452b089408908.png"} 
-							className="w-full h-[360px] object-cover"
+							className="w-full h-[360px] object-cover object-top"
 						/>
 						<img
 							src={"/figma/6134f6cf57b4290b.png"} 
-							className="w-full h-[360px] object-cover"
+							className="w-full h-[360px] object-cover object-top"
 						/>
 						<img
 							src={"/figma/4bc3f966fe7f4523.png"} 
-							className="w-full h-[360px] object-cover"
+							className="w-full h-[360px] object-cover object-top"
 						/>
 						<img
 							src={"/figma/11dd909319c2ad2e.png"} 
-							className="w-full h-[360px] object-cover"
+							className="w-full h-[360px] object-cover object-top"
 						/>
 					</div>
 					<div className="flex items-start self-stretch p-24">
