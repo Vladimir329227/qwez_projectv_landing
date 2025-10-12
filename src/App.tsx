@@ -3,7 +3,6 @@ import ResponsiveProjectV from './pages/ResponsiveProjectV';
 import QuizPage from './components/quiz-pages/QuizPage';
 import QuizResult from './components/quiz-pages/quiz-results/QuizResult';
 import ProductPage from './components/product-page/ProductPage';
-import TestRecommendationEngine from './components/TestRecommendationEngine';
 
 type Page = 'landing' | 'quiz' | 'results' | 'product' | 'test';
 
@@ -89,8 +88,6 @@ function App() {
             }
           })()} 
         />
-      ) : page === 'test' ? (
-        <TestRecommendationEngine />
       ) : (
         <ResponsiveProjectV />
       )}

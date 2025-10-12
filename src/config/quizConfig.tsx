@@ -650,8 +650,14 @@ export const createQuizSteps = (
         content: (
             <DisclaimerForm
                 onNext={() => {
+                    // Add quiz completion time to stop the timer
+                    const updatedAnswers = {
+                        ...answers,
+                        quizEndTime: new Date().toISOString()
+                    };
+                    setAnswers(updatedAnswers);
                     try {
-                        localStorage.setItem('quiz.answers', JSON.stringify(answers));
+                        localStorage.setItem('quiz.answers', JSON.stringify(updatedAnswers));
                     } catch {}
                     document.cookie = `page=results; path=/; max-age=${60 * 60 * 24 * 365}`;
                     // Jump to synthetic final step to maintain flow if needed

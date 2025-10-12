@@ -85,7 +85,7 @@ export default function QuizSectionIntro({
         </div>
 
         {/* Button section - bottom on mobile, inline on desktop */}
-        <div className="p-6 md:p-0 md:px-6">
+        <div className="p-6 pb-10 md:p-0 md:px-6">
           <div className="flex justify-center">
             <div className="w-full max-w-3xl">
               <div className="flex items-start gap-4">

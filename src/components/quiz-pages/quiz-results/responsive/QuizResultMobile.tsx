@@ -88,9 +88,11 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
                 </button>
               </div>
               <div className="bg-[#E1E9FD] w-[90%] h-[1px] mb-6 mx-5"></div>
-              <span className="text-[#1F2429] text-2xl text-center w-[332px] mb-6 mx-[35px]">
-                {`Hey ${answers.name || 'there'}, here is your wellness profile revealed:`}
-              </span>
+              <div className="flex flex-col items-center w-[100%]">
+                <span className="text-[#1F2429] text-2xl text-center w-[90%] max-w-full mb-6">
+                  {`Hey ${answers.name || 'there'}, here is your wellness profile revealed:`}
+                </span>
+              </div>
               <div
                 className="flex flex-col bg-[#FCFDFF] py-6 mb-10 mx-5 gap-4 w-[90%] rounded-2xl border border-solid border-[#E1E9FD]"
                 style={{
@@ -131,10 +133,10 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
                       <div className="flex flex-col shrink-0 items-start mr-[18px]">
                         <img
                           src={getProductImage2(product.product_id)}
-                          className="w-[76px] h-[72px] object-fill"
+                          className="w-[96px] h-[72px] object-fill"
                         />
                       </div>
-                      <div className="flex flex-col shrink-0 w-[63%] items-start gap-3">
+                      <div className="flex flex-col shrink-0 w-[53%] items-start gap-3">
                         <div className="flex flex-col items-start gap-1.5">
                           <span className="text-[#1F2429] text-base font-bold">
                             {product.product_name}
@@ -157,7 +159,7 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
                       <button
                         aria-label="View product"
                         onClick={() => navigateToProduct(product.product_id)}
-                        className="flex items-center bg-[#1F2429] hover:bg-[#0f1215] transition-colors duration-200 rounded-[120000000px] p-2"
+                        className="ml-auto flex items-center bg-[#1F2429] hover:bg-[#0f1215] transition-colors duration-200 rounded-[120000000px] p-2"
                       >
                         <img
                           src="/quiz-result-images/icon_arrow_up.png" 
@@ -169,20 +171,20 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
                 </div>
               </div>
               <div className="bg-[#E1E9FD]  w-[90%] h-[1px] mb-10 mx-5"></div>
-              <div className="flex flex-col items-start gap-4 pb-6">
-                <span className="text-[#1F2429] w-full mb-2 mx-5 text-[15px] font-bold mr-[229px]">
+              <div className="flex flex-col items-center w-[100%] pb-6 gap-4">
+                <span className="text-[#1F2429] mb-2 mx-5 text-[15px] font-bold mr-[229px]">
                   {"Expected Outcomes"}
                 </span>
-                <div className="flex flex-col items-start w-[100%] gap-2">
+                <div className="flex flex-col items-center w-[90%] gap-2">
                   {getExpectedOutcomes(recommendations).map((outcome, index) => (
-                    <div key={index} className="flex items-center w-[90%] mx-5 bg-[#F0F6F7] p-4 gap-3 rounded-xl">
+                    <div key={index} className="flex items-center w-[100%] bg-[#F0F6F7] p-4 gap-3 rounded-xl">
                       <div className="flex flex-col shrink-0 items-start">
                         <img
                           src="/quiz-result-images/icon_blue_symbols.png"
                           className="w-6 h-6 object-fill"
                         />
                       </div>
-                      <div className="text-[#1F2429] bg-transparent text-sm w-[142px] py-0.5 border-0">
+                      <div className="text-[#1F2429] bg-transparent text-sm w-[70%] py-0.5 border-0">
                         {outcome}
                       </div>
                     </div>
@@ -202,7 +204,7 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
                   <span className="text-[#1F2429] w-full text-2xl mr-[156px]">
                     {"Cryogenic Method"}
                   </span>
-                  <span className="text-[#1F2429] text-sm w-[347px]">
+                  <span className="text-[#1F2429] text-sm w-[100%]">
                     {
                       "We use cryogenic extraction to preserve the full strength and purity of every ingredient.\nNo heat damage\nMaximum nutrient retention\nEnhanced bioavailability\nCleaner, purer extracts\nBetter absorption. Better results."
                     }
@@ -210,12 +212,12 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
                 </div>
                 <img
                   src="/quiz-result-images/photo_woman_laptop.png"
-                  className="w-[362px] h-[211px] object-fill"
+                  className="w-[100%] h-autp object-fill"
                 />
               </div>
               <div className="bg-[#E1E9FD]  w-[90%] h-[1px] mb-10 mx-5"></div>
-              <div className="flex flex-col items-start mb-10 mx-5 gap-10">
-                <div className="flex items-start bg-[#1F2429] py-[15px] w-[100%] justify-between px-5 rounded-[100000px]">
+              <div className="flex flex-col w-[100%] mb-10 items-center gap-10">
+                <div className="flex items-start bg-[#1F2429] py-[15px] w-[90%] justify-between px-5 rounded-[100000px]">
                   <div className="flex flex-col shrink-0 items-center">
                     <span className="text-white text-[15px]">
                       {"Get Full Package Now"}
@@ -269,10 +271,10 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
                 <span className="text-[#1F2429] w-full text-[15px] font-bold mr-[282px]">
                   {"Our Mission"}
                 </span>
-                <span className="text-[#1F2429] text-2xl w-[321px] mr-10">
+                <span className="text-[#1F2429] text-2xl w-[100%] mr-10">
                   {"Taking care of people's beauty and health"}
                 </span>
-                <span className="text-[#1F2429] text-sm w-[361px]">
+                <span className="text-[#1F2429] text-sm w-[100%]">
                   {
                     "Project V creates innovative products helping millions of people strengthen their health and improve their quality of life on a daily basis. By using the healing powers of nature, new research and technologies, we aim to give everyone the chance to be healthy and happy."
                   }

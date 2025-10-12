@@ -25,7 +25,7 @@ export default function QuizStartMobile({
 				<div className="w-full max-w-4xl relative z-10">
 					<div className="flex flex-col items-center">
 						{/* Title with Animation */}
-						<div className={`px-4 text-center mb-4 transition-all duration-700 ease-out ${
+						<div className={`px-4 text-center mb-1 transition-all duration-700 ease-out ${
 							isTitleVisible 
 								? 'opacity-100 translate-y-0' 
 								: 'opacity-0 translate-y-8'

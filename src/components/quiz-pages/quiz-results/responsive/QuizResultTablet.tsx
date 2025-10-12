@@ -11,6 +11,7 @@ import {
   getProductImage2,
   getQuizDuration
 } from "../../../../utils/recommendationHelpers";
+import RecommendationCarousel from "../RecommendationCarousel";
 
 interface QuizResultTabletProps {
   answers: Record<string, any>;
@@ -132,59 +133,7 @@ export default function QuizResultTablet({ answers, recommendations }: QuizResul
 					<span className="text-[#1F2429] text-xl" >
 						{`Your Recommended Supplements for ${recommendations.key_benefits.slice(0, 2).join(' & ')}`}
 					</span>
-					<div className="flex flex-1 items-start self-stretch gap-2 sm:gap-4">
-						<div className="flex items-stretch self-stretch gap-2 sm:gap-4">
-							{recommendations.recommended_products.map((product, index) => (
-								<div key={product.product_id} className="flex flex-col bg-white flex-1 min-w-0 py-4 rounded-xl h-full"
-									style={{
-									boxShadow: "0px 12px 35px #3E5BB926"
-									}}>
-									<div className="flex flex-col items-start self-stretch py-1 mx-4 gap-5 flex-grow">
-									<div className="flex flex-col items-start ml-0.5">
-										<img
-										src={getProductImage2(product.product_id)}
-										className="w-[76px] h-[72px] object-fill"
-										/>
-									</div>
-									<div className="flex flex-col self-stretch gap-3">
-										<div className="flex flex-col items-start self-stretch gap-1.5">
-										<span className="text-[#1F2429] text-base font-bold" >
-											{product.product_name}
-										</span>
-										<div className="flex items-center ml-[1px] gap-1.5">
-											<span className="text-[#1F2429] text-[15px] font-bold" >
-											{"🌿"}
-											</span>
-											<span className="text-[#1F2429] text-[15px]" >
-											{getProductIngredients(product.product_id)}
-											</span>
-										</div>
-										</div>
-										<div className="flex flex-col items-center self-stretch">
-										<span className="text-[#626669] text-[15px] w-[198px]" >
-											{getProductDescription(product)}
-										</span>
-										</div>
-									</div>
-									</div>
-									<div className="flex flex-col items-end self-stretch mt-auto">
-									<div className="flex flex-col items-start mr-4">
-										<button
-										aria-label="View product"
-										onClick={() => navigateToProduct(product.product_id)}
-										className="flex items-center bg-[#1F2429] hover:bg-[#0f1215] transition-colors duration-200 rounded-[1200000000px] p-2"
-										>
-										<img
-											src="/quiz-result-images/icon_arrow_up.png" 
-											className="ml-auto w-2 h-2 object-contain"
-										/>
-										</button>
-									</div>
-									</div>
-								</div>
-							))}
-						</div>
-					</div>
+					<RecommendationCarousel recommendations={recommendations} />
 				</div>
 				<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-8 mx-4 sm:mx-[50px]">
 				</div>
@@ -193,7 +142,7 @@ export default function QuizResultTablet({ answers, recommendations }: QuizResul
 						{"Expected Outcomes"}
 					</span>
 					<div className="flex items-start self-stretch gap-1 sm:gap-2.5">
-						{getExpectedOutcomes(recommendations).map((outcome, index) => (
+						{getExpectedOutcomes(recommendations).slice(0, 3).map((outcome, index) => (
 							<div key={index} className="flex items-center bg-[#F0F6F7] flex-1 min-w-0 py-4 rounded-xl">
 								<div className="flex flex-col items-center w-6 ml-4 mr-3">
 									<img
