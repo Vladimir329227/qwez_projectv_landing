@@ -136,7 +136,7 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
                           className="w-[96px] h-[72px] object-fill"
                         />
                       </div>
-                      <div className="flex flex-col shrink-0 w-[53%] items-start gap-3">
+                      <div className="flex flex-col shrink-0 w-[50%] items-start gap-3">
                         <div className="flex flex-col items-start gap-1.5">
                           <span className="text-[#1F2429] text-base font-bold">
                             {product.product_name}
