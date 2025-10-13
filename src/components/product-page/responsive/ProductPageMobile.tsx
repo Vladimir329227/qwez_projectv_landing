@@ -14,26 +14,26 @@ export default ({
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   return (
-    <div className="flex flex-col bg-white">
-      <div className="self-stretch bg-white h-[1908px] rounded-[32px] border border-solid border-[#B93E8F]">
-        <div className="self-stretch mb-[1px]">
-          <div
-            className="self-stretch bg-cover bg-center pt-[50px] pb-[313px]"
-            style={{ backgroundImage: `url(${content.heroBackgroundSrc})` }}
+    <div className="items-start bg-white">
+      <div
+        className="flex flex-col items-start w-full bg-cover bg-center bg-no-repeat pt-12 pb-[75%]"
+        style={{ backgroundImage: `url(${content.heroBackgroundSrc})` }}
+      >
+        <div className="flex flex-col items-end self-stretch">
+          <button
+            className="flex flex-col items-start bg-[#1F2429] text-left p-[3px] mr-5 rounded-[40px] border border-solid border-white"
+            onClick={() => navigateToResults()}
           >
-            <div className="flex flex-col items-end self-stretch">
-              <button
-                className="flex flex-col items-start bg-[#1F2429] text-left p-[3px] mr-5 rounded-[40px] border border-solid border-white"
-                onClick={() => navigateToResults()}
-              >
-                <img
-                  src={content.closeIconSrc}
-                  className="w-[23px] h-[23px] rounded-[40px] object-fill"
-                />
-              </button>
-            </div>
-          </div>
-          <div className="flex flex-col items-center self-stretch bg-white pt-5 pb-[63px] px-5 rounded-3xl">
+            <img
+              src={content.closeIconSrc}
+              className="w-[23px] h-[23px] rounded-[40px] object-fill"
+            />
+          </button>
+        </div>
+      </div>
+      <div className="bg-white w-full -mt-12 relative z-10 rounded-t-3xl shadow-lg overflow-hidden">
+        <div className="self-stretch">
+          <div className="flex flex-col items-center self-stretch pt-5 pb-[63px] px-5 gap-2 max-w-md mx-auto">
             <div className="flex flex-col items-start py-[7px] mb-6 gap-[19px]">
               <div className="flex flex-col items-start mx-[3px]">
                 <img
@@ -49,22 +49,27 @@ export default ({
               </span>
             </div>
             <div className="flex flex-col self-stretch mb-6 gap-3">
-              <div className="flex items-start self-stretch">
+              <div
+                className="grid w-full gap-3 items-stretch"
+                style={{
+                  gridTemplateColumns: `repeat(${content.ingredients.length}, minmax(0, 1fr))`,
+                }}
+              >
                 {content.ingredients.map((ing) => (
                   <div
                     key={ing.title}
-                    className="flex flex-1 flex-col items-start bg-white py-4 mr-3 gap-3 rounded-2xl border border-solid border-[#E1E9FD]"
+                    className="flex flex-col h-full bg-white py-3 px-3 gap-2 rounded-2xl border border-solid border-[#E1E9FD]"
                   >
-                    <span className="text-[#1F2429] text-[15px] font-bold mx-[13px]">
+                    <span className="text-[#1F2429] font-bold text-center whitespace-nowrap text-[clamp(12px,3.5vw,15px)]">
                       {ing.title}
                     </span>
-                    <div className="flex flex-col self-stretch mx-6">
+                    <div className="flex justify-center items-center">
                       <img
                         src={ing.imageSrc}
-                        className="self-stretch h-10 object-fill"
+                        className="object-contain w-[clamp(36px,12vw,56px)] h-[clamp(24px,8vw,40px)]"
                       />
                     </div>
-                    <span className="text-[#1F2429] text-xs font-bold mx-[39px]">
+                    <span className="text-[#1F2429] font-bold text-center whitespace-nowrap text-[clamp(10px,3vw,12px)]">
                       {ing.amount}
                     </span>
                   </div>
@@ -80,7 +85,7 @@ export default ({
                   key={f.title + idx}
                   className="flex flex-col items-start ml-4 gap-1.5"
                 >
-                  <span className="text-[#1F2429] text-[15px] font-bold mr-[233px]">
+                  <span className="text-[#1F2429] text-[15px] font-bold w-full whitespace-nowrap overflow-hidden text-ellipsis">
                     {f.title}
                   </span>
                   <span className="text-[#1F2429] text-sm w-[305px]">
@@ -134,7 +139,7 @@ export default ({
               )}
             </div>
             <div className="flex flex-col items-start self-stretch bg-white py-[15px] mb-6 gap-1.5 rounded-xl border border-solid border-[#E1E9FD]">
-              <span className="text-[#1F2429] text-[15px] font-bold ml-4 mr-[266px]">
+              <span className="text-[#1F2429] text-[15px] font-bold ml-4 w-[calc(100%-2rem)] whitespace-nowrap overflow-hidden text-ellipsis">
                 {content.capsulesBlock.title}
               </span>
               <span className="text-[#1F2429] text-sm mx-4">

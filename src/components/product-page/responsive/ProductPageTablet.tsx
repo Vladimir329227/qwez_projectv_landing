@@ -17,7 +17,7 @@ export default ({
     <div className="items-start bg-white">
       {/* Фоновое изображение на всю ширину экрана */}
       <div
-        className="flex flex-col items-start w-full bg-cover bg-center bg-no-repeat pt-12 pb-[30%]"
+        className="flex flex-col items-start w-full bg-cover bg-center bg-no-repeat pt-12 pb-[35%]"
         style={{ backgroundImage: `url(${content.heroBackgroundSrc})` }}
       >
         <button
@@ -36,28 +36,33 @@ export default ({
           <div className="flex flex-col items-center self-stretch py-8 px-4 lg:px-8 xl:px-12 gap-8 max-w-5xl mx-auto">
             <div className="flex flex-col lg:flex-row items-center lg:items-start w-full gap-6 mb-8">
               <div className="flex flex-col items-start w-full lg:w-2/3 gap-4">
-                <div className="flex flex-wrap gap-3">
+                <div
+                  className="grid w-full gap-3 items-stretch"
+                  style={{
+                    gridTemplateColumns: `repeat(${content.ingredients.length}, minmax(0, 1fr))`,
+                  }}
+                >
                   {content.ingredients.map((ing) => (
                     <div
                       key={ing.title}
-                      className="flex flex-col items-center bg-white w-24 sm:w-28 py-3 px-2 gap-2 rounded-2xl border border-solid border-[#E1E9FD]"
+                      className="flex flex-col justify-between items-center h-full bg-white py-3 px-3 gap-2 rounded-2xl border border-solid border-[#E1E9FD]"
                     >
-                      <span className="text-[#1F2429] text-sm font-bold text-center">
+                      <span className="text-[#1F2429] font-bold whitespace-nowrap text-[clamp(14px,2.6vw,18px)] text-center">
                         {ing.title}
                       </span>
-                      <div className="flex flex-col items-center">
+                      <div className="flex justify-center items-center">
                         <img
                           src={ing.imageSrc}
-                          className="w-12 h-8 object-contain"
+                          className="object-contain w-[clamp(44px,7vw,64px)] h-[clamp(28px,4.5vw,44px)]"
                         />
                       </div>
-                      <span className="text-[#1F2429] text-xs font-bold text-center">
+                      <span className="text-[#1F2429] font-bold whitespace-nowrap text-[clamp(12px,2.2vw,16px)] text-center">
                         {ing.amount}
                       </span>
                     </div>
                   ))}
                 </div>
-                <span className="text-[#1F2429] text-sm w-full">
+                <span className="text-[#1F2429] text-base w-full">
                   {content.description}
                 </span>
               </div>
@@ -69,7 +74,7 @@ export default ({
                   />
                 </div>
                 <span
-                  className="text-2xl lg:text-3xl font-bold text-center"
+                  className="text-3xl lg:text-4xl font-bold text-center"
                   style={{ color: content.productNameColor || "#EA4B94" }}
                 >
                   {content.productName}
@@ -115,7 +120,7 @@ export default ({
                 </button>
               )}
               {isVideoPlaying && (
-                <div className="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+                <div className="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-base">
                   Click on the video to pause
                 </div>
               )}
@@ -127,20 +132,20 @@ export default ({
                     key={f.title}
                     className="flex flex-col items-start w-full px-4 gap-3"
                   >
-                    <span className="text-[#1F2429] text-sm lg:text-base font-bold">
+                    <span className="text-[#1F2429] text-base lg:text-lg font-bold">
                       {f.title}
                     </span>
-                    <span className="text-[#1F2429] text-xs lg:text-sm w-full">
+                    <span className="text-[#1F2429] text-sm lg:text-base w-full">
                       {f.text}
                     </span>
                   </div>
                 ))}
               </div>
               <div className="flex flex-col items-start bg-white w-full lg:w-1/2 p-4 gap-3 rounded-xl border border-solid border-[#E1E9FD]">
-                <span className="text-[#1F2429] text-sm lg:text-base font-bold">
+                <span className="text-[#1F2429] text-base lg:text-lg font-bold">
                   {content.capsulesBlock.title}
                 </span>
-                <span className="text-[#1F2429] text-xs lg:text-sm w-full">
+                <span className="text-[#1F2429] text-sm lg:text-base w-full">
                   {content.capsulesBlock.text}
                 </span>
               </div>
@@ -149,7 +154,7 @@ export default ({
               className="flex flex-col items-center bg-[#1F2429] text-left w-full max-w-sm py-3 rounded-full border-0"
               onClick={() => alert("Pressed!")}
             >
-              <span className="text-white text-sm lg:text-base">
+              <span className="text-white text-base lg:text-lg">
                 {`Buy ${content.productName} Now!`}
               </span>
             </button>
