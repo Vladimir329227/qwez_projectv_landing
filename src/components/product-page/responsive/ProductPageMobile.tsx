@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { navigateToResults } from "../../../App";
 import { getProductContent } from "../ProductContent";
 export default ({
@@ -11,6 +11,8 @@ export default ({
   productKey?: string;
 }) => {
   const content = getProductContent(productKey);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
   return (
     <div className="flex flex-col bg-white">
       <div className="self-stretch bg-white h-[1908px] rounded-[32px] border border-solid border-[#B93E8F]">
@@ -87,10 +89,50 @@ export default ({
                 </div>
               ))}
             </div>
-            <img
-              src={content.promoBannerSrc}
-              className="self-stretch h-[203px] mb-[25px] rounded-3xl object-fill"
-            />
+            <div className="relative self-stretch mb-[25px]">
+              <video
+                ref={videoRef}
+                onEnded={() => setIsVideoPlaying(false)}
+                onPlay={() => setIsVideoPlaying(true)}
+                onPause={() => setIsVideoPlaying(false)}
+                onClick={() => {
+                  if (videoRef.current && isVideoPlaying) {
+                    videoRef.current.pause();
+                  }
+                }}
+                src={"/vidio/PROJECT V NEUTRACEUTICALS - ENGLISH.mp4"}
+                className="w-full h-[203px] rounded-3xl object-cover cursor-pointer"
+                loop
+                muted
+                playsInline
+                controls={false}
+              />
+              {!isVideoPlaying && (
+                <button
+                  onClick={() => {
+                    if (videoRef.current) {
+                      videoRef.current.play();
+                    }
+                  }}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full p-3 shadow-lg hover:scale-110 transition-all duration-300"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M8 5V19L19 12L8 5Z" fill="#00A8E2" />
+                  </svg>
+                </button>
+              )}
+              {isVideoPlaying && (
+                <div className="absolute top-2 right-2 bg-black/50 text-white px-2 py-0.5 rounded-full text-[10px]">
+                  Tap video to pause
+                </div>
+              )}
+            </div>
             <div className="flex flex-col items-start self-stretch bg-white py-[15px] mb-6 gap-1.5 rounded-xl border border-solid border-[#E1E9FD]">
               <span className="text-[#1F2429] text-[15px] font-bold ml-4 mr-[266px]">
                 {content.capsulesBlock.title}
