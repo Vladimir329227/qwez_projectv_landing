@@ -35,15 +35,15 @@ export default ({
         <div className="self-stretch">
           <div className="flex flex-col items-center self-stretch pt-5 pb-[63px] px-5 gap-2 max-w-md mx-auto">
             <div className="flex flex-col items-start py-[7px] mb-6 gap-[19px]">
-              <div className="flex flex-col items-start mx-[3px]">
+              <div className="flex flex-col items-start object-center mx-auto">
                 <img
                   src={content.jarImageSrc}
-                  className="w-[133px] h-[126px] object-fill"
+                  className="w-[133px] h-[126px] object-contain"
                 />
               </div>
               <span
-                className="text-[28px] font-bold mx-7"
-                style={{ color: content.productNameColor || "#EA4B94" }}
+                className="text-[28px] font-bold mx-7 text-center"
+                style={{ color: content.productNameColor || "#808080" }}
               >
                 {content.productName}
               </span>
@@ -60,18 +60,22 @@ export default ({
                     key={ing.title}
                     className="flex flex-col h-full bg-white py-3 px-3 gap-2 rounded-2xl border border-solid border-[#E1E9FD]"
                   >
-                    <span className="text-[#1F2429] font-bold text-center whitespace-nowrap text-[clamp(12px,3.5vw,15px)]">
-                      {ing.title}
-                    </span>
-                    <div className="flex justify-center items-center">
-                      <img
-                        src={ing.imageSrc}
-                        className="object-contain w-[clamp(36px,12vw,56px)] h-[clamp(24px,8vw,40px)]"
-                      />
+                    <div className="flex-1 flex flex-col justify-between">
+                      <div className="h-[clamp(32px,8vw,40px)] flex items-center justify-center">
+                        <span className="text-[#1F2429] font-bold text-center text-[clamp(12px,3.5vw,15px)] leading-tight">
+                          {ing.title}
+                        </span>
+                      </div>
+                      <div className="flex justify-center items-center flex-1 py-2">
+                        <img
+                          src={ing.imageSrc}
+                          className="object-contain w-[clamp(36px,12vw,56px)] h-[clamp(24px,8vw,40px)]"
+                        />
+                      </div>
+                      <span className="text-[#1F2429] font-bold text-center whitespace-nowrap text-[clamp(10px,3vw,12px)]">
+                        {ing.amount}
+                      </span>
                     </div>
-                    <span className="text-[#1F2429] font-bold text-center whitespace-nowrap text-[clamp(10px,3vw,12px)]">
-                      {ing.amount}
-                    </span>
                   </div>
                 ))}
               </div>

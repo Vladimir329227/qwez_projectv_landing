@@ -15,7 +15,6 @@ export default ({
   const videoRef = useRef<HTMLVideoElement>(null);
   return (
     <div className="items-start bg-white">
-      {/* Фоновое изображение на всю ширину экрана */}
       <div
         className="flex flex-col items-start w-full bg-cover bg-center bg-no-repeat pt-12 pb-[35%]"
         style={{ backgroundImage: `url(${content.heroBackgroundSrc})` }}
@@ -30,7 +29,6 @@ export default ({
           />
         </button>
       </div>
-      {/* Основной контент с наплывом на фоновое изображение */}
       <div className="bg-white w-full -mt-12 relative z-10 rounded-t-3xl shadow-lg overflow-hidden">
         <div className="self-stretch">
           <div className="flex flex-col items-center self-stretch py-8 px-4 lg:px-8 xl:px-12 gap-8 max-w-5xl mx-auto">
@@ -45,20 +43,24 @@ export default ({
                   {content.ingredients.map((ing) => (
                     <div
                       key={ing.title}
-                      className="flex flex-col justify-between items-center h-full bg-white py-3 px-3 gap-2 rounded-2xl border border-solid border-[#E1E9FD]"
+                      className="flex flex-col h-full bg-white py-3 px-3 gap-2 rounded-2xl border border-solid border-[#E1E9FD]"
                     >
-                      <span className="text-[#1F2429] font-bold whitespace-nowrap text-[clamp(14px,2.6vw,18px)] text-center">
-                        {ing.title}
-                      </span>
-                      <div className="flex justify-center items-center">
-                        <img
-                          src={ing.imageSrc}
-                          className="object-contain w-[clamp(44px,7vw,64px)] h-[clamp(28px,4.5vw,44px)]"
-                        />
+                      <div className="flex-1 flex flex-col justify-between items-center">
+                        <div className="h-[clamp(40px,6vw,50px)] flex items-center justify-center">
+                          <span className="text-[#1F2429] font-bold text-[clamp(14px,2.6vw,18px)] text-center leading-tight">
+                            {ing.title}
+                          </span>
+                        </div>
+                        <div className="flex justify-center items-center flex-1 py-2">
+                          <img
+                            src={ing.imageSrc}
+                            className="object-contain w-[clamp(44px,7vw,64px)] h-[clamp(28px,4.5vw,44px)]"
+                          />
+                        </div>
+                        <span className="text-[#1F2429] font-bold whitespace-nowrap text-[clamp(12px,2.2vw,16px)] text-center">
+                          {ing.amount}
+                        </span>
                       </div>
-                      <span className="text-[#1F2429] font-bold whitespace-nowrap text-[clamp(12px,2.2vw,16px)] text-center">
-                        {ing.amount}
-                      </span>
                     </div>
                   ))}
                 </div>
@@ -75,7 +77,7 @@ export default ({
                 </div>
                 <span
                   className="text-3xl lg:text-4xl font-bold text-center"
-                  style={{ color: content.productNameColor || "#EA4B94" }}
+                  style={{ color: content.productNameColor || "#808080" }}
                 >
                   {content.productName}
                 </span>

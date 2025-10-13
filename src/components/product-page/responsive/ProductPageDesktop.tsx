@@ -34,24 +34,33 @@ export default ({
           <div className="flex flex-col items-center self-stretch py-16 px-4 lg:px-8 xl:px-12 gap-16 max-w-7xl mx-auto">
             <div className="flex justify-between items-center self-stretch">
               <div className="flex flex-col items-start w-full lg:w-2/3 gap-6">
-                <div className="flex items-stretch self-stretch gap-4">
+                <div
+                  className="grid w-full gap-4 items-stretch"
+                  style={{
+                    gridTemplateColumns: `repeat(${content.ingredients.length}, minmax(0, 1fr))`,
+                  }}
+                >
                   {content.ingredients.map((ing, index) => (
                     <div
                       key={ing.title}
-                      className="flex flex-col items-center bg-white w-full sm:w-48 lg:w-56 py-4 px-6 gap-3 rounded-2xl border border-solid border-[#E1E9FD]"
+                      className="flex flex-col h-full bg-white py-4 px-6 gap-3 rounded-2xl border border-solid border-[#E1E9FD]"
                     >
-                      <span className="text-[#1F2429] text-xl lg:text-2xl">
-                        {ing.title}
-                      </span>
-                      <div className="flex flex-col items-start">
-                        <img
-                          src={ing.imageSrc}
-                          className="w-16 h-10 object-contain"
-                        />
+                      <div className="flex-1 flex flex-col justify-between items-center">
+                        <div className="h-[60px] flex items-center justify-center">
+                          <span className="text-[#1F2429] text-xl lg:text-2xl text-center leading-tight">
+                            {ing.title}
+                          </span>
+                        </div>
+                        <div className="flex flex-col items-center flex-1 py-4">
+                          <img
+                            src={ing.imageSrc}
+                            className="w-16 h-10 object-contain"
+                          />
+                        </div>
+                        <span className="text-[#1F2429] text-lg lg:text-xl text-center">
+                          {ing.amount}
+                        </span>
                       </div>
-                      <span className="text-[#1F2429] text-lg lg:text-xl">
-                        {ing.amount}
-                      </span>
                     </div>
                   ))}
                 </div>
@@ -63,12 +72,12 @@ export default ({
                 <div className="flex flex-col items-center self-stretch">
                   <img
                     src={content.jarImageSrc}
-                    className="w-48 h-48 lg:w-60 lg:h-56 object-contain"
+                    className="w-48 h-48 lg:w-60 lg:h-56 object-contain object-center"
                   />
                 </div>
                 <span
-                  className="text-2xl lg:text-3xl font-bold"
-                  style={{ color: content.productNameColor || "#EA4B94" }}
+                  className="text-2xl lg:text-3xl font-bold text-center"
+                  style={{ color: content.productNameColor || "#808080" }}
                 >
                   {content.productName}
                 </span>

@@ -49,3 +49,7 @@ temp/
 
 
 
+public\product-page-images\ingredients-google\
+
+# Unused configuration files
+unused-config/

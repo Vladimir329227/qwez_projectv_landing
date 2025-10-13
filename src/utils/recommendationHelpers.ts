@@ -1,4 +1,5 @@
 import { RecommendationResult, ProductRecommendation } from '../components/quiz-pages/quiz-results/recommendationEngine';
+import { getProductContent } from '../components/product-page/ProductContent';
 
 export const getProductImage = (productId: string): string => {
   const imageMap: Record<string, string> = {
@@ -137,35 +138,24 @@ export const getExpectedOutcomes = (recommendations: RecommendationResult): stri
 };
 
 export const getProductIngredients = (productId: string): string => {
-    const ingredientsMap: Record<string, string> = {
-        'A': 'Grape Seed, Vitamin C, E, Zinc, Selenium',
-        'CH': 'Spirulina, Guarana, Eleutherococcus',
-        'M': 'Omega-3, EPA, DHA',
-        'P': 'Lavender, Melissa, Valerian, B Vitamins',
-        'SV': 'Garcinia Cambogia, Green Tea, Chromium',
-        'S': 'FOS, Probiotics, Lactobacillus',
-        'MGR': 'Magnesium, St. John\'s Wort, Hawthorn',
-        'D': 'Cat\'s Claw, Ginger',
-        'N': 'Angelica, Cherry Stalks, Witch Hazel',
-        'G': 'Ginseng, Ginger',
-        'LV': 'Acai Berry, Green Tea, Resveratrol, CoQ10',
-        'BR': 'DHA, Ginkgo Biloba, B Vitamins, Vitamin E',
-        'OS': 'Marine Minerals, Calcium, Vitamin D3, K2',
-        'ENT': 'Glucosamine, Marine Collagen, Chondroitin, MSM',
-        'DR': 'Beta-Glucans, Selenium, Vitamin D2, Echinacea',
-        'VS': 'Grape Seed Extract, Diosmin, Hesperidin, Gotu Kola',
-        'S2S': 'Lutein, Zeaxanthin, Blueberry Extract, Vitamin C',
-        'NPM': 'Harpagophytum, Echinacea, Curcuminoids, Zinc',
-        'MDS': 'Soy Isoflavones, Vitex Agnus-Castus, Calcium, Vitamin D3',
-        'GQ10': 'Coenzyme Q10, Vitamin C, Pomegranate, Cypress Oil',
-        'JN': 'Bitter Orange Extract, Vitamin C, D3, Zinc, B Vitamins',
-        'JNB': 'Calcium, Silicon, Vitamin K2, Vitamin D, B1',
-        'PROGUM': 'Vitamin D3, Lactobacillus Salivarius, Fluoride',
-        'GH': 'White Imperial Ginseng, Honey, Royal Jelly, Orange Juice',
-        'GS': 'Grape Seed Extract, Melon Juice, Hyaluronic Acid, Zinc'
-    };
-    
-    return ingredientsMap[productId] || 'Natural ingredients';
+    const content = getProductContent(productId);
+    if (!content.ingredients.length) return 'Natural ingredients';
+    return content.ingredients.map(ing => ing.title).join(', ');
+};
+
+export type IngredientItem = {
+  title: string;
+  imageSrc: string;
+  amount?: string;
+};
+
+export const getProductIngredientItems = (productId: string): IngredientItem[] => {
+  const content = getProductContent(productId);
+  return content.ingredients.map(ing => ({
+    title: ing.title,
+    imageSrc: ing.imageSrc,
+    amount: ing.amount,
+  }));
 };
 
 export const getWellnessProfile = (recommendations: RecommendationResult): string => {
