@@ -36,20 +36,7 @@ const ExpertsCarousel = () => {
       title: "PRESIDENT",
       description: "President of the Trading Point Elite Pharm Laboratories pharmaceutical manufacturer"
     },
-    {
-        id: 5,
-        image: "/figma/de669e817a4da2d5.png",
-        name: "Fortunato Torre",
-        title: "MANAGING DIRECTOR",
-        description: "Research and development director at the FCC-Fragrances, Cosmetics & Consulting, Ltd cosmetics manufacturer"
-    },
-    {
-        id: 6,
-        image: "/figma/ad61296f2426129c.png",
-        name: "Gerard Strauch",
-        title: "PRESIDENT",
-        description: "President of the Trading Point Elite Pharm Laboratories pharmaceutical manufacturer"
-    }
+    
   ];
 
   // Определяем количество карточек для показа
@@ -121,6 +108,14 @@ const ExpertsCarousel = () => {
     return (containerWidth - (gap * (cardsToShow - 1))) / cardsToShow;
   };
 
+  // Получаем максимальную ширину карточки для текущего разрешения
+  const getMaxCardWidth = () => {
+    const width = window.innerWidth;
+    if (width < 640) return 280;
+    if (width < 1024) return 300;
+    return 350;
+  };
+
   // Обновляем трансформацию при изменении currentIndex или размера окна
   useEffect(() => {
     if (carouselRef.current && containerRef.current) {
@@ -185,7 +180,7 @@ const ExpertsCarousel = () => {
           className="flex"
           style={{ 
             gap: `${getGap()}px`,
-            width: `calc(${(experts.length * 100) / cardsToShow}% + ${getGap() * (experts.length - 1)}px)`,
+            width: `calc(100% + ${getGap() * (experts.length - cardsToShow)}px)`,
             marginBottom: `20px`
           }}
         >
@@ -194,11 +189,14 @@ const ExpertsCarousel = () => {
               key={expert.id} 
               className="flex-shrink-0 flex justify-center"
               style={{ 
-                width: `calc(${100 / experts.length}% - ${getGap() * (experts.length - 1) / experts.length}px)`
+                width: `${100 / cardsToShow}%`
               }}
             >
                {/* Карточка эксперта с адаптивными размерами */}
-                <div className="flex flex-col bg-white rounded-2xl h-full w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[350px] overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 min-h-[500px] sm:min-h-[550px] lg:min-h-[580px]">
+                <div 
+                  className="flex flex-col bg-white rounded-2xl h-full w-full overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 min-h-[500px] sm:min-h-[550px] lg:min-h-[580px]"
+                  style={{ maxWidth: `${getMaxCardWidth()}px` }}
+                >
                 {/* Фото эксперта */}
                 <div className="w-full h-64 sm:h-72 lg:h-80 flex items-center justify-center p-4">
                     <img
