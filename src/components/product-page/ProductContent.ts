@@ -30,6 +30,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   A: {
     key: "A",
     productName: "А | Antioxidant Power",
+    productNameColor: "#B93E8F",
     heroBackgroundSrc: "/product-page-images/product_A/bg_capsule_a.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
     jarImageSrc: "/product-page-images/product_A/capsule_vitamins_a.png",
@@ -73,8 +74,9 @@ export const PRODUCTS: Record<string, ProductContent> = {
   },
   BR: {
     key: "BR",
-    productName: "strong nerves",
-    heroBackgroundSrc: "/product-page-images/product_BR/bg_capsule_br.png",
+    productName: "BR | Strong nerves",
+    productNameColor: "#00B1DA",
+    heroBackgroundSrc: "/product-page-images/product_MGR/bg_capsule_mgr.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
     jarImageSrc: "/product-page-images/product_BR/capsule_vitamins_br.png",
     promoBannerSrc: "/product-page-images/product_A/promo_banner_a.png",
@@ -118,6 +120,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   CH: {
     key: "CH",
     productName: "CH | Charged and Energized",
+    productNameColor: "#EC6358",
     heroBackgroundSrc: "/product-page-images/product_CH/bg_capsule_ch.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
     jarImageSrc: "/product-page-images/product_CH/capsule_vitamins_ch.png",
@@ -162,6 +165,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   D: {
     key: "D",
     productName: "D | Body Detox",
+    productNameColor: "#5DB23F",
     heroBackgroundSrc: "/product-page-images/product_D/bg_capsule_d.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
     jarImageSrc: "/product-page-images/product_D/capsule_vitamins_d.png",
@@ -201,6 +205,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   DG: {
     key: "DG",
     productName: "DG | Liver protection",
+    productNameColor: "#8B4513",
     heroBackgroundSrc: "/product-page-images/product_DG/bg_capsule_dg.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
     jarImageSrc: "/product-page-images/product_DG/capsule_vitamins_dg.png",
@@ -245,7 +250,8 @@ export const PRODUCTS: Record<string, ProductContent> = {
   DR: {
     key: "DR",
     productName: "DR | Strong Immune System",
-    heroBackgroundSrc: "/product-page-images/product_DR/bg_capsule_dr.png",
+    productNameColor: "#EDC08D",
+    heroBackgroundSrc: "/product-page-images/product_N/bg_capsule_n.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
     jarImageSrc: "/product-page-images/product_DR/capsule_vitamins_dr.png",
     promoBannerSrc: "/product-page-images/product_A/promo_banner_a.png",
@@ -289,7 +295,8 @@ export const PRODUCTS: Record<string, ProductContent> = {
   ENT: {
     key: "ENT",
     productName: "ENT | Youth of joints",
-    heroBackgroundSrc: "/product-page-images/product_ENT/bg_capsule_ent.png",
+    productNameColor: "#00846F",
+    heroBackgroundSrc: "/product-page-images/product_D/bg_capsule_d.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
     jarImageSrc: "/product-page-images/product_ENT/capsule_vitamins_ent.png",
     promoBannerSrc: "/product-page-images/product_A/promo_banner_a.png",
@@ -333,6 +340,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   G: {
     key: "G",
     productName: "G | HEALTH GENERATOR",
+    productNameColor: "#6C4533",
     heroBackgroundSrc: "/product-page-images/product_G/bg_capsule_g.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
     jarImageSrc: "/product-page-images/product_G/capsule_vitamins_g.png",
@@ -372,6 +380,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   GH: {
     key: "GH",
     productName: "GH | Pure Energy",
+    productNameColor: "#FFD700",
     heroBackgroundSrc: "/product-page-images/product_GH/bg_capsule_gh.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
     jarImageSrc: "/product-page-images/product_GH/capsule_vitamins_gh.png",
@@ -416,7 +425,8 @@ export const PRODUCTS: Record<string, ProductContent> = {
   GQ10: {
     key: "GQ10",
     productName: "GQ10 | Youth formula",
-    heroBackgroundSrc: "/product-page-images/product_GQ10/bg_capsule_gq10.png",
+    productNameColor: "#EC6358",
+    heroBackgroundSrc: "/product-page-images/product_CH/bg_capsule_ch.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
     jarImageSrc: "/product-page-images/product_GQ10/capsule_vitamins_gq10.png",
     promoBannerSrc: "/product-page-images/product_A/promo_banner_a.png",
@@ -460,6 +470,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   GS: {
     key: "GS",
     productName: "GS | SHINE OF INNER BEAUTY",
+    productNameColor: "#FF69B4",
     heroBackgroundSrc: "/product-page-images/product_GS/bg_capsule_gs.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
     jarImageSrc: "/product-page-images/product_GS/capsule_vitamins_gs.png",
@@ -504,7 +515,8 @@ export const PRODUCTS: Record<string, ProductContent> = {
   JN: {
     key: "JN",
     productName: "JN | Child growth",
-    heroBackgroundSrc: "/product-page-images/product_JN/bg_capsule_jn.png",
+    productNameColor: "#00B1DA",
+    heroBackgroundSrc: "/product-page-images/product_P/bg_capsule_p.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
     jarImageSrc: "/product-page-images/product_JN/capsule_vitamins_jn.png",
     promoBannerSrc: "/product-page-images/product_A/promo_banner_a.png",
@@ -548,7 +560,8 @@ export const PRODUCTS: Record<string, ProductContent> = {
   JNB: {
     key: "JNB",
     productName: "JNB | Royal growth | Royal posture",
-    heroBackgroundSrc: "/product-page-images/product_JNB/bg_capsule_jnb.png",
+    productNameColor: "#EC6358",
+    heroBackgroundSrc: "/product-page-images/product_CH/bg_capsule_ch.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
     jarImageSrc: "/product-page-images/product_JNB/capsule_vitamins_jnb.png",
     promoBannerSrc: "/product-page-images/product_A/promo_banner_a.png",
@@ -592,7 +605,8 @@ export const PRODUCTS: Record<string, ProductContent> = {
   LV: {
     key: "LV",
     productName: "LV | Radiance of youth",
-    heroBackgroundSrc: "/product-page-images/product_LV/bg_capsule_lv.png",
+    productNameColor: "#B93E8F",
+    heroBackgroundSrc: "/product-page-images/product_A/bg_capsule_a.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
     jarImageSrc: "/product-page-images/product_LV/capsule_vitamins_lv.png",
     promoBannerSrc: "/product-page-images/product_A/promo_banner_a.png",
@@ -636,6 +650,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   M: {
     key: "M",
     productName: "М | Healthy Heart and Sharp Mind",
+    productNameColor: "#FEEA0F",
     heroBackgroundSrc: "/product-page-images/product_M/bg_capsule_m.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
     jarImageSrc: "/product-page-images/product_M/capsule_vitamins_m.png",
@@ -675,7 +690,8 @@ export const PRODUCTS: Record<string, ProductContent> = {
   MDS: {
     key: "MDS",
     productName: "MDS | MATURE BEAUTY",
-    heroBackgroundSrc: "/product-page-images/product_MDS/bg_capsule_mds.png",
+    productNameColor: "#B93E8F",
+    heroBackgroundSrc: "/product-page-images/product_A/bg_capsule_a.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
     jarImageSrc: "/product-page-images/product_MDS/capsule_vitamins_mds.png",
     promoBannerSrc: "/product-page-images/product_A/promo_banner_a.png",
@@ -719,6 +735,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   MGR: {
     key: "MGR",
     productName: "MGR | Magic of magnesium",
+    productNameColor: "#267C5D",
     heroBackgroundSrc: "/product-page-images/product_MGR/bg_capsule_mgr.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
     jarImageSrc: "/product-page-images/product_MGR/capsule_vitamins_mgr.png",
@@ -763,6 +780,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   N: {
     key: "N",
     productName: "N | Protection and Prevention",
+    productNameColor: "#EDC08D",
     heroBackgroundSrc: "/product-page-images/product_N/bg_capsule_n.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
     jarImageSrc: "/product-page-images/product_N/capsule_vitamins_n.png",
@@ -806,8 +824,9 @@ export const PRODUCTS: Record<string, ProductContent> = {
   },
   NPM: {
     key: "NPM",
-    productName: "NPM I Nature’s Power for Men",
-    heroBackgroundSrc: "/product-page-images/product_NPM/bg_capsule_npm.png",
+    productName: "NPM I Nature's Power for Men",
+    productNameColor: "#5DB23F",
+    heroBackgroundSrc: "/product-page-images/product_D/bg_capsule_d.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
     jarImageSrc: "/product-page-images/product_NPM/capsule_vitamins_npm.png",
     promoBannerSrc: "/product-page-images/product_A/promo_banner_a.png",
@@ -851,7 +870,8 @@ export const PRODUCTS: Record<string, ProductContent> = {
   OS: {
     key: "OS",
     productName: "OS | Strongs bones and joints",
-    heroBackgroundSrc: "/product-page-images/product_OS/bg_capsule_os.png",
+    productNameColor: "#B93E8F",
+    heroBackgroundSrc: "/product-page-images/product_A/bg_capsule_a.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
     jarImageSrc: "/product-page-images/product_OS/capsule_vitamins_os.png",
     promoBannerSrc: "/product-page-images/product_A/promo_banner_a.png",
@@ -895,6 +915,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   P: {
     key: "P",
     productName: "P | Nervous system balance",
+    productNameColor: "#442682",
     heroBackgroundSrc: "/product-page-images/product_P/bg_capsule_p.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
     jarImageSrc: "/product-page-images/product_P/capsule_vitamins_p.png",
@@ -939,6 +960,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   S: {
     key: "S",
     productName: "S | Ease of digestion",
+    productNameColor: "#E8456A",
     heroBackgroundSrc: "/product-page-images/product_S/bg_capsule_s.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
     jarImageSrc: "/product-page-images/product_S/capsule_vitamins_s.png",
@@ -983,7 +1005,8 @@ export const PRODUCTS: Record<string, ProductContent> = {
   S2S: {
     key: "S2S",
     productName: "S2S | Keen eye",
-    heroBackgroundSrc: "/product-page-images/product_S2S/bg_capsule_s2s.png",
+    productNameColor: "#442682",
+    heroBackgroundSrc: "/product-page-images/product_P/bg_capsule_p.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
     jarImageSrc: "/product-page-images/product_S2S/capsule_vitamins_s2s.png",
     promoBannerSrc: "/product-page-images/product_A/promo_banner_a.png",
@@ -1027,6 +1050,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   SV: {
     key: "SV",
     productName: "SV | Joyful and Beautiful",
+    productNameColor: "#F4981A",
     heroBackgroundSrc: "/product-page-images/product_SV/bg_capsule_sv.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
     jarImageSrc: "/product-page-images/product_SV/capsule_vitamins_sv.png",
@@ -1071,7 +1095,8 @@ export const PRODUCTS: Record<string, ProductContent> = {
   VS: {
     key: "VS",
     productName: "VS | Healthy Veins",
-    heroBackgroundSrc: "/product-page-images/product_VS/bg_capsule_vs.png",
+    productNameColor: "#5DB23F",
+    heroBackgroundSrc: "/product-page-images/product_D/bg_capsule_d.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
     jarImageSrc: "/product-page-images/product_VS/capsule_vitamins_vs.png",
     promoBannerSrc: "/product-page-images/product_A/promo_banner_a.png",
@@ -1114,97 +1139,6 @@ export const PRODUCTS: Record<string, ProductContent> = {
   },
 };
 
-PRODUCTS.POWER_OF_MIND = {
-  key: "POWER_OF_MIND",
-  productName: "Power of Mind",
-  productNameColor: "#442682",
-  heroBackgroundSrc: "/product-page-images/product_P/bg_capsule_p.png",
-  closeIconSrc: "/product-page-images/icon_close_x.png",
-  jarImageSrc: "/product-page-images/product_P/capsule_vitamins_p.png",
-  promoBannerSrc: "/product-page-images/product_A/promo_banner_a.png",
-  ingredients: [
-    {
-      title: "Lavender",
-      imageSrc: "/product-page-images/product_P/lavanda.png",
-      amount: "15 mg",
-    },
-    {
-      title: "Melissa",
-      imageSrc: "/product-page-images/product_P/mellisa.png",
-      amount: "10 mg",
-    },
-    {
-      title: "Valerian",
-      imageSrc: "/product-page-images/product_P/valerian.png",
-      amount: "0.6 mg",
-    },
-  ],
-  description:
-    "Each P capsule contains 100 mg of lavender flower extract, which, when taken daily, helps relieve tension and anxiety.",
-  features: [
-    {
-      title: "Fast action",
-      text: "The usage of highly active extracts with improved bioavailability.",
-    },
-    {
-      title: "Efficiency",
-      text: "The complex includes well-known and well-studied components that have undergone prolonged clinical studies.",
-    },
-    {
-      title: "Plant-derived capsule",
-      text: "Suitable for vegetarians, does not contain paraffins.",
-    },
-  ],
-  capsulesBlock: {
-    title: "60 capsules",
-    text: "An antioxidant formula that protects against infections, toxins and premature aging. Reduces the risk of developing chronic diseases. Slows down the aging process. Promotes cell regeneration. Supports immunity Prevents the development of oxidative processes. Each capsule of A contains 80 mg of grape seed extract and, when taken daily, helps reduce the risk of cardiovascular disease, cleanse blood vessels and neutralize oxidative processes.",
-  },
-};
-
-PRODUCTS.CHROMEVITAL = {
-  key: "CHROMEVITAL",
-  productName: "Chromevital",
-  productNameColor: "#EC6358",
-  heroBackgroundSrc: "/product-page-images/product_CH/bg_capsule_ch.png",
-  closeIconSrc: "/product-page-images/icon_close_x.png",
-  jarImageSrc: "/product-page-images/product_CH/capsule_vitamins_ch.png",
-  promoBannerSrc: "/product-page-images/product_A/promo_banner_a.png",
-  ingredients: [
-    { title: "Guarana", 
-      imageSrc: "/product-page-images/product_CH/guarana.png", 
-      amount: "10 mg" 
-    },
-    {
-      title: "Spirulina",
-      imageSrc: "/product-page-images/product_CH/organic-spirulin.png",
-      amount: "15 mg",
-    },
-    {
-      title: "Extract eleutherococcus",
-      imageSrc: "/product-page-images/product_CH/eleuterokokka.png",
-      amount: "15 mg",
-    },
-  ],
-  description: "Soothes stress without sedating",
-  features: [
-    {
-      title: "Fast action",
-      text: "The usage of highly active extracts with improved bioavailability.",
-    },
-    {
-      title: "Efficiency",
-      text: "The complex includes well-known and well-studied components that have undergone prolonged clinical studies.",
-    },
-    {
-      title: "Plant-derived capsule",
-      text: "Suitable for vegetarians, does not contain paraffins.",
-    },
-  ],
-  capsulesBlock: {
-    title: "60 capsules",
-    text: "An antioxidant formula that protects against infections, toxins and premature aging. Reduces the risk of developing chronic diseases. Slows down the aging process. Promotes cell regeneration. Supports immunity Prevents the development of oxidative processes. Each capsule of A contains 80 mg of grape seed extract and, when taken daily, helps reduce the risk of cardiovascular disease, cleanse blood vessels and neutralize oxidative processes.",
-  },
-};
 
 // Auto-merge generated product content if present (from CSVs)
 // @ts-ignore
