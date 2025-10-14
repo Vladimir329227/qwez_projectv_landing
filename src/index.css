@@ -16,6 +16,15 @@ html, body {
 /* Global image responsiveness & nicer scaling */
 img { max-width: 100%; height: auto; }
 
+/* Hide scrollbar for carousel navigation */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
 @keyframes infinite-scroll {
     0% {
       transform: translateX(0);

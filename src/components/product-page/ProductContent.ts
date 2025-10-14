@@ -377,51 +377,6 @@ export const PRODUCTS: Record<string, ProductContent> = {
       text: "An adaptogenic formula for restoring energy, harmony, and protecting your body. Only 1 out of 20 roots that have undergone a 6-year cultivation cycle in the mountains is selected to create G cryogenic powder.\nEach capsule of G contains 270 mg of cryogenic white imperial ginseng powder, a balanced complex of saponins, organic germanium, amino acids, and minerals. When taken daily: Improves memory, concentration, and reduces stress levels Accelerates metabolism and supports liver function Normalizes blood pressure and improves blood circulation Regulates hormonal balance, alleviating symptoms of menstrual pain and menopause Nourishes the skin and strengthens hair, preventing hair loss",
     },
   },
-  GH: {
-    key: "GH",
-    productName: "GH | Pure Energy",
-    productNameColor: "#FFD700",
-    heroBackgroundSrc: "/product-page-images/product_GH/bg_capsule_gh.png",
-    closeIconSrc: "/product-page-images/icon_close_x.png",
-    jarImageSrc: "/product-page-images/product_GH/capsule_vitamins_gh.png",
-    promoBannerSrc: "/product-page-images/product_A/promo_banner_a.png",
-    ingredients: [
-      {
-        title: "Ginseng Root",
-        imageSrc: "/product-page-images/ingredients-google/Ingridients/ginseng_root.png",
-        amount: "200 mg",
-      },
-      {
-        title: "Royal Jelly",
-        imageSrc: "/product-page-images/ingredients-google/Ingridients/honey.png",
-        amount: "50 mg",
-      },
-      {
-        title: "Honey",
-        imageSrc: "/product-page-images/ingredients-google/Ingridients/honey.png",
-        amount: "100 mg",
-      },
-    ],
-    description: "A natural health elixir for skin and overall vitality. GH contains premium ginseng root, royal jelly, and honey, and when taken daily: Increases protective properties Improves skin condition Benefits all organs and systems Enhances overall vitality",
-    features: [
-      {
-        title: "Fast action",
-        text: "The usage of highly active extracts with improved bioavailability.",
-      },
-      {
-        title: "Efficiency",
-        text: "The complex includes well-known and well-studied components that have undergone prolonged clinical studies.",
-      },
-      {
-        title: "Plant-derived capsule",
-        text: "Suitable for vegetarians, does not contain paraffins.",
-      },
-    ],
-    capsulesBlock: {
-      title: "30 capsules",
-      text: "A natural health elixir for skin and overall vitality. GH contains premium ginseng root, royal jelly, and honey, and when taken daily: Increases protective properties Improves skin condition Benefits all organs and systems Enhances overall vitality",
-    },
-  },
   GQ10: {
     key: "GQ10",
     productName: "GQ10 | Youth formula",
@@ -465,51 +420,6 @@ export const PRODUCTS: Record<string, ProductContent> = {
     capsulesBlock: {
       title: "60 capsules ",
       text: "A natural energy activator complex. GQ10 contains 5 mg of coenzyme Q10 in one capsule, and when taken daily, it: Creates powerful antioxidant protection for organs and body systems Stimulates the process of cellular energy exchange Improves skin turgor, eliminating the appearance of age-related changes Prevents the development of cardiovascular diseases",
-    },
-  },
-  GS: {
-    key: "GS",
-    productName: "GS | SHINE OF INNER BEAUTY",
-    productNameColor: "#FF69B4",
-    heroBackgroundSrc: "/product-page-images/product_GS/bg_capsule_gs.png",
-    closeIconSrc: "/product-page-images/icon_close_x.png",
-    jarImageSrc: "/product-page-images/product_GS/capsule_vitamins_gs.png",
-    promoBannerSrc: "/product-page-images/product_A/promo_banner_a.png",
-    ingredients: [
-      {
-        title: "Grape Seed",
-        imageSrc: "/product-page-images/ingredients-google/Ingridients/grape_seed_extract.png",
-        amount: "100 mg",
-      },
-      {
-        title: "Hyaluronic Acid",
-        imageSrc: "/product-page-images/ingredients-google/Ingridients/hyaluronic_acid.png",
-        amount: "50 mg",
-      },
-      {
-        title: "Zinc",
-        imageSrc: "/product-page-images/ingredients-google/Ingridients/zinc.png",
-        amount: "15 mg",
-      },
-    ],
-    description: "The GS natural drinkable complex is a balanced formula of antioxidants and nutrients to maintain water balance and natural skin radiance. When taken daily, it: Protects the structure of the dermis from free radicals and UV radiation Reduces the appearance of redness and pigmentation spots Improves skin elasticity and firmness, improving its texture Cleanses the body of toxins, promoting deep detoxification Ideal for a 30-day beauty regimen (1 package = 1 regimen)",
-    features: [
-      {
-        title: "Fast action",
-        text: "The usage of highly active extracts with improved bioavailability.",
-      },
-      {
-        title: "Efficiency",
-        text: "The complex includes well-known and well-studied components that have undergone prolonged clinical studies.",
-      },
-      {
-        title: "Plant-derived capsule",
-        text: "Suitable for vegetarians, does not contain paraffins.",
-      },
-    ],
-    capsulesBlock: {
-      title: "30 capsules",
-      text: "The GS natural drinkable complex is a balanced formula of antioxidants and nutrients to maintain water balance and natural skin radiance. When taken daily, it: Protects the structure of the dermis from free radicals and UV radiation Reduces the appearance of redness and pigmentation spots Improves skin elasticity and firmness, improving its texture Cleanses the body of toxins, promoting deep detoxification Ideal for a 30-day beauty regimen (1 package = 1 regimen)",
     },
   },
   JN: {
