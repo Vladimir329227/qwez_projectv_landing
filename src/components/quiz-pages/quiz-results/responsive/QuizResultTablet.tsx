@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { navigateToProduct } from "../../../../App";
+import { navigateToProduct, navigateToLanding } from "../../../../App";
 import { RecommendationResult } from "../recommendationEngine";
 import { 
   getProductImage, 
@@ -9,7 +9,8 @@ import {
   getWellnessDescription, 
   getExpectedOutcomes,
   getProductImage2,
-  getQuizDuration
+  getQuizDuration,
+  getOutcomeIcon
 } from "../../../../utils/recommendationHelpers";
 import RecommendationCarousel from "../RecommendationCarousel";
 
@@ -145,13 +146,13 @@ export default function QuizResultTablet({ answers, recommendations }: QuizResul
 						{getExpectedOutcomes(recommendations).slice(0, 3).map((outcome, index) => (
 							<div key={index} className="flex items-center bg-[#F0F6F7] flex-1 min-w-0 py-4 rounded-xl">
 								<div className="flex flex-col items-center w-6 ml-4 mr-3">
-									<img
-										src="/quiz-result-images/icon_blue_symbols.png"
-										className="w-6 h-6 object-fill"
+									<div 
+										className="w-6 h-6"
+										dangerouslySetInnerHTML={{ __html: getOutcomeIcon(outcome.icon) }}
 									/>
 								</div>
 								<div className="flex-1 self-stretch text-[#1F2429] bg-transparent text-sm py-0.5 border-0">
-									{outcome}
+									{outcome.text}
 								</div>
 							</div>
 						))}
@@ -162,7 +163,7 @@ export default function QuizResultTablet({ answers, recommendations }: QuizResul
 				<div className="flex items-start self-stretch mb-8 mx-4 sm:mx-[50px] gap-4">
 					<div className="flex flex-col items-start flex-1 min-w-0 gap-4">
 						<img
-							src="/quiz-result-images/icon_blue_symbols.png"
+							src="/quiz-result-images/crio.png"
 							className="w-8 h-8 object-fill"
 						/>
 						<div className="flex flex-col items-start self-stretch gap-2">
@@ -241,7 +242,7 @@ export default function QuizResultTablet({ answers, recommendations }: QuizResul
 						{"Project V creates innovative products helping millions of people strengthen their health and improve their quality of life on a daily basis. By using the healing powers of nature, new research and technologies, we aim to give everyone the chance to be healthy and happy."}
 					</span>
 					<button className="flex flex-col items-start bg-transparent text-left py-3 px-[23px] rounded-[100000px] border border-solid border-[#1F2429]"
-						onClick={() => alert("Pressed!")}>
+						onClick={navigateToLanding}>
 						<span className="text-[#1F2429] text-xs font-bold" >
 							{"Learn More"}
 						</span>

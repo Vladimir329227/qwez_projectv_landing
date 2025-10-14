@@ -38,6 +38,12 @@ export function navigateToResults() {
   window.location.reload(); // Force page reload to trigger the new page
 }
 
+// Utility function to navigate to landing page
+export function navigateToLanding() {
+  setCookie('page', 'landing', 365);
+  window.location.reload(); // Force page reload to trigger the new page
+}
+
 const PageContext = React.createContext<{ page: Page; setPage: (page: Page) => void } | undefined>(undefined);
 
 export function usePage() {

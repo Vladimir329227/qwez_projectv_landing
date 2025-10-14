@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { navigateToProduct } from "../../../../App";
+import { navigateToProduct, navigateToLanding } from "../../../../App";
 import { RecommendationResult } from "../recommendationEngine";
 import { 
   getProductImage, 
@@ -9,7 +9,8 @@ import {
   getWellnessDescription, 
   getExpectedOutcomes,
   getProductImage2,
-  getQuizDuration
+  getQuizDuration,
+  getOutcomeIcon
 } from "../../../../utils/recommendationHelpers";
 
 interface QuizResultMobileProps {
@@ -175,26 +176,26 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
                 <span className="text-[#1F2429] mb-2 mx-5 text-[15px] font-bold mr-[229px]">
                   {"Expected Outcomes"}
                 </span>
-                <div className="flex flex-col items-center w-[90%] gap-2">
-                  {getExpectedOutcomes(recommendations).map((outcome, index) => (
-                    <div key={index} className="flex items-center w-[100%] bg-[#F0F6F7] p-4 gap-3 rounded-xl">
-                      <div className="flex flex-col shrink-0 items-start">
-                        <img
-                          src="/quiz-result-images/icon_blue_symbols.png"
-                          className="w-6 h-6 object-fill"
-                        />
-                      </div>
-                      <div className="text-[#1F2429] bg-transparent text-sm w-[70%] py-0.5 border-0">
-                        {outcome}
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                 <div className="flex flex-col items-center w-[90%] gap-2">
+                   {getExpectedOutcomes(recommendations).map((outcome, index) => (
+                     <div key={index} className="flex items-center w-[100%] bg-[#F0F6F7] p-4 gap-3 rounded-xl">
+                       <div className="flex flex-col shrink-0 items-start">
+                         <div 
+                           className="w-6 h-6"
+                           dangerouslySetInnerHTML={{ __html: getOutcomeIcon(outcome.icon) }}
+                         />
+                       </div>
+                       <div className="text-[#1F2429] bg-transparent text-sm w-[70%] py-0.5 border-0">
+                         {outcome.text}
+                       </div>
+                     </div>
+                   ))}
+                 </div>
               </div>
               <div className="bg-[#E1E9FD]  w-[90%]  h-[1px] mb-10 mx-5"></div>
               <div className="flex flex-col items-start mb-10 mx-5 gap-4">
                 <img
-                  src="/quiz-result-images/icon_blue_symbols.png"
+                  src="/quiz-result-images/crio.png"
                   className="w-8 h-8 mr-[330px] object-fill"
                 />
                 <div className="flex flex-col items-start gap-2">
@@ -281,7 +282,7 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
                 </span>
                 <button
                   className="flex flex-col items-start bg-transparent text-left py-3 px-[23px] rounded-[100000px] border border-solid border-[#1F2429]"
-                  onClick={() => alert("Pressed!")}
+                  onClick={navigateToLanding}
                 >
                   <span className="text-[#1F2429] text-xs font-bold">
                     {"Learn More"}

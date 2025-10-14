@@ -52,24 +52,24 @@ export const PRODUCTS: Record<string, ProductContent> = {
         amount: "15 mg",
       },
     ],
-    description: "An antioxidant formula to protect against infections, toxins, and premature aging. A contains 80 mg of grape seed extract in one capsule and, when taken daily: Reduces the risk of chronic diseases Slows down aging Stimulates cell renewal Supports immunity Blocks oxidative processes",
+    description: "Powerful antioxidant protection with grape seed extract and vitamin C. This formula fights free radicals, supports immune function, and helps maintain youthful skin. Perfect for daily antioxidant support and cellular protection.",
     features: [
       {
-        title: "Fast action",
-        text: "The usage of highly active extracts with improved bioavailability.",
+        title: "Antioxidant Power",
+        text: "High-potency grape seed extract provides superior antioxidant protection against free radicals.",
       },
       {
-        title: "Efficiency",
-        text: "The complex includes well-known and well-studied components that have undergone prolonged clinical studies.",
+        title: "Immune Support",
+        text: "Vitamin C and zinc work together to strengthen your body's natural defense system.",
       },
       {
-        title: "Plant-derived capsule",
-        text: "Suitable for vegetarians, does not contain paraffins.",
+        title: "Youthful Skin",
+        text: "Helps maintain healthy, radiant skin by protecting against oxidative stress and premature aging.",
       },
     ],
     capsulesBlock: {
       title: "30 capsules",
-      text: "An antioxidant formula to protect against infections, toxins, and premature aging. A contains 80 mg of grape seed extract in one capsule and, when taken daily: Reduces the risk of chronic diseases Slows down aging Stimulates cell renewal Supports immunity Blocks oxidative processes",
+      text: "Daily antioxidant support with 80mg grape seed extract, 65mg vitamin C, and 15mg zinc. Helps protect cells from oxidative stress, supports immune function, and promotes healthy aging.",
     },
   },
   BR: {
@@ -97,24 +97,24 @@ export const PRODUCTS: Record<string, ProductContent> = {
         amount: "15 mg",
       },
     ],
-    description: "Your daily protection for your brain and nervous system. BR contains docosahexaenoic acid (DHA), vitamins B5 and B6, and ginkgo biloba extract. When taken daily, it: Protects the brain and nervous system from stress and overload Improves cognitive function and supports clarity of thought Lowers cholesterol levels, promoting vascular cleansing Neutralizes free radicals, slowing down neurodegenerative processes",
+    description: "Brain and nervous system support with omega-3, ginkgo biloba, and vitamin E. This cognitive enhancement formula improves memory, focus, and mental clarity while protecting against neurological stress.",
     features: [
       {
-        title: "Fast action",
-        text: "The usage of highly active extracts with improved bioavailability.",
+        title: "Cognitive Enhancement",
+        text: "Omega-3 fatty acids and ginkgo biloba work together to improve memory, focus, and mental clarity.",
       },
       {
-        title: "Efficiency",
-        text: "The complex includes well-known and well-studied components that have undergone prolonged clinical studies.",
+        title: "Brain Protection",
+        text: "Helps protect brain cells from oxidative stress and supports healthy neurological function.",
       },
       {
-        title: "Plant-derived capsule",
-        text: "Suitable for vegetarians, does not contain paraffins.",
+        title: "Stress Relief",
+        text: "Vitamin E and ginkgo biloba help reduce mental fatigue and support emotional well-being.",
       },
     ],
     capsulesBlock: {
       title: "30 capsules",
-      text: "Your daily protection for your brain and nervous system. BR contains docosahexaenoic acid (DHA), vitamins B5 and B6, and ginkgo biloba extract. When taken daily, it: Protects the brain and nervous system from stress and overload Improves cognitive function and supports clarity of thought Lowers cholesterol levels, promoting vascular cleansing Neutralizes free radicals, slowing down neurodegenerative processes",
+      text: "Cognitive support with 100mg omega-3, 50mg ginkgo biloba, and 15mg vitamin E. Enhances brain function, improves memory, and supports nervous system health.",
     },
   },
   CH: {
@@ -142,24 +142,24 @@ export const PRODUCTS: Record<string, ProductContent> = {
         amount: "15 mg",
       },
     ],
-    description: "A multi-component natural energy supplement based on eleutherococcus, spirulina, and guarana. Each CH capsule contains 75 mg of spirulina microalgae and, when taken daily: Increases mental and physical performance Accelerates recovery after exercise and colds Helps reduce fatigue Protects against overexertion",
+    description: "Natural energy boost with spirulina, guarana, and eleutherococcus. This energizing formula increases stamina, reduces fatigue, and supports physical and mental performance throughout the day.",
     features: [
       {
-        title: "Fast action",
-        text: "The usage of highly active extracts with improved bioavailability.",
+        title: "Natural Energy",
+        text: "Spirulina provides sustained energy without the crash associated with caffeine-based stimulants.",
       },
       {
-        title: "Efficiency",
-        text: "The complex includes well-known and well-studied components that have undergone prolonged clinical studies.",
+        title: "Performance Boost",
+        text: "Guarana and eleutherococcus enhance both physical and mental performance throughout the day.",
       },
       {
-        title: "Plant-derived capsule",
-        text: "Suitable for vegetarians, does not contain paraffins.",
+        title: "Recovery Support",
+        text: "Helps accelerate recovery after exercise and supports the body's natural energy production.",
       },
     ],
     capsulesBlock: {
-      title: "60 capsules ",
-      text: "A multi-component natural energy supplement based on eleutherococcus, spirulina, and guarana. Each CH capsule contains 75 mg of spirulina microalgae and, when taken daily: Increases mental and physical performance Accelerates recovery after exercise and colds Helps reduce fatigue Protects against overexertion",
+      title: "60 capsules",
+      text: "Natural energy with 75mg spirulina, 10mg guarana, and 15mg eleutherococcus. Boosts physical and mental energy, reduces fatigue, and supports recovery.",
     },
   },
   D: {
@@ -182,24 +182,24 @@ export const PRODUCTS: Record<string, ProductContent> = {
         amount: "50 mg",
       },
     ],
-    description: "A natural complex for cleansing the body at the cellular level. Product D contains 150 mg of cat's claw powder and 50 mg of cat's claw extract in one capsule, and, when taken daily: Cleanses the body of toxins and waste Normalizes the immune system Has anti-inflammatory effects Is an effective natural antibiotic",
+    description: "Deep cellular detox with cat's claw and ginger root. This cleansing formula supports liver function, removes toxins, and provides natural anti-inflammatory benefits for overall wellness.",
     features: [
       {
-        title: "Fast action",
-        text: "The usage of highly active extracts with improved bioavailability.",
+        title: "Deep Cleansing",
+        text: "Cat's claw provides powerful detoxification at the cellular level, removing harmful toxins.",
       },
       {
-        title: "Efficiency",
-        text: "The complex includes well-known and well-studied components that have undergone prolonged clinical studies.",
+        title: "Anti-Inflammatory",
+        text: "Natural anti-inflammatory properties help reduce inflammation and support overall wellness.",
       },
       {
-        title: "Plant-derived capsule",
-        text: "Suitable for vegetarians, does not contain paraffins.",
+        title: "Immune Support",
+        text: "Ginger root enhances immune function and provides additional antioxidant protection.",
       },
     ],
     capsulesBlock: {
-      title: "60 capsules ",
-      text: "A natural complex for cleansing the body at the cellular level. Product D contains 150 mg of cat's claw powder and 50 mg of cat's claw extract in one capsule, and, when taken daily: Cleanses the body of toxins and waste Normalizes the immune system Has anti-inflammatory effects Is an effective natural antibiotic",
+      title: "60 capsules",
+      text: "Detox support with 150mg cat's claw and 50mg ginger root. Helps cleanse the body, support liver function, and provide natural anti-inflammatory benefits.",
     },
   },
   DG: {
@@ -227,24 +227,24 @@ export const PRODUCTS: Record<string, ProductContent> = {
         amount: "25 mg",
       },
     ],
-    description: "Support and restore your body's primary filter—the liver. Natural ingredients for cell protection, detoxification, and energy. Each DG capsule contains 85 mg of choline, and when taken daily, it: Supports healthy liver function Regulates cholesterol levels Has antioxidant and detoxifying effects Boosts energy and vitality Helps normalize blood sugar levels",
+    description: "Liver protection and support with choline, milk thistle, and turmeric. This hepatoprotective formula helps maintain healthy liver function, supports detoxification, and promotes optimal metabolic health.",
     features: [
       {
-        title: "Fast action",
-        text: "The usage of highly active extracts with improved bioavailability.",
+        title: "Liver Protection",
+        text: "Choline and milk thistle work together to protect and support healthy liver function.",
       },
       {
-        title: "Efficiency",
-        text: "The complex includes well-known and well-studied components that have undergone prolonged clinical studies.",
+        title: "Metabolic Support",
+        text: "Turmeric helps support healthy metabolism and normal blood sugar levels.",
       },
       {
-        title: "Plant-derived capsule",
-        text: "Suitable for vegetarians, does not contain paraffins.",
+        title: "Detoxification",
+        text: "Natural ingredients support the body's natural detoxification processes.",
       },
     ],
     capsulesBlock: {
       title: "30 capsules",
-      text: "Support and restore your body's primary filter—the liver. Natural ingredients for cell protection, detoxification, and energy. Each DG capsule contains 85 mg of choline, and when taken daily, it: Supports healthy liver function Regulates cholesterol levels Has antioxidant and detoxifying effects Boosts energy and vitality Helps normalize blood sugar levels",
+      text: "Liver support with 85mg choline, 50mg milk thistle, and 25mg turmeric. Protects liver cells, supports detoxification, and helps maintain healthy cholesterol levels.",
     },
   },
   DR: {
@@ -272,7 +272,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
         amount: "25 mcg",
       },
     ],
-    description: "Healthy gut life. Each DR capsule contains 175 mg of the unique fermented food blend Lalmin Immune™ based on yeast, including 40 mg of β-1,3/1,6-glucans, and when taken regularly, it: Supports the immune system Relieves symptoms of respiratory tract inflammation Normalizes intestinal microflora",
+    description: "Immune system support with beta-glucans, echinacea, and selenium. This immune-boosting formula helps strengthen natural defenses and supports respiratory health during seasonal changes.",
     features: [
       {
         title: "Fast action",
@@ -289,7 +289,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
     ],
     capsulesBlock: {
       title: "30 capsules",
-      text: "Healthy gut life. Each DR capsule contains 175 mg of the unique fermented food blend Lalmin Immune™ based on yeast, including 40 mg of β-1,3/1,6-glucans, and when taken regularly, it: Supports the immune system Relieves symptoms of respiratory tract inflammation Normalizes intestinal microflora",
+      text: "Immune support with 40mg beta-glucans, 50mg echinacea, and 25mcg selenium. Strengthens natural immunity and supports respiratory health.",
     },
   },
   ENT: {
@@ -317,7 +317,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
         amount: "100 mg",
       },
     ],
-    description: "Youth and vitality with every confident step. ENT contains 516 mg of glucosamine sulfate in two capsules, and when taken daily, it: Restores cartilage tissue and improves joint mobility Has a pronounced anti-inflammatory and analgesic effect Supports normal connective tissue formation Prevents depletion and destruction of bone and cartilage structure",
+    description: "Joint health and mobility support with glucosamine, marine collagen, and chondroitin. This comprehensive formula helps maintain healthy joints, supports cartilage repair, and reduces joint discomfort.",
     features: [
       {
         title: "Fast action",
@@ -334,7 +334,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
     ],
     capsulesBlock: {
       title: "30 capsules",
-      text: "Youth and vitality with every confident step. ENT contains 516 mg of glucosamine sulfate in two capsules, and when taken daily, it: Restores cartilage tissue and improves joint mobility Has a pronounced anti-inflammatory and analgesic effect Supports normal connective tissue formation Prevents depletion and destruction of bone and cartilage structure",
+      text: "Joint support with 516mg glucosamine, 200mg marine collagen, and 100mg chondroitin. Promotes joint mobility and cartilage health.",
     },
   },
   G: {
@@ -357,7 +357,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
         amount: "50 mg",
       },
     ],
-    description: "An adaptogenic formula for restoring energy, harmony, and protecting your body. Only 1 out of 20 roots that have undergone a 6-year cultivation cycle in the mountains is selected to create G cryogenic powder.\nEach capsule of G contains 270 mg of cryogenic white imperial ginseng powder, a balanced complex of saponins, organic germanium, amino acids, and minerals. When taken daily: Improves memory, concentration, and reduces stress levels Accelerates metabolism and supports liver function Normalizes blood pressure and improves blood circulation Regulates hormonal balance, alleviating symptoms of menstrual pain and menopause Nourishes the skin and strengthens hair, preventing hair loss",
+    description: "Premium adaptogenic energy with white imperial ginseng and ginger. This exclusive formula provides sustained energy, supports stress management, and promotes overall vitality and wellness.",
     features: [
       {
         title: "Fast action",
@@ -373,8 +373,8 @@ export const PRODUCTS: Record<string, ProductContent> = {
       },
     ],
     capsulesBlock: {
-      title: "60 capsules ",
-      text: "An adaptogenic formula for restoring energy, harmony, and protecting your body. Only 1 out of 20 roots that have undergone a 6-year cultivation cycle in the mountains is selected to create G cryogenic powder.\nEach capsule of G contains 270 mg of cryogenic white imperial ginseng powder, a balanced complex of saponins, organic germanium, amino acids, and minerals. When taken daily: Improves memory, concentration, and reduces stress levels Accelerates metabolism and supports liver function Normalizes blood pressure and improves blood circulation Regulates hormonal balance, alleviating symptoms of menstrual pain and menopause Nourishes the skin and strengthens hair, preventing hair loss",
+      title: "60 capsules",
+      text: "Premium adaptogenic energy with 270mg white imperial ginseng and 50mg ginger. Supports energy, stress management, and overall vitality.",
     },
   },
   GQ10: {
@@ -402,7 +402,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
         amount: "25 mg",
       },
     ],
-    description: "A natural energy activator complex. GQ10 contains 5 mg of coenzyme Q10 in one capsule, and when taken daily, it: Creates powerful antioxidant protection for organs and body systems Stimulates the process of cellular energy exchange Improves skin turgor, eliminating the appearance of age-related changes Prevents the development of cardiovascular diseases",
+    description: "Cellular energy and anti-aging with coenzyme Q10, vitamin C, and resveratrol. This powerful combination supports cellular energy production, provides antioxidant protection, and promotes youthful vitality.",
     features: [
       {
         title: "Fast action",
@@ -418,8 +418,8 @@ export const PRODUCTS: Record<string, ProductContent> = {
       },
     ],
     capsulesBlock: {
-      title: "60 capsules ",
-      text: "A natural energy activator complex. GQ10 contains 5 mg of coenzyme Q10 in one capsule, and when taken daily, it: Creates powerful antioxidant protection for organs and body systems Stimulates the process of cellular energy exchange Improves skin turgor, eliminating the appearance of age-related changes Prevents the development of cardiovascular diseases",
+      title: "60 capsules",
+      text: "Cellular energy with 5mg coenzyme Q10, 50mg vitamin C, and 25mg resveratrol. Supports cellular energy production and antioxidant protection.",
     },
   },
   JN: {
@@ -447,7 +447,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
         amount: "5 mcg",
       },
     ],
-    description: "A vitamin and mineral complex for the harmonious development of children's bodies. One capsule contains 20 mg of orange extract, and when taken regularly, it: Provides children with the nutrients necessary for full growth Increases cognitive and motor activity Promotes the formation of good health in children Prevents fatigue and overexcitement",
+    description: "Children's growth and development support with bitter orange, vitamin C, and vitamin D3. This gentle formula provides essential nutrients for healthy growth, cognitive development, and immune support.",
     features: [
       {
         title: "Fast action",
@@ -464,7 +464,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
     ],
     capsulesBlock: {
       title: "30 capsules",
-      text: "A vitamin and mineral complex for the harmonious development of children's bodies. One capsule contains 20 mg of orange extract, and when taken regularly, it: Provides children with the nutrients necessary for full growth Increases cognitive and motor activity Promotes the formation of good health in children Prevents fatigue and overexcitement",
+      text: "Children's growth support with 20mg bitter orange, 30mg vitamin C, and 5mcg vitamin D3. Supports healthy development and immune function.",
     },
   },
   JNB: {
@@ -492,7 +492,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
         amount: "10 mcg",
       },
     ],
-    description: "A blackcurrant-flavored nutraceutical for the harmonious growth and ideal posture of children. With regular use, it: Promotes proper posture and harmonious growth Strengthens bones, teeth, and hair Supports immunity, heart, and nerves Strengthens ligaments and tendons\nThe balanced complex of vitamins and minerals helps replenish calcium, strengthen the bone and muscle system, normalize metabolism, and the functioning of the heart and nervous system.",
+    description: "Children's bone and posture support with calcium, vitamin K2, and vitamin D3. This blackcurrant-flavored formula promotes healthy bone development, proper posture, and overall growth.",
     features: [
       {
         title: "Fast action",
@@ -509,7 +509,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
     ],
     capsulesBlock: {
       title: "30 capsules",
-      text: "A blackcurrant-flavored nutraceutical for the harmonious growth and ideal posture of children. With regular use, it: Promotes proper posture and harmonious growth Strengthens bones, teeth, and hair Supports immunity, heart, and nerves Strengthens ligaments and tendons\nThe balanced complex of vitamins and minerals helps replenish calcium, strengthen the bone and muscle system, normalize metabolism, and the functioning of the heart and nervous system.",
+      text: "Bone support with 200mg calcium, 50mcg vitamin K2, and 10mcg vitamin D3. Promotes healthy bone development and proper posture in children.",
     },
   },
   LV: {
@@ -537,7 +537,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
         amount: "25 mg",
       },
     ],
-    description: "Antioxidant protection against aging processes. LV contains 100 mg of acai berry extract in one capsule, and when taken daily, it: Supports health and beauty thanks to the action of antioxidants Helps reduce the risk of cardiovascular disease Has immunomodulatory and anti-inflammatory effects Improves quality of life by helping to relieve fatigue",
+    description: "Youthful radiance with acai berry, green tea, and resveratrol. This antioxidant-rich formula helps maintain youthful skin, supports cardiovascular health, and provides natural anti-aging benefits.",
     features: [
       {
         title: "Fast action",
@@ -553,8 +553,8 @@ export const PRODUCTS: Record<string, ProductContent> = {
       },
     ],
     capsulesBlock: {
-      title: "60 capsules ",
-      text: "Antioxidant protection against aging processes. LV contains 100 mg of acai berry extract in one capsule, and when taken daily, it: Supports health and beauty thanks to the action of antioxidants Helps reduce the risk of cardiovascular disease Has immunomodulatory and anti-inflammatory effects Improves quality of life by helping to relieve fatigue",
+      title: "60 capsules",
+      text: "Anti-aging support with 100mg acai berry, 50mg green tea, and 25mg resveratrol. Promotes youthful skin and cardiovascular health.",
     },
   },
   M: {
@@ -577,7 +577,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
         amount: "10 mg",
       },
     ],
-    description: "A complex of polyunsaturated fatty acids for the heart, blood vessels, brain, and skin. Product M contains 500 mg of fish oil and 135 mg of omega-3 polyunsaturated fatty acids (eicosapentaenoic acid, docosahexaenoic acid) in one capsule and, when taken daily: Prevents the destruction of brain neurons Slows down the aging process Prevents the development of cardiovascular diseases Normalizes blood pressure Improves intelligence.",
+    description: "Heart and brain health with omega-3 fatty acids and vitamin E. This essential fatty acid formula supports cardiovascular health, cognitive function, and helps maintain healthy blood pressure.",
     features: [
       {
         title: "Fast action",
@@ -594,7 +594,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
     ],
     capsulesBlock: {
       title: "60 capsules",
-      text: "A complex of polyunsaturated fatty acids for the heart, blood vessels, brain, and skin. Product M contains 500 mg of fish oil and 135 mg of omega-3 polyunsaturated fatty acids (eicosapentaenoic acid, docosahexaenoic acid) in one capsule and, when taken daily: Prevents the destruction of brain neurons Slows down the aging process Prevents the development of cardiovascular diseases Normalizes blood pressure Improves intelligence.",
+      text: "Heart and brain support with 135mg omega-3 and 10mg vitamin E. Supports cardiovascular health and cognitive function.",
     },
   },
   MDS: {
@@ -622,7 +622,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
         amount: "200 mg",
       },
     ],
-    description: "A complex of phytoestrogens, vitamins, and minerals to support beauty and health in mature women. MDS contains soy isoflavones, vitamin D3, and calcium bisglycinate in one capsule, and when taken daily, it: Helps maintain the necessary level of estrogen Reduces the negative symptoms of menopause Improves the condition of teeth, hair, and bone and cartilage tissue Helps slow down the aging process",
+    description: "Mature women's wellness with soy isoflavones, vitex, and calcium. This specialized formula helps support hormonal balance, bone health, and overall wellness during menopause and beyond.",
     features: [
       {
         title: "Fast action",
@@ -639,7 +639,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
     ],
     capsulesBlock: {
       title: "60 capsules",
-      text: "A complex of phytoestrogens, vitamins, and minerals to support beauty and health in mature women. MDS contains soy isoflavones, vitamin D3, and calcium bisglycinate in one capsule, and when taken daily, it: Helps maintain the necessary level of estrogen Reduces the negative symptoms of menopause Improves the condition of teeth, hair, and bone and cartilage tissue Helps slow down the aging process",
+      text: "Women's wellness with 50mg soy isoflavones, 30mg vitex, and 200mg calcium. Supports hormonal balance and bone health.",
     },
   },
   MGR: {
@@ -667,7 +667,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
         amount: "25 mg",
       },
     ],
-    description: "A complex for supporting the nervous system with plant adaptogens, magnesium, and active vitamins, which helps maintain inner calm and resistance to stress: Promotes muscle relaxation and reduces physical tension Strengthens the nervous system and increases resistance to stress Normalizes serotonin levels, maintaining a stable emotional background",
+    description: "Stress relief and nervous system support with magnesium, St. John's wort, and hawthorn. This calming formula helps reduce stress, promotes relaxation, and supports emotional balance.",
     features: [
       {
         title: "Fast action",
@@ -683,8 +683,8 @@ export const PRODUCTS: Record<string, ProductContent> = {
       },
     ],
     capsulesBlock: {
-      title: "60 capsules ",
-      text: "A complex for supporting the nervous system with plant adaptogens, magnesium, and active vitamins, which helps maintain inner calm and resistance to stress: Promotes muscle relaxation and reduces physical tension Strengthens the nervous system and increases resistance to stress Normalizes serotonin levels, maintaining a stable emotional background",
+      title: "60 capsules",
+      text: "Stress support with 200mg magnesium, 50mg St. John's wort, and 25mg hawthorn. Promotes relaxation and emotional balance.",
     },
   },
   N: {
@@ -712,7 +712,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
         amount: "15 mg",
       },
     ],
-    description: "A natural antiseptic with powerful anti-inflammatory and diuretic properties. N contains 50 mg of Archangelica (angelica) in one capsule and, when taken daily: Provides anti-inflammatory and antibacterial effects without antibiotics Normalizes the functioning of the genitourinary system Reduces swelling Supports the health of the immune and hematopoietic systems Has a diuretic effect Promotes the removal of sand and small stones from the kidneys",
+    description: "Urinary tract health with angelica, cherry stalks, and witch hazel. This natural formula supports urinary system function, provides anti-inflammatory benefits, and helps maintain kidney health.",
     features: [
       {
         title: "Fast action",
@@ -728,8 +728,8 @@ export const PRODUCTS: Record<string, ProductContent> = {
       },
     ],
     capsulesBlock: {
-      title: "60 capsules ",
-      text: "A natural antiseptic with powerful anti-inflammatory and diuretic properties. N contains 50 mg of Archangelica (angelica) in one capsule and, when taken daily: Provides anti-inflammatory and antibacterial effects without antibiotics Normalizes the functioning of the genitourinary system Reduces swelling Supports the health of the immune and hematopoietic systems Has a diuretic effect Promotes the removal of sand and small stones from the kidneys",
+      title: "60 capsules",
+      text: "Urinary health with 50mg angelica, 25mg cherry stalks, and 15mg witch hazel. Supports urinary tract function and kidney health.",
     },
   },
   NPM: {
@@ -757,7 +757,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
         amount: "30 mg",
       },
     ],
-    description: "A natural formula of active ingredients that provides neuro-nutrition and targets problems of the male urogenital system.\nNPM is recommended for all men, as well as women who take responsibility for their health. With daily use, it: Prevents diseases of the genitourinary system Strengthens the body's immune system and increases resistance to viruses, microbes, and fungi Reduces the risk of infectious diseases of the genitourinary tract Protects against the development of chronic diseases and consolidates the results of previous therapy.",
+    description: "Men's urogenital health with harpagophytum, echinacea, and nigella sativa. This specialized formula supports male reproductive health, immune function, and overall wellness.",
     features: [
       {
         title: "Fast action",
@@ -773,8 +773,8 @@ export const PRODUCTS: Record<string, ProductContent> = {
       },
     ],
     capsulesBlock: {
-      title: "60 capsules ",
-      text: "A natural formula of active ingredients that provides neuro-nutrition and targets problems of the male urogenital system.\nNPM is recommended for all men, as well as women who take responsibility for their health. With daily use, it: Prevents diseases of the genitourinary system Strengthens the body's immune system and increases resistance to viruses, microbes, and fungi Reduces the risk of infectious diseases of the genitourinary tract Protects against the development of chronic diseases and consolidates the results of previous therapy.",
+      title: "60 capsules",
+      text: "Men's health with 50mg harpagophytum, 40mg echinacea, and 30mg nigella sativa. Supports urogenital health and immune function.",
     },
   },
   OS: {
@@ -802,7 +802,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
         amount: "10 mcg",
       },
     ],
-    description: "A complex of marine minerals and vitamins for strengthening bones and joint health. OS contains 834 mg of marine minerals from whole calcareous seaweed in one capsule, and when taken daily: Normalizes the mineral composition and strength of bone tissue Helps reduce the risk of fractures and other injuries Reduces joint discomfort during physical activity Normalizes the health of muscles, cartilage, and connective tissues Promotes protein metabolism",
+    description: "Bone and joint strength with marine minerals, calcium, and vitamin D3. This comprehensive formula supports bone density, joint health, and helps maintain strong skeletal structure.",
     features: [
       {
         title: "Fast action",
@@ -819,7 +819,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
     ],
     capsulesBlock: {
       title: "60 capsules",
-      text: "A complex of marine minerals and vitamins for strengthening bones and joint health. OS contains 834 mg of marine minerals from whole calcareous seaweed in one capsule, and when taken daily: Normalizes the mineral composition and strength of bone tissue Helps reduce the risk of fractures and other injuries Reduces joint discomfort during physical activity Normalizes the health of muscles, cartilage, and connective tissues Promotes protein metabolism",
+      text: "Bone strength with 834mg marine minerals, 200mg calcium, and 10mcg vitamin D3. Supports bone density and joint health.",
     },
   },
   P: {
@@ -847,7 +847,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
         amount: "0.6 mg",
       },
     ],
-    description: "A natural anti-stress complex based on lavender, lemon balm, and valerian. P contains 100 mg of lavender flower extract in one capsule and, when taken daily: Prevents stress and neutralizes its effects Supports nervous system health Normalizes heart rhythm Eliminates feelings of anxiety and restlessness Ensures restful sleep",
+    description: "Natural sleep and relaxation with lavender, lemon balm, and valerian. This calming herbal blend promotes restful sleep, reduces anxiety, and supports nervous system balance.",
     features: [
       {
         title: "Fast action",
@@ -864,7 +864,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
     ],
     capsulesBlock: {
       title: "60 capsules",
-      text: "A natural anti-stress complex based on lavender, lemon balm, and valerian. P contains 100 mg of lavender flower extract in one capsule and, when taken daily: Prevents stress and neutralizes its effects Supports nervous system health Normalizes heart rhythm Eliminates feelings of anxiety and restlessness Ensures restful sleep",
+      text: "Sleep support with 100mg lavender, 10mg lemon balm, and 0.6mg valerian. Promotes relaxation and restful sleep.",
     },
   },
   S: {
@@ -892,7 +892,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
         amount: "300 mg",
       },
     ],
-    description: "A complex of live bifidobacteria and lactobacilli and natural prebiotics for normal bowel function. S contains 40 mg of Lactobacillus rhamnosus GG, 40 mg of lactic acid bacteria, and 300 mg of natural prebiotics in one capsule. When taken daily, it: Helps improve the condition and volume of beneficial intestinal microflora Activates the digestive system Improves the body's adaptation to environmental changes Reduces the risk of developing pathogenic microorganisms and new diseases Strengthens protection against toxins from food and the environment",
+    description: "Digestive health with probiotics and prebiotics. This gut-friendly formula contains live beneficial bacteria and natural prebiotics to support healthy digestion and immune function.",
     features: [
       {
         title: "Fast action",
@@ -909,7 +909,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
     ],
     capsulesBlock: {
       title: "30 capsules",
-      text: "A complex of live bifidobacteria and lactobacilli and natural prebiotics for normal bowel function. S contains 40 mg of Lactobacillus rhamnosus GG, 40 mg of lactic acid bacteria, and 300 mg of natural prebiotics in one capsule. When taken daily, it: Helps improve the condition and volume of beneficial intestinal microflora Activates the digestive system Improves the body's adaptation to environmental changes Reduces the risk of developing pathogenic microorganisms and new diseases Strengthens protection against toxins from food and the environment",
+      text: "Digestive support with 40mg Lactobacillus rhamnosus, 40mg lactic acid bacteria, and 300mg prebiotics. Supports gut health and immune function.",
     },
   },
   S2S: {
@@ -937,7 +937,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
         amount: "140 mg",
       },
     ],
-    description: "Comprehensive eye health protection. S2S contains 140 mg of blueberry extract in one capsule, as well as lutein and zeaxanthin, and when taken daily, it: Helps maintain visual acuity Helps prevent the development of serious eye diseases Helps improve therapy results, especially in older people Helps strengthen blood vessels, reduce dryness, and redness Helps reduce discomfort",
+    description: "Eye health and vision support with lutein, zeaxanthin, and blueberry extract. This specialized formula helps maintain visual acuity and protects against age-related eye concerns.",
     features: [
       {
         title: "Fast action",
@@ -954,7 +954,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
     ],
     capsulesBlock: {
       title: "30 capsules",
-      text: "Comprehensive eye health protection. S2S contains 140 mg of blueberry extract in one capsule, as well as lutein and zeaxanthin, and when taken daily, it: Helps maintain visual acuity Helps prevent the development of serious eye diseases Helps improve therapy results, especially in older people Helps strengthen blood vessels, reduce dryness, and redness Helps reduce discomfort",
+      text: "Eye health with 10mg lutein, 2mg zeaxanthin, and 140mg blueberry extract. Supports visual acuity and eye health.",
     },
   },
   SV: {
@@ -982,7 +982,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
         amount: "5 mg",
       },
     ],
-    description: "A balanced formula for improving digestion and metabolism. Each SV capsule contains 150 mg of Garcinia cambogia peel extract and, when taken daily: Restores metabolism Reduces appetite and dulls hunger Enhances the effects of diets Normalizes the digestive process Regulates the endocrine system",
+    description: "Metabolism and weight management with Garcinia cambogia, green tea, and chromium. This natural formula supports healthy metabolism and helps maintain optimal body weight.",
     features: [
       {
         title: "Fast action",
@@ -999,7 +999,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
     ],
     capsulesBlock: {
       title: "60 capsules",
-      text: "A balanced formula for improving digestion and metabolism. Each SV capsule contains 150 mg of Garcinia cambogia peel extract and, when taken daily: Restores metabolism Reduces appetite and dulls hunger Enhances the effects of diets Normalizes the digestive process Regulates the endocrine system",
+      text: "Metabolism support with 150mg Garcinia cambogia, 50mg green tea, and 5mg chromium. Helps maintain healthy metabolism and weight.",
     },
   },
   VS: {
@@ -1027,7 +1027,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
         amount: "25 mg",
       },
     ],
-    description: "An antioxidant complex for maintaining vascular health and lightness of gait. VS contains grape seed extract, resveratrol, diosmin, and hesperidin in one capsule, and when taken daily, it: Supports and normalizes blood circulation Increases vascular elasticity Improves cerebral blood circulation Strengthens memory Provides antioxidant protection",
+    description: "Vascular health and circulation with grape seed, diosmin, and hesperidin. This circulatory support formula helps maintain healthy blood vessels and optimal blood flow.",
     features: [
       {
         title: "Fast action",
@@ -1043,8 +1043,8 @@ export const PRODUCTS: Record<string, ProductContent> = {
       },
     ],
     capsulesBlock: {
-      title: "60 capsules ",
-      text: "An antioxidant complex for maintaining vascular health and lightness of gait. VS contains grape seed extract, resveratrol, diosmin, and hesperidin in one capsule, and when taken daily, it: Supports and normalizes blood circulation Increases vascular elasticity Improves cerebral blood circulation Strengthens memory Provides antioxidant protection",
+      title: "60 capsules",
+      text: "Vascular support with 100mg grape seed, 50mg diosmin, and 25mg hesperidin. Promotes healthy circulation and vascular function.",
     },
   },
 };

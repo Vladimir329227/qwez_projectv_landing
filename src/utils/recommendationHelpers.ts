@@ -91,47 +91,88 @@ export const getProductDescription = (product: ProductRecommendation): string =>
     return descriptions[product.product_id] || `${product.product_name} supports your wellness goals with targeted benefits for ${product.main_benefits.join(', ')}.`;
 };
 
-export const getExpectedOutcomes = (recommendations: RecommendationResult): string[] => {
-    const outcomes: string[] = [];
+export type ExpectedOutcome = {
+    text: string;
+    icon: string;
+};
+
+export const getExpectedOutcomes = (recommendations: RecommendationResult): ExpectedOutcome[] => {
+    const outcomes: ExpectedOutcome[] = [];
     const benefits = recommendations.key_benefits;
     const profile = recommendations.wellness_profile;
 
     // Basic outcomes based on benefits
     if (benefits.some(b => b.includes('stress') || b.includes('relax'))) {
-        outcomes.push('Reduced stress and improved emotional balance');
+        outcomes.push({
+            text: 'Reduced stress and improved emotional balance',
+            icon: 'stress-relief'
+        });
     }
     if (benefits.some(b => b.includes('energy') || b.includes('vitality'))) {
-        outcomes.push('Increased energy and physical vitality');
+        outcomes.push({
+            text: 'Increased energy and physical vitality',
+            icon: 'energy'
+        });
     }
     if (benefits.some(b => b.includes('sleep'))) {
-        outcomes.push('Deeper, more restorative sleep');
+        outcomes.push({
+            text: 'Deeper, more restorative sleep',
+            icon: 'sleep'
+        });
     }
     if (benefits.some(b => b.includes('focus') || b.includes('cognitive'))) {
-        outcomes.push('Enhanced mental focus and clarity');
+        outcomes.push({
+            text: 'Enhanced mental focus and clarity',
+            icon: 'brain'
+        });
     }
     if (benefits.some(b => b.includes('immune') || b.includes('detox'))) {
-        outcomes.push('Strengthened immune defenses');
+        outcomes.push({
+            text: 'Strengthened immune defenses',
+            icon: 'immune'
+        });
     }
     if (benefits.some(b => b.includes('skin') || b.includes('radiance'))) {
-        outcomes.push('Improved skin radiance and complexion');
+        outcomes.push({
+            text: 'Improved skin radiance and complexion',
+            icon: 'skin'
+        });
     }
     if (benefits.some(b => b.includes('digestion') || b.includes('gut'))) {
-        outcomes.push('Better digestion and gut health');
+        outcomes.push({
+            text: 'Better digestion and gut health',
+            icon: 'digestion'
+        });
     }
     if (benefits.some(b => b.includes('heart') || b.includes('cardiovascular'))) {
-        outcomes.push('Improved cardiovascular function');
+        outcomes.push({
+            text: 'Improved cardiovascular function',
+            icon: 'heart'
+        });
     }
 
     // Unique outcomes based on profile
-    if (profile === 'The Balancer' && !outcomes.some(o => o.includes('stress'))) {
-        outcomes.push('Enhanced stress resilience');
+    if (profile === 'The Balancer' && !outcomes.some(o => o.text.includes('stress'))) {
+        outcomes.push({
+            text: 'Enhanced stress resilience',
+            icon: 'balance'
+        });
     }
-    if (profile === 'The Energizer' && !outcomes.some(o => o.includes('energy'))) {
-        outcomes.push('Sustained mental and physical performance');
+    if (profile === 'The Energizer' && !outcomes.some(o => o.text.includes('energy'))) {
+        outcomes.push({
+            text: 'Sustained mental and physical performance',
+            icon: 'performance'
+        });
     }
     if (profile === 'The Growing Mind') {
-        outcomes.push('Harmonious development and growth');
-        outcomes.push('Cognitive function support');
+        outcomes.push({
+            text: 'Harmonious development and growth',
+            icon: 'growth'
+        });
+        outcomes.push({
+            text: 'Cognitive function support',
+            icon: 'brain'
+        });
     }
 
     return outcomes.slice(0, 4);
@@ -212,4 +253,54 @@ export const getQuizDuration = (answers: Record<string, any>): string => {
   const seconds = Math.floor((durationMs % 60000) / 1000);
   
   return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+};
+
+export const getOutcomeIcon = (iconType: string): string => {
+  const icons: Record<string, string> = {
+    'stress-relief': `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="#00A8E2"/>
+    </svg>`,
+    'energy': `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7 2v11h3v9l7-12h-4l4-8z" fill="#00A8E2"/>
+    </svg>`,
+    'sleep': `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12.34 2.02C6.59 1.82 2 6.42 2 12c0 5.52 4.48 10 10 10 3.71 0 6.93-2.02 8.66-5.02-7.51-.25-13.5-6.41-13.5-13.5 0-.75.07-1.48.18-2.18z" fill="#00A8E2"/>
+      <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z" fill="#00A8E2"/>
+    </svg>`,
+    'brain': `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="#00A8E2"/>
+      <circle cx="8" cy="8" r="1.5" fill="#00A8E2"/>
+      <circle cx="16" cy="8" r="1.5" fill="#00A8E2"/>
+      <path d="M12 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z" fill="#00A8E2"/>
+    </svg>`,
+    'immune': `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#00A8E2"/>
+      <path d="M12 6l1.5 3L17 9.5l-2.5 2.5L16 15l-3-1.5L10 15l1.5-3L9 9.5l3.5-1.5z" fill="#00A8E2"/>
+    </svg>`,
+    'skin': `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="#00A8E2"/>
+      <circle cx="12" cy="12" r="3" fill="#00A8E2"/>
+    </svg>`,
+    'digestion': `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="#00A8E2"/>
+      <path d="M8 9h8v2H8V9zm0 3h8v2H8v-2zm0 3h5v2H8v-2z" fill="#00A8E2"/>
+    </svg>`,
+    'heart': `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#00A8E2"/>
+    </svg>`,
+    'balance': `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="#00A8E2"/>
+      <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z" fill="#00A8E2"/>
+    </svg>`,
+    'performance': `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#00A8E2"/>
+      <path d="M12 6l1.5 3L17 9.5l-2.5 2.5L16 15l-3-1.5L10 15l1.5-3L9 9.5l3.5-1.5z" fill="#00A8E2"/>
+    </svg>`,
+    'growth': `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#00A8E2"/>
+      <path d="M12 6l1.5 3L17 9.5l-2.5 2.5L16 15l-3-1.5L10 15l1.5-3L9 9.5l3.5-1.5z" fill="#00A8E2"/>
+    </svg>`
+  };
+  
+  return icons[iconType] || icons['brain'];
 };
