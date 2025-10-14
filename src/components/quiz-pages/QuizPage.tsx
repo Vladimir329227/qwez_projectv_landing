@@ -61,20 +61,26 @@ export default function QuizPage() {
     return currentStepData.content;
   }
 
+  // Check if this is an intro step (QuizSectionIntro)
+  const isIntroStep = React.isValidElement(currentStepData.content) && 
+    currentStepData.content.type === QuizSectionIntro;
+
   return (
     <div className="min-h-screen bg-white flex flex-col">
       {/* Main Content */}
-      <div className="flex-1 flex justify-center">
-        <div className="w-full max-w-2xl">
-          <div className="text-center">
-            {currentStepData.subtitle && (
-              <p className="text-xl text-gray-600">
-                {currentStepData.subtitle}
-              </p>
-            )}
-          </div>
+      <div className={`flex-1 flex ${isIntroStep ? '' : 'justify-center'}`}>
+        <div className={`w-full ${isIntroStep ? '' : 'max-w-2xl'}`}>
+          {!isIntroStep && (
+            <div className="text-center">
+              {currentStepData.subtitle && (
+                <p className="text-xl text-gray-600">
+                  {currentStepData.subtitle}
+                </p>
+              )}
+            </div>
+          )}
 
-          <div className="justify-center">{currentStepData.content}</div>
+          <div className={isIntroStep ? '' : 'justify-center'}>{currentStepData.content}</div>
         </div>
       </div>
     </div>

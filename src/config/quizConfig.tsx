@@ -360,7 +360,7 @@ export const createQuizSteps = (
     setAnswers: (answers: Record<string, any>) => void,
     setCurrentStep: (step: number) => void,
     currentStep: number,
-    QuizSectionIntro: React.ComponentType<{ onBegin: () => void; backgroundImageUrl?: string; titleLines?: string[]; bodyLines?: string[]; buttonLabel?: string }>,
+    QuizSectionIntro: React.ComponentType<{ onBegin: () => void; backgroundImageUrl?: string; desktopWomanImageUrl?: string; desktopBackgroundImageUrl?: string; titleLines?: string[]; bodyLines?: string[]; buttonLabel?: string }>,
     QuestionForm: React.ComponentType<any>,
     goToLanding: () => void
 ): QuizStep[] => {
@@ -371,6 +371,8 @@ export const createQuizSteps = (
                 <QuizSectionIntro 
                     onBegin={() => setCurrentStep(1)}
                     backgroundImageUrl={'/women/yellow_woman.png'}
+                    desktopWomanImageUrl={'/PNG_models/M.png'}
+                    desktopBackgroundImageUrl={'/PNG_models/background/Copy of M background.png'}
                     titleLines={["PERSONAL", "DETAILS"]}
                     bodyLines={[
                         "Let's start with a few quick",
@@ -490,6 +492,8 @@ export const createQuizSteps = (
             <QuizSectionIntro
                 onBegin={() => setCurrentStep(currentStep + 1)}
                 backgroundImageUrl={'/women/orange_woman.jpg'}
+                desktopWomanImageUrl={'/PNG_models/G.png'}
+                desktopBackgroundImageUrl={'/PNG_models/background/Copy of G background.png'}
                 titleLines={["MORNING", "ENERGY", "& CLARITY"]}
                 bodyLines={[
                     'Rise and shine – or hit',
@@ -513,6 +517,8 @@ export const createQuizSteps = (
             <QuizSectionIntro
                 onBegin={() => setCurrentStep(currentStep + 1)}
                 backgroundImageUrl={'/women/yellow-orange_woman.png'}
+                desktopWomanImageUrl={'/PNG_models/N.png'}
+                desktopBackgroundImageUrl={'/PNG_models/background/Copy of N background.png'}
                 titleLines={["MOVEMENT,","FLEXIBILITY", "& BODY", "SUPPORT"]}
                 bodyLines={[
                     'From runway walks to',
@@ -536,6 +542,8 @@ export const createQuizSteps = (
             <QuizSectionIntro
                 onBegin={() => setCurrentStep(currentStep + 1)}
                 backgroundImageUrl={'/women/green_woman.png'}
+                desktopWomanImageUrl={'/PNG_models/D.png'}
+                desktopBackgroundImageUrl={'/PNG_models/background/Copy of D background.png'}
                 titleLines={["NUTRITION,", "DIGESTION &", "DETOX"]}
                 bodyLines={[
                     'You are what you eat – and',
@@ -557,6 +565,8 @@ export const createQuizSteps = (
             <QuizSectionIntro
                 onBegin={() => setCurrentStep(currentStep + 1)}
                 backgroundImageUrl={'/women/purple_woman.png'}
+                desktopWomanImageUrl={'/PNG_models/P.png'}
+                desktopBackgroundImageUrl={'/PNG_models/background/Copy of P background.png'}
                 titleLines={["SLEEP, STRESS", "& SELF-CARE"]}
                 bodyLines={[
                     "Is your beauty sleep working",
@@ -578,6 +588,8 @@ export const createQuizSteps = (
             <QuizSectionIntro
                 onBegin={() => setCurrentStep(currentStep + 1)}
                 backgroundImageUrl={'/women/red_woman.png'}
+                desktopWomanImageUrl={'/PNG_models/S.png'}
+                desktopBackgroundImageUrl={'/PNG_models/background/Copy of SV background.png'}
                 titleLines={["INDULGENCE &", "BALANCE"]}
                 bodyLines={[
                     "Wellness isn't about",
@@ -599,6 +611,8 @@ export const createQuizSteps = (
             <QuizSectionIntro
                 onBegin={() => setCurrentStep(currentStep + 1)}
                 backgroundImageUrl={'/women/pink_woman.jpg'}
+                desktopWomanImageUrl={'/PNG_models/A.png'}
+                desktopBackgroundImageUrl={'/PNG_models/background/Copy of A background.png'}
                 titleLines={["ENVIRONMENT", "& POLLUTION"]}
                 bodyLines={[
                     'Where you live shapes how',

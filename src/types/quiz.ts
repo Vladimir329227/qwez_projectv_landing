@@ -7,6 +7,8 @@ export interface PersonalDetailsIntroProps {
     onBegin: () => void;
     // Optional presentation props for intro screen
     backgroundImageUrl?: string;
+    desktopWomanImageUrl?: string;
+    desktopBackgroundImageUrl?: string;
     titleLines?: string[]; // e.g., ["PERSONAL", "DETAILS"]
     bodyLines?: string[];  // manual line breaks preserved per item
     buttonLabel?: string;
