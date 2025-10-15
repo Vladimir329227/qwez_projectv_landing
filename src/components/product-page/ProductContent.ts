@@ -313,7 +313,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
       },
       {
         title: "Chondroitin",
-        imageSrc: "/product-page-images/ingredients-google/Ingridients/chondroitin_sulfate.tif",
+        imageSrc: "/product-page-images/ingredients-google/Ingridients/chondroitin_sulfate.png",
         amount: "100 mg",
       },
     ],
