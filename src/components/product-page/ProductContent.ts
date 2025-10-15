@@ -74,7 +74,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   },
   BR: {
     key: "BR",
-    productName: "BR | Strong nerves",
+    productName: "BR | Strong Nerves",
     productNameColor: "#00B1DA",
     heroBackgroundSrc: "/product-page-images/product_MGR/bg_capsule_mgr.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
@@ -294,7 +294,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   },
   ENT: {
     key: "ENT",
-    productName: "ENT | Youth of joints",
+    productName: "ENT | Youth of Joints",
     productNameColor: "#00846F",
     heroBackgroundSrc: "/product-page-images/product_D/bg_capsule_d.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
@@ -339,7 +339,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   },
   G: {
     key: "G",
-    productName: "G | HEALTH GENERATOR",
+    productName: "G | Health Generator",
     productNameColor: "#6C4533",
     heroBackgroundSrc: "/product-page-images/product_G/bg_capsule_g.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
@@ -379,7 +379,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   },
   GQ10: {
     key: "GQ10",
-    productName: "GQ10 | Youth formula",
+    productName: "GQ10 | Youth Formula",
     productNameColor: "#EC6358",
     heroBackgroundSrc: "/product-page-images/product_CH/bg_capsule_ch.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
@@ -424,7 +424,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   },
   JN: {
     key: "JN",
-    productName: "JN | Child growth",
+    productName: "JN | Child Growth",
     productNameColor: "#00B1DA",
     heroBackgroundSrc: "/product-page-images/product_P/bg_capsule_p.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
@@ -469,7 +469,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   },
   JNB: {
     key: "JNB",
-    productName: "JNB | Royal growth | Royal posture",
+    productName: "JNB | Royal Growth | Royal Posture",
     productNameColor: "#EC6358",
     heroBackgroundSrc: "/product-page-images/product_CH/bg_capsule_ch.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
@@ -514,7 +514,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   },
   LV: {
     key: "LV",
-    productName: "LV | Radiance of youth",
+    productName: "LV | Radiance of Youth",
     productNameColor: "#B93E8F",
     heroBackgroundSrc: "/product-page-images/product_A/bg_capsule_a.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
@@ -599,7 +599,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   },
   MDS: {
     key: "MDS",
-    productName: "MDS | MATURE BEAUTY",
+    productName: "MDS | Mature Beauty",
     productNameColor: "#B93E8F",
     heroBackgroundSrc: "/product-page-images/product_A/bg_capsule_a.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
@@ -644,7 +644,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   },
   MGR: {
     key: "MGR",
-    productName: "MGR | Magic of magnesium",
+    productName: "MGR | Magic of Magnesium",
     productNameColor: "#267C5D",
     heroBackgroundSrc: "/product-page-images/product_MGR/bg_capsule_mgr.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
@@ -734,7 +734,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   },
   NPM: {
     key: "NPM",
-    productName: "NPM I Nature's Power for Men",
+    productName: "NPM | I Nature's Power for Men",
     productNameColor: "#5DB23F",
     heroBackgroundSrc: "/product-page-images/product_D/bg_capsule_d.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
@@ -779,7 +779,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   },
   OS: {
     key: "OS",
-    productName: "OS | Strongs bones and joints",
+    productName: "OS | Strongs Bones and Joints",
     productNameColor: "#B93E8F",
     heroBackgroundSrc: "/product-page-images/product_A/bg_capsule_a.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
@@ -824,7 +824,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   },
   P: {
     key: "P",
-    productName: "P | Nervous system balance",
+    productName: "P | Nervous System Balance",
     productNameColor: "#442682",
     heroBackgroundSrc: "/product-page-images/product_P/bg_capsule_p.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
@@ -869,7 +869,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   },
   S: {
     key: "S",
-    productName: "S | Ease of digestion",
+    productName: "S | Ease of Digestion",
     productNameColor: "#E8456A",
     heroBackgroundSrc: "/product-page-images/product_S/bg_capsule_s.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
@@ -914,7 +914,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   },
   S2S: {
     key: "S2S",
-    productName: "S2S | Keen eye",
+    productName: "S2S | Keen Eye",
     productNameColor: "#442682",
     heroBackgroundSrc: "/product-page-images/product_P/bg_capsule_p.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",

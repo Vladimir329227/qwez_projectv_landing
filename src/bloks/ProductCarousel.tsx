@@ -332,7 +332,7 @@ const ProductCarousel = () => {
                   </span>
 
                   <div className="flex-1 mb-3">
-                    <span className="text-[#1F2429] text-sm leading-relaxed line-clamp-2">
+                    <span className="text-[#1F2429] text-sm leading-relaxed">
                       {product.description}
                     </span>
                   </div>
@@ -352,17 +352,16 @@ const ProductCarousel = () => {
                       </div>
                     ))}
                   </div>
+                  {/* Ingredients */}
 
-                  {/* Hide ingredients */}
+                  {/* hide\show ingredients */}
                   <span className="text-[#1F2429] text-sm font-bold mb-3 cursor-pointer hover:text-blue-600 transition-colors">
                     Hide all ingredients
                   </span>
 
-                  {/* Ingredients */}
                   <span className="text-[#1F2429] text-base font-bold mb-2">
                     Ingredients:
                   </span>
-
                   <div className="space-y-1">
                     {product.ingredients.map((ingredient: any, index: number) => (
                       <div
