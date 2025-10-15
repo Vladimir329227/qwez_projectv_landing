@@ -4,6 +4,7 @@ import AgeCarousel from '../components/personal-details/AgeCarousel';
 import { EmailForm, NameForm, DisclaimerForm } from '../components/quiz-forms';
 import QuizResult from '../components/quiz-pages/quiz-results/QuizResult';
 
+
 export interface PersonalDetailsQuestion {
     key: string;
     question: string;
@@ -44,7 +45,6 @@ export const personalDetailsQuestions: PersonalDetailsQuestion[] = [
     {
         key: "climate",
         question: "Climate & lifestyle setting",
-        subtitle: "Select your weight in kilograms.",
         options: [
             { value: 'sunny-warm', label: 'Sunny & warm most of the year' },
             { value: 'cool-rainy', label: 'Cool or rainy climate' },

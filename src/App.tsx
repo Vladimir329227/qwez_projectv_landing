@@ -24,12 +24,27 @@ function setCookie(name: string, value: string, days: number) {
 
 // Utility function to navigate to product page
 export function navigateToProduct(productNameOrKey: string) {
+  const currentPage = getCookie('page');
+  if (currentPage !== 'product') {
+    setCookie('lastPage', currentPage || 'landing', 365);
+  }
   setCookie('page', 'product', 365);
   // Keep backward compatibility: productName remains for UI text
   setCookie('productName', productNameOrKey, 365);
   // New: also store normalized productKey used by registry
   setCookie('productKey', productNameOrKey.toUpperCase(), 365);
   window.location.reload();
+}
+
+
+export function navigateToLastPage() {
+  const lastPage = getCookie('lastPage') as Page | undefined;
+    if (lastPage) {
+      setCookie('page', lastPage, 365);
+    } else {
+      setCookie('page', 'landing', 365);
+    }
+    window.location.reload();
 }
 
 // Utility function to navigate to results page

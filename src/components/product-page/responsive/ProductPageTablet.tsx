@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { navigateToResults } from "../../../App";
+import { navigateToLastPage } from "../../../App";
 import { getProductContent } from "../ProductContent";
 export default ({
   answers = {},
@@ -21,7 +21,7 @@ export default ({
       >
         <button
           className="flex flex-col items-start bg-[#1F2429] text-left py-1 ml-8 lg:ml-16 xl:ml-24 rounded-full border border-solid border-white"
-          onClick={() => navigateToResults()}
+          onClick={() => navigateToLastPage()}
         >
           <img
             src={content.closeIconSrc}

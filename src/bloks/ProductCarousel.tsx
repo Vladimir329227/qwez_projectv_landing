@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { PRODUCTS } from "../components/product-page/ProductContent";
+import { navigateToProduct } from "../App";
+
 
 const ProductCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -307,13 +309,13 @@ const ProductCarousel = () => {
           }}
         >
           {products.map((product) => (
-            <div
+            <button
               key={product.id}
               className="flex-shrink-0 flex justify-center"
               style={{
                 width: `${getCardWidth()}px`,
               }}
-            >
+              onClick={()=>navigateToProduct(product.id)}>
               {/* Карточка товара с адаптивными размерами */}
               <div className="flex flex-col items-center bg-[#F6F6F6] rounded-2xl h-full w-full max-w-[280px] sm:max-w-[300px] lg:max-w-[320px] overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                 {/* Контейнер для картинки с адаптивными размерами */}
@@ -354,11 +356,6 @@ const ProductCarousel = () => {
                   </div>
                   {/* Ingredients */}
 
-                  {/* hide\show ingredients */}
-                  <span className="text-[#1F2429] text-sm font-bold mb-3 cursor-pointer hover:text-blue-600 transition-colors">
-                    Hide all ingredients
-                  </span>
-
                   <span className="text-[#1F2429] text-base font-bold mb-2">
                     Ingredients:
                   </span>
@@ -379,7 +376,7 @@ const ProductCarousel = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </button>
           ))}
         </div>
       </div>
