@@ -355,7 +355,6 @@ const ProductCarousel = () => {
                     ))}
                   </div>
                   {/* Ingredients */}
-
                   <span className="text-[#1F2429] text-base font-bold mb-2">
                     Ingredients:
                   </span>

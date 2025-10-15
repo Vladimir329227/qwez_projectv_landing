@@ -1,5 +1,6 @@
 import React from "react";
 import { QuizStartPageProps } from "../../../../types/quiz";
+import { usePage } from "../../../../App";
 
 interface QuizStartDesktopProps extends QuizStartPageProps {
   isTitleVisible: boolean;
@@ -18,6 +19,7 @@ export default function QuizStartDesktop({
   fullText,
   subtitleFullText,
 }: QuizStartDesktopProps) {
+  const { setPage } = usePage();
   return (
     <div className="flex items-start bg-white h-screen relative">
       {/* Left Content */}
@@ -52,14 +54,12 @@ export default function QuizStartDesktop({
         >
           <span>{subtitleFullText}</span>
         </div>
-
         {/* Buttons Container */}
         <div
-          className={`flex flex-col items-start pt-[1vh] sm:pt-[1.5vh] lg:pt-[2vh] pb-[1vh] sm:pb-[1.5vh] lg:pb-[2vh] transition-all duration-700 ease-out ${
-            isButtonsVisible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-8"
-          }`}
+          className={`flex flex-col items-start pt-[1vh] sm:pt-[1.5vh] lg:pt-[2vh] pb-[1vh] sm:pb-[1.5vh] lg:pb-[2vh] 
+    gap-4 transition-all duration-700 ease-out ${
+      isButtonsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+    }`}
         >
           <button
             className="flex flex-col items-center bg-[#1F2429] text-left w-[350px] sm:w-[375px] lg:w-[400px] py-4 sm:py-5 mx-5 rounded-[100000px] border-0 hover:bg-gray-800 transition-colors"
@@ -67,6 +67,17 @@ export default function QuizStartDesktop({
           >
             <div className="flex flex-col items-start">
               <span className="text-white text-base sm:text-[18px]">Next</span>
+            </div>
+          </button>
+
+          <button
+            className="flex flex-col items-center bg-white text-left w-[350px] sm:w-[375px] lg:w-[400px] py-4 sm:py-5 mx-5 rounded-[100000px] border-[3px] hover:bg-white transition-colors"
+            onClick={() => setPage("landing")}
+          >
+            <div className="flex flex-col items-start">
+              <span className="bg-white text-[#1F2429]  border-[#1F2429] text-base sm:text-[18px]">
+              Previous
+              </span>
             </div>
           </button>
         </div>
