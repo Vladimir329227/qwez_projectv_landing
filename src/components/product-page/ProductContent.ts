@@ -734,7 +734,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   },
   NPM: {
     key: "NPM",
-    productName: "NPM | I Nature's Power for Men",
+    productName: "NPM | Nature's Power for Men",
     productNameColor: "#5DB23F",
     heroBackgroundSrc: "/product-page-images/product_D/bg_capsule_d.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
