@@ -153,16 +153,18 @@ export default ({
                 </span>
               </div>
             </div>
-            <button
+            <a
+              href="https://projectvint.at/en/nutraceuticals/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex flex-col items-center bg-[#1F2429] text-left w-full max-w-sm py-4 rounded-full border-0"
-              onClick={() => alert("Pressed!")}
             >
               <div className="flex flex-col items-start">
                 <span className="text-white text-sm lg:text-base">
                   {`Buy ${content.productName} Now!`}
                 </span>
               </div>
-            </button>
+            </a>
           </div>
         </div>
       </div>

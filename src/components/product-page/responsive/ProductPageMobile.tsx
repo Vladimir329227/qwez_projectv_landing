@@ -150,14 +150,16 @@ export default ({
                 {content.capsulesBlock.text}
               </span>
             </div>
-            <button
+            <a
+              href="https://projectvint.at/en/nutraceuticals/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex flex-col items-center self-stretch bg-[#1F2429] text-left py-3.5 rounded-[100000px] border-0"
-              onClick={() => alert("Pressed!")}
             >
               <span className="text-white text-[15px]">
                 {`Buy ${content.productName} Now!`}
               </span>
-            </button>
+            </a>
           </div>
         </div>
       </div>
