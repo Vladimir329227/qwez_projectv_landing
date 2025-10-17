@@ -115,19 +115,20 @@ export default (props: any) => {
 					<div className="flex justify-center items-start self-stretch px-2 gap-2">
 						<img
 							src={"/figma/678fd5b8c8e8f404.png"}
-							className="w-[169px] h-[65px] object-fill"
+							className="w-[169px] h-[65px] object-contain"
 						/>
 						<img
 							src={"/figma/743c33dfee8e2205.png"}
-							className="w-[185px] h-[65px] object-fill"
+							className="w-[185px] h-[65px] object-contain"
 						/>
 						<img
 							src={"/figma/fbcd16954bbbcbce.png"}
-							className="w-[171px] h-[65px] object-fill"
+							className="w-[171px] h-[65px] object-contain"
 						/>
 						<img
-							src={"/figma/6a429b32fdab3b00.png"}
-							className="w-[171px] h-[65px] object-fill"
+							src={"/figma/lofficiel_logo.png"}
+							style={{ filter: "invert(1)" }}
+							className="w-[171px] h-[65px] object-contain"
 						/>
 					</div>
 				</div>
@@ -521,8 +522,8 @@ export default (props: any) => {
 						</span>
 					</div>
 					<img
-						src={"/figma/c8849c0f24e91715.png"}
-						className="self-stretch h-[496px] mb-[31px] mx-[164px] object-fill"
+						src={"/figma/phones_combined.png"}
+						className="self-stretch h-[496px] mb-[31px] mx-[164px] object-contain"
 					/>
 					<div className="flex flex-col items-center self-stretch mb-4">
 						<img
@@ -624,9 +625,14 @@ export default (props: any) => {
 						</span>
 					</div>
 					<div className="flex flex-col items-end self-stretch mb-6">
-						<span className="text-white text-base font-bold mr-[98px]" >
-							{"Privacy Policy Terms & Conditions"}
-						</span>
+						<a
+							href="https://www.sessia.com/privacy_policy_en.html"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="text-white text-base font-bold mr-[98px] underline hover:text-[#00A8E2] transition-colors"
+						>
+							Privacy Policy Terms & Conditions
+						</a>
 					</div>
 					<div className="flex flex-col items-end self-stretch mb-6">
 						<div className="flex items-start mr-24 gap-6">

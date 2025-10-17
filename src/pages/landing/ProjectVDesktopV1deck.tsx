@@ -144,19 +144,20 @@ export default () => {
 						</span>
 						<img
 							src={"/figma/de9daadbe258fcd5.png"}
-							className="w-[169px] h-[65px] object-fill"
+							className="w-[169px] h-[65px] object-contain"
 						/>
 						<img
 							src={"/figma/5074e669b6d5859b.png"}
-							className="w-[185px] h-[65px] object-fill"
+							className="w-[185px] h-[65px] object-contain"
 						/>
 						<img
 							src={"/figma/a97a902e66280595.png"}
-							className="w-[171px] h-[65px] object-fill"
+							className="w-[171px] h-[65px] object-contain"
 						/>
 						<img
-							src={"/figma/2e8a96dc2da6e94c.png"}
-							className="w-[171px] h-[65px] object-fill"
+							src={"/figma/lofficiel_logo.png"}
+							style={{ filter: "invert(1)" }}
+							className="w-[171px] h-[65px] object-contain"
 						/>
 					</div>
 				</div>
@@ -429,10 +430,10 @@ export default () => {
 				<div className="flex flex-col lg:flex-row items-stretch self-stretch mb-12 lg:mb-24 mx-4 lg:mx-16 xl:mx-[70px] gap-8 lg:gap-16">
 					{/* Изображение */}
 					<div className="w-full lg:w-1/2 flex items-center justify-center">
-					<div className="w-full max-w-[400px] lg:max-w-[523px] h-[833px] overflow-hidden rounded-none">
+						<div className="w-full max-w-[400px] lg:max-w-[523px] h-[833px] overflow-hidden rounded-none">
 							<img
 								src={"/figma/girl_mgr2.png"}
-							className="w-full h-full object-contain"
+								className="w-full h-full object-contain"
 								alt="How it works illustration"
 							/>
 						</div>
@@ -444,7 +445,7 @@ export default () => {
 							How It Works
 						</h2>
 
-						<ol className="w-full max-w-full relative border-l-2 border-[#F6F6F6] space-y-28">
+						<ol className="w-full max-w-full relative border-l-2 border-[#F6F6F6] space-y-16 pt-10">
 							<li className="grid grid-cols-[auto,1fr] items-start gap-4">
 								<div className="w-10 h-10 rounded-full bg-[#00A8E2] text-white flex items-center justify-center font-bold -ml-5">
 									1
@@ -595,7 +596,7 @@ export default () => {
 								Unlock Exclusive Perks
 							</span>
 							<img
-								src={"/figma/37938f0ba5060b8.png"}
+								src={"/figma/15d97e76849f2e4c.png"}
 								className="w-8 h-8 mb-4 object-contain"
 								alt="Join Prize Draws icon"
 							/>
@@ -607,7 +608,7 @@ export default () => {
 						{/* Центральное изображение */}
 						<div className="flex justify-center w-full lg:w-auto order-1 lg:order-2">
 							<img
-								src={"/figma/9d98b22bd710ccb0.png"}
+								src={"/figma/phones_combined.png"}
 								className="w-full max-w-[300px] sm:max-w-[400px] lg:w-[440px] lg:h-[496px] object-contain"
 								alt="Main product"
 							/>
@@ -705,7 +706,14 @@ export default () => {
 								{"info@projectvint.com"}
 							</span>
 							<span className="text-white text-base font-bold" >
-								{"Privacy Policy Terms & Conditions"}
+								<a
+									href="https://www.sessia.com/privacy_policy_en.html"
+									target="_blank"
+									rel="noopener noreferrer"
+									className="text-white text-base font-bold mr-[98px] underline hover:text-[#00A8E2] transition-colors"
+								>
+									Privacy Policy Terms & Conditions
+								</a>
 							</span>
 						</div>
 					</div>
