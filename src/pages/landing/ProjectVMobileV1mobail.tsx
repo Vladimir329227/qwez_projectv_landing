@@ -377,66 +377,55 @@ export default (props: any) => {
 				</div>
 
 				{/* How It Works Section */}
-				<div className="flex flex-col self-stretch px-4 gap-[63px]">
-					<img
-						src={"/figma/7fbc7390574f293e.png"} 
-						className="w-full h-[546px] object-contain"
-					/>
-					<div className="flex flex-col items-start self-stretch">
-						<span className="text-[#1F2429] text-[40px] font-bold mb-8" >
+				<div className="flex flex-col self-stretch px-4 gap-8">
+					<div className="w-full flex items-center justify-center">
+						<div className="w-full max-w-[400px] h-[480px] overflow-hidden rounded-none">
+							<img
+								src={"/figma/girl_mgr2.png"}
+								className="w-full h-full object-contain"
+								alt="How it works illustration"
+							/>
+						</div>
+					</div>
+					<div className="flex flex-col items-start self-stretch pl-8">
+						<span className="text-[#1F2429] text-[40px] font-bold mb-6" >
 							{"How It Works"}
 						</span>
-						<div className="flex items-start pl-[19px] mb-[15px] gap-[51px]">
-							<div className="flex flex-col shrink-0 items-center relative mt-[21px]" style={{ height: '480px' }}>
-								<div className="flex flex-col items-center relative">
-									<div className="bg-[#F6F6F6] w-0.5 h-[480px]">
-									</div>
-									<span className="text-white text-[22px] absolute top-[94px] left-[-19px]" >
-										{"2"}
-									</span>
-									<span className="text-white text-[22px] absolute bottom-[86px] left-[-19px]" >
-										{"3"}
-									</span>
-									<span className="text-white text-[22px] absolute bottom-[-31px] left-[-19px]" >
-										{"4"}
-									</span>
+						<ol className="w-full relative border-l-2 border-[#F6F6F6] space-y-10 pl-6">
+							<li className="grid grid-cols-[auto,1fr] items-start gap-4">
+								<div className="w-8 h-8 rounded-full bg-[#00A8E2] text-white flex items-center justify-center font-bold -ml-10">1</div>
+								<div className="min-w-0">
+									<h3 className="text-[#1F2429] text-xl font-bold mb-2 leading-tight">Discover</h3>
+									<p className="text-[#1F2429] text-base leading-relaxed">Take the quiz to uncover exactly what your body needs</p>
 								</div>
-								<span className="text-white text-[22px] absolute top-[-21px] left-[-19px]" >
-									{"1"}
-								</span>
-							</div>
-							<div className="flex flex-col shrink-0 items-start">
-								<span className="text-[#1F2429] text-2xl font-bold mb-2.5" >
-									{"Discover"}
-								</span>
-								<span className="text-[#1F2429] text-lg w-[254px] mb-8" >
-									{"Take the quiz to uncover exactly what your body needs"}
-								</span>
-								<span className="text-[#1F2429] text-2xl font-bold mb-2.5" >
-									{"Personalize"}
-								</span>
-								<span className="text-[#1F2429] text-lg w-[258px] mb-8" >
-									{"Receive a personalised selection of supplements tailored to you"}
-								</span>
-								<span className="text-[#1F2429] text-2xl font-bold mb-2.5" >
-									{"Begin"}
-								</span>
-								<span className="text-[#1F2429] text-lg w-[259px] mb-8" >
-									{"Receive your luxury formulations straight to your door - ready for your daily ritual"}
-								</span>
-								<span className="text-[#1F2429] text-2xl font-bold" >
-									{"Elevate"}
-								</span>
-								<span className="text-[#1F2429] text-lg w-[254px]" >
-									{"Take the quiz to uncover exactly what your body needs"}
-								</span>
-							</div>
-						</div>
-						<button className="flex flex-col items-center self-stretch bg-[#1F2429] text-left py-[15px] rounded-[100000px] border-0"
-							onClick={()=>setPage('quiz')}>
-							<span className="text-white text-base font-bold" >
-								{"Take Quiz"}
-							</span>
+							</li>
+							<li className="grid grid-cols-[auto,1fr] items-start gap-4">
+								<div className="w-8 h-8 rounded-full bg-[#00A8E2] text-white flex items-center justify-center font-bold -ml-10">2</div>
+								<div className="min-w-0">
+									<h3 className="text-[#1F2429] text-xl font-bold mb-2 leading-tight">Personalize</h3>
+									<p className="text-[#1F2429] text-base leading-relaxed">Receive a personalised selection of supplements tailored to you</p>
+								</div>
+							</li>
+							<li className="grid grid-cols-[auto,1fr] items-start gap-4">
+								<div className="w-8 h-8 rounded-full bg-[#00A8E2] text-white flex items-center justify-center font-bold -ml-10">3</div>
+								<div className="min-w-0">
+									<h3 className="text-[#1F2429] text-xl font-bold mb-2 leading-tight">Begin</h3>
+									<p className="text-[#1F2429] text-base leading-relaxed">Receive your luxury formulations straight to your door - ready for your daily ritual</p>
+								</div>
+							</li>
+							<li className="grid grid-cols-[auto,1fr] items-start gap-4">
+								<div className="w-8 h-8 rounded-full bg-[#00A8E2] text-white flex items-center justify-center font-bold -ml-10">4</div>
+								<div className="min-w-0">
+									<h3 className="text-[#1F2429] text-xl font-bold mb-2 leading-tight">Elevate</h3>
+									<p className="text-[#1F2429] text-base leading-relaxed">Take the quiz to uncover exactly what your body needs</p>
+								</div>
+							</li>
+						</ol>
+						<button
+							className="w-full text-[#00A8E2] py-3 px-8 rounded-full border-2 border-solid border-gray-200 text-base hover:bg-white-600 mt-8 self-start"
+							onClick={() => setPage('quiz')}
+						>
+							Start Now
 						</button>
 					</div>
 				</div>

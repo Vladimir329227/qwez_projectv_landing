@@ -52,7 +52,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
         amount: "15 mg",
       },
     ],
-    description: "Powerful antioxidant protection with grape seed extract and vitamin C. This formula fights free radicals, supports immune function, and helps maintain youthful skin. Perfect for daily antioxidant support and cellular protection.",
+    description: "A daily dose of plant-based antioxidants to strengthen immunity, support heart health, and help protect against early ageing and cognitive decline.",
     features: [
       {
         title: "Antioxidant Power",
@@ -119,7 +119,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   },
   CH: {
     key: "CH",
-    productName: "CH | Charged and Energized",
+    productName: "CH | Charged & Energized",
     productNameColor: "#EC6358",
     heroBackgroundSrc: "/product-page-images/product_CH/bg_capsule_ch.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
@@ -559,7 +559,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   },
   M: {
     key: "M",
-    productName: "М | Healthy Heart and Sharp Mind",
+    productName: "М | Healthy Heart & Sharp Mind",
     productNameColor: "#FEEA0F",
     heroBackgroundSrc: "/product-page-images/product_M/bg_capsule_m.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
@@ -667,7 +667,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
         amount: "25 mg",
       },
     ],
-    description: "Stress relief and nervous system support with magnesium, St. John's wort, and hawthorn. This calming formula helps reduce stress, promotes relaxation, and supports emotional balance.",
+    description: "Combination of the power of herbal antidepressants with a complex of magnesium and active forms of vitamins to provide calmness and a good mood daily.",
     features: [
       {
         title: "Fast action",
@@ -689,7 +689,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   },
   N: {
     key: "N",
-    productName: "N | Protection and Prevention",
+    productName: "N | Protection & Prevention",
     productNameColor: "#EDC08D",
     heroBackgroundSrc: "/product-page-images/product_N/bg_capsule_n.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",
@@ -847,7 +847,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
         amount: "0.6 mg",
       },
     ],
-    description: "Natural sleep and relaxation with lavender, lemon balm, and valerian. This calming herbal blend promotes restful sleep, reduces anxiety, and supports nervous system balance.",
+    description: "A unique blend of herbal adaptogens, magnesium, and activated B-vitamins to ease stress, restore emotional balance, and support nervous system health.",
     features: [
       {
         title: "Fast action",
@@ -959,7 +959,7 @@ export const PRODUCTS: Record<string, ProductContent> = {
   },
   SV: {
     key: "SV",
-    productName: "SV | Joyful and Beautiful",
+    productName: "SV | Joyful & Beautiful",
     productNameColor: "#F4981A",
     heroBackgroundSrc: "/product-page-images/product_SV/bg_capsule_sv.png",
     closeIconSrc: "/product-page-images/icon_close_x.png",

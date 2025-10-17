@@ -11,90 +11,75 @@ const ProductCarousel = () => {
   const DEFAULT_INGREDIENTS_VISIBLE = 0;
   const [containerWidth, setContainerWidth] = useState(0);
 
+  // Специфические benefits для каждого продукта
+  const productBenefitsMap: { [key: string]: Array<{ icon: string; text: string }> } = {
+    "G": [
+      { icon: "/figma/d8bfeab08fda3aa9.png", text: "Memory Boost" },
+      { icon: "/figma/1bf15e50d4a96fc7.png", text: "Fast Metabolism" },
+      { icon: "/figma/cad89a2a6d1dbc63.png", text: "Balanced Pressure" },
+      { icon: "/figma/cb6e5f8d1a94e7ab.png", text: "Hormonal Harmony" }
+    ],
+    "CH": [
+      { icon: "/figma/1bf15e50d4a96fc7.png", text: "Natural Energy" },
+      { icon: "/figma/1bf15e50d4a96fc7.png", text: "Quick Recovery" },
+      { icon: "/figma/d8bfeab08fda3aa9.png", text: "Sharp Focus" }
+    ],
+    "D": [
+      { icon: "/figma/96dd755ae3262da1.png", text: "Deep Cleanse" },
+      { icon: "/figma/83fcdf496ddbb8fe.png", text: "Strong Immunity" },
+      { icon: "/figma/d8bfeab08fda3aa9.png", text: "Cell Protection" }
+    ],
+    "M": [
+      { icon: "/figma/cad89a2a6d1dbc63.png", text: "Heart Health" },
+      { icon: "/figma/d8bfeab08fda3aa9.png", text: "Brain Function" },
+      { icon: "/figma/cad89a2a6d1dbc63.png", text: "Blood Pressure" },
+      { icon: "/figma/d8bfeab08fda3aa9.png", text: "Anti-Aging" }
+    ],
+    "N": [
+      { icon: "/figma/83fcdf496ddbb8fe.png", text: "Anti-Inflammation" },
+      { icon: "/figma/83fcdf496ddbb8fe.png", text: "Urinary Health" },
+      { icon: "/figma/96dd755ae3262da1.png", text: "Toxin Removal" },
+      { icon: "/figma/83fcdf496ddbb8fe.png", text: "Swelling Relief" }
+    ],
+    "P": [
+      { icon: "/figma/cb6e5f8d1a94e7ab.png", text: "Stress Relief" },
+      { icon: "/figma/cb6e5f8d1a94e7ab.png", text: "Inner Calm" },
+      { icon: "/figma/976ffc53f6e1ec5c.png", text: "Restful Sleep" },
+      { icon: "/figma/cad89a2a6d1dbc63.png", text: "Heart Balance" }
+    ],
+    "S": [
+      { icon: "/figma/96dd755ae3262da1.png", text: "Ease of Digestion" },
+      { icon: "/figma/96dd755ae3262da1.png", text: "Healthy Microflora" },
+      { icon: "/figma/96dd755ae3262da1.png", text: "Smooth Digestion" },
+      { icon: "/figma/96dd755ae3262da1.png", text: "Toxin Defense" }
+    ],
+    "SV": [
+      { icon: "/figma/1bf15e50d4a96fc7.png", text: "Active Metabolism" },
+      { icon: "/figma/1bf15e50d4a96fc7.png", text: "Appetite Control" },
+      { icon: "/figma/1bf15e50d4a96fc7.png", text: "Weight Balance" },
+      { icon: "/figma/96dd755ae3262da1.png", text: "Digestive Harmony" }
+    ],
+    "A": [
+      { icon: "/figma/83fcdf496ddbb8fe.png", text: "Immunity" },
+      { icon: "/figma/d8bfeab08fda3aa9.png", text: "Anti-Ageing" },
+      { icon: "/figma/cad89a2a6d1dbc63.png", text: "Heart Health" },
+      { icon: "/figma/d8bfeab08fda3aa9.png", text: "Cell Protection" }
+    ],
+    "MGR": [
+      { icon: "/figma/cb6e5f8d1a94e7ab.png", text: "Reduces Stress" },
+      { icon: "/figma/cb6e5f8d1a94e7ab.png", text: "Improves Mood" },
+      { icon: "/figma/cb6e5f8d1a94e7ab.png", text: "Emotional Regulation" }
+    ]
+  };
+
   // Функция для преобразования данных из ProductContent в формат карусели
   const transformProductData = (productData: any) => {
-    // Извлекаем ключевые слова из описания для создания benefits
-    const getBenefitsFromDescription = (description: string) => {
-      const benefits = [];
-      if (
-        description.toLowerCase().includes("immunity") ||
-        description.toLowerCase().includes("immune")
-      ) {
-        benefits.push({
-          icon: "/figma/83fcdf496ddbb8fe.png",
-          text: "Immunity",
-        });
-      }
-      if (
-        description.toLowerCase().includes("anti-aging") ||
-        description.toLowerCase().includes("aging")
-      ) {
-        benefits.push({
-          icon: "/figma/d8bfeab08fda3aa9.png",
-          text: "Anti-Aging",
-        });
-      }
-      if (
-        description.toLowerCase().includes("heart") ||
-        description.toLowerCase().includes("cardiovascular")
-      ) {
-        benefits.push({
-          icon: "/figma/cad89a2a6d1dbc63.png",
-          text: "Heart Health",
-        });
-      }
-      if (
-        description.toLowerCase().includes("stress") ||
-        description.toLowerCase().includes("nervous")
-      ) {
-        benefits.push({
-          icon: "/figma/cb6e5f8d1a94e7ab.png",
-          text: "Reduces Stress",
-        });
-      }
-      if (
-        description.toLowerCase().includes("energy") ||
-        description.toLowerCase().includes("vitality")
-      ) {
-        benefits.push({ icon: "/figma/1bf15e50d4a96fc7.png", text: "Energy" });
-      }
-      if (
-        description.toLowerCase().includes("digestion") ||
-        description.toLowerCase().includes("gut")
-      ) {
-        benefits.push({
-          icon: "/figma/96dd755ae3262da1.png",
-          text: "Digestion",
-        });
-      }
-      if (
-        description.toLowerCase().includes("sleep") ||
-        description.toLowerCase().includes("rest")
-      ) {
-        benefits.push({
-          icon: "/figma/976ffc53f6e1ec5c.png",
-          text: "Better Sleep",
-        });
-      }
-      if (
-        description.toLowerCase().includes("joint") ||
-        description.toLowerCase().includes("bone")
-      ) {
-        benefits.push({
-          icon: "/figma/c1770dcacad3bd93.png",
-          text: "Joint Health",
-        });
-      }
-
-      // Если не нашли специфических benefits, добавляем общие
-      if (benefits.length === 0) {
-        benefits.push(
-          { icon: "/figma/83fcdf496ddbb8fe.png", text: "Health" },
-          { icon: "/figma/d8bfeab08fda3aa9.png", text: "Wellness" }
-        );
-      }
-
-      return benefits.slice(0, 4); // Максимум 4 benefits
+    // Получаем benefits для конкретного продукта
+    const getBenefitsForProduct = (productKey: string) => {
+      return productBenefitsMap[productKey] || [
+        { icon: "/figma/83fcdf496ddbb8fe.png", text: "Health" },
+        { icon: "/figma/d8bfeab08fda3aa9.png", text: "Wellness" }
+      ];
     };
 
     return {
@@ -102,7 +87,7 @@ const ProductCarousel = () => {
       image: productData.jarImageSrc,
       title: productData.productName.split(" | ")[1] || productData.productName, // Убираем код продукта
       description: productData.description,
-      benefits: getBenefitsFromDescription(productData.description),
+      benefits: getBenefitsForProduct(productData.key),
       ingredients: productData.ingredients.map((ing: any) => ({
         name: ing.title,
         amount: ing.amount,
@@ -122,18 +107,18 @@ const ProductCarousel = () => {
     "S",
     "MGR",
     "N",
-    "BR",
-    "DR",
-    "ENT",
-    "LV",
-    "OS",
-    "VS",
-    "S2S",
-    "MDS",
-    "GQ10",
-    "NPM",
-    "JN",
-    "JNB",
+    // "BR",
+    // "DR",
+    // "ENT",
+    // "LV",
+    // "OS",
+    // "VS",
+    // "S2S",
+    // "MDS",
+    // "GQ10",
+    // "NPM",
+    // "JN",
+    // "JNB",
   ];
 
   // Преобразуем продукты в указанном порядке
@@ -549,7 +534,7 @@ const ProductCarousel = () => {
                       href="https://projectvint.at/en/nutraceuticals/"
                       target="_blank"
                       rel="noopener noreferrer"
-                       className={`${isExpanded ? 'mt-auto ' : ''}mx-auto w-[88%] bg-black text-white text-center py-2 sm:py-3 rounded-full hover:bg-gray-900 transition-colors mb-3`}
+                       className={`${isExpanded ? 'mt-auto ' : ''}mx-auto w-[88%] bg-[#00A8E2] text-white text-center py-2 sm:py-3 rounded-full hover:bg-[#1FC8F8] transition-colors mb-3`}
                       onClick={(e) => e.stopPropagation()}
                     >
                       Buy Now
@@ -590,24 +575,20 @@ const ProductCarousel = () => {
                 </div>
               )}
 
-              {/* Видимые точки */}
+              {/* Круглые точки этапов */}
               {Array.from({ length: dotEnd - dotStart }).map((_, index) => {
                 const dotIndex = dotStart + index;
                 return (
                   <button
                     key={dotIndex}
                     onClick={() => goToSlide(dotIndex)}
-                    className={`transition-all duration-300 ${
-                      dotIndex === currentIndex
-                        ? "scale-125"
-                        : "hover:scale-110"
-                    }`}
+                    className="transition-transform duration-300 hover:scale-110"
                   >
                     <div
-                      className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
+                      className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full ${
                         dotIndex === currentIndex
-                          ? "bg-[#00A8E2] shadow-lg"
-                          : "bg-gray-300 hover:bg-gray-400"
+                          ? "bg-[#00A8E2]"
+                          : "bg-gray-300"
                       }`}
                     />
                   </button>

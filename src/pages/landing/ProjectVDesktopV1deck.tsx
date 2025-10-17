@@ -33,7 +33,7 @@ export default () => {
 	];
 	const [reviewIndex, setReviewIndex] = useState(0);
 	const [openFAQ, setOpenFAQ] = useState<number | null>(null);
-	
+
 	const faqData = [
 		{
 			question: "What makes Project V different from regular supplements?",
@@ -56,10 +56,10 @@ export default () => {
 			answer: "Our formulas are developed by a team of expert nutritionists, neuroscientists, and medical professionals with decades of experience in functional medicine. Each formulation is backed by scientific research and clinical studies, ensuring that every product delivers measurable health benefits and supports your long-term wellness goals."
 		}
 	];
-	
+
 	const prevReview = () => setReviewIndex((i) => (i - 1 + reviews.length) % reviews.length);
 	const nextReview = () => setReviewIndex((i) => (i + 1) % reviews.length);
-	
+
 	const toggleFAQ = (index: number) => {
 		setOpenFAQ(openFAQ === index ? null : index);
 	};
@@ -69,14 +69,14 @@ export default () => {
 				<div className="flex flex-col items-start self-stretch bg-[url('/figma/e6c250bfc01d12d8.png')] bg-cover bg-top pt-12 pb-[177px]">
 					<div className="flex flex-col items-center p-[1px] mb-24 ml-24">
 						<img
-							src={"/figma/94b86f1bce187b0c.png"} 
+							src={"/figma/94b86f1bce187b0c.png"}
 							className="w-[187px] h-12 object-fill"
 						/>
 					</div>
 					<div className="flex flex-col items-start ml-24 gap-8">
 						<div className="flex items-center">
 							<img
-								src={"/figma/0d248eedc7b320e0.png"} 
+								src={"/figma/0d248eedc7b320e0.png"}
 								className="w-[81px] h-3 mr-1.5 object-fill"
 							/>
 							<span className="text-white text-lg font-bold mr-2.5" >
@@ -93,7 +93,7 @@ export default () => {
 							<div className="flex items-center">
 								<div className="flex shrink-0 items-center mr-4 gap-2">
 									<img
-										src={"/figma/994ff476709a16e9.png"} 
+										src={"/figma/994ff476709a16e9.png"}
 										className="w-6 h-6 object-fill"
 									/>
 									<span className="text-white text-base font-bold" >
@@ -101,7 +101,7 @@ export default () => {
 									</span>
 								</div>
 								<img
-									src={"/figma/8a274a253b81162c.png"} 
+									src={"/figma/8a274a253b81162c.png"}
 									className="w-6 h-6 mr-2 object-fill"
 								/>
 								<span className="text-white text-base font-bold" >
@@ -111,7 +111,7 @@ export default () => {
 							<div className="flex items-center">
 								<div className="flex shrink-0 items-center mr-4 gap-2">
 									<img
-										src={"/figma/6287be058f4ecb36.png"} 
+										src={"/figma/6287be058f4ecb36.png"}
 										className="w-6 h-6 object-fill"
 									/>
 									<span className="text-white text-base font-bold" >
@@ -119,7 +119,7 @@ export default () => {
 									</span>
 								</div>
 								<img
-									src={"/figma/c0dc471189a7f2e4.png"} 
+									src={"/figma/c0dc471189a7f2e4.png"}
 									className="w-6 h-6 mr-2 object-fill"
 								/>
 								<span className="text-white text-base font-bold" >
@@ -129,7 +129,7 @@ export default () => {
 						</div>
 						<div className="flex gap-4">
 							<button className="flex flex-col items-start bg-[#00A8E2] text-left py-[15px] px-[79px] rounded-[1000px] border-0"
-								onClick={()=>setPage('quiz')}>
+								onClick={() => setPage('quiz')}>
 								<span className="text-white text-base font-bold" >
 									{"Take Quiz"}
 								</span>
@@ -143,19 +143,19 @@ export default () => {
 							{"Featured In"}
 						</span>
 						<img
-							src={"/figma/de9daadbe258fcd5.png"} 
+							src={"/figma/de9daadbe258fcd5.png"}
 							className="w-[169px] h-[65px] object-fill"
 						/>
 						<img
-							src={"/figma/5074e669b6d5859b.png"} 
+							src={"/figma/5074e669b6d5859b.png"}
 							className="w-[185px] h-[65px] object-fill"
 						/>
 						<img
-							src={"/figma/a97a902e66280595.png"} 
+							src={"/figma/a97a902e66280595.png"}
 							className="w-[171px] h-[65px] object-fill"
 						/>
 						<img
-							src={"/figma/2e8a96dc2da6e94c.png"} 
+							src={"/figma/2e8a96dc2da6e94c.png"}
 							className="w-[171px] h-[65px] object-fill"
 						/>
 					</div>
@@ -171,9 +171,9 @@ export default () => {
 						{/* Основное изображение */}
 						<div className="w-full lg:w-1/2 flex justify-center">
 							<img
-							src={"/figma/ad2a0e03b0aa1177.png"} 
-							className="w-full max-w-[500px] lg:max-w-none object-contain"
-							alt="Main product"
+								src={"/figma/ad2a0e03b0aa1177.png"}
+								className="w-full max-w-[500px] lg:max-w-none object-contain"
+								alt="Main product"
 							/>
 						</div>
 
@@ -183,17 +183,17 @@ export default () => {
 							<div className="flex items-start gap-4 lg:gap-6 w-full">
 								<div className="flex-shrink-0 flex items-center justify-center">
 									<img
-									src={"/figma/8db6b31549aa4a3d.png"} 
-									className="w-[18px] h-10 object-contain"
-									alt="Cryogenic Technology icon"
+										src={"/figma/8db6b31549aa4a3d.png"}
+										className="w-[18px] h-10 object-contain"
+										alt="Cryogenic Technology icon"
 									/>
 								</div>
 								<div className="flex flex-col items-start w-full max-w-full">
 									<h3 className="text-[#1F2429] text-xl lg:text-2xl font-bold mb-2 leading-tight">
-									Cryogenic Technology
+										Cryogenic Technology
 									</h3>
 									<p className="text-[#1F2429] text-base lg:text-lg leading-relaxed">
-									Maximum preservation of active ingredients
+										Maximum preservation of active ingredients
 									</p>
 								</div>
 							</div>
@@ -202,17 +202,17 @@ export default () => {
 							<div className="flex items-start gap-4 lg:gap-6 w-full">
 								<div className="flex-shrink-0 flex items-center justify-center">
 									<img
-									src={"/figma/93e9f044d64676e6.png"} 
-									className="w-[27px] h-[39px] object-contain"
-									alt="Science-Driven Research icon"
+										src={"/figma/93e9f044d64676e6.png"}
+										className="w-[27px] h-[39px] object-contain"
+										alt="Science-Driven Research icon"
 									/>
 								</div>
 								<div className="flex flex-col items-start w-full max-w-full">
 									<h3 className="text-[#1F2429] text-xl lg:text-2xl font-bold mb-2 leading-tight">
-									Science-Driven Research
+										Science-Driven Research
 									</h3>
 									<p className="text-[#1F2429] text-base lg:text-lg leading-relaxed">
-									Developed with expert nutritionists and neuroscientists
+										Developed with expert nutritionists and neuroscientists
 									</p>
 								</div>
 							</div>
@@ -221,17 +221,17 @@ export default () => {
 							<div className="flex items-start gap-4 lg:gap-6 w-full">
 								<div className="flex-shrink-0 flex items-center justify-center">
 									<img
-									src={"/figma/f48ae9570f9cd666.png"} 
-									className="w-10 h-10 object-contain"
-									alt="Organic & Transparent icon"
+										src={"/figma/f48ae9570f9cd666.png"}
+										className="w-10 h-10 object-contain"
+										alt="Organic & Transparent icon"
 									/>
 								</div>
 								<div className="flex flex-col items-start w-full max-w-full">
 									<h3 className="text-[#1F2429] text-xl lg:text-2xl font-bold mb-2 leading-tight">
-									Organic & Transparent
+										Organic & Transparent
 									</h3>
 									<p className="text-[#1F2429] text-base lg:text-lg leading-relaxed">
-									Certified organic, no fillers, 100% ingredient clarity
+										Certified organic, no fillers, 100% ingredient clarity
 									</p>
 								</div>
 							</div>
@@ -247,79 +247,79 @@ export default () => {
 						{"Organic ingredients, cryogenically extracted to preserve their natural power — delivering pure, potent nourishment that supports your body’s vitality, radiant skin, and lasting energy every day."}
 					</span>
 					<div className="flex items-center self-stretch mx-6 lg:mx-24 gap-6 lg:gap-12 flex-col lg:flex-row">
-  <div className="flex flex-1 flex-col items-start gap-8 lg:gap-12 w-full max-w-full">
-    {/* Первый блок */}
-    <div className="flex items-start gap-4 lg:gap-6 w-full">
-      <div className="flex-shrink-0 flex items-center justify-center">
-        <img
-          src={"/figma/5c4cbae6f4d2c6aa.png"} 
-          className="w-12 h-10 lg:w-[72px] lg:h-[59px] object-contain"
-        />
-      </div>
-      <div className="flex-1 flex flex-col gap-2 lg:gap-2.5 min-w-0">
-        <span className="text-[#1F2429] text-xl lg:text-2xl font-bold leading-tight">
-          Grape Seed Extract
-        </span>
-        <span className="text-[#1F2429] text-base lg:text-lg leading-relaxed">
-          Rich in antioxidants and proanthocyanidins, it supports heart health and helps protect cells from daily toxins and stress that can accelerate ageing.
-        </span>
-      </div>
-    </div>
+						<div className="flex flex-1 flex-col items-start gap-8 lg:gap-12 w-full max-w-full">
+							{/* Первый блок */}
+							<div className="flex items-start gap-4 lg:gap-6 w-full">
+								<div className="flex-shrink-0 flex items-center justify-center">
+									<img
+										src={"/figma/5c4cbae6f4d2c6aa.png"}
+										className="w-12 h-10 lg:w-[72px] lg:h-[59px] object-contain"
+									/>
+								</div>
+								<div className="flex-1 flex flex-col gap-2 lg:gap-2.5 min-w-0">
+									<span className="text-[#1F2429] text-xl lg:text-2xl font-bold leading-tight">
+										Grape Seed Extract
+									</span>
+									<span className="text-[#1F2429] text-base lg:text-lg leading-relaxed">
+										Rich in antioxidants and proanthocyanidins, it supports heart health and helps protect cells from daily toxins and stress that can accelerate ageing.
+									</span>
+								</div>
+							</div>
 
-    {/* Второй блок */}
-    <div className="flex items-start gap-4 lg:gap-6 w-full">
-      <div className="flex-shrink-0 flex items-center justify-center">
-        <img
-          src={"/figma/2481f55913454a40.png"} 
-          className="w-12 h-9 lg:w-[71px] lg:h-[54px] object-contain"
-        />
-      </div>
-      <div className="flex-1 flex flex-col gap-2 lg:gap-2.5 min-w-0">
-        <span className="text-[#1F2429] text-xl lg:text-2xl font-bold leading-tight">
-          Wheat Lipid Extract
-        </span>
-        <span className="text-[#1F2429] text-base lg:text-lg leading-relaxed">
-          Contains essential fatty acids and ceramides that deeply nourish skin, improve barrier function, and enhance moisture retention.
-        </span>
-      </div>
-    </div>
+							{/* Второй блок */}
+							<div className="flex items-start gap-4 lg:gap-6 w-full">
+								<div className="flex-shrink-0 flex items-center justify-center">
+									<img
+										src={"/figma/2481f55913454a40.png"}
+										className="w-12 h-9 lg:w-[71px] lg:h-[54px] object-contain"
+									/>
+								</div>
+								<div className="flex-1 flex flex-col gap-2 lg:gap-2.5 min-w-0">
+									<span className="text-[#1F2429] text-xl lg:text-2xl font-bold leading-tight">
+										Wheat Lipid Extract
+									</span>
+									<span className="text-[#1F2429] text-base lg:text-lg leading-relaxed">
+										Contains essential fatty acids and ceramides that deeply nourish skin, improve barrier function, and enhance moisture retention.
+									</span>
+								</div>
+							</div>
 
-    {/* Третий блок */}
-    <div className="flex items-start gap-4 lg:gap-6 w-full">
-      <div className="flex-shrink-0 flex items-center justify-center">
-        <img
-          src={"/figma/42c9ab3ced15be74.png"} 
-          className="w-12 h-8 lg:w-[72px] lg:h-10 object-contain"
-        />
-      </div>
-      <div className="flex-1 flex flex-col gap-2 lg:gap-2.5 min-w-0">
-        <span className="text-[#1F2429] text-xl lg:text-2xl font-bold leading-tight">
-          Lavender Extract
-        </span>
-        <span className="text-[#1F2429] text-base lg:text-lg leading-relaxed">
-          Known for its calming and anti-inflammatory properties, it helps reduce stress and supports restful sleep quality.
-        </span>
-      </div>
-    </div>
+							{/* Третий блок */}
+							<div className="flex items-start gap-4 lg:gap-6 w-full">
+								<div className="flex-shrink-0 flex items-center justify-center">
+									<img
+										src={"/figma/42c9ab3ced15be74.png"}
+										className="w-12 h-8 lg:w-[72px] lg:h-10 object-contain"
+									/>
+								</div>
+								<div className="flex-1 flex flex-col gap-2 lg:gap-2.5 min-w-0">
+									<span className="text-[#1F2429] text-xl lg:text-2xl font-bold leading-tight">
+										Lavender Extract
+									</span>
+									<span className="text-[#1F2429] text-base lg:text-lg leading-relaxed">
+										Known for its calming and anti-inflammatory properties, it helps reduce stress and supports restful sleep quality.
+									</span>
+								</div>
+							</div>
 
-    {/* Кнопка */}
-    <button 
-      className="w-full sm:w-auto bg-[#1F2429] text-white py-3 px-8 lg:py-[15px] lg:px-[79px] rounded-full border-0 text-base font-bold hover:bg-gray-800 transition-colors self-start"
-      onClick={() => setPage('quiz')}
-    >
-      Take Quiz
-    </button>
-  </div>
+							{/* Кнопка */}
+							<button
+								className="w-full sm:w-auto bg-[#1F2429] text-white py-3 px-8 lg:py-[15px] lg:px-[79px] rounded-full border-0 text-base font-bold hover:bg-gray-800 transition-colors self-start"
+								onClick={() => setPage('quiz')}
+							>
+								Take Quiz
+							</button>
+						</div>
 
-  {/* Изображение */}
-  <div className="flex-shrink-0 w-full lg:w-auto flex justify-center">
-  <img
-  src={"/figma/1972b03e029398d7.png"} 
-  className="w-full max-w-[280px] sm:max-w-[350px] md:max-w-[450px] lg:w-[581px] lg:h-[581px] object-contain"
-  alt="Product illustration"
-/>
-  </div>
-</div>
+						{/* Изображение */}
+						<div className="flex-shrink-0 w-full lg:w-auto flex justify-center">
+							<img
+								src={"/figma/1972b03e029398d7.png"}
+								className="w-full max-w-[280px] sm:max-w-[350px] md:max-w-[450px] lg:w-[581px] lg:h-[581px] object-contain"
+								alt="Product illustration"
+							/>
+						</div>
+					</div>
 				</div>
 				<img
 					src={"/figma/5816bd1970893e9d.png"}
@@ -426,89 +426,69 @@ export default () => {
 						</div>
 					</div>
 				</div>
-				<div className="flex flex-col lg:flex-row items-center self-stretch mb-12 lg:mb-24 mx-4 sm:mx-8 lg:mx-16 xl:mx-[181px] gap-8 lg:gap-16">
+				<div className="flex flex-col lg:flex-row items-stretch self-stretch mb-12 lg:mb-24 mx-4 lg:mx-16 xl:mx-[70px] gap-8 lg:gap-16">
 					{/* Изображение */}
-					<div className="w-full lg:w-1/2 flex justify-center">
-						<img
-						src={"/figma/bafdd2e3ed2907ca.png"} 
-						className="w-full max-w-[400px] lg:max-w-[523px] h-auto lg:h-[833px] object-contain"
-						alt="How it works illustration"
-						/>
+					<div className="w-full lg:w-1/2 flex items-center justify-center">
+					<div className="w-full max-w-[400px] lg:max-w-[523px] h-[833px] overflow-hidden rounded-none">
+							<img
+								src={"/figma/girl_mgr2.png"}
+							className="w-full h-full object-contain"
+								alt="How it works illustration"
+							/>
+						</div>
 					</div>
 
 					{/* Текстовый блок */}
-					<div className="flex flex-1 flex-col items-start w-full max-w-full">
+					<div className="flex flex-1 flex-col items-start w-full max-w-full h-full justify-between">
 						<h2 className="text-[#1F2429] text-3xl lg:text-[40px] font-bold mb-6 lg:mb-8 leading-tight">
-						How It Works
+							How It Works
 						</h2>
-						
-						<div className="flex items-start pl-4 lg:pl-[19px] mb-6 lg:mb-[31px] gap-6 lg:gap-[51px] w-full">
-							{/* Вертикальная линия с цифрами */}
-							<div className="flex flex-col shrink-0 items-center relative mt-5">
-								<div className="flex flex-col items-center relative">
-									<div className="bg-[#F6F6F6] w-0.5 h-[280px] lg:h-[336px]">
-									</div>
-									<span className="text-white text-lg lg:text-[22px] absolute top-[75px] lg:top-[95px] left-[-16px] lg:left-[-19px]" >
-										2
-									</span>
-									<span className="text-white text-lg lg:text-[22px] absolute bottom-[65px] lg:bottom-[85px] left-[-16px] lg:left-[-19px]" >
-										3
-									</span>
-									<span className="text-white text-lg lg:text-[22px] absolute bottom-[-25px] lg:bottom-[-30px] left-[-16px] lg:left-[-19px]" >
-										4
-									</span>
-								</div>
-								<span className="text-white text-lg lg:text-[22px] absolute top-[-15px] lg:top-[-20px] left-[-16px] lg:left-[-19px]" >
-								1
-								</span>
-							</div>
 
-							{/* Текст шагов */}
-							<div className="flex flex-col items-start w-full max-w-full">
-								<div className="mb-6 lg:mb-8 w-full">
-									<h3 className="text-[#1F2429] text-xl lg:text-2xl font-bold mb-2 lg:mb-2.5 leading-tight">
-										Discover
-									</h3>
-									<p className="text-[#1F2429] text-base lg:text-lg leading-relaxed">
-										Take the quiz to uncover exactly what your body needs
-									</p>
+						<ol className="w-full max-w-full relative border-l-2 border-[#F6F6F6] space-y-28">
+							<li className="grid grid-cols-[auto,1fr] items-start gap-4">
+								<div className="w-10 h-10 rounded-full bg-[#00A8E2] text-white flex items-center justify-center font-bold -ml-5">
+									1
 								</div>
-
-								<div className="mb-6 lg:mb-8 w-full">
-									<h3 className="text-[#1F2429] text-xl lg:text-2xl font-bold mb-2 lg:mb-2.5 leading-tight">
-										Personalize
-									</h3>
-									<p className="text-[#1F2429] text-base lg:text-lg leading-relaxed">
-										Receive a personalised selection of supplements tailored to you
-									</p>
+								<div className="min-w-0">
+									<h3 className="text-[#1F2429] text-xl lg:text-2xl font-bold mb-2 lg:mb-2.5 leading-tight">Discover</h3>
+									<p className="text-[#1F2429] text-base lg:text-lg leading-relaxed">Take the quiz to uncover exactly what your body needs</p>
 								</div>
-
-								<div className="mb-6 lg:mb-8 w-full">
-									<h3 className="text-[#1F2429] text-xl lg:text-2xl font-bold mb-2 lg:mb-2.5 leading-tight">
-										Begin
-									</h3>
-									<p className="text-[#1F2429] text-base lg:text-lg leading-relaxed">
-										Receive your luxury formulations straight to your door - ready for your daily ritual
-									</p>
+							</li>
+							<li className="grid grid-cols-[auto,1fr] items-start gap-4">
+								<div className="w-10 h-10 rounded-full bg-[#00A8E2] text-white flex items-center justify-center font-bold -ml-5">
+									2
 								</div>
-
-								<div className="w-full">
-									<h3 className="text-[#1F2429] text-xl lg:text-2xl font-bold mb-2 lg:mb-2.5 leading-tight">
-										Elevate
-									</h3>
-									<p className="text-[#1F2429] text-base lg:text-lg leading-relaxed">
-										Take the quiz to uncover exactly what your body needs
-									</p>
+								<div className="min-w-0">
+									<h3 className="text-[#1F2429] text-xl lg:text-2xl font-bold mb-2 lg:mb-2.5 leading-tight">Personalize</h3>
+									<p className="text-[#1F2429] text-base lg:text-lg leading-relaxed">Receive a personalised selection of supplements tailored to you</p>
 								</div>
-							</div>
-						</div>
+							</li>
+							<li className="grid grid-cols-[auto,1fr] items-start gap-4">
+								<div className="w-10 h-10 rounded-full bg-[#00A8E2] text-white flex items-center justify-center font-bold -ml-5">
+									3
+								</div>
+								<div className="min-w-0">
+									<h3 className="text-[#1F2429] text-xl lg:text-2xl font-bold mb-2 lg:mb-2.5 leading-tight">Begin</h3>
+									<p className="text-[#1F2429] text-base lg:text-lg leading-relaxed">Receive your luxury formulations straight to your door - ready for your daily ritual</p>
+								</div>
+							</li>
+							<li className="grid grid-cols-[auto,1fr] items-start gap-4">
+								<div className="w-10 h-10 rounded-full bg-[#00A8E2] text-white flex items-center justify-center font-bold -ml-5">
+									4
+								</div>
+								<div className="min-w-0">
+									<h3 className="text-[#1F2429] text-xl lg:text-2xl font-bold mb-2 lg:mb-2.5 leading-tight">Elevate</h3>
+									<p className="text-[#1F2429] text-base lg:text-lg leading-relaxed">Take the quiz to uncover exactly what your body needs</p>
+								</div>
+							</li>
+						</ol>
 
 						{/* Кнопка */}
-					<button 
-					className="w-full sm:w-auto bg-[#1F2429] text-white py-3 px-8 lg:py-[15px] lg:px-[79px] rounded-full border-0 text-base font-bold hover:bg-gray-800 transition-colors"
-					onClick={() => setPage('quiz')}
-					>
-						Take Quiz
+						<button
+							className="w-full lg:w-auto text-[#00A8E2] py-3 px-8 lg:py-[15px] lg:px-[79px] rounded-full border-2 border-solid border-gray-200 text-base hover:bg-white-600 transition-colors lg:mt-12 self-start mt-auto"
+							onClick={() => setPage('quiz')}
+						>
+							Start Now
 						</button>
 					</div>
 				</div>
@@ -518,7 +498,7 @@ export default () => {
 				<span className="text-[#1F2429] text-xl ml-24" >
 					{"Our Classic Hit range provides daily care for the health of the body at the cellular level."}
 				</span>
-				<ProductCarousel/>
+				<ProductCarousel />
 				<div className="self-stretch">
 					<div className="flex flex-col items-start self-stretch bg-[url('/figma/3efb4492240092ed.png')] bg-cover bg-center pt-[366px] pb-20 gap-6">
 						<span className="text-white text-[40px] font-bold w-[328px] ml-24" >
@@ -531,7 +511,7 @@ export default () => {
 					<div className="flex items-center self-stretch p-24 gap-10">
 						<div className="flex justify-center w-[550px]">
 							<img
-								src={"/figma/8d83bebdc0acffe3.png"} 
+								src={"/figma/8d83bebdc0acffe3.png"}
 								className="h-[434px] object-contain"
 							/>
 						</div>
@@ -547,7 +527,7 @@ export default () => {
 							</span>
 							<div className="flex items-center mb-3 gap-2">
 								<img
-									src={"/figma/9baa6eb62c0c0772.png"} 
+									src={"/figma/9baa6eb62c0c0772.png"}
 									className="w-6 h-6 object-fill"
 								/>
 								<span className="text-[#00A8E2] text-base font-bold" >
@@ -556,7 +536,7 @@ export default () => {
 							</div>
 							<div className="flex items-center mb-3 gap-2">
 								<img
-									src={"/figma/137844a9ab68ebd1.png"} 
+									src={"/figma/137844a9ab68ebd1.png"}
 									className="w-6 h-6 object-fill"
 								/>
 								<span className="text-[#00A8E2] text-base font-bold" >
@@ -565,15 +545,15 @@ export default () => {
 							</div>
 							<div className="flex items-center mb-9 gap-2">
 								<img
-									src={"/figma/c0a52747ce6fde1a.png"} 
+									src={"/figma/c0a52747ce6fde1a.png"}
 									className="w-6 h-6 object-fill"
 								/>
 								<span className="text-[#00A8E2] text-base font-bold" >
 									{"Wide range of comprehensive coverage across the body"}
 								</span>
 							</div>
-						<button className="flex flex-col items-start bg-[#1F2429] text-left py-[15px] px-[79px] rounded-[100000px] border-0"
-							onClick={()=>setPage('quiz')}>
+							<button className="flex flex-col items-start bg-[#1F2429] text-left py-[15px] px-[79px] rounded-[100000px] border-0"
+								onClick={() => setPage('quiz')}>
 								<span className="text-white text-base font-bold" >
 									{"Take Quiz"}
 								</span>
@@ -607,49 +587,49 @@ export default () => {
 						{/* Левый блок */}
 						<div className="flex flex-col items-center w-full lg:w-auto py-8 lg:py-[101px] px-4 lg:px-2.5 order-2 lg:order-1">
 							<img
-							src={"/figma/ee8b3ff1ba6822a8.png"} 
-							className="w-[25px] h-[30px] mb-4 lg:mb-[17px] object-contain"
-							alt="Unlock Exclusive Perks icon"
+								src={"/figma/ee8b3ff1ba6822a8.png"}
+								className="w-[25px] h-[30px] mb-4 lg:mb-[17px] object-contain"
+								alt="Unlock Exclusive Perks icon"
 							/>
 							<span className="text-[#1F2429] text-lg lg:text-xl font-bold mb-8 lg:mb-[150px] text-center">
-							Unlock Exclusive Perks
+								Unlock Exclusive Perks
 							</span>
 							<img
-							src={"/figma/37938f0ba5060b8.png"} 
-							className="w-8 h-8 mb-4 object-contain"
-							alt="Join Prize Draws icon"
+								src={"/figma/37938f0ba5060b8.png"}
+								className="w-8 h-8 mb-4 object-contain"
+								alt="Join Prize Draws icon"
 							/>
 							<span className="text-[#1F2429] text-lg lg:text-xl font-bold text-center">
-							Join Prize Draws
+								Join Prize Draws
 							</span>
 						</div>
 
 						{/* Центральное изображение */}
 						<div className="flex justify-center w-full lg:w-auto order-1 lg:order-2">
 							<img
-							src={"/figma/9d98b22bd710ccb0.png"} 
-							className="w-full max-w-[300px] sm:max-w-[400px] lg:w-[440px] lg:h-[496px] object-contain"
-							alt="Main product"
+								src={"/figma/9d98b22bd710ccb0.png"}
+								className="w-full max-w-[300px] sm:max-w-[400px] lg:w-[440px] lg:h-[496px] object-contain"
+								alt="Main product"
 							/>
 						</div>
 
 						{/* Правый блок */}
 						<div className="flex flex-col items-center w-full lg:w-auto py-8 lg:py-[101px] px-4 lg:px-[25px] order-3">
 							<img
-							src={"/figma/288b39a3d70ca508.png"} 
-							className="w-[23px] h-7 mb-4 lg:mb-[17px] object-contain"
-							alt="Buy & Collect Packs icon"
+								src={"/figma/288b39a3d70ca508.png"}
+								className="w-[23px] h-7 mb-4 lg:mb-[17px] object-contain"
+								alt="Buy & Collect Packs icon"
 							/>
 							<span className="text-[#1F2429] text-lg lg:text-xl font-bold text-center mb-8 lg:mb-[150px]">
-							Buy & Collect Packs
+								Buy & Collect Packs
 							</span>
 							<img
-							src={"/figma/e2900e8c0ee89004.png"} 
-							className="w-8 h-8 mb-4 object-contain"
-							alt="Access VIP Events icon"
+								src={"/figma/e2900e8c0ee89004.png"}
+								className="w-8 h-8 mb-4 object-contain"
+								alt="Access VIP Events icon"
 							/>
 							<span className="text-[#1F2429] text-lg lg:text-xl font-bold text-center">
-							Access VIP Events
+								Access VIP Events
 							</span>
 						</div>
 					</div>
@@ -663,19 +643,19 @@ export default () => {
 				<div className="flex flex-col items-start self-stretch">
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 w-full">
 						<img
-							src={"/figma/73d452b089408908.png"} 
+							src={"/figma/73d452b089408908.png"}
 							className="w-full h-[360px] object-cover object-top"
 						/>
 						<img
-							src={"/figma/6134f6cf57b4290b.png"} 
+							src={"/figma/6134f6cf57b4290b.png"}
 							className="w-full h-[360px] object-cover object-top"
 						/>
 						<img
-							src={"/figma/4bc3f966fe7f4523.png"} 
+							src={"/figma/4bc3f966fe7f4523.png"}
 							className="w-full h-[360px] object-cover object-top"
 						/>
 						<img
-							src={"/figma/11dd909319c2ad2e.png"} 
+							src={"/figma/11dd909319c2ad2e.png"}
 							className="w-full h-[360px] object-cover object-top"
 						/>
 					</div>
@@ -685,11 +665,10 @@ export default () => {
 						</span>
 						<div className="flex flex-1 flex-col gap-4">
 							{faqData.map((faq, index) => (
-								<button 
+								<button
 									key={index}
-									className={`flex flex-col self-stretch bg-[#FCFDFF] py-4 gap-3 rounded-2xl border border-solid border-[#E1E9FD] transition-all duration-300 ${
-										openFAQ === index ? 'shadow-lg' : ''
-									}`}
+									className={`flex flex-col self-stretch bg-[#FCFDFF] py-4 gap-3 rounded-2xl border border-solid border-[#E1E9FD] transition-all duration-300 ${openFAQ === index ? 'shadow-lg' : ''
+										}`}
 									onClick={() => toggleFAQ(index)}
 								>
 									<div className="flex items-start self-stretch mx-4">
@@ -697,10 +676,9 @@ export default () => {
 											{faq.question}
 										</span>
 										<img
-											src={openFAQ === index ? "/figma/171705bc9ae38148.png" : "/figma/beac637ba3d38921.png"} 
-											className={`w-6 h-6 object-fill transition-transform duration-300 ${
-												openFAQ === index ? 'rotate-180' : ''
-											}`}
+											src={openFAQ === index ? "/figma/171705bc9ae38148.png" : "/figma/beac637ba3d38921.png"}
+											className={`w-6 h-6 object-fill transition-transform duration-300 ${openFAQ === index ? 'rotate-180' : ''
+												}`}
 										/>
 									</div>
 									{openFAQ === index && (
@@ -716,7 +694,7 @@ export default () => {
 				<div className="flex flex-col items-start self-stretch bg-[#1F2429] py-16 w-full px-4 sm:px-6 lg:px-24">
 					<div className="flex flex-col lg:flex-row items-start lg:items-center self-stretch mb-6 w-full gap-4">
 						<img
-							src={"/figma/b83cda6121040e84.png"} 
+							src={"/figma/b83cda6121040e84.png"}
 							className="w-[87px] h-[87px] object-fill flex-shrink-0"
 						/>
 						<div className="flex flex-col lg:flex-row items-start lg:items-center gap-4 lg:gap-6 flex-1 justify-end">
@@ -734,19 +712,19 @@ export default () => {
 					<div className="flex flex-col lg:flex-row items-start lg:items-center justify-between self-stretch mb-6 w-full gap-4">
 						<div className="flex items-center gap-6">
 							<img
-								src={"/figma/9fc19f9778f0a6a4.png"} 
+								src={"/figma/9fc19f9778f0a6a4.png"}
 								className="w-10 h-10 object-fill"
 							/>
 							<img
-								src={"/figma/8e6dd44eb9eb84dc.png"} 
+								src={"/figma/8e6dd44eb9eb84dc.png"}
 								className="w-10 h-10 object-fill"
 							/>
 							<img
-								src={"/figma/bbcc4d81cec4dbc5.png"} 
+								src={"/figma/bbcc4d81cec4dbc5.png"}
 								className="w-10 h-10 object-fill"
 							/>
 							<img
-								src={"/figma/42530d79f7854fbc.png"} 
+								src={"/figma/42530d79f7854fbc.png"}
 								className="w-10 h-10 object-fill"
 							/>
 						</div>

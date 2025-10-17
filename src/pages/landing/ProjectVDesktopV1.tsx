@@ -9,7 +9,7 @@ export default (props: any) => {
 	const [openFAQ, setOpenFAQ] = useState<number | null>(null);
 	const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 	const videoRef = React.useRef<HTMLVideoElement>(null);
-	
+
 	const faqData = [
 		{
 			question: "What makes Project V different from regular supplements?",
@@ -32,24 +32,24 @@ export default (props: any) => {
 			answer: "Our formulas are developed by a team of expert nutritionists, neuroscientists, and medical professionals with decades of experience in functional medicine. Each formulation is backed by scientific research and clinical studies, ensuring that every product delivers measurable health benefits and supports your long-term wellness goals."
 		}
 	];
-	
+
 	const toggleFAQ = (index: number) => {
 		setOpenFAQ(openFAQ === index ? null : index);
 	};
 	return (
 		<div className="flex flex-col bg-white">
-				<div className="flex flex-col items-start self-stretch bg-white">
+			<div className="flex flex-col items-start self-stretch bg-white">
 				<div className="flex flex-col items-start self-stretch bg-[url('/figma/main_woman.png')] bg-cover bg-center py-12">
 					<div className="flex flex-col items-center pb-[1px] mb-24 ml-24">
 						<img
-							src={"https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/f712b188-06a5-4e83-a515-9fbd9128f837"} 
+							src={"https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/f712b188-06a5-4e83-a515-9fbd9128f837"}
 							className="w-[148px] h-[37px] object-fill"
 						/>
 					</div>
 					<div className="flex flex-col items-start self-stretch mx-24 gap-8">
 						<div className="flex items-center">
 							<img
-								src={"https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/be319cdc-ab8e-4785-87a1-3ee8f1dd8cf0"} 
+								src={"https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/be319cdc-ab8e-4785-87a1-3ee8f1dd8cf0"}
 								className="w-[81px] h-3 mr-1.5 object-fill"
 							/>
 							<span className="text-white text-lg font-bold mr-2.5" >
@@ -66,7 +66,7 @@ export default (props: any) => {
 							<div className="flex items-center">
 								<div className="flex shrink-0 items-center mr-[117px] gap-2">
 									<img
-										src={"/figma/94e953f50deca03e.png"} 
+										src={"/figma/94e953f50deca03e.png"}
 										className="w-6 h-6 object-fill"
 									/>
 									<span className="text-white text-base font-bold" >
@@ -74,7 +74,7 @@ export default (props: any) => {
 									</span>
 								</div>
 								<img
-									src={"/figma/afab011836e01f66.png"} 
+									src={"/figma/afab011836e01f66.png"}
 									className="w-6 h-6 mr-2 object-fill"
 								/>
 								<span className="text-white text-base font-bold" >
@@ -84,7 +84,7 @@ export default (props: any) => {
 							<div className="flex items-center">
 								<div className="flex shrink-0 items-center mr-[117px] gap-2">
 									<img
-										src={"/figma/f86f706981f646e0.png"} 
+										src={"/figma/f86f706981f646e0.png"}
 										className="w-6 h-6 object-fill"
 									/>
 									<span className="text-white text-base font-bold" >
@@ -92,7 +92,7 @@ export default (props: any) => {
 									</span>
 								</div>
 								<img
-									src={"/figma/5cad830aff5053ef.png"} 
+									src={"/figma/5cad830aff5053ef.png"}
 									className="w-6 h-6 mr-2 object-fill"
 								/>
 								<span className="text-white text-base font-bold" >
@@ -101,7 +101,7 @@ export default (props: any) => {
 							</div>
 						</div>
 						<button className="flex flex-col items-start bg-[#00A8E2] text-left py-[15px] px-[79px] rounded-[1000px] border-0"
-							onClick={()=>setPage('quiz')}>
+							onClick={() => setPage('quiz')}>
 							<span className="text-white text-base font-bold" >
 								{"Take Quiz"}
 							</span>
@@ -114,19 +114,19 @@ export default (props: any) => {
 					</span>
 					<div className="flex justify-center items-start self-stretch px-2 gap-2">
 						<img
-							src={"/figma/678fd5b8c8e8f404.png"} 
+							src={"/figma/678fd5b8c8e8f404.png"}
 							className="w-[169px] h-[65px] object-fill"
 						/>
 						<img
-							src={"/figma/743c33dfee8e2205.png"} 
+							src={"/figma/743c33dfee8e2205.png"}
 							className="w-[185px] h-[65px] object-fill"
 						/>
 						<img
-							src={"/figma/fbcd16954bbbcbce.png"} 
+							src={"/figma/fbcd16954bbbcbce.png"}
 							className="w-[171px] h-[65px] object-fill"
 						/>
 						<img
-							src={"/figma/6a429b32fdab3b00.png"} 
+							src={"/figma/6a429b32fdab3b00.png"}
 							className="w-[171px] h-[65px] object-fill"
 						/>
 					</div>
@@ -142,13 +142,13 @@ export default (props: any) => {
 					</div>
 					<div className="flex flex-col self-stretch mx-24 gap-[33px]">
 						<img
-							src={"/figma/c19897654eb13305.png"} 
+							src={"/figma/c19897654eb13305.png"}
 							className="w-full h-[581px] object-contain"
 						/>
 						<div className="flex flex-col self-stretch gap-16">
 							<div className="flex items-center self-stretch px-2.5 mx-8 gap-[27px]">
 								<img
-									src={"/figma/5f669498c510aa1b.png"} 
+									src={"/figma/5f669498c510aa1b.png"}
 									className="w-[18px] h-10 object-fill"
 								/>
 								<div className="flex flex-1 flex-col items-start gap-2">
@@ -162,7 +162,7 @@ export default (props: any) => {
 							</div>
 							<div className="flex items-center self-stretch mx-8">
 								<img
-									src={"/figma/33549dcc64e2e91f.png"} 
+									src={"/figma/33549dcc64e2e91f.png"}
 									className="w-[27px] h-[39px] ml-1.5 mr-[22px] object-fill"
 								/>
 								<div className="flex flex-1 flex-col items-start gap-2">
@@ -176,7 +176,7 @@ export default (props: any) => {
 							</div>
 							<div className="flex items-center self-stretch mx-8 gap-4">
 								<img
-									src={"/figma/e4c8e83e804460b0.png"} 
+									src={"/figma/e4c8e83e804460b0.png"}
 									className="w-10 h-10 object-fill"
 								/>
 								<div className="flex flex-1 flex-col items-start gap-2">
@@ -191,7 +191,7 @@ export default (props: any) => {
 						</div>
 					</div>
 				</div>
-				<InfiniteScroller />	
+				<InfiniteScroller />
 				<div className="flex flex-col self-stretch py-24 gap-12">
 					<div className="flex flex-col items-start self-stretch mx-24 gap-6">
 						<span className="text-[#1F2429] text-[40px] font-bold" >
@@ -206,7 +206,7 @@ export default (props: any) => {
 							<div className="flex items-start self-stretch gap-6">
 								<div className="flex flex-col shrink-0 items-center py-2">
 									<img
-										src={"/figma/ecd9be8b7225319a.png"} 
+										src={"/figma/ecd9be8b7225319a.png"}
 										className="w-[72px] h-[59px] object-fill"
 									/>
 								</div>
@@ -221,7 +221,7 @@ export default (props: any) => {
 							</div>
 							<div className="flex items-start self-stretch">
 								<img
-									src={"/figma/15e359dfd295e7d6.png"} 
+									src={"/figma/15e359dfd295e7d6.png"}
 									className="w-[71px] h-[54px] my-[9px] ml-[1px] mr-[25px] object-fill"
 								/>
 								<div className="flex flex-1 flex-col items-start gap-2.5">
@@ -236,7 +236,7 @@ export default (props: any) => {
 							<div className="flex items-start self-stretch gap-6">
 								<div className="flex flex-col shrink-0 items-center py-4">
 									<img
-										src={"/figma/19761e27acf3df1b.png"} 
+										src={"/figma/19761e27acf3df1b.png"}
 										className="w-[72px] h-10 object-fill"
 									/>
 								</div>
@@ -249,21 +249,21 @@ export default (props: any) => {
 									</span>
 								</div>
 							</div>
-						<button className="flex flex-col items-start bg-[#1F2429] text-left py-[15px] px-[79px] rounded-[100000px] border-0"
-							onClick={()=>setPage('quiz')}>
+							<button className="flex flex-col items-start bg-[#1F2429] text-left py-[15px] px-[79px] rounded-[100000px] border-0"
+								onClick={() => setPage('quiz')}>
 								<span className="text-white text-base font-bold" >
 									{"Take Quiz"}
 								</span>
 							</button>
 						</div>
 						<img
-							src={"/figma/1972b03e029398d7.png"} 
+							src={"/figma/1972b03e029398d7.png"}
 							className="self-stretch h-[581px] object-fill"
 						/>
 					</div>
 				</div>
 				<img
-					src={"/figma/a5a6022d64c1b0d2.png"} 
+					src={"/figma/a5a6022d64c1b0d2.png"}
 					className="w-full h-[486px] object-cover object-center"
 				/>
 				<div className="flex flex-col self-stretch py-24 gap-12">
@@ -326,7 +326,7 @@ export default (props: any) => {
 					<div className="flex flex-col self-stretch mx-24 gap-6">
 						<div className="flex items-center self-stretch py-6 px-4 gap-3 rounded-2xl border-2 border-solid border-[#00A8E2] hover:scale-105 transition-transform duration-300">
 							<img
-								src={"/figma/3b03a5fc60fa457a.png"} 
+								src={"/figma/3b03a5fc60fa457a.png"}
 								className="w-8 h-8 rounded-2xl object-fill"
 							/>
 							<span className="text-[#1F2429] text-xl font-bold" >
@@ -335,7 +335,7 @@ export default (props: any) => {
 						</div>
 						<div className="flex items-center self-stretch py-6 px-4 gap-3 rounded-2xl border-2 border-solid border-[#00A8E2] hover:scale-105 transition-transform duration-300">
 							<img
-								src={"/figma/5c9d7abe67806357.png"} 
+								src={"/figma/5c9d7abe67806357.png"}
 								className="w-8 h-8 rounded-2xl object-fill"
 							/>
 							<span className="text-[#1F2429] text-xl font-bold" >
@@ -344,7 +344,7 @@ export default (props: any) => {
 						</div>
 						<div className="flex items-center self-stretch py-6 px-4 gap-3 rounded-2xl border-2 border-solid border-[#00A8E2] hover:scale-105 transition-transform duration-300">
 							<img
-								src={"/figma/757cb68bfea10298.png"} 
+								src={"/figma/757cb68bfea10298.png"}
 								className="w-8 h-8 rounded-2xl object-fill"
 							/>
 							<span className="text-[#1F2429] text-xl font-bold" >
@@ -353,7 +353,7 @@ export default (props: any) => {
 						</div>
 						<div className="flex items-center self-stretch py-6 px-4 gap-3 rounded-2xl border-2 border-solid border-[#00A8E2] hover:scale-105 transition-transform duration-300">
 							<img
-								src={"/figma/5238d67a15e0a22e.png"} 
+								src={"/figma/5238d67a15e0a22e.png"}
 								className="w-8 h-8 rounded-2xl object-fill"
 							/>
 							<span className="text-[#1F2429] text-xl font-bold" >
@@ -362,66 +362,55 @@ export default (props: any) => {
 						</div>
 					</div>
 				</div>
-				<div className="flex flex-col self-stretch px-24 mb-24 gap-[63px]">
-					<img
-						src={"/figma/e52e98aae081fc45.png"} 
-						className="w-full h-[833px] mx-[26px] object-contain"
-					/>
+				<div className="flex flex-col self-stretch px-24 mb-24 gap-8">
+					<div className="w-full flex items-center justify-center">
+						<div className="w-full max-w-[600px] h-[600px] overflow-hidden rounded-none">
+							<img
+								src={"/figma/girl_mgr2.png"}
+								className="w-full h-full object-contain"
+								alt="How it works illustration"
+							/>
+						</div>
+					</div>
 					<div className="flex flex-col items-start self-stretch mx-[42px]">
-						<span className="text-[#1F2429] text-[40px] font-bold mb-8" >
+						<span className="text-[#1F2429] text-[40px] font-bold mb-6" >
 							{"How It Works"}
 						</span>
-						<div className="flex items-start pl-[18px] mb-[31px] gap-[51px]">
-							<div className="flex flex-col shrink-0 items-center relative mt-5">
-								<div className="flex flex-col items-center relative">
-									<div className="bg-[#F6F6F6] w-0.5 h-[336px]">
-									</div>
-									<span className="text-white text-[22px] absolute top-[95px] left-[-18px]" >
-										{"2"}
-									</span>
-									<span className="text-white text-[22px] absolute bottom-[85px] left-[-18px]" >
-										{"3"}
-									</span>
-									<span className="text-white text-[22px] absolute bottom-[-30px] left-[-18px]" >
-										{"4"}
-									</span>
+						<ol className="w-full relative border-l-2 border-[#F6F6F6] space-y-12 pl-7">
+							<li className="grid grid-cols-[auto,1fr] items-start gap-4">
+								<div className="w-10 h-10 rounded-full bg-[#00A8E2] text-white flex items-center justify-center font-bold -ml-12">1</div>
+								<div className="min-w-0">
+									<h3 className="text-[#1F2429] text-2xl font-bold mb-2 leading-tight">Discover</h3>
+									<p className="text-[#1F2429] text-lg leading-relaxed">Take the quiz to uncover exactly what your body needs</p>
 								</div>
-								<span className="text-white text-[22px] absolute top-[-20px] left-[-18px]" >
-									{"1"}
-								</span>
-							</div>
-							<div className="flex flex-col shrink-0 items-start">
-								<span className="text-[#1F2429] text-2xl font-bold mb-2.5" >
-									{"Discover"}
-								</span>
-								<span className="text-[#1F2429] text-lg w-[380px] mb-8" >
-									{"Take the quiz to uncover exactly what your body needs"}
-								</span>
-								<span className="text-[#1F2429] text-2xl font-bold mb-2.5" >
-									{"Personalize"}
-								</span>
-								<span className="text-[#1F2429] text-lg w-[389px] mb-8" >
-									{"Receive a personalised selection of supplements tailored to you"}
-								</span>
-								<span className="text-[#1F2429] text-2xl font-bold mb-2.5" >
-									{"Begin"}
-								</span>
-								<span className="text-[#1F2429] text-lg w-96 mb-8" >
-									{"Receive your luxury formulations straight to your door - ready for your daily ritual"}
-								</span>
-								<span className="text-[#1F2429] text-2xl font-bold mb-2.5" >
-									{"Elevate"}
-								</span>
-								<span className="text-[#1F2429] text-lg w-[380px]" >
-									{"Take the quiz to uncover exactly what your body needs"}
-								</span>
-							</div>
-						</div>
-					<button className="flex flex-col items-start bg-[#1F2429] text-left py-[15px] px-20 rounded-[100000px] border-0"
-						onClick={()=>setPage('quiz')}>
-							<span className="text-white text-base font-bold" >
-								{"Take Quiz"}
-							</span>
+							</li>
+							<li className="grid grid-cols-[auto,1fr] items-start gap-4">
+								<div className="w-10 h-10 rounded-full bg-[#00A8E2] text-white flex items-center justify-center font-bold -ml-12">2</div>
+								<div className="min-w-0">
+									<h3 className="text-[#1F2429] text-2xl font-bold mb-2 leading-tight">Personalize</h3>
+									<p className="text-[#1F2429] text-lg leading-relaxed">Receive a personalised selection of supplements tailored to you</p>
+								</div>
+							</li>
+							<li className="grid grid-cols-[auto,1fr] items-start gap-4">
+								<div className="w-10 h-10 rounded-full bg-[#00A8E2] text-white flex items-center justify-center font-bold -ml-12">3</div>
+								<div className="min-w-0">
+									<h3 className="text-[#1F2429] text-2xl font-bold mb-2 leading-tight">Begin</h3>
+									<p className="text-[#1F2429] text-lg leading-relaxed">Receive your luxury formulations straight to your door - ready for your daily ritual</p>
+								</div>
+							</li>
+							<li className="grid grid-cols-[auto,1fr] items-start gap-4">
+								<div className="w-10 h-10 rounded-full bg-[#00A8E2] text-white flex items-center justify-center font-bold -ml-12">4</div>
+								<div className="min-w-0">
+									<h3 className="text-[#1F2429] text-2xl font-bold mb-2 leading-tight">Elevate</h3>
+									<p className="text-[#1F2429] text-lg leading-relaxed">Take the quiz to uncover exactly what your body needs</p>
+								</div>
+							</li>
+						</ol>
+						<button
+							className="w-auto text-[#00A8E2] py-3 px-8 rounded-full border-2 border-solid border-gray-200 text-base hover:bg-white-600 mt-8 self-start"
+							onClick={() => setPage('quiz')}
+						>
+							Start Now
 						</button>
 					</div>
 				</div>
@@ -443,7 +432,7 @@ export default (props: any) => {
 					</div>
 					<div className="flex flex-col items-start self-stretch py-24">
 						<img
-							src={"/figma/64a3569f4c26fbb0.png"} 
+							src={"/figma/64a3569f4c26fbb0.png"}
 							className="w-[550px] h-[434px] mb-10 ml-24 object-fill"
 						/>
 						<span className="text-[#00A8E2] text-xl font-bold mb-[37px] ml-24" >
@@ -457,7 +446,7 @@ export default (props: any) => {
 						</span>
 						<div className="flex items-center mb-3 ml-24 gap-2">
 							<img
-								src={"/figma/766b04c549374e30.png"} 
+								src={"/figma/766b04c549374e30.png"}
 								className="w-6 h-6 object-fill"
 							/>
 							<span className="text-[#00A8E2] text-base font-bold" >
@@ -466,7 +455,7 @@ export default (props: any) => {
 						</div>
 						<div className="flex items-center mb-3 ml-24 gap-2">
 							<img
-								src={"/figma/03b4056e901e0542.png"} 
+								src={"/figma/03b4056e901e0542.png"}
 								className="w-6 h-6 object-fill"
 							/>
 							<span className="text-[#00A8E2] text-base font-bold" >
@@ -475,7 +464,7 @@ export default (props: any) => {
 						</div>
 						<div className="flex items-center mb-9 ml-24 gap-2">
 							<img
-								src={"/figma/a6d3ab9f9b3aa04f.png"} 
+								src={"/figma/a6d3ab9f9b3aa04f.png"}
 								className="w-6 h-6 object-fill"
 							/>
 							<span className="text-[#00A8E2] text-base font-bold" >
@@ -483,14 +472,14 @@ export default (props: any) => {
 							</span>
 						</div>
 						<button className="flex flex-col items-start bg-[#1F2429] text-left py-[15px] px-[79px] ml-24 rounded-[100000px] border-0"
-							onClick={()=>setPage('quiz')}>
+							onClick={() => setPage('quiz')}>
 							<span className="text-white text-base font-bold" >
 								{"Take Quiz"}
 							</span>
 						</button>
 					</div>
 				</div>
-				
+
 				<TestimonialsCarousel />
 
 				<div className="flex flex-col items-start self-stretch bg-[url('/figma/8641e97520824691.png')] bg-cover bg-center pt-[442px] pb-[79px] mb-24 gap-6">
@@ -511,7 +500,7 @@ export default (props: any) => {
 					</span>
 					<div className="flex flex-col items-center self-stretch mb-4">
 						<img
-							src={"/figma/560179536f5737f3.png"} 
+							src={"/figma/560179536f5737f3.png"}
 							className="w-[25px] h-[30px] mt-[1px] mx-[3px] object-fill"
 						/>
 					</div>
@@ -522,7 +511,7 @@ export default (props: any) => {
 					</div>
 					<div className="flex flex-col items-center self-stretch mb-4">
 						<img
-							src={"/figma/15d97e76849f2e4c.png"} 
+							src={"/figma/15d97e76849f2e4c.png"}
 							className="w-8 h-8 object-fill"
 						/>
 					</div>
@@ -532,12 +521,12 @@ export default (props: any) => {
 						</span>
 					</div>
 					<img
-						src={"/figma/c8849c0f24e91715.png"} 
+						src={"/figma/c8849c0f24e91715.png"}
 						className="self-stretch h-[496px] mb-[31px] mx-[164px] object-fill"
 					/>
 					<div className="flex flex-col items-center self-stretch mb-4">
 						<img
-							src={"/figma/186372fbdd01da60.png"} 
+							src={"/figma/186372fbdd01da60.png"}
 							className="w-[23px] h-7 my-[1px] mx-1 object-fill"
 						/>
 					</div>
@@ -548,7 +537,7 @@ export default (props: any) => {
 					</div>
 					<div className="flex flex-col items-center self-stretch mb-4">
 						<img
-							src={"/figma/c50986d9da265769.png"} 
+							src={"/figma/c50986d9da265769.png"}
 							className="w-8 h-8 object-fill"
 						/>
 					</div>
@@ -568,21 +557,21 @@ export default (props: any) => {
 					<div className="flex flex-col items-center justify-center">
 						<div className="flex items-center justify-center">
 							<img
-								src={"/figma/143a6b1ae448f070.png"} 
+								src={"/figma/143a6b1ae448f070.png"}
 								className="w-[360px] h-[360px] object-fill"
 							/>
 							<img
-								src={"/figma/676e2e912a700476.png"} 
+								src={"/figma/676e2e912a700476.png"}
 								className="w-[360px] h-[360px] object-fill"
 							/>
 						</div>
 						<div className="flex items-center justify-center">
 							<img
-								src={"/figma/47483c572e515bf9.png"} 
+								src={"/figma/47483c572e515bf9.png"}
 								className="w-[360px] h-[360px] object-fill"
 							/>
 							<img
-								src={"/figma/75fd9ba5ba13a263.png"} 
+								src={"/figma/75fd9ba5ba13a263.png"}
 								className="w-[360px] h-[360px] object-fill"
 							/>
 						</div>
@@ -593,11 +582,10 @@ export default (props: any) => {
 						</span>
 						<div className="flex flex-col self-stretch gap-4">
 							{faqData.map((faq, index) => (
-								<button 
+								<button
 									key={index}
-									className={`flex flex-col self-stretch bg-[#FCFDFF] py-4 gap-3 rounded-2xl border border-solid border-[#E1E9FD] transition-all duration-300 ${
-										openFAQ === index ? 'shadow-lg' : ''
-									}`}
+									className={`flex flex-col self-stretch bg-[#FCFDFF] py-4 gap-3 rounded-2xl border border-solid border-[#E1E9FD] transition-all duration-300 ${openFAQ === index ? 'shadow-lg' : ''
+										}`}
 									onClick={() => toggleFAQ(index)}
 								>
 									<div className="flex items-start self-stretch mx-4">
@@ -605,10 +593,9 @@ export default (props: any) => {
 											{faq.question}
 										</span>
 										<img
-											src={openFAQ === index ? "/figma/db76ec4308574fad.png" : "/figma/34c5e5563c063901.png"} 
-											className={`w-6 h-6 object-fill transition-transform duration-300 ${
-												openFAQ === index ? 'rotate-180' : ''
-											}`}
+											src={openFAQ === index ? "/figma/db76ec4308574fad.png" : "/figma/34c5e5563c063901.png"}
+											className={`w-6 h-6 object-fill transition-transform duration-300 ${openFAQ === index ? 'rotate-180' : ''
+												}`}
 										/>
 									</div>
 									{openFAQ === index && (
@@ -624,7 +611,7 @@ export default (props: any) => {
 				<div className="flex flex-col items-start self-stretch bg-[#1F2429] py-16">
 					<div className="flex items-start self-stretch mb-[3px] mx-24">
 						<img
-							src={"/figma/b9639cfa00443c94.png"} 
+							src={"/figma/b9639cfa00443c94.png"}
 							className="w-[87px] h-[87px] object-fill"
 						/>
 						<div className="flex-1 self-stretch">
@@ -644,19 +631,19 @@ export default (props: any) => {
 					<div className="flex flex-col items-end self-stretch mb-6">
 						<div className="flex items-start mr-24 gap-6">
 							<img
-								src={"/figma/768dfe85ddbb1771.png"} 
+								src={"/figma/768dfe85ddbb1771.png"}
 								className="w-10 h-10 object-fill"
 							/>
 							<img
-								src={"/figma/acb0a494216ccc39.png"} 
+								src={"/figma/acb0a494216ccc39.png"}
 								className="w-10 h-10 object-fill"
 							/>
 							<img
-								src={"/figma/aeaba16ec8025dc7.png"} 
+								src={"/figma/aeaba16ec8025dc7.png"}
 								className="w-10 h-10 object-fill"
 							/>
 							<img
-								src={"/figma/4a2a9bd8bf1e3074.png"} 
+								src={"/figma/4a2a9bd8bf1e3074.png"}
 								className="w-10 h-10 object-fill"
 							/>
 						</div>

@@ -1,10 +1,11 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useLayoutEffect } from 'react';
 
 const ExpertsCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardsToShow, setCardsToShow] = useState(4);
   const carouselRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [containerWidth, setContainerWidth] = useState(0);
 
   // Данные экспертов из существующего кода
   const experts = [
@@ -59,9 +60,75 @@ const ExpertsCarousel = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Надежное измерение ширины контейнера при монтировании и изменении/layout
+  useLayoutEffect(() => {
+    if (!containerRef.current) return;
+
+    const element = containerRef.current;
+
+    // Инициализируем начальное значение, если возможно
+    const initialWidth = element.offsetWidth;
+    if (initialWidth > 0) {
+      setContainerWidth(initialWidth);
+    }
+
+    // Наблюдаем изменения размеров контейнера
+    let resizeObserver: ResizeObserver | null = null;
+    if (typeof ResizeObserver !== "undefined") {
+      resizeObserver = new ResizeObserver((entries) => {
+        for (const entry of entries) {
+          const w = Math.floor(entry.contentRect.width);
+          if (w > 0) {
+            setContainerWidth((prev) => (prev !== w ? w : prev));
+          }
+        }
+      });
+      resizeObserver.observe(element);
+    }
+
+    // На случай, если во время первого кадра ширина была 0
+    const rafId = requestAnimationFrame(() => {
+      if (element.offsetWidth > 0) {
+        setContainerWidth((prev) =>
+          prev !== element.offsetWidth ? element.offsetWidth : prev
+        );
+      }
+    });
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      if (resizeObserver) resizeObserver.disconnect();
+    };
+  }, []);
+
+  // Исправляем позицию при первой загрузке (только если есть проблемы)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      // Проверяем, нужна ли коррекция позиции
+      if (carouselRef.current && containerRef.current) {
+        const currentTransform = carouselRef.current.style.transform;
+        const expectedTransform = `translateX(-${calculatePosition(
+          currentIndex
+        )}px)`;
+
+        // Исправляем только если позиция действительно неправильная
+        if (currentTransform !== expectedTransform) {
+          forceUpdatePosition();
+        }
+      }
+    }, 1000); // Увеличиваем время ожидания
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Правильный расчет максимального индекса для полной видимости последнего элемента
+  const getMaxIndex = () => {
+    return Math.max(0, experts.length - cardsToShow);
+  };
+
   // Сбрасываем индекс при изменении количества карточек
   useEffect(() => {
-    const maxIndex = Math.max(0, experts.length - cardsToShow);
+    const maxIndex = getMaxIndex();
     if (currentIndex > maxIndex) {
       setCurrentIndex(maxIndex);
     }
@@ -69,7 +136,7 @@ const ExpertsCarousel = () => {
 
   const nextSlide = () => {
     setCurrentIndex((prev) => {
-      const maxIndex = Math.max(0, experts.length - cardsToShow);
+      const maxIndex = getMaxIndex();
       if (prev >= maxIndex) {
         return 0;
       }
@@ -79,7 +146,7 @@ const ExpertsCarousel = () => {
 
   const prevSlide = () => {
     setCurrentIndex((prev) => {
-      const maxIndex = Math.max(0, experts.length - cardsToShow);
+      const maxIndex = getMaxIndex();
       if (prev <= 0) {
         return maxIndex;
       }
@@ -88,8 +155,9 @@ const ExpertsCarousel = () => {
   };
 
   const goToSlide = (index: number) => {
-    const maxIndex = Math.max(0, experts.length - cardsToShow);
-    setCurrentIndex(Math.min(index, maxIndex));
+    const maxIndex = getMaxIndex();
+    const newIndex = Math.min(index, maxIndex);
+    setCurrentIndex(newIndex);
   };
 
   // Функция для получения gap в зависимости от размера экрана
@@ -97,15 +165,23 @@ const ExpertsCarousel = () => {
     const width = window.innerWidth;
     if (width < 640) return 6;
     if (width < 1024) return 10;
-    return 24;
+    return 14;
   };
 
-  // Рассчитываем ширину карточки с учетом gap
+  // Более точный расчет ширины карточки
   const getCardWidth = () => {
     if (!containerRef.current) return 0;
-    const containerWidth = containerRef.current.offsetWidth;
+    if (!containerWidth) return 0;
     const gap = getGap();
-    return (containerWidth - (gap * (cardsToShow - 1))) / cardsToShow;
+    const totalGaps = gap * (cardsToShow - 1);
+    return Math.floor((containerWidth - totalGaps) / cardsToShow);
+  };
+
+  // Функция для точного расчета позиции
+  const calculatePosition = (index: number) => {
+    const cardWidth = getCardWidth();
+    const gap = getGap();
+    return index * (cardWidth + gap);
   };
 
   // Получаем максимальную ширину карточки для текущего разрешения
@@ -118,47 +194,88 @@ const ExpertsCarousel = () => {
 
   // Обновляем трансформацию при изменении currentIndex или размера окна
   useEffect(() => {
-    if (carouselRef.current && containerRef.current) {
+    if (carouselRef.current && containerRef.current && containerWidth > 0) {
       const carousel = carouselRef.current;
-      const cardWidth = getCardWidth();
-      const gap = getGap();
-      const translateX = currentIndex * (cardWidth + gap);
-      
-      carousel.style.transition = 'transform 0.5s ease-in-out';
+      const translateX = calculatePosition(currentIndex);
+
+      // Используем более плавную анимацию
+      carousel.style.transition =
+        "transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
       carousel.style.transform = `translateX(-${translateX}px)`;
     }
-  }, [currentIndex, cardsToShow]);
+  }, [currentIndex, cardsToShow, containerWidth]);
 
-  // Обработчик изменения размера окна
+  // Улучшенный обработчик изменения размера окна
   useEffect(() => {
+    let resizeTimeout: NodeJS.Timeout;
+
     const handleResize = () => {
-      if (carouselRef.current) {
+      // Очищаем предыдущий таймаут
+      if (resizeTimeout) {
+        clearTimeout(resizeTimeout);
+      }
+
+      if (carouselRef.current && containerRef.current) {
         const carousel = carouselRef.current;
-        carousel.style.transition = 'none';
-        
-        // Принудительное обновление позиции после ресайза
-        setTimeout(() => {
-          if (carouselRef.current) {
-            const cardWidth = getCardWidth();
-            const gap = getGap();
-            const translateX = currentIndex * (cardWidth + gap);
+
+        // Отключаем анимацию во время ресайза
+        carousel.style.transition = "none";
+
+        // Ждем завершения ресайза
+        resizeTimeout = setTimeout(() => {
+          if (carouselRef.current && containerRef.current) {
+            // Пересчитываем позицию с новыми размерами
+            const translateX = calculatePosition(currentIndex);
             carouselRef.current.style.transform = `translateX(-${translateX}px)`;
-            
+
+            // Включаем анимацию обратно с плавным переходом
             setTimeout(() => {
               if (carouselRef.current) {
-                carouselRef.current.style.transition = 'transform 0.5s ease-in-out';
+                carouselRef.current.style.transition =
+                  "transform 0.3s ease-out";
               }
             }, 50);
           }
-        }, 10);
+        }, 200); // Увеличиваем время ожидания для более плавного ресайза
       }
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [currentIndex, cardsToShow]);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      if (resizeTimeout) {
+        clearTimeout(resizeTimeout);
+      }
+    };
+  }, [currentIndex, cardsToShow, containerWidth]);
+
+  // Функция для мягкого исправления позиции
+  const forceUpdatePosition = () => {
+    if (carouselRef.current && containerRef.current) {
+      const carousel = carouselRef.current;
+
+      // Отключаем анимацию только на короткое время
+      carousel.style.transition = "none";
+
+      setTimeout(() => {
+        if (carouselRef.current) {
+          const translateX = calculatePosition(currentIndex);
+          carouselRef.current.style.transform = `translateX(-${translateX}px)`;
+
+          // Быстро включаем анимацию обратно
+          setTimeout(() => {
+            if (carouselRef.current) {
+              carouselRef.current.style.transition =
+                "transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+            }
+          }, 10);
+        }
+      }, 10);
+    }
+  };
 
   const totalDots = Math.max(1, experts.length - cardsToShow + 1);
+  const showSlider = experts.length > cardsToShow;
 
   return (
      <div className="w-full max-w-7xl mx-auto px-1 sm:px-2 py-2">
@@ -169,19 +286,23 @@ const ExpertsCarousel = () => {
         </h2>
       </div>
 
-       {/* Карусель с градиентными краями */}
+       {/* Карусель */}
        <div className="relative overflow-hidden min-h-[500px] sm:min-h-[550px] lg:min-h-[580px]" ref={containerRef}>
-        {/* Градиентные маски для левого и правого краев */}
-        <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-12 lg:w-16 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
-        <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-12 lg:w-16 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
-        
         <div 
           ref={carouselRef}
-          className="flex"
+          className={`flex ${showSlider ? '' : 'justify-center'}`}
           style={{ 
             gap: `${getGap()}px`,
-            width: `calc(100% + ${getGap() * (experts.length - cardsToShow)}px)`,
-            marginBottom: `20px`
+            width: showSlider ? `${
+              containerWidth > 0
+                ? `${
+                    experts.length * getCardWidth() +
+                    getGap() * (experts.length - 1)
+                  }px`
+                : "auto"
+            }` : '100%',
+            marginBottom: `20px`,
+            willChange: "transform", // Оптимизация для анимаций
           }}
         >
           {experts.map((expert) => (
@@ -189,7 +310,7 @@ const ExpertsCarousel = () => {
               key={expert.id} 
               className="flex-shrink-0 flex justify-center"
               style={{ 
-                width: `${100 / cardsToShow}%`
+                width: containerWidth > 0 ? `${getCardWidth()}px` : undefined,
               }}
             >
                {/* Карточка эксперта с адаптивными размерами */}
@@ -230,56 +351,58 @@ const ExpertsCarousel = () => {
         </div>
       </div>
 
-      {/* Навигация с точками */}
-      <div className="flex flex-col items-center">
-        <div className="flex items-center gap-4 sm:gap-6">
-          {/* Кнопка назад */}
-          <button 
-            onClick={prevSlide}
-            className="p-2 sm:p-3 rounded-full bg-white transition-all duration-200 hover:scale-110 active:scale-95 "
-          >
-            <img
-              src={"/figma/7f43061e53ed017f.png"}
-              className="w-6 h-6 sm:w-9 sm:h-9 object-contain"
-              alt="Previous"
-              style={{ transform: 'scaleX(-1)' }}
-            />
-          </button>
+      {/* Навигация с точками - показываем только если есть слайдер */}
+      {showSlider && (
+        <div className="flex flex-col items-center">
+          <div className="flex items-center gap-4 sm:gap-6">
+            {/* Кнопка назад */}
+            <button 
+              onClick={prevSlide}
+              className="p-2 sm:p-3 rounded-full bg-white transition-all duration-200 hover:scale-110 active:scale-95 "
+            >
+              <img
+                src={"/figma/7f43061e53ed017f.png"}
+                className="w-6 h-6 sm:w-9 sm:h-9 object-contain"
+                alt="Previous"
+                style={{ transform: 'scaleX(-1)' }}
+              />
+            </button>
 
-          {/* Красивые точки-индикаторы */}
-          <div className="flex items-center gap-2 sm:gap-3">
-            {Array.from({ length: totalDots }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`transition-all duration-300 ${
-                  index === currentIndex 
-                    ? 'scale-125' 
-                    : 'hover:scale-110'
-                }`}
-              >
-                <div className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
-                  index === currentIndex 
-                    ? 'bg-[#00A8E2] shadow-lg' 
-                    : 'bg-gray-300 hover:bg-gray-400'
-                }`} />
-              </button>
-            ))}
+            {/* Красивые точки-индикаторы */}
+            <div className="flex items-center gap-2 sm:gap-3">
+              {Array.from({ length: totalDots }).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`transition-all duration-300 ${
+                    index === currentIndex 
+                      ? 'scale-125' 
+                      : 'hover:scale-110'
+                  }`}
+                >
+                  <div className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
+                    index === currentIndex 
+                      ? 'bg-[#00A8E2] shadow-lg' 
+                      : 'bg-gray-300 hover:bg-gray-400'
+                  }`} />
+                </button>
+              ))}
+            </div>
+
+            {/* Кнопка вперед */}
+            <button 
+              onClick={nextSlide}
+              className="p-2 sm:p-3 rounded-full bg-white transition-all duration-200 hover:scale-110 active:scale-95"
+            >
+              <img
+                src={"/figma/7f43061e53ed017f.png"}
+                className="w-6 h-6 sm:w-9 sm:h-9 object-contain"
+                alt="Next"
+              />
+            </button>
           </div>
-
-          {/* Кнопка вперед */}
-          <button 
-            onClick={nextSlide}
-            className="p-2 sm:p-3 rounded-full bg-white transition-all duration-200 hover:scale-110 active:scale-95"
-          >
-            <img
-              src={"/figma/7f43061e53ed017f.png"}
-              className="w-6 h-6 sm:w-9 sm:h-9 object-contain"
-              alt="Next"
-            />
-          </button>
         </div>
-      </div>
+      )}
     </div>
   );
 };
