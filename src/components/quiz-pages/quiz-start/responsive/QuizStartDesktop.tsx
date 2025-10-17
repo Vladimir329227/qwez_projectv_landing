@@ -99,12 +99,12 @@ export default function QuizStartDesktop({
       {/* Right Image - Desktop version */}
       <div className="absolute right-0 top-0 w-3/4 h-full overflow-hidden">
         <img
-          src="/figma/quiz_start.png"
+          src="/figma/quiz_start2.png"
           className="w-full h-full object-cover object-right translate-x-1/5"
           alt="Quiz Background"
         />
         {/* White gradient overlay for smooth transition */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/100 via-white/70 to-white/0"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-white/100 via-white/20 to-white/0"></div>
       </div>
     </div>
   );

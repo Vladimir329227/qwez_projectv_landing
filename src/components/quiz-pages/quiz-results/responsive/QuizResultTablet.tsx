@@ -1,22 +1,22 @@
 import React, { useState } from "react";
 import { navigateToProduct, navigateToLanding } from "../../../../App";
 import { RecommendationResult } from "../recommendationEngine";
-import { 
-  getProductImage, 
-  getProductIngredients, 
-  getProductDescription, 
-  getWellnessProfile, 
-  getWellnessDescription, 
-  getExpectedOutcomes,
-  getProductImage2,
-  getQuizDuration,
-  getOutcomeIcon
+import {
+	getProductImage,
+	getProductIngredients,
+	getProductDescription,
+	getWellnessProfile,
+	getWellnessDescription,
+	getExpectedOutcomes,
+	getProductImage2,
+	getQuizDuration,
+	getOutcomeIcon
 } from "../../../../utils/recommendationHelpers";
 import RecommendationCarousel from "../RecommendationCarousel";
 
 interface QuizResultTabletProps {
-  answers: Record<string, any>;
-  recommendations: RecommendationResult;
+	answers: Record<string, any>;
+	recommendations: RecommendationResult;
 }
 
 export default function QuizResultTablet({ answers, recommendations }: QuizResultTabletProps) {
@@ -26,6 +26,9 @@ export default function QuizResultTablet({ answers, recommendations }: QuizResul
 	const [input4, onChangeInput4] = useState('');
 	const [input5, onChangeInput5] = useState('');
 	const [input6, onChangeInput6] = useState('');
+
+	const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+	const videoRef = React.useRef<HTMLVideoElement>(null);
 
 	const faqData = [
 		{
@@ -49,9 +52,9 @@ export default function QuizResultTablet({ answers, recommendations }: QuizResul
 			answer: "Our formulas are developed by a team of expert nutritionists, neuroscientists, and medical professionals with decades of experience in functional medicine. Each formulation is backed by scientific research and clinical studies, ensuring that every product delivers measurable health benefits and supports your long-term wellness goals."
 		}
 	];
-	
+
 	const [openFAQ, setOpenFAQ] = useState<number | null>(null);
-	
+
 	const toggleFAQ = (index: number) => {
 		setOpenFAQ(openFAQ === index ? null : index);
 	};
@@ -78,13 +81,13 @@ export default function QuizResultTablet({ answers, recommendations }: QuizResul
 					<div className="flex items-center gap-6">
 						<div className="flex items-center bg-[#E1E9FD]  py-1.5 rounded-[100000px]">
 							<div className="flex flex-col items-center w-4 ml-3.5 mr-[11px]">
-								<svg 
-									className="w-4 h-4 text-[#006283]" 
-									fill="currentColor" 
+								<svg
+									className="w-4 h-4 text-[#006283]"
+									fill="currentColor"
 									viewBox="0 0 24 24"
 								>
-									<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
-									<path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+									<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+									<path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
 								</svg>
 							</div>
 							<span className="text-[#1F2429] text-[15px] font-bold mr-[11px]" >
@@ -146,7 +149,7 @@ export default function QuizResultTablet({ answers, recommendations }: QuizResul
 						{getExpectedOutcomes(recommendations).slice(0, 3).map((outcome, index) => (
 							<div key={index} className="flex items-center bg-[#F0F6F7] flex-1 min-w-0 py-4 rounded-xl">
 								<div className="flex flex-col items-center w-6 ml-4 mr-3">
-									<div 
+									<div
 										className="w-6 h-6"
 										dangerouslySetInnerHTML={{ __html: getOutcomeIcon(outcome.icon) }}
 									/>
@@ -160,7 +163,7 @@ export default function QuizResultTablet({ answers, recommendations }: QuizResul
 				</div>
 				<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-8 mx-4 sm:mx-[50px]">
 				</div>
-				<div className="flex items-start self-stretch mb-8 mx-4 sm:mx-[50px] gap-4">
+				<div className="flex items-start self-stretch mt-8 mb-8 mx-4 sm:mx-[50px] gap-4">
 					<div className="flex flex-col items-start flex-1 min-w-0 gap-4">
 						<img
 							src="/quiz-result-images/crio.png"
@@ -178,10 +181,54 @@ export default function QuizResultTablet({ answers, recommendations }: QuizResul
 							</span>
 						</div>
 					</div>
-					<img
-						src="/quiz-result-images/photo_woman_laptop.png"
-						className="w-full max-w-[440px] h-64 object-fill"
-					/>
+					<div className="flex-1">
+						<div className="relative w-full aspect-video rounded-2xl overflow-hidden">
+							<video
+								ref={videoRef}
+								onEnded={() => setIsVideoPlaying(false)}
+								onPlay={() => setIsVideoPlaying(true)}
+								onPause={() => setIsVideoPlaying(false)}
+								onClick={() => {
+									if (videoRef.current && isVideoPlaying) {
+										videoRef.current.pause();
+									}
+								}}
+								src={"/vidio/2..mp4"}
+								className="absolute inset-0 h-full w-full object-cover cursor-pointer"
+								loop
+								muted
+								playsInline
+							/>
+							{!isVideoPlaying && (
+								<button
+									onClick={() => {
+										if (videoRef.current) {
+											videoRef.current.play();
+										}
+									}}
+									className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full p-4 shadow-lg hover:scale-110 transition-all duration-300"
+								>
+									<svg
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M8 5V19L19 12L8 5Z"
+											fill="#00A8E2"
+										/>
+									</svg>
+								</button>
+							)}
+							{isVideoPlaying && (
+								<div className="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+									Click on the video to pause
+								</div>
+							)}
+						</div>
+					</div>
 				</div>
 				<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-8 mx-4 sm:mx-[50px]">
 				</div>
@@ -261,7 +308,7 @@ export default function QuizResultTablet({ answers, recommendations }: QuizResul
 							placeholder={"Millions of clients "}
 							value={input4}
 							onChange={(event) => onChangeInput4(event.target.value)}
-							className={`flex-1 self-stretch text-[#1F2429] bg-transparent py-0.5 border-0 ${ input4.length > 20 ? 'text-xs' : 'text-sm' }`}
+							className={`flex-1 self-stretch text-[#1F2429] bg-transparent py-0.5 border-0 ${input4.length > 20 ? 'text-xs' : 'text-sm'}`}
 						/>
 					</div>
 					<div className="flex items-center bg-[#F0F6F7] flex-1 min-w-0 py-4 rounded-xl">
@@ -274,7 +321,7 @@ export default function QuizResultTablet({ answers, recommendations }: QuizResul
 							placeholder={"Countries where we're present"}
 							value={input5}
 							onChange={(event) => onChangeInput5(event.target.value)}
-							className={`flex-1 self-stretch text-[#1F2429] bg-transparent py-0.5 border-0 ${ input5.length > 20 ? 'text-xs' : 'text-sm' }`}
+							className={`flex-1 self-stretch text-[#1F2429] bg-transparent py-0.5 border-0 ${input5.length > 20 ? 'text-xs' : 'text-sm'}`}
 						/>
 					</div>
 					<div className="flex items-center bg-[#F0F6F7] flex-1 min-w-0 py-4 rounded-xl">
@@ -287,117 +334,116 @@ export default function QuizResultTablet({ answers, recommendations }: QuizResul
 							placeholder={"Unique projects"}
 							value={input6}
 							onChange={(event) => onChangeInput6(event.target.value)}
-							className={`flex-1 self-stretch text-[#1F2429] bg-transparent py-0.5 border-0 ${ input6.length > 20 ? 'text-xs' : 'text-sm' }`}
+							className={`flex-1 self-stretch text-[#1F2429] bg-transparent py-0.5 border-0 ${input6.length > 20 ? 'text-xs' : 'text-sm'}`}
 						/>
 					</div>
 				</div>
 				<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-8 mx-4 sm:mx-[50px]">
 				</div>
 				{/* Бегущая лента с карточками */}
-					<div className="flex animate-scroll">
-						{/* Первый набор карточек */}
-						<div className="flex flex-none gap-4 pr-4">
+				<div className="flex animate-scroll">
+					{/* Первый набор карточек */}
+					<div className="flex flex-none gap-4 pr-4">
 						<div className="flex justify-between items-center bg-white w-[300px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
 							<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
-							<img
-								src="/quiz-result-images/lady1.png"
-								className="w-[60px] h-[60px] ml-[15px] object-fill"
-							/>
-							<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
-								{"Mia Robinson"}
-							</span>
+								<img
+									src="/quiz-result-images/lady1.png"
+									className="w-[60px] h-[60px] ml-[15px] object-fill"
+								/>
+								<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
+									{"Mia Robinson"}
+								</span>
 							</div>
 							<span className="text-[#1F2429] pl-2 text-sm flex-1 mr-[18px]" >
-							{"Sleep quality improved and I wake up less groggy"}
+								{"Sleep quality improved and I wake up less groggy"}
 							</span>
 						</div>
 						<div className="flex justify-between items-center bg-white w-[300px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
 							<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
-							<img
-								src="/quiz-result-images/lady2.png"
-								className="w-[60px] h-[60px] ml-[15px] object-fill"
-							/>
-							<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
-								{"Sarah Smith"}
-							</span>
+								<img
+									src="/quiz-result-images/lady2.png"
+									className="w-[60px] h-[60px] ml-[15px] object-fill"
+								/>
+								<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
+									{"Sarah Smith"}
+								</span>
 							</div>
 							<span className="text-[#1F2429] pl-2 text-sm flex-1 mr-[18px]" >
-							{"These supplements have helped me feel more balanced and energized throughout the day"}
+								{"These supplements have helped me feel more balanced and energized throughout the day"}
 							</span>
 						</div>
 						<div className="flex justify-between items-center bg-white w-[300px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
 							<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
-							<img
-								src="/quiz-result-images/lady3.png"
-								className="w-[60px] h-[60px] ml-[15px] object-fill"
-							/>
-							<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
-								{"Isabella Rossi"}
-							</span>
+								<img
+									src="/quiz-result-images/lady3.png"
+									className="w-[60px] h-[60px] ml-[15px] object-fill"
+								/>
+								<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
+									{"Isabella Rossi"}
+								</span>
 							</div>
 							<span className="text-[#1F2429] pl-2 text-sm flex-1 mr-[21px]" >
-							{"Sleep tracker shows longer deep sleep windows."}
+								{"Sleep tracker shows longer deep sleep windows."}
 							</span>
-						</div>
-						</div>
-						
-						{/* Дублированный набор для бесшовной анимации */}
-						<div className="flex flex-none gap-4 pr-4">
-						<div className="flex justify-between items-center bg-white w-[300px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
-							<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
-							<img
-								src="/quiz-result-images/lady1.png"
-								className="w-[60px] h-[60px] ml-[15px] object-fill"
-							/>
-							<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
-								{"Mia Robinson"}
-							</span>
-							</div>
-							<span className="text-[#1F2429] text-sm pl-2 flex-1 mr-[18px]" >
-							{"Sleep quality improved and I wake up less groggy"}
-							</span>
-						</div>
-						<div className="flex justify-between items-center bg-white w-[300px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
-							<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
-							<img
-								src="/quiz-result-images/lady2.png"
-								className="w-[60px] h-[60px] ml-[15px] object-fill"
-							/>
-							<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
-								{"Sarah Smith"}
-							</span>
-							</div>
-							<span className="text-[#1F2429] pl-2 text-sm flex-1 mr-[18px]" >
-							{"These supplements have helped me feel more balanced and energized throughout the day"}
-							</span>
-						</div>
-						<div className="flex justify-between items-center bg-white w-[300px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
-							<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
-							<img
-								src="/quiz-result-images/lady3.png"
-								className="w-[60px] h-[60px] ml-[15px] object-fill"
-							/>
-							<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
-								{"Isabella Rossi"}
-							</span>
-							</div>
-							<span className="text-[#1F2429] pl-2 text-sm flex-1 mr-[21px]" >
-							{"Sleep tracker shows longer deep sleep windows."}
-							</span>
-						</div>
 						</div>
 					</div>
+
+					{/* Дублированный набор для бесшовной анимации */}
+					<div className="flex flex-none gap-4 pr-4">
+						<div className="flex justify-between items-center bg-white w-[300px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
+							<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
+								<img
+									src="/quiz-result-images/lady1.png"
+									className="w-[60px] h-[60px] ml-[15px] object-fill"
+								/>
+								<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
+									{"Mia Robinson"}
+								</span>
+							</div>
+							<span className="text-[#1F2429] text-sm pl-2 flex-1 mr-[18px]" >
+								{"Sleep quality improved and I wake up less groggy"}
+							</span>
+						</div>
+						<div className="flex justify-between items-center bg-white w-[300px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
+							<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
+								<img
+									src="/quiz-result-images/lady2.png"
+									className="w-[60px] h-[60px] ml-[15px] object-fill"
+								/>
+								<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
+									{"Sarah Smith"}
+								</span>
+							</div>
+							<span className="text-[#1F2429] pl-2 text-sm flex-1 mr-[18px]" >
+								{"These supplements have helped me feel more balanced and energized throughout the day"}
+							</span>
+						</div>
+						<div className="flex justify-between items-center bg-white w-[300px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
+							<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
+								<img
+									src="/quiz-result-images/lady3.png"
+									className="w-[60px] h-[60px] ml-[15px] object-fill"
+								/>
+								<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
+									{"Isabella Rossi"}
+								</span>
+							</div>
+							<span className="text-[#1F2429] pl-2 text-sm flex-1 mr-[21px]" >
+								{"Sleep tracker shows longer deep sleep windows."}
+							</span>
+						</div>
+					</div>
+				</div>
 				<div className="flex flex-col w-full max-w-[90%] items-center pb-6 gap-3">
 					<span className="text-[#1F2429] text-[32px]" >
 						{"FAQ"}
 					</span>
 					<div className="flex flex-1 flex-col w-[100%] gap-4">
 						{faqData.map((faq, index) => (
-							<button 
+							<button
 								key={index}
-								className={`flex flex-col self-stretch bg-[#FCFDFF] py-4 gap-3 rounded-2xl border border-solid border-[#E1E9FD] transition-all duration-300 ${
-									openFAQ === index ? 'shadow-lg' : ''
-								}`}
+								className={`flex flex-col self-stretch bg-[#FCFDFF] py-4 gap-3 rounded-2xl border border-solid border-[#E1E9FD] transition-all duration-300 ${openFAQ === index ? 'shadow-lg' : ''
+									}`}
 								onClick={() => toggleFAQ(index)}
 							>
 								<div className="flex items-start self-stretch mx-4">
@@ -405,10 +451,9 @@ export default function QuizResultTablet({ answers, recommendations }: QuizResul
 										{faq.question}
 									</span>
 									<img
-										src={openFAQ === index ? "/figma/171705bc9ae38148.png" : "/figma/beac637ba3d38921.png"} 
-										className={`w-6 h-6 object-fill transition-transform duration-300 ${
-											openFAQ === index ? 'rotate-180' : ''
-										}`}
+										src={openFAQ === index ? "/figma/171705bc9ae38148.png" : "/figma/beac637ba3d38921.png"}
+										className={`w-6 h-6 object-fill transition-transform duration-300 ${openFAQ === index ? 'rotate-180' : ''
+											}`}
 									/>
 								</div>
 								{openFAQ === index && (

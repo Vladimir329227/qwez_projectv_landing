@@ -23,7 +23,7 @@ export default function QuizStartTablet({
   return (
     <div className="flex items-start bg-white h-screen relative">
       {/* Left Content */}
-      <div className="flex flex-col w-[420px] mr-8 flex-shrink-0 z-10 pl-8 h-full overflow-hidden">
+      <div className="flex flex-col w-[320px] mr-8 flex-shrink-0 z-10 pl-8 h-full">
         {/* Logo - Top */}
         <div className="flex justify-start pt-8">
           <img
@@ -94,19 +94,20 @@ export default function QuizStartTablet({
               </span>
             </div>
           </button>
+          
         </div>
       </div>
 
-      {/* Right Image - Tablet version - обрезана наполовину */}
-      <div className="absolute right-0 top-0 w-2/3 h-full overflow-hidden border-l border-white/20">
+      {/* Right Image - Tablet version */}
+      <div className="relative w-full top-0 h-full overflow-hidden border-l border-white/20">
         <img
-          src="/figma/quiz_start.png"
-          className="w-full h-full object-cover object-right translate-x-1/4"
+          src="/figma/quiz_start2.png"
+          className="w-full h-full object-cover object-[70%_center]"
           alt="Quiz Background"
         />
         {/* White gradient overlay for smooth transition */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/100 via-white/70 to-white/0"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-white/100 via-white/20 to-white/0"></div>
       </div>
-    </div>
+   </div>
   );
 }

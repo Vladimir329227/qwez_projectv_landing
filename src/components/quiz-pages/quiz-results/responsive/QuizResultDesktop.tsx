@@ -27,6 +27,9 @@ export default function QuizResultDesktop({ answers, recommendations }: QuizResu
 	const [input5, onChangeInput5] = useState('');
 	const [input6, onChangeInput6] = useState('');
 
+	const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+	const videoRef = React.useRef<HTMLVideoElement>(null);
+
 	const faqData = [
 		{
 			question: "What makes Project V different from regular supplements?",
@@ -214,10 +217,52 @@ export default function QuizResultDesktop({ answers, recommendations }: QuizResu
 								</button>
 							</div>
 						</div>
-						<img
-							src="/quiz-result-images/photo_woman_laptop.png"
-							className="w-[60%] max-w-[800px] object-fill"
-						/>
+						<div className="relative self-stretch mx-[72px]">
+							<video
+								ref={videoRef}
+								onEnded={() => setIsVideoPlaying(false)}
+								onPlay={() => setIsVideoPlaying(true)}
+								onPause={() => setIsVideoPlaying(false)}
+								onClick={() => {
+									if (videoRef.current && isVideoPlaying) {
+										videoRef.current.pause();
+									}
+								}}
+								src={"/vidio/2..mp4"}
+								className="w-full rounded-2xl object-cover cursor-pointer"
+								loop
+								muted
+								playsInline
+							/>
+							{!isVideoPlaying && (
+								<button
+									onClick={() => {
+										if (videoRef.current) {
+											videoRef.current.play();
+										}
+									}}
+									className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full p-4 shadow-lg hover:scale-110 transition-all duration-300"
+								>
+									<svg
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M8 5V19L19 12L8 5Z"
+											fill="#00A8E2"
+										/>
+									</svg>
+								</button>
+							)}
+							{isVideoPlaying && (
+								<div className="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+									Click on the video to pause
+								</div>
+							)}
+						</div>
 					</div>
 					<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-10">
 					</div>

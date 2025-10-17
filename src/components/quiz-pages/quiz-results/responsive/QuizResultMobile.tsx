@@ -26,6 +26,8 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
   const [input5, onChangeInput5] = useState("");
   const [input6, onChangeInput6] = useState("");
   const [input7, onChangeInput7] = useState("");
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const videoRef = React.useRef<HTMLVideoElement>(null);
 
   const faqData = [
 		{
@@ -103,7 +105,7 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
                 <div className="flex flex-col items-center self-stretch">
                   <img
                     src="/quiz-result-images/logo_blue_wreath.png"
-                    className="w-[124px] h-[70px] rounded-2xl object-fill"
+                    className="w-[124px] h-[70px] max-[360px]:w-[96px] max-[360px]:h-[54px] rounded-2xl object-fill"
                   />
                 </div>
                 <div className="flex flex-col items-center self-stretch">
@@ -134,7 +136,7 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
                       <div className="flex flex-col shrink-0 items-start mr-[18px]">
                         <img
                           src={getProductImage2(product.product_id)}
-                          className="w-[96px] h-[72px] object-fill"
+                          className="w-[96px] h-[72px] max-[360px]:w-[80px] max-[360px]:h-[60px] object-fill"
                         />
                       </div>
                       <div className="flex flex-col shrink-0 w-[50%] items-start gap-3">
@@ -173,7 +175,7 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
               </div>
               <div className="bg-[#E1E9FD]  w-[90%] h-[1px] mb-10 mx-5"></div>
               <div className="flex flex-col items-center w-[100%] pb-6 gap-4">
-                <span className="text-[#1F2429] mb-2 mx-5 text-[15px] font-bold mr-[229px]">
+                <span className="text-[#1F2429] mb-2 mx-5 text-[15px] font-bold self-start">
                   {"Expected Outcomes"}
                 </span>
                  <div className="flex flex-col items-center w-[90%] gap-2">
@@ -196,13 +198,13 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
               <div className="flex flex-col items-start mb-10 mx-5 gap-4">
                 <img
                   src="/quiz-result-images/crio.png"
-                  className="w-8 h-8 mr-[330px] object-fill"
+                  className="w-8 h-8 object-fill"
                 />
                 <div className="flex flex-col items-start gap-2">
-                  <span className="text-[#1F2429] text-[15px] w-full font-bold mr-[214px]">
+                  <span className="text-[#1F2429] text-[15px] w-full font-bold self-start">
                     {"Nutrients Extraction"}
                   </span>
-                  <span className="text-[#1F2429] w-full text-2xl mr-[156px]">
+                  <span className="text-[#1F2429] w-full text-2xl self-start">
                     {"Cryogenic Method"}
                   </span>
                   <span className="text-[#1F2429] text-sm w-[100%]">
@@ -211,10 +213,51 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
                     }
                   </span>
                 </div>
-                <img
-                  src="/quiz-result-images/photo_woman_laptop.png"
-                  className="w-[100%] h-autp object-fill"
-                />
+                <div className="w-[100%]">
+                  <div className="relative w-full aspect-video rounded-2xl overflow-hidden">
+                    <video
+                      ref={videoRef}
+                      onEnded={() => setIsVideoPlaying(false)}
+                      onPlay={() => setIsVideoPlaying(true)}
+                      onPause={() => setIsVideoPlaying(false)}
+                      onClick={() => {
+                        if (videoRef.current && isVideoPlaying) {
+                          videoRef.current.pause();
+                        }
+                      }}
+                      src={'/vidio/2..mp4'}
+                      className="absolute inset-0 h-full w-full object-cover cursor-pointer"
+                      loop
+                      muted
+                      playsInline
+                    />
+                    {!isVideoPlaying && (
+                      <button
+                        onClick={() => {
+                          if (videoRef.current) {
+                            videoRef.current.play();
+                          }
+                        }}
+                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full p-4 shadow-lg hover:scale-110 transition-all duration-300"
+                      >
+                        <svg
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M8 5V19L19 12L8 5Z" fill="#00A8E2" />
+                        </svg>
+                      </button>
+                    )}
+                    {isVideoPlaying && (
+                      <div className="absolute top-2 right-2 bg-black/50 text-white px-2 py-0.5 rounded-full text-xs">
+                        Tap video to pause
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
               <div className="bg-[#E1E9FD]  w-[90%] h-[1px] mb-10 mx-5"></div>
               <div className="flex flex-col w-[100%] mb-10 items-center gap-10">
@@ -235,7 +278,7 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
                   >
                     <img
                       src="/quiz-result-images/logo_visa.png"
-                      className="w-auto h-auto object-fill"
+                      className="w-auto h-auto max-[360px]:w-[40px] object-fill"
                     />
                   </button>
                   <button
@@ -244,7 +287,7 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
                   >
                     <img
                       src="/quiz-result-images/logo_mastercard.png"
-                      className="w-[45px] h-[27px] object-fill"
+                      className="w-[45px] h-[27px] max-[360px]:w-[38px] max-[360px]:h-[22px] object-fill"
                     />
                   </button>
                   <button
@@ -253,7 +296,7 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
                   >
                     <img
                       src="/quiz-result-images/logo_gpay.png"
-                      className="w-[49px] h-5 object-fill"
+                      className="w-[49px] h-5 max-[360px]:w-[42px] max-[360px]:h-[18px] object-fill"
                     />
                   </button>
                   <button
@@ -262,14 +305,14 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
                   >
                     <img
                       src="/quiz-result-images/logo_applepay.png"
-                      className="w-auto h-auto object-fill"
+                      className="w-auto h-auto max-[360px]:w-[40px] object-fill"
                     />
                   </button>
                 </div>
               </div>
               <div className="bg-[#E1E9FD] w-[90%] h-[1px] mb-10 mx-5"></div>
               <div className="flex flex-col items-start mb-10 mx-5 gap-4">
-                <span className="text-[#1F2429] w-full text-[15px] font-bold mr-[282px]">
+                <span className="text-[#1F2429] w-full text-[15px] font-bold self-start">
                   {"Our Mission"}
                 </span>
                 <span className="text-[#1F2429] text-2xl w-[100%] mr-10">
@@ -331,10 +374,10 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
 						<div className="flex flex-none gap-4 pr-4">
 						<div className="flex justify-between items-center bg-white w-[300px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
 							<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
-							<img
-								src="/quiz-result-images/lady1.png"
-								className="w-[60px] h-[60px] ml-[15px] object-fill"
-							/>
+                            <img
+                              src="/quiz-result-images/lady1.png"
+                              className="w-[60px] h-[60px] max-[360px]:w-[48px] max-[360px]:h-[48px] ml-[15px] object-fill"
+                            />
 							<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
 								{"Mia Robinson"}
 							</span>
@@ -345,10 +388,10 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
 						</div>
 						<div className="flex justify-between items-center bg-white w-[300px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
 							<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
-							<img
-								src="/quiz-result-images/lady2.png"
-								className="w-[60px] h-[60px] ml-[15px] object-fill"
-							/>
+                            <img
+                              src="/quiz-result-images/lady2.png"
+                              className="w-[60px] h-[60px] max-[360px]:w-[48px] max-[360px]:h-[48px] ml-[15px] object-fill"
+                            />
 							<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
 								{"Sarah Smith"}
 							</span>
@@ -359,10 +402,10 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
 						</div>
 						<div className="flex justify-between items-center bg-white w-[300px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
 							<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
-							<img
-								src="/quiz-result-images/lady3.png"
-								className="w-[60px] h-[60px] ml-[15px] object-fill"
-							/>
+                            <img
+                              src="/quiz-result-images/lady3.png"
+                              className="w-[60px] h-[60px] max-[360px]:w-[48px] max-[360px]:h-[48px] ml-[15px] object-fill"
+                            />
 							<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
 								{"Isabella Rossi"}
 							</span>
@@ -377,10 +420,10 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
 						<div className="flex flex-none gap-4 pr-4">
 						<div className="flex justify-between items-center bg-white w-[300px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
 							<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
-							<img
-								src="/quiz-result-images/lady1.png"
-								className="w-[60px] h-[60px] ml-[15px] object-fill"
-							/>
+                            <img
+                              src="/quiz-result-images/lady1.png"
+                              className="w-[60px] h-[60px] max-[360px]:w-[48px] max-[360px]:h-[48px] ml-[15px] object-fill"
+                            />
 							<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
 								{"Mia Robinson"}
 							</span>
@@ -391,10 +434,10 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
 						</div>
 						<div className="flex justify-between items-center bg-white w-[300px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
 							<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
-							<img
-								src="/quiz-result-images/lady2.png"
-								className="w-[60px] h-[60px] ml-[15px] object-fill"
-							/>
+                            <img
+                              src="/quiz-result-images/lady2.png"
+                              className="w-[60px] h-[60px] max-[360px]:w-[48px] max-[360px]:h-[48px] ml-[15px] object-fill"
+                            />
 							<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
 								{"Sarah Smith"}
 							</span>
@@ -405,10 +448,10 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
 						</div>
 						<div className="flex justify-between items-center bg-white w-[300px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
 							<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
-							<img
-								src="/quiz-result-images/lady3.png"
-								className="w-[60px] h-[60px] ml-[15px] object-fill"
-							/>
+                            <img
+                              src="/quiz-result-images/lady3.png"
+                              className="w-[60px] h-[60px] max-[360px]:w-[48px] max-[360px]:h-[48px] ml-[15px] object-fill"
+                            />
 							<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
 								{"Isabella Rossi"}
 							</span>
