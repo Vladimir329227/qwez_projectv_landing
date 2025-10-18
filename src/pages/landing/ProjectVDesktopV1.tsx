@@ -3,6 +3,7 @@ import { usePage } from "../../App";
 import InfiniteScroller from '../../bloks/InfiniteScroller';
 import ProductCarousel from "../../bloks/ProductCarousel";
 import ExpertsCarousel from "../../bloks/ExpertsCarousel";
+import IngredientsMarquee from "../../bloks/IngredientsMarquee";
 import TestimonialsCarousel from "../../bloks/TestimonialsCarousel";
 export default (props: any) => {
 	const { setPage } = usePage();
@@ -263,10 +264,7 @@ export default (props: any) => {
 						/>
 					</div>
 				</div>
-				<img
-					src={"/figma/a5a6022d64c1b0d2.png"}
-					className="w-full h-[486px] object-cover object-center"
-				/>
+				<IngredientsMarquee />
 				<div className="flex flex-col self-stretch py-24 gap-12">
 					<div className="flex flex-col self-stretch bg-[#F6F6F6] py-[70px] mx-24 gap-10 rounded-2xl">
 						<div className="flex flex-col items-start self-stretch ml-[72px] mr-[9px] gap-6">

@@ -4,6 +4,7 @@ import InfiniteScroller from '../../bloks/InfiniteScroller';
 import ProductCarousel from '../../bloks/ProductCarousel';
 import ExpertsCarousel from '../../bloks/ExpertsCarousel';
 import TestimonialsCarousel from "../../bloks/TestimonialsCarousel";
+import IngredientsMarquee from "../../bloks/IngredientsMarquee";
 
 export default (props: any) => {
 	const { setPage } = usePage();
@@ -272,12 +273,7 @@ export default (props: any) => {
 						/>
 					</div>
 				</div>
-				<div className="flex justify-center items-center self-stretch bg-gray-100 h-[390px] overflow-hidden">
-					<img
-						src={"/figma/f436f53528c61b77.png"}
-						className="w-full h-full object-cover object-center"
-					/>
-				</div>
+				<IngredientsMarquee />
 
 				{/* Cryogenic Method Section */}
 				<div className="flex flex-col self-stretch py-24 gap-12">

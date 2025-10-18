@@ -4,6 +4,7 @@ import ProductCarousel from "../../bloks/ProductCarousel";
 import InfiniteScroller from "../../bloks/InfiniteScroller";
 import ExpertsCarousel from "../../bloks/ExpertsCarousel";
 import TestimonialsCarousel from "../../bloks/TestimonialsCarousel";
+import IngredientsMarquee from "../../bloks/IngredientsMarquee";
 export default () => {
 	const { setPage } = usePage();
 	const [isVideoPlaying, setIsVideoPlaying] = useState(false);
@@ -322,10 +323,8 @@ export default () => {
 						</div>
 					</div>
 				</div>
-				<img
-					src={"/figma/5816bd1970893e9d.png"}
-					className="w-full h-auto object-cover object-top"
-				/>
+				
+				<IngredientsMarquee />
 				<div className="flex flex-col self-stretch py-24 gap-12">
 					<div className="flex items-center self-stretch bg-[#F6F6F6] py-[70px] px-[72px] mx-24 gap-3 rounded-2xl">
 						<div className="flex flex-1 flex-col items-start gap-6">
