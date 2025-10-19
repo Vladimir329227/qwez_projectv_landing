@@ -3,6 +3,7 @@ import React from 'react';
 import AgeCarousel from '../components/personal-details/AgeCarousel';
 import { EmailForm, NameForm, DisclaimerForm } from '../components/quiz-forms';
 import QuizResult from '../components/quiz-pages/quiz-results/QuizResult';
+import QuizIntermediatePage from '../components/quiz-pages/quiz-intermediate/QuizIntermediatePage';
 
 
 export interface PersonalDetailsQuestion {
@@ -43,16 +44,70 @@ export const personalDetailsQuestions: PersonalDetailsQuestion[] = [
           ],
     },
     {
-        key: "climate",
-        question: "Climate & lifestyle setting",
+        key: "lifestyle",
+        question: "How would you best describe your daily lifestyle?",
         options: [
-            { value: 'sunny-warm', label: 'Sunny & warm most of the year' },
-            { value: 'cool-rainy', label: 'Cool or rainy climate' },
-            { value: 'cold-winters', label: 'Cold winters with low sun exposure' },
-            { value: 'urban-polluted', label: 'Urban & possibly polluted' },
-            { value: 'rural-nature', label: 'Rural or close to nature' }
+            { value: 'sedentary', label: 'Desk-based — long hours of sitting, limited movement' },
+            { value: 'balanced', label: 'Balanced — some sitting, some light movement throughout the day' },
+            { value: 'active', label: 'Active — physically demanding or movement-oriented work' },
+            { value: 'highly-active', label: 'Highly dynamic — regular training, sport, or high-intensity activity' },
           ]
     },
+    {
+        key: "climate",
+        question: "What climate best reflects your everyday environment?",
+        options: [
+            { value: 'cold', label: 'Cold' },
+            { value: 'warm-sunny', label: 'Warm and sunny' },
+            { value: 'hot-humid', label: 'Hot and humid' },
+            { value: 'variable', label: 'Variable' },
+          ]
+    },
+    {
+        key: "location",
+        question: "Which setting most closely describes where you live?",
+        options: [
+            { value: 'urban', label: 'Urban' },
+            { value: 'suburban', label: 'Suburban' },
+            { value: 'rural', label: 'Rural or countryside' },
+            { value: 'coastal-mountainous', label: 'Coastal or mountainous' },
+          ]
+    },
+    {
+        key: "relationship",
+        question: "Which of these best describes you currently?",
+        options: [
+            { value: 'single', label: 'Single' },
+            { value: 'in-relationship', label: 'In a relationship' },
+            { value: 'married-partnered', label: 'Married/Partnered' },
+            { value: 'prefer-not-to-say', label: 'Prefer not to say' },
+          ]
+    },
+    {
+        key: "hormonal-status",
+        question: "Which stage of your hormonal journey are you in right now?",
+        options: [
+            { value: 'monthly-periods', label: 'I get monthly periods' },
+            { value: 'perimenopause-menopause', label: 'Perimenopause /menopause stage' },
+            { value: 'pregnant', label: 'Pregnant' },
+            { value: 'postpartum', label: 'Postpartum - recently gave birth' },
+            { value: 'other', label: 'Other' },
+          ]
+    },
+    {
+        key: "health-conditions",
+        question: "Do you have any ongoing health conditions?",
+        subtitle: "Choose as many as are relevant",
+        options: [
+            { value: 'no', label: 'No' },
+            { value: 'high-blood-pressure', label: 'High blood pressure' },
+            { value: 'diabetes', label: 'Diabetes' },
+            { value: 'autoimmune', label: 'Autoimmune condition' },
+            { value: 'digestive-disorder', label: 'Digestive disorder' },
+            { value: 'heart-cardiovascular', label: 'Heart or cardiovascular issues' },
+            { value: 'other', label: 'Other' },
+          ]
+    },    
     {
         key: "activity",
         question: "Have you had COVID-19?",
@@ -62,6 +117,16 @@ export const personalDetailsQuestions: PersonalDetailsQuestion[] = [
             { value: 'several-times', label: 'Several Times' }
         ],
     },
+    {
+        key: "long-covid",
+        question: "Have you experienced ongoing symptoms following COVID-19 (Long Covid)?",
+        options: [
+            { value: 'no', label: 'No' },
+            { value: 'currently-experiencing', label: 'Yes — currently experiencing' },
+            { value: 'symptoms-improved', label: 'Yes — but symptoms have improved' },
+          ]
+    },
+
 ];
 
 // Morning Energy block
@@ -373,12 +438,15 @@ export const createQuizSteps = (
                     backgroundImageUrl={'/women/yellow_woman.png'}
                     desktopWomanImageUrl={'/PNG_models/M.png'}
                     desktopBackgroundImageUrl={'/PNG_models/background/Copy of M background.png'}
-                    titleLines={["PERSONAL", "DETAILS"]}
+                    titleLines={["EVERY GLOW", "HAS A", "BACKSTORY"]}
                     bodyLines={[
-                        "Let's start with a few quick",
-                        "details – to tailor your",
-                        "wellness wardrobe",
-                        "perfectly.",
+                        "Your energy, mood, and skin",
+                        "all carry clues about what",
+                        "your body truly needs.",
+                        " ㅤ",
+                        "Most people guess — but",
+                        "we’re about to tailor science",
+                        " to you."
                     ]}
                     buttonLabel={'Begin Survey'}
                 />
@@ -455,16 +523,16 @@ export const createQuizSteps = (
                             question={q.question}
                             subtitle={q.subtitle}
                             options={q.options}
-                            isMulti={q.key === "goals"}
-                            selectedValue={q.key === "goals" ? undefined : (q.key === "age" ? (value ?? 37) : value)}
-                            selectedValues={q.key === "goals" ? (Array.isArray(value) ? value : []) : undefined}
-                            onToggleSelect={q.key === "goals" ? ((v: any) => {
+                            isMulti={q.key === "goals" || q.key === "health-conditions"}
+                            selectedValue={q.key === "goals" || q.key === "health-conditions" ? undefined : (q.key === "age" ? (value ?? 37) : value)}
+                            selectedValues={q.key === "goals" || q.key === "health-conditions" ? (Array.isArray(value) ? value : []) : undefined}
+                            onToggleSelect={q.key === "goals" || q.key === "health-conditions" ? ((v: any) => {
                                 const prev: any[] = Array.isArray(answers[key]) ? answers[key] : [];
                                 const exists = prev.includes(v);
                                 const next = exists ? prev.filter((it) => it !== v) : [...prev, v];
                                 setAnswers({ ...answers, [key]: next });
                             }) : undefined}
-                            onSelect={q.key === "goals" ? undefined : ((v: any) => setAnswers({ ...answers, [key]: v }))}
+                            onSelect={q.key === "goals" || q.key === "health-conditions" ? undefined : ((v: any) => setAnswers({ ...answers, [key]: v }))}
                             onPrevious={() => setCurrentStep(Math.max(0, currentStep - 1))}
                             onNext={() => setCurrentStep(currentStep + 1)}
                             nextLabel={idx === questions.length - 1 ? "Next" : "Next"}
@@ -483,7 +551,25 @@ export const createQuizSteps = (
     if (!answers.quizStartTime) {
         setAnswers({ ...answers, quizStartTime: new Date().toISOString() });
     }
-    pushQuestionBlock('PERSONAL DETAILS', personalDetailsQuestions);
+    
+    // Add first part of personal details (gender, age, goals)
+    const firstPartQuestions = personalDetailsQuestions.slice(0, 3); // gender, age, goals
+    pushQuestionBlock('PERSONAL DETAILS', firstPartQuestions);
+    
+    // Add intermediate page after goals question
+    steps.push({
+        title: '',
+        content: (
+            <QuizIntermediatePage
+                onNext={() => setCurrentStep(currentStep + 1)}
+                onPrevious={() => setCurrentStep(currentStep - 1)}
+            />
+        )
+    });
+    
+    // Add remaining personal details questions (climate, activity)
+    const remainingQuestions = personalDetailsQuestions.slice(3); // climate, activity
+    pushQuestionBlock('Personal details', remainingQuestions);
 
     // Morning Energy Intro
     steps.push({
@@ -494,21 +580,21 @@ export const createQuizSteps = (
                 backgroundImageUrl={'/women/orange_woman.jpg'}
                 desktopWomanImageUrl={'/PNG_models/G.png'}
                 desktopBackgroundImageUrl={'/PNG_models/background/Copy of G background.png'}
-                titleLines={["MORNING", "ENERGY", "& CLARITY"]}
+                titleLines={["WE SEE YOU"]}
                 bodyLines={[
-                    'Rise and shine – or hit',
-                    'snooze for the fifth time?',
-                    'This section checks in on',
-                    'how energized, focused, and',
-                    'clear-headed you feel as you',
-                    'step into your day. Your glow-',
-                    'up starts here.',
+                    'Struggling with focus? Low',
+                    'energy? Sleep that’s never',
+                    'enough?',
+                    'ㅤ',
+                    'You’re not alone — 3 in 4',
+                    'women feel the same, even',
+                    'with a “healthy” lifestyle.',
                 ]}
                 buttonLabel={'Next'}
             />
         )
     });
-    pushQuestionBlock('MORNING ENERGY & CLARITY', morningEnergyQuestions);
+    pushQuestionBlock('Morning Energy', morningEnergyQuestions);
 
     // Movement Intro
     steps.push({
@@ -519,21 +605,21 @@ export const createQuizSteps = (
                 backgroundImageUrl={'/women/yellow-orange_woman.png'}
                 desktopWomanImageUrl={'/PNG_models/N.png'}
                 desktopBackgroundImageUrl={'/PNG_models/background/Copy of N background.png'}
-                titleLines={["MOVEMENT,","FLEXIBILITY", "& BODY", "SUPPORT"]}
+                titleLines={["LUXURY", "MEETS", "NEURO-", "NUTRITION"]}
                 bodyLines={[
-                    'From runway walks to',
-                    'recovery yoga – how',
-                    'your body moves tells',
-                    'us a lot about your vitality.',
-                    'Let\'s see how flexible,',
-                    'fluid, and fierce you feel',
-                    'in your everyday flow.',
+                    'Formulas crafted with',
+                    'leading European scientists.',
+                    'ㅤ',
+                    'We use cryogenic grinding to',
+                    'lock in maximum nutrient',
+                    'power — no preservatives, no',
+                    'shortcuts, just results.',
                 ]}
                 buttonLabel={'Next'}
             />
         )
     });
-    pushQuestionBlock('MOVEMENT, FLEXIBILITY & BODY SUPPORT', movementQuestions);
+    pushQuestionBlock('Movement & Flexibility', movementQuestions);
 
     // Nutrition Intro
     steps.push({
@@ -556,7 +642,7 @@ export const createQuizSteps = (
             />
         )
     });
-    pushQuestionBlock('NUTRITION, DIGESTION & DETOX', nutritionQuestions);
+    pushQuestionBlock('Nutrition, Digestion', nutritionQuestions);
 
     // Sleep & Stress Intro
     steps.push({
@@ -579,7 +665,7 @@ export const createQuizSteps = (
             />
         )
     });
-    pushQuestionBlock('SLEEP, STRESS & SELF-CARE', sleepQuestions);
+    pushQuestionBlock('Sleep, Stress', sleepQuestions);
 
     // Indulgence Intro
     steps.push({
@@ -602,7 +688,7 @@ export const createQuizSteps = (
             />
         )
     });
-    pushQuestionBlock('INDULGENCE & BALANCE', indulgenceQuestions);
+    pushQuestionBlock('Indulgence, Balance', indulgenceQuestions);
 
     // Environment Intro
     steps.push({
@@ -626,7 +712,7 @@ export const createQuizSteps = (
             />
         )
     });
-    pushQuestionBlock('ENVIRONMENT & POLLUTION', environmentQuestions);
+    pushQuestionBlock('Environment, Pollution', environmentQuestions);
 
     // Email form step
     steps.push({

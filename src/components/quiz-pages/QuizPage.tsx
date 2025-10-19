@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import QuizStartPage from "./quiz-start/QuizStartPage";
 import QuizSectionIntro from "./QuizSectionIntro";
+import QuizIntermediatePage from "./quiz-intermediate/QuizIntermediatePage";
 import QuestionForm from "../quiz-forms/QuestionForm";
 import { createQuizSteps } from "../../config/quizConfig";
 import { usePage } from "../../App";
@@ -61,9 +62,10 @@ export default function QuizPage() {
     return currentStepData.content;
   }
 
-  // Check if this is an intro step (QuizSectionIntro)
+  // Check if this is an intro step (QuizSectionIntro or QuizIntermediatePage)
   const isIntroStep = React.isValidElement(currentStepData.content) && 
-    currentStepData.content.type === QuizSectionIntro;
+    (currentStepData.content.type === QuizSectionIntro || 
+     currentStepData.content.type === QuizIntermediatePage);
 
   return (
     <div className="min-h-screen bg-white flex flex-col">

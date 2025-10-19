@@ -87,7 +87,7 @@ export default function QuestionFormDesktop({
 			</div>
 
 			{/* Content */}
-			<div className="flex justify-center p-6 pt-9 flex-1">
+			<div className="flex justify-center p-6 pt-9 flex-1 pb-32">
 				<div className="w-full max-w-2xl">
 					<h1 className="text-5xl text-center text-[#1F2429] mb-3">
 						{question}

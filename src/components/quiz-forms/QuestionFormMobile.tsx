@@ -82,7 +82,7 @@ export default function QuestionFormMobile({
 			</div>
 
 			{/* Content */}
-			<div className="flex justify-center p-4 flex-1">
+			<div className="flex justify-center p-4 flex-1 pb-24">
 				<div className="w-full max-w-xl">
 					<h1 className="text-2xl font-bold text-[#1F2429] mb-2">
 						{question}
