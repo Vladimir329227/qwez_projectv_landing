@@ -477,7 +477,7 @@ export default (props: any) => {
 					</span>		
 				<TestimonialsCarousel />
 
-				<div className="flex flex-col items-start self-stretch bg-[url('/figma/fashion_week.png')] bg-cover bg-center pt-[442px] pb-[79px] mb-24 gap-6">
+				<div className="flex flex-col items-start self-stretch bg-[url('/figma/fashion_week_desktop(black).png')] bg-cover bg-center pt-[442px] pb-[79px] mb-24 gap-6">
 					<span className="text-white text-[40px] font-bold ml-12" >
 						{"As Seen At Fashion Week"}
 					</span>

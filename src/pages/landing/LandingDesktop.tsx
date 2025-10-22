@@ -252,17 +252,17 @@ export default () => {
 					{/* Desktop layout with image on left and stepped blocks on right */}
 					<div className="flex flex-col lg:flex-row items-center self-stretch mx-6 lg:mx-24 gap-8 lg:gap-4">
 						{/* Image on the left */}
-						<div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
+						<div className="w-full flex justify-center">
 							<img
 								src={"/figma/products_boom.png"}
-								className="w-full max-w-[280px] sm:max-w-[350px] md:max-w-[450px] lg:w-[640px] lg:h-[688px] object-contain"
+								className="w-full  object-cover"
 								alt="Product illustration"
 							/>
 						</div>
 
-						{/* Stepped blocks on the right */}
-						<div className="w-full lg:w-1/2 flex flex-col justify-center items-start gap-12 lg:gap-16">
-							{/* First block - no offset */}
+						{/* Aligned blocks on the right */}
+						<div className="w-full lg:w-1/2 flex flex-col justify-center items-start gap-8 lg:gap-12">
+							{/* First block - aligned */}
 							<div className="flex items-start gap-4 lg:gap-6 w-full">
 								<div className="flex-shrink-0 flex items-center justify-center">
 									<img
@@ -280,8 +280,8 @@ export default () => {
 								</div>
 							</div>
 
-							{/* Second block - offset to the right */}
-							<div className="flex items-start gap-4 lg:gap-6 w-full lg:ml-10">
+							{/* Second block - aligned */}
+							<div className="flex items-start gap-4 lg:gap-6 w-full">
 								<div className="flex-shrink-0 flex items-center justify-center">
 									<img
 										src={"/figma/2481f55913454a40.png"}
@@ -298,8 +298,8 @@ export default () => {
 								</div>
 							</div>
 
-							{/* Third block - more offset to the right */}
-							<div className="flex items-start gap-4 lg:gap-6 w-full lg:ml-20">
+							{/* Third block - aligned */}
+							<div className="flex items-start gap-4 lg:gap-6 w-full">
 								<div className="flex-shrink-0 flex items-center justify-center">
 									<img
 										src={"/figma/42c9ab3ced15be74.png"}
@@ -562,7 +562,7 @@ export default () => {
 					</span>
 					<TestimonialsCarousel />
 				</div>
-				<div className="flex flex-col items-start w-screen bg-[url('/figma/fashion_week.png')] bg-cover bg-center pt-[442px] pb-[79px] gap-6 relative left-1/2 transform -translate-x-1/2">
+				<div className="flex flex-col items-start w-screen bg-[url('/figma/fashion_week_desktop(black).png')] bg-cover bg-center pt-[442px] pb-[79px] gap-6 relative left-1/2 transform -translate-x-1/2">
 					<span className="text-white text-[40px] font-bold ml-24" >
 						{"As Seen At Fashion Week"}
 					</span>
