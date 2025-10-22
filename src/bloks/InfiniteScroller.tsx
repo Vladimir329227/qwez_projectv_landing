@@ -69,11 +69,11 @@ const InfiniteScroller = () => {
   return (
     <div 
       ref={containerRef}
-      className="relative flex items-center mb-8 w-full overflow-hidden bg-blue-500 py-4"
+      className="relative flex items-center mb-8 w-full overflow-hidden bg-[#00A8E2] py-4"
     >
       {/* Градиенты для плавного скрытия */}
-      <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-blue-500 to-transparent z-10 pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-blue-500 to-transparent z-10 pointer-events-none" />
+      <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#00A8E2] to-transparent z-10 pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#00A8E2] to-transparent z-10 pointer-events-none" />
       
       {/* Скрытый элемент для измерения ширины контента */}
       <div 

@@ -1,6 +1,6 @@
 import { QuestionOption } from '../types/quiz';
 import React from 'react';
-import AgeCarousel from '../components/personal-details/AgeCarousel';
+import AgeCarousel from '../bloks/AgeCarousel';
 import { EmailForm, NameForm, DisclaimerForm } from '../components/quiz-forms';
 import QuizResult from '../components/quiz-pages/quiz-results/QuizResult';
 import QuizIntermediatePage from '../components/quiz-pages/quiz-intermediate/QuizIntermediatePage';
@@ -16,8 +16,7 @@ export interface PersonalDetailsQuestion {
 export const personalDetailsQuestions: PersonalDetailsQuestion[] = [
     {
         key: "gender",
-        question: "What is your gender?",
-        subtitle: 'Select your gender tp help us fine-tune your glow-up essentials',
+        question: "Select your gender?",
         options: [
             { value: "female", label: "Female" },
             { value: "male", label: "Male" },

@@ -40,31 +40,17 @@ export default function QuizSectionIntroMobile({
   const effectiveButtonLabel = buttonLabel ?? "Begin Survey";
 
   return (
-    <div className="bg-white flex flex-col relative overflow-hidden min-h-screen">
-      {/* Right image - mobile optimized */}
-      <div
-        className={`absolute inset-y-0 right-0 w-[60%] z-100 pointer-events-none bg-no-repeat transition-all duration-1000 ease-out ${
-          isImageVisible
-            ? "opacity-100 translate-x-0"
-            : "opacity-0 translate-x-full"
-        }`}
-        style={{
-          backgroundImage: `url('${effectiveBackground}')`,
-          backgroundSize: "auto 100%",
-          backgroundPosition: "right top",
-        }}
-      />
-
-      {/* Content */}
-      <div className="flex flex-col h-screen relative z-10">
-        {/* Text content - mobile layout */}
+    <div className="bg-white flex h-screen overflow-hidden relative">
+      {/* Left column - Content */}
+      <div className="flex flex-col w-[60%] relative z-10">
+        {/* Text content */}
         <div className="flex justify-center p-6 flex-1">
-          <div className="w-full max-w-3xl">
+          <div className="w-full max-w-xl">
             <div className="text-left max-w-xl">
               {effectiveTitleLines.map((line, index) => (
                 <h1
                   key={`title-${index}`}
-                  className={`text-4xl text-[#1F2429] ${
+                  className={`text-4xl text-[#1F2429] font-bold ${
                     index === 0 ? "pt-10" : ""
                   }`}
                 >
@@ -75,7 +61,7 @@ export default function QuizSectionIntroMobile({
               {effectiveBodyLines.map((line, index) => (
                 <div
                   key={`body-${index}`}
-                  className="w-full text-[14px] text-left"
+                  className="w-full text-[15px] text-left"
                 >
                   {line}
                 </div>
@@ -84,32 +70,49 @@ export default function QuizSectionIntroMobile({
           </div>
         </div>
 
-        {/* Button section - mobile bottom layout */}
-        <div className="p-6 pb-14">
-          <div className="flex justify-center">
-            <div className="w-full max-w-3xl">
-              <div className="flex items-start gap-4">
-                <div className="flex flex-col w-full">
-                  <img
-                    src="/Logo/Black.svg"
-                    alt="Project V"
-                    className="w-[40%] h-[40%] pb-4"
-                  />
-                  <div className="items-center">
-                    <button
-                      onClick={onBegin}
-                      className={`mt-3 bg-[#1F2429] text-white px-6 py-3 rounded-full hover:bg-black/80 transition-all duration-700 ease-out w-full ${
-                        isButtonVisible
-                          ? "opacity-100 translate-y-0"
-                          : "opacity-0 translate-y-8"
-                      }`}
-                    >
-                      {effectiveButtonLabel}
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+        {/* (moved) button/logo now rendered as overlay */}
+        <div className="p-6 pb-14" />
+      </div>
+
+      {/* Background image layer (absolute, right-aligned, shows under left text) */}
+      <div
+        className={`absolute inset-0 bg-no-repeat transition-all duration-1000 ease-out z-0 pointer-events-none ${
+          isImageVisible
+            ? "opacity-100 translate-x-0"
+            : "opacity-0 translate-x-full"
+        }`}
+        style={{
+          backgroundImage: `url('${effectiveBackground}')`,
+          backgroundSize: "auto 100%",
+          backgroundPosition: "right center",
+        }}
+      />
+
+      {/* Overlay layer: left-aligned logo above button at the bottom (do not push layout) */}
+      <div className="absolute inset-0 z-[200] pointer-events-none">
+        {/* Full-width blurred backdrop behind the bottom area */}
+        <div className="absolute left-0 right-0 bottom-0 h-[96px] bg-white/20 backdrop-blur-md shadow-md" />
+        <div className="absolute bottom-6 left-0 right-0 px-6">
+          {/* Logo above the button, aligned to left */}
+          <div className={`transition-all duration-700 ease-out ${
+            isImageVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+          }`}>
+            <img
+              src="/Logo/Black.svg"
+              alt="Project V"
+              className="w-[50%] max-w-[320px] h-auto pb-4"
+            />
+          </div>
+          {/* Button nearly full width */}
+          <div className="relative">
+            <button
+              onClick={onBegin}
+              className={`relative z-10 pointer-events-auto bg-[#1F2429] text-white px-6 py-4 rounded-full hover:bg-black/80 transition-all duration-700 ease-out w-full ${
+                isButtonVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+            >
+              {effectiveButtonLabel}
+            </button>
           </div>
         </div>
       </div>

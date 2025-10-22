@@ -149,16 +149,16 @@ export default () => {
 						/>
 						<img
 							src={"/figma/5074e669b6d5859b.png"}
-							className="w-[185px] h-[65px] object-contain"
+							className="w-[169px] h-[65px] object-contain"
 						/>
 						<img
 							src={"/figma/a97a902e66280595.png"}
-							className="w-[171px] h-[65px] object-contain"
+							className="w-[169px] h-[65px] object-contain"
 						/>
 						<img
 							src={"/figma/lofficiel_logo.png"}
 							style={{ filter: "invert(1)" }}
-							className="w-[171px] h-[65px] object-contain"
+							className="w-[169px] h-[65px] object-contain"
 						/>
 					</div>
 				</div>
@@ -169,7 +169,7 @@ export default () => {
 					<span className="text-[#1F2429] text-xl text-center mb-12 mx-[337px]" >
 						{"Designed for those who demand more from their wellness - Project V delivers curated, science-backed blends that simplify your routine and elevate how you feel, think, and live."}
 					</span>
-					<div className="flex flex-col lg:flex-row items-center self-stretch mx-4 sm:mx-8 lg:mx-24 gap-8 lg:gap-16">
+					<div className="flex flex-col lg:flex-row items-center self-stretch mx-6 sm:mx-8 lg:mx-24 gap-8 lg:gap-16">
 						{/* Основное изображение */}
 						<div className="w-full lg:w-1/2 flex justify-center">
 							<img
@@ -246,11 +246,23 @@ export default () => {
 						{"Purely Natural & Organic"}
 					</span>
 					<span className="text-[#1F2429] text-xl text-center mb-12 mx-[337px]" >
-						{"Organic ingredients, cryogenically extracted to preserve their natural power — delivering pure, potent nourishment that supports your body’s vitality, radiant skin, and lasting energy every day."}
+						{"Organic ingredients, cryogenically extracted to preserve their natural power — delivering pure, potent nourishment that supports your body's vitality, radiant skin, and lasting energy every day."}
 					</span>
-					<div className="flex items-center self-stretch mx-6 lg:mx-24 gap-6 lg:gap-12 flex-col lg:flex-row">
-						<div className="flex flex-1 flex-col items-start gap-8 lg:gap-12 w-full max-w-full">
-							{/* Первый блок */}
+
+					{/* Desktop layout with image on left and stepped blocks on right */}
+					<div className="flex flex-col lg:flex-row items-center self-stretch mx-6 lg:mx-24 gap-8 lg:gap-4">
+						{/* Image on the left */}
+						<div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
+							<img
+								src={"/figma/products_boom.png"}
+								className="w-full max-w-[280px] sm:max-w-[350px] md:max-w-[450px] lg:w-[640px] lg:h-[688px] object-contain"
+								alt="Product illustration"
+							/>
+						</div>
+
+						{/* Stepped blocks on the right */}
+						<div className="w-full lg:w-1/2 flex flex-col justify-center items-start gap-12 lg:gap-16">
+							{/* First block - no offset */}
 							<div className="flex items-start gap-4 lg:gap-6 w-full">
 								<div className="flex-shrink-0 flex items-center justify-center">
 									<img
@@ -268,8 +280,8 @@ export default () => {
 								</div>
 							</div>
 
-							{/* Второй блок */}
-							<div className="flex items-start gap-4 lg:gap-6 w-full">
+							{/* Second block - offset to the right */}
+							<div className="flex items-start gap-4 lg:gap-6 w-full lg:ml-10">
 								<div className="flex-shrink-0 flex items-center justify-center">
 									<img
 										src={"/figma/2481f55913454a40.png"}
@@ -286,8 +298,8 @@ export default () => {
 								</div>
 							</div>
 
-							{/* Третий блок */}
-							<div className="flex items-start gap-4 lg:gap-6 w-full">
+							{/* Third block - more offset to the right */}
+							<div className="flex items-start gap-4 lg:gap-6 w-full lg:ml-20">
 								<div className="flex-shrink-0 flex items-center justify-center">
 									<img
 										src={"/figma/42c9ab3ced15be74.png"}
@@ -303,27 +315,10 @@ export default () => {
 									</span>
 								</div>
 							</div>
-
-							{/* Кнопка */}
-							<button
-								className="w-full sm:w-auto bg-[#1F2429] text-white py-3 px-8 lg:py-[15px] lg:px-[79px] rounded-full border-0 text-base font-bold hover:bg-gray-800 transition-colors self-start"
-								onClick={() => setPage('quiz')}
-							>
-								Take Quiz
-							</button>
-						</div>
-
-						{/* Изображение */}
-						<div className="flex-shrink-0 w-full lg:w-auto flex justify-center">
-							<img
-								src={"/figma/1972b03e029398d7.png"}
-								className="w-full max-w-[280px] sm:max-w-[350px] md:max-w-[450px] lg:w-[581px] lg:h-[581px] object-contain"
-								alt="Product illustration"
-							/>
 						</div>
 					</div>
 				</div>
-				
+
 				<IngredientsMarquee />
 				<div className="flex flex-col self-stretch py-24 gap-12">
 					<div className="flex items-center self-stretch bg-[#F6F6F6] py-[70px] px-[72px] mx-24 gap-3 rounded-2xl">
@@ -478,7 +473,7 @@ export default () => {
 								</div>
 								<div className="min-w-0">
 									<h3 className="text-[#1F2429] text-xl lg:text-2xl font-bold mb-2 lg:mb-2.5 leading-tight">Elevate</h3>
-									<p className="text-[#1F2429] text-base lg:text-lg leading-relaxed">Take the quiz to uncover exactly what your body needs</p>
+									<p className="text-[#1F2429] text-base lg:text-lg leading-relaxed">Experience the benefits of your tailored wellness journey every day</p>
 								</div>
 							</li>
 						</ol>
@@ -500,7 +495,7 @@ export default () => {
 				</span>
 				<ProductCarousel />
 				<div className="self-stretch">
-					<div className="flex flex-col items-start self-stretch bg-[url('/figma/3efb4492240092ed.png')] bg-cover bg-center pt-[366px] pb-20 gap-6">
+					<div className="flex flex-col items-start self-stretch bg-[url('/figma/laboratory.png')] bg-cover bg-center pt-[366px] pb-20 gap-6">
 						<span className="text-white text-[40px] font-bold w-[328px] ml-24" >
 							{"Made In France.\nTrusted Worldwide."}
 						</span>
@@ -561,13 +556,13 @@ export default () => {
 						</div>
 					</div>
 				</div>
-				<div className="flex flex-col items-center self-stretch p-24 mb-[1px]">
+				<div className="bg-[#EAEBEB] flex flex-col items-center self-stretch p-24 mb-[1px]">
 					<span className="text-[#1F2429] text-[40px] font-bold mb-[47px]" >
 						{"Real People. Real Results."}
 					</span>
 					<TestimonialsCarousel />
 				</div>
-				<div className="flex flex-col items-start self-stretch bg-[url('/figma/67a3cb8fe608ec15.png')] bg-cover bg-center pt-[442px] pb-[79px] mb-24 gap-6">
+				<div className="flex flex-col items-start w-screen bg-[url('/figma/fashion_week.png')] bg-cover bg-center pt-[442px] pb-[79px] gap-6 relative left-1/2 transform -translate-x-1/2">
 					<span className="text-white text-[40px] font-bold ml-24" >
 						{"As Seen At Fashion Week"}
 					</span>
@@ -575,7 +570,9 @@ export default () => {
 						{"Partnering with fashion insiders to bring you beauty-backed wellness that stands out - on and off the runway."}
 					</span>
 				</div>
-				<ExpertsCarousel />
+				<div className="bg-[#EAEBEB] flex flex-col items-center self-stretch mb-[1px]">
+					<ExpertsCarousel />
+				</div>
 				<div className="flex flex-col self-stretch py-24">
 					<span className="text-[#1F2429] text-[40px] font-bold text-center mb-6 mx-[415px]" >
 						{"Unlock More with Our App"}
@@ -655,7 +652,7 @@ export default () => {
 							className="w-full h-[360px] object-cover object-top"
 						/>
 						<img
-							src={"/figma/11dd909319c2ad2e.png"}
+							src={"/figma/yellow_orange_woman.png"}
 							className="w-full h-[360px] object-cover object-top"
 						/>
 					</div>

@@ -10,6 +10,7 @@ const getBlockLogo = (sectionTitle: string): string | null => {
 		'SLEEP, STRESS & SELF-CARE': '/blok_logo/SLEEP, STRESS & SELF-CARE.png',
 		'INDULGENCE & BALANCE': '/blok_logo/INDULGENCE & BALANCE.png',
 		'ENVIRONMENT & POLLUTION': '/blok_logo/ENVIRONMENT & POLLUTION.png',
+		'PERSONAL DETAILS': '/blok_logo/PERSONAL DETAILS.png',
 	};
 
 	return logoMap[sectionTitle] || null;
@@ -61,13 +62,13 @@ export default function QuestionFormMobile({
 			<div className="px-4 pt-4 pb-2">
 				<div className="flex items-center justify-between pb-4 pt-4">
 					<div className="flex items-center gap-2">
-						{getBlockLogo(sectionTitle) && (
+						
 							<img
 								src={getBlockLogo(sectionTitle)!}
 								alt={`${sectionTitle} logo`}
 								className="w-6 h-6 object-contain"
 							/>
-						)}
+					
 						<h2 className="text-base text-[#1F2429] tracking-wide font-semibold">
 							{sectionTitle}
 						</h2>
@@ -110,7 +111,7 @@ export default function QuestionFormMobile({
                                     <button
                                         key={String(opt.value)}
                                         onClick={handleClick}
-                                        className={`w-full p-4 border-2 rounded-lg text-left text-base transition-colors ${
+                                        className={`w-full p-4 border-2 rounded-lg text-center text-base transition-colors ${
                                             isSelected ? "border-[#00A8E2] bg-blue-50" : "border-gray-200 hover:border-[#00A8E2] hover:bg-blue-50"
                                         }`}
                                     >

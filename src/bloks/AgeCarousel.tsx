@@ -16,13 +16,6 @@ export default function AgeCarousel({ min = 16, max = 90, value, onChange }: Age
 	const [viewportWidth, setViewportWidth] = useState(0);
 	const [spacerWidth, setSpacerWidth] = useState(0);
 	const [isDragging, setIsDragging] = useState(false);
-	const dragStartXRef = useRef(0);
-	const dragStartScrollRef = useRef(0);
-    const lastMoveXRef = useRef(0);
-    const lastMoveTimeRef = useRef(0);
-    const velocityRef = useRef(0);
-    const isInertiaRunningRef = useRef(false);
-    const inertiaRafRef = useRef<number | null>(null);
 	const numbers = useMemo(() => {
 		const arr: number[] = [];
 		for (let i = min; i <= max; i++) arr.push(i);
@@ -70,90 +63,32 @@ export default function AgeCarousel({ min = 16, max = 90, value, onChange }: Age
 		if (newValue !== value) onChange(newValue);
 	}, [numbers, itemWidth, spacerWidth, value, onChange, viewportWidth]);
 
-	// Pointer events based drag with inertia (robust desktop handling)
+	// Keyboard navigation (arrow keys)
 	useEffect(() => {
 		const container = containerRef.current;
 		if (!container) return;
 
-		const cancelInertia = () => {
-			if (inertiaRafRef.current != null) {
-				cancelAnimationFrame(inertiaRafRef.current);
-				inertiaRafRef.current = null;
-			}
-			isInertiaRunningRef.current = false;
-		};
-
-		const onPointerDown = (e: PointerEvent) => {
-			// handle mouse and pen for desktop; allow touch to work with native scrolling
-			if (e.pointerType !== 'mouse' && e.pointerType !== 'pen') return;
-			cancelInertia();
-			(container as any).setPointerCapture?.(e.pointerId);
-			setIsDragging(true);
-			dragStartXRef.current = e.clientX;
-			dragStartScrollRef.current = container.scrollLeft;
-			container.classList.add("cursor-grabbing");
-			(container.style as any).scrollSnapType = 'none';
-			e.preventDefault();
-			lastMoveXRef.current = e.clientX;
-			lastMoveTimeRef.current = performance.now();
-			velocityRef.current = 0;
-		};
-
-		const onPointerMove = (e: PointerEvent) => {
-			if (!isDragging) return;
-			const delta = e.clientX - dragStartXRef.current;
-			container.scrollLeft = dragStartScrollRef.current - delta;
-			const now = performance.now();
-			const dt = now - lastMoveTimeRef.current;
-			if (dt > 0) {
-				const dx = e.clientX - lastMoveXRef.current;
-				velocityRef.current = dx / dt; // px per ms
-				lastMoveXRef.current = e.clientX;
-				lastMoveTimeRef.current = now;
-			}
-			e.preventDefault();
-		};
-
-		const onPointerUp = () => {
-			if (!isDragging) return;
-			setIsDragging(false);
-			container.classList.remove("cursor-grabbing");
-			// keep snap disabled during inertia
-			let v = -velocityRef.current * 26; // stronger initial velocity
-			isInertiaRunningRef.current = Math.abs(v) > 0.08;
-			const animate = () => {
-				v *= 0.945; // lower friction -> longer glide
-				container.scrollLeft += v;
-				if (Math.abs(v) > 0.08 && isInertiaRunningRef.current) {
-					inertiaRafRef.current = requestAnimationFrame(animate);
-				} else {
-					// finish inertia, enable snap and snap to nearest
-					isInertiaRunningRef.current = false;
-					(container.style as any).scrollSnapType = 'x mandatory';
-					snapToNearestPublic();
+		const onKeyDown = (e: KeyboardEvent) => {
+			if (e.key === 'ArrowLeft') {
+				e.preventDefault();
+				const currentIndex = numbers.indexOf(selected);
+				if (currentIndex > 0) {
+					onChange(numbers[currentIndex - 1]);
 				}
-			};
-			if (isInertiaRunningRef.current) {
-				inertiaRafRef.current = requestAnimationFrame(animate);
-			} else {
-				// no inertia -> just re-enable snap and snap
-				(container.style as any).scrollSnapType = 'x mandatory';
-				snapToNearestPublic();
+			} else if (e.key === 'ArrowRight') {
+				e.preventDefault();
+				const currentIndex = numbers.indexOf(selected);
+				if (currentIndex < numbers.length - 1) {
+					onChange(numbers[currentIndex + 1]);
+				}
 			}
 		};
 
-		container.addEventListener('pointerdown', onPointerDown as any);
-		window.addEventListener('pointermove', onPointerMove as any, { passive: false } as any);
-		window.addEventListener('pointerup', onPointerUp as any);
-		window.addEventListener('pointercancel', onPointerUp as any);
+		container.addEventListener('keydown', onKeyDown);
 		return () => {
-			container.removeEventListener('pointerdown', onPointerDown as any);
-			window.removeEventListener('pointermove', onPointerMove as any);
-			window.removeEventListener('pointerup', onPointerUp as any);
-			window.removeEventListener('pointercancel', onPointerUp as any);
-			cancelInertia();
+			container.removeEventListener('keydown', onKeyDown);
 		};
-	}, [isDragging, snapToNearestPublic]);
+	}, [selected, numbers, onChange]);
 
 	// Scroll to selected on mount/update
 	useEffect(() => {
@@ -183,8 +118,8 @@ export default function AgeCarousel({ min = 16, max = 90, value, onChange }: Age
 		const rAF = () => {
 			rafId = requestAnimationFrame(() => {
 				const current = container.scrollLeft;
-				if (isDragging || isInertiaRunningRef.current) {
-					// don't snap while actively dragging or running inertia
+				if (isDragging) {
+					// don't snap while actively dragging
 					lastScrollLeft = current;
 					rAF();
 					return;
@@ -203,10 +138,17 @@ export default function AgeCarousel({ min = 16, max = 90, value, onChange }: Age
     const onWheel = (e: WheelEvent) => {
         // Translate vertical wheel to horizontal scroll for better desktop UX
         if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-            container.scrollLeft += e.deltaY;
-            // prevent parent scroll
             e.preventDefault();
             e.stopPropagation();
+            
+            const currentIndex = numbers.indexOf(selected);
+            if (e.deltaY > 0 && currentIndex < numbers.length - 1) {
+                // Scroll down -> move right
+                onChange(numbers[currentIndex + 1]);
+            } else if (e.deltaY < 0 && currentIndex > 0) {
+                // Scroll up -> move left
+                onChange(numbers[currentIndex - 1]);
+            }
         }
     };
 
@@ -217,7 +159,7 @@ export default function AgeCarousel({ min = 16, max = 90, value, onChange }: Age
 			container.removeEventListener("wheel", onWheel as any);
 			cancelAnimationFrame(rafId);
 		};
-	}, [numbers, itemWidth, onChange, value, spacerWidth, snapToNearestPublic, isDragging, viewportWidth]);
+	}, [numbers, itemWidth, onChange, value, spacerWidth, snapToNearestPublic, isDragging, viewportWidth, selected]);
 
 	return (
 		<div className="w-full pt-8">
@@ -236,12 +178,13 @@ export default function AgeCarousel({ min = 16, max = 90, value, onChange }: Age
 						ref={containerRef}
 						className={`relative overflow-x-auto px-4 age-scroll select-none ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
 						style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch", msOverflowStyle: "none", scrollbarWidth: "none", scrollBehavior: 'smooth', touchAction: 'pan-x' }}
+						tabIndex={0}
 					>
 						<div className="relative flex items-center h-16" style={{ width: spacerWidth * 2 + numbers.length * itemWidth }}>
 							{/* Left spacer to allow first value to center */}
 							<div style={{ width: spacerWidth }} />
 							{numbers.map((n, i) => (
-								<ScaleItem key={n} index={i} itemWidth={itemWidth} spacerWidth={spacerWidth} viewportWidth={viewportWidth}>
+								<ScaleItem key={n} index={i} itemWidth={itemWidth} spacerWidth={spacerWidth} viewportWidth={viewportWidth} value={n} onClick={() => onChange(n)}>
 									{n}
 								</ScaleItem>
 							))}
@@ -264,7 +207,7 @@ export default function AgeCarousel({ min = 16, max = 90, value, onChange }: Age
 	);
 }
 
-function ScaleItem({ index, itemWidth, spacerWidth, viewportWidth, children }: { index: number; itemWidth: number; spacerWidth: number; viewportWidth: number; children: React.ReactNode; }) {
+function ScaleItem({ index, itemWidth, spacerWidth, viewportWidth, value, onClick, children }: { index: number; itemWidth: number; spacerWidth: number; viewportWidth: number; value: number; onClick: () => void; children: React.ReactNode; }) {
 	const ref = useRef<HTMLDivElement | null>(null);
 	const [scale, setScale] = React.useState(1);
 	const [opacity, setOpacity] = React.useState(0.6);
@@ -297,8 +240,9 @@ function ScaleItem({ index, itemWidth, spacerWidth, viewportWidth, children }: {
 	return (
 		<div
 			ref={ref}
-			className="flex items-center justify-center select-none"
+			className="flex items-center justify-center select-none cursor-pointer hover:opacity-80 transition-opacity"
 			style={{ width: itemWidth, scrollSnapAlign: "center", transform: `scale(${scale})`, opacity }}
+			onClick={onClick}
 		>
 			<div className="text-lg text-[#1F2429] font-bold">{children}</div>
 		</div>

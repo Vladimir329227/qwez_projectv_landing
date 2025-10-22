@@ -5,7 +5,7 @@ const TestimonialsCarousel = () => {
   const [cardsToShow, setCardsToShow] = useState(3);
   const carouselRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-
+  const verifiedIcon = '/figma/134c20f110cf0754.png'
   // Данные отзывов из вашего кода
   const testimonials = [
     {
@@ -13,7 +13,6 @@ const TestimonialsCarousel = () => {
       stars: "/figma/feea408cc3f29c3b.png",
       text: "Sensational! Within 2 months, I got rid of these so-called \"warts\" on my hands that I had been fighting for 3 years! Project V's products are an investment in a long and healthy life!",
       name: "Martha",
-      verifiedIcon: "/figma/134c20f110cf0754.png",
       hasShadow: false
     },
     {
@@ -21,7 +20,6 @@ const TestimonialsCarousel = () => {
       stars: "/figma/5a0939dcbe4fc1d7.png",
       text: "Product A helped me get rid of the onset of osteoarthritis. I take 6 capsules a day - 2 in the morning, 2 at noon and 2 in the evening. I also take P and N. You get to feel great. Nobody can tell me that it doesn't work. I RECOMMEND IT!",
       name: "Camilla",
-      verifiedIcon: "/figma/3f73070e378af6c0.png",
       hasShadow: true
     },
     {
@@ -29,7 +27,6 @@ const TestimonialsCarousel = () => {
       stars: "/figma/01d4078010005bf7.png",
       text: "I got rid of small kidney stones. I also got rid of torsion in my legs and crusts. Now I have forgotten all about that pain. I will recommend these products to everyone.",
       name: "Martha",
-      verifiedIcon: "/figma/0b8090b4263ac852.png",
       hasShadow: false
     },
     {
@@ -37,9 +34,54 @@ const TestimonialsCarousel = () => {
       stars: "/figma/feea408cc3f29c3b.png",
       text: "Amazing results! After using Project V products for just one month, I noticed significant improvements in my overall health and energy levels. Highly recommended!",
       name: "Sarah",
-      verifiedIcon: "/figma/134c20f110cf0754.png",
       hasShadow: false
-    }
+    },
+    {
+      id: 5,
+      stars: "/figma/feea408cc3f29c3b.png",
+      text: "After taking Project V capsules, I felt amazing — great mood, high energy, no fatigue even after dancing until 3 am! In the morning I woke up refreshed and full of life.",
+      name: "Elena Z",
+      hasShadow: false
+    },
+    {
+      id: 6,
+      stars: "/figma/feea408cc3f29c3b.png",
+      text: "After taking A and D, I felt a cleansing effect — runny nose gone, cough stopped, digestion normalised by the next day. Fast and effective!",
+      name: "Galina M",
+      hasShadow: false
+    },
+    {
+      id: 7,
+      stars: "/figma/feea408cc3f29c3b.png",
+      text: "After a month on Project V, my headaches decreased, I sleep better, and my mood and skin improved. I feel calm, confident, beautiful - I really love this line!",
+      name: "Doan T",
+      hasShadow: false
+    },
+    {
+      id: 8,
+      stars: "/figma/feea408cc3f29c3b.png",
+      text: "Antiox helped me look younger and even soothed a sore throat in minutes.",
+      name: "Alla B",
+      hasShadow: false
+    },
+    
+    {
+      id: 9,
+      stars: "/figma/feea408cc3f29c3b.png",
+      text: "After three Project V sets, my skin became smooth, soft and firm. I sleep better, and my complexion glows.",
+      name: "Hoan N",
+      hasShadow: false
+    },
+
+    {
+      id: 10,
+      stars: "/figma/feea408cc3f29c3b.png",
+      text: "After a long trip my blood pressure spiked — just two Antiox capsules and all symptoms disappeared within minutes. Fantastic product!",
+      name: "Zulfiya A",
+      hasShadow: false
+    },
+    
+    
   ];
 
   // Определяем количество карточек для показа
@@ -156,7 +198,7 @@ const TestimonialsCarousel = () => {
   const totalDots = Math.max(1, testimonials.length - cardsToShow + 1);
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style={{marginBottom: '15px'}}>
+    <div className="w-full max-w-7xl mx-auto p-15 lg:p-20 px-4 sm:px-6 lg:px-8">
       {/* Карусель без градиентных краев */}
       <div className="relative overflow-visible mb-8" ref={containerRef}>
         <div 
@@ -191,26 +233,19 @@ const TestimonialsCarousel = () => {
                     zIndex: isCenterCard && isDesktop ? 10 : 1
                   }}
                 >
-                  <div className="flex flex-col items-center self-stretch mb-2">
-                    <img
-                      src={testimonial.stars} 
-                      className="w-24 h-4 object-fill"
-                      alt="Rating stars"
-                    />
-                  </div>
                   <span className="text-[#1F2429] text-base mx-4 sm:mx-6 flex-1">
                     {testimonial.text}
                   </span>
                   <span className="text-[#1F2429] text-base font-bold text-center mb-2 mx-4 sm:mx-6">
                     {testimonial.name}
                   </span>
-                  <div className="flex items-center self-stretch mx-4 sm:mx-[131px] gap-2">
+                  <div className="flex items-center self-center gap-2">
                     <img
-                      src={testimonial.verifiedIcon} 
+                      src="/figma/check_circle.png" 
                       className="w-6 h-6 object-fill"
                       alt="Verified"
                     />
-                    <span className="text-[#5DB23F] text-base">
+                    <span className="text-[#069861] text-base">
                       Verified Buyer
                     </span>
                   </div>
@@ -227,7 +262,7 @@ const TestimonialsCarousel = () => {
           {/* Кнопка назад */}
           <button 
             onClick={prevSlide}
-            className="p-2 sm:p-3 rounded-full bg-white transition-all duration-200 hover:scale-110 active:scale-95"
+            className="p-2 sm:p-3 rounded-full transition-all duration-200 hover:scale-110 active:scale-95"
           >
             <img
               src={"/figma/7f43061e53ed017f.png"}
@@ -261,7 +296,7 @@ const TestimonialsCarousel = () => {
           {/* Кнопка вперед */}
           <button 
             onClick={nextSlide}
-            className="p-2 sm:p-3 rounded-full bg-white transition-all duration-200 hover:scale-110 active:scale-95"
+            className="p-2 sm:p-3 rounded-fulltransition-all duration-200 hover:scale-110 active:scale-95"
           >
             <img
               src={"/figma/7f43061e53ed017f.png"}
