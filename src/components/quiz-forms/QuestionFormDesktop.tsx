@@ -4,14 +4,14 @@ import { QuestionFormProps } from "../../types/quiz";
 // Функция для получения пути к логотипу блока
 const getBlockLogo = (sectionTitle: string): string | null => {
 	const logoMap: Record<string, string> = {
-		'MORNING ENERGY & CLARITY': '/blok_logo/MORNING ENERGY & CLARITY.png',
-		'MOVEMENT, FLEXIBILITY & BODY SUPPORT': '/blok_logo/MOVEMENT, FLEXIBILITY & BODY SUPPORT.png',
-		'NUTRITION, DIGESTION & DETOX': '/blok_logo/NUTRITION, DIGESTION & DETOX.png',
-		'SLEEP, STRESS & SELF-CARE': '/blok_logo/SLEEP, STRESS & SELF-CARE.png',
-		'INDULGENCE & BALANCE': '/blok_logo/INDULGENCE & BALANCE.png',
-		'ENVIRONMENT & POLLUTION': '/blok_logo/ENVIRONMENT & POLLUTION.png',
+		'Morning Energy': '/blok_logo/morning_energy_&_clarity.png',
+		'Movement & Flexibility': '/blok_logo/movement_flexibility_&_body_support.png',
+		'Nutrition, Digestion': '/blok_logo/nutrition_digestion_&_detox.png',
+		'Sleep, Stress': '/blok_logo/sleep_stress_&_self-care.png',
+		'Indulgence, Balance': '/blok_logo/indulgence_&_balance.png',
+		'Environment, Pollution': '/blok_logo/environment_&_pollution.png',
+		'Personal details': '/blok_logo/personal_details.png',
 	};
-	
 	return logoMap[sectionTitle] || null;
 };
 
@@ -37,6 +37,7 @@ export default function QuestionFormDesktop({
 	nextLabel = "Next",
 	bottomNote,
 	children,
+	notification,
 }: QuestionFormProps) {
 	const [isButtonsVisible, setIsButtonsVisible] = useState(false);
 
@@ -69,7 +70,7 @@ export default function QuestionFormDesktop({
 								<img 
 									src={getBlockLogo(sectionTitle)!} 
 									alt={`${sectionTitle} logo`} 
-									className="w-8 h-8 object-contain"
+									className="w-5 h-5 object-contain"
 								/>
 							)}
 							<p className="text-[#1F2429] tracking-wide font-semibold">
@@ -89,7 +90,7 @@ export default function QuestionFormDesktop({
 			{/* Content */}
 			<div className="flex justify-center p-6 pt-9 flex-1 pb-32">
 				<div className="w-full max-w-2xl">
-					<h1 className="text-5xl text-center text-[#1F2429] mb-3">
+					<h1 className="text-5xl font-semibold text-center text-[#1F2429] mb-3">
 						{question}
 					</h1>
 					{subtitle && (
@@ -113,8 +114,8 @@ export default function QuestionFormDesktop({
                                     <button
                                         key={String(opt.value)}
                                         onClick={handleClick}
-                                        className={`w-full p-4 border-2 rounded-lg text-left text-lg transition-colors ${
-                                            isSelected ? "border-[#00A8E2] bg-blue-50" : "border-gray-200 hover:border-[#00A8E2] hover:bg-blue-50"
+                                        className={`quiz-option-button w-full p-4 border-2 rounded-lg text-left text-lg transition-colors ${
+                                            isSelected ? "border-[#00A8E2] bg-blue-50 text-[#00A8E2]" : "border-gray-200 hover:border-[#00A8E2] hover:bg-blue-50"
                                         }`}
                                     >
                                         {opt.label}
@@ -135,6 +136,20 @@ export default function QuestionFormDesktop({
 			{/* Fixed Bottom Buttons */}
 			<div className="fixed bottom-0 left-0 right-0 bg-white border-gray-200 p-4">
 				<div className="max-w-2xl mx-auto pb-8">
+					{/* Notification */}
+					{notification && (
+						<div className={`mb-6 transition-all duration-700 ease-out ${
+							isButtonsVisible 
+								? 'opacity-100 translate-y-0' 
+								: 'opacity-0 translate-y-8'
+						}`}>
+							<div className="flex items-start gap-3 p-4 bg-[#E5F6FC] border border-[#00A8E2] rounded-2xl">
+								<div className="text-[#00A8E2] text-xl font-bold flex-shrink-0 mt-0.5">ℹ️</div>
+								<p className="text-[#1F2429] text-base leading-relaxed">{notification}</p>
+							</div>
+						</div>
+					)}
+					
 					<div className={`flex gap-8 transition-all duration-700 ease-out ${
 						isButtonsVisible 
 							? 'opacity-100 translate-y-0' 

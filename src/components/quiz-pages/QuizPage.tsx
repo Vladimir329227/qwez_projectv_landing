@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
-import QuizStartPage from "./quiz-start/QuizStartPage";
 import QuizSectionIntro from "./QuizSectionIntro";
-import QuizIntermediatePage from "./quiz-intermediate/QuizIntermediatePage";
+import QuizDiveSlidePage from "./quiz-intro/quiz-dive-slide/QuizDiveSlidePage";
 import QuestionForm from "../quiz-forms/QuestionForm";
 import { createQuizSteps } from "../../config/quizConfig";
 import { usePage } from "../../App";
 
 export default function QuizPage() {
   const { setPage } = usePage();
-  const [currentStep, setCurrentStep] = useState<number>(-1);
+  const [currentStep, setCurrentStep] = useState<number>(0);
   const [answers, setAnswers] = useState<Record<string, any>>(() => {
     // Clear any existing answers when starting fresh
     localStorage.removeItem("quiz.answers");
@@ -42,15 +41,6 @@ export default function QuizPage() {
     () => setPage("landing")
   );
 
-  // Show original start page first, then go to personal details intro
-  if (currentStep === -1) {
-    return (
-      <QuizStartPage
-        onNext={() => setCurrentStep(0)}
-        onPrevious={() => setPage("landing")}
-      />
-    );
-  }
 
   const currentStepData = quizSteps[currentStep];
 
@@ -62,10 +52,10 @@ export default function QuizPage() {
     return currentStepData.content;
   }
 
-  // Check if this is an intro step (QuizSectionIntro or QuizIntermediatePage)
+  // Check if this is an intro step (QuizSectionIntro or QuizDiveSlidePage)
   const isIntroStep = React.isValidElement(currentStepData.content) && 
     (currentStepData.content.type === QuizSectionIntro || 
-     currentStepData.content.type === QuizIntermediatePage);
+     currentStepData.content.type === QuizDiveSlidePage);
 
   return (
     <div className="min-h-screen bg-white flex flex-col">

@@ -1,7 +1,7 @@
 import React from "react";
-import { QuizStartPageProps } from "../../../../types/quiz";
+import { QuizStartPageProps } from "../../../../../types/quiz";
 
-interface QuizIntermediateMobileProps extends QuizStartPageProps {
+interface QuizDiveSlideMobileProps extends QuizStartPageProps {
 	isTitleVisible: boolean;
 	isSubtitleVisible: boolean;
 	isButtonsVisible: boolean;
@@ -9,7 +9,7 @@ interface QuizIntermediateMobileProps extends QuizStartPageProps {
 	subtitleFullText: string;
 }
 
-export default function QuizIntermediateMobile({
+export default function QuizDiveSlideMobile({
 	onNext,
 	onPrevious,
 	isTitleVisible,
@@ -17,7 +17,7 @@ export default function QuizIntermediateMobile({
 	isButtonsVisible,
 	fullText,
 	subtitleFullText
-}: QuizIntermediateMobileProps) {
+}: QuizDiveSlideMobileProps) {
 	return (
 		<>
 			{/* Mobile Layout */}

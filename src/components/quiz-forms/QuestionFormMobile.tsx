@@ -4,13 +4,13 @@ import { QuestionFormProps } from "../../types/quiz";
 // Функция для получения пути к логотипу блока (как в Desktop)
 const getBlockLogo = (sectionTitle: string): string | null => {
 	const logoMap: Record<string, string> = {
-		'MORNING ENERGY & CLARITY': '/blok_logo/MORNING ENERGY & CLARITY.png',
-		'MOVEMENT, FLEXIBILITY & BODY SUPPORT': '/blok_logo/MOVEMENT, FLEXIBILITY & BODY SUPPORT.png',
-		'NUTRITION, DIGESTION & DETOX': '/blok_logo/NUTRITION, DIGESTION & DETOX.png',
-		'SLEEP, STRESS & SELF-CARE': '/blok_logo/SLEEP, STRESS & SELF-CARE.png',
-		'INDULGENCE & BALANCE': '/blok_logo/INDULGENCE & BALANCE.png',
-		'ENVIRONMENT & POLLUTION': '/blok_logo/ENVIRONMENT & POLLUTION.png',
-		'PERSONAL DETAILS': '/blok_logo/PERSONAL DETAILS.png',
+		'Morning Energy': '/blok_logo/morning_energy_&_clarity.png',
+		'Movement & Flexibility': '/blok_logo/movement_flexibility_&_body_support.png',
+		'Nutrition, Digestion': '/blok_logo/nutrition_digestion_&_detox.png',
+		'Sleep, Stress': '/blok_logo/sleep_stress_&_self-care.png',
+		'Indulgence, Balance': '/blok_logo/indulgence_&_balance.png',
+		'Environment, Pollution': '/blok_logo/environment_&_pollution.png',
+		'Personal details': '/blok_logo/personal_details.png',
 	};
 
 	return logoMap[sectionTitle] || null;
@@ -38,6 +38,7 @@ export default function QuestionFormMobile({
 	nextLabel = "Next",
 	bottomNote,
 	children,
+	notification,
 }: QuestionFormProps) {
 	const [isButtonsVisible, setIsButtonsVisible] = useState(false);
 
@@ -62,13 +63,12 @@ export default function QuestionFormMobile({
 			<div className="px-4 pt-4 pb-2">
 				<div className="flex items-center justify-between pb-4 pt-4">
 					<div className="flex items-center gap-2">
-						
 							<img
 								src={getBlockLogo(sectionTitle)!}
 								alt={`${sectionTitle} logo`}
 								className="w-6 h-6 object-contain"
 							/>
-					
+
 						<h2 className="text-base text-[#1F2429] tracking-wide font-semibold">
 							{sectionTitle}
 						</h2>
@@ -85,11 +85,11 @@ export default function QuestionFormMobile({
 			{/* Content */}
 			<div className="flex justify-center p-4 flex-1 pb-24">
 				<div className="w-full max-w-xl">
-					<h1 className="text-2xl font-bold text-[#1F2429] mb-2">
+					<h1 className="text-3xl font-semibold text-[#1F2429] mb-2">
 						{question}
 					</h1>
 					{subtitle && (
-						<p className="text-[#1F2429] mb-5">{subtitle}</p>
+						<p className="text-lg text-[#1F2429] mb-5">{subtitle}</p>
 					)}
 
 					<div className="pb-4"></div>
@@ -111,8 +111,8 @@ export default function QuestionFormMobile({
                                     <button
                                         key={String(opt.value)}
                                         onClick={handleClick}
-                                        className={`w-full p-4 border-2 rounded-lg text-center text-base transition-colors ${
-                                            isSelected ? "border-[#00A8E2] bg-blue-50" : "border-gray-200 hover:border-[#00A8E2] hover:bg-blue-50"
+                                        className={`quiz-option-button w-full p-5 border-2 rounded-lg text-center text-lg transition-colors ${
+                                            isSelected ? "border-[#00A8E2] bg-blue-50 text-[#00A8E2]" : "border-gray-200 hover:border-[#00A8E2] hover:bg-blue-50"
                                         }`}
                                     >
                                         {opt.label}
@@ -125,7 +125,7 @@ export default function QuestionFormMobile({
 					)}
 
 					{bottomNote && (
-						<div className="mt-5 text-sm text-gray-500">{bottomNote}</div>
+						<div className="mt-5 text-base text-gray-500">{bottomNote}</div>
 					)}
 				</div>
 			</div>
@@ -133,6 +133,14 @@ export default function QuestionFormMobile({
 			{/* Fixed Bottom Buttons */}
 			<div className="fixed bottom-0 left-0 right-0 bg-white border-gray-200 p-4">
 				<div className="max-w-xl mx-auto">
+					{/* Notification */}
+					{notification && (
+							<div className="flex items-start gap-2 p-3 bg-[#E5F6FC] border border-[#00A8E2] rounded-2xl">
+								<div className="text-[#00A8E2] text-lg font-bold flex-shrink-0 mt-0.5">ℹ️</div>
+								<p className="text-[#1F2429] text-sm leading-relaxed">{notification}</p>
+							</div>
+					)}
+					
 					<div className={`flex gap-3 transition-all duration-700 ease-out ${
 						isButtonsVisible 
 							? 'opacity-100 translate-y-0' 

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { QuizStartPageProps } from "../../../types/quiz";
-import QuizIntermediateDesktop from "./responsive/QuizIntermediateDesktop";
-import QuizIntermediateTablet from "./responsive/QuizIntermediateTablet";
-import QuizIntermediateMobile from "./responsive/QuizIntermediateMobile";
+import { QuizStartPageProps } from "../../../../types/quiz";
+import QuizDiveSlideDesktop from "./responsive/QuizDiveSlideDesktop";
+import QuizDiveSlideTablet from "./responsive/QuizDiveSlideTablet";
+import QuizDiveSlideMobile from "./responsive/QuizDiveSlideMobile";
 
-export default function QuizIntermediatePage({ onNext, onPrevious }: QuizStartPageProps) {
+export default function QuizDiveSlidePage({ onNext, onPrevious }: QuizStartPageProps) {
 	// Animation states
 	const [isTitleVisible, setIsTitleVisible] = useState(false);
 	const [isSubtitleVisible, setIsSubtitleVisible] = useState(false);
@@ -32,7 +32,7 @@ export default function QuizIntermediatePage({ onNext, onPrevious }: QuizStartPa
 	}, []);
 	
 	const fullText = "Your personalized journey begins here";
-	const subtitleFullText = "We’re ready to dive deeper — refining a supplement plan as unique as your lifestyle.";
+	const subtitleFullText = "We're ready to dive deeper — refining a supplement plan as unique as your lifestyle.";
 	
 	useEffect(() => {
 		// Title appears first
@@ -60,7 +60,7 @@ export default function QuizIntermediatePage({ onNext, onPrevious }: QuizStartPa
 	return (
 		<div className="min-h-screen bg-white flex flex-col">
 			{device === "desktop" && (
-				<QuizIntermediateDesktop
+				<QuizDiveSlideDesktop
 					onNext={onNext}
 					onPrevious={onPrevious}
 					isTitleVisible={isTitleVisible}
@@ -71,7 +71,7 @@ export default function QuizIntermediatePage({ onNext, onPrevious }: QuizStartPa
 				/>
 			)}
 			{device === "tablet" && (
-				<QuizIntermediateTablet
+				<QuizDiveSlideTablet
 					onNext={onNext}
 					onPrevious={onPrevious}
 					isTitleVisible={isTitleVisible}
@@ -82,7 +82,7 @@ export default function QuizIntermediatePage({ onNext, onPrevious }: QuizStartPa
 				/>
 			)}
 			{device === "mobile" && (
-				<QuizIntermediateMobile
+				<QuizDiveSlideMobile
 					onNext={onNext}
 					onPrevious={onPrevious}
 					isTitleVisible={isTitleVisible}

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { PersonalDetailsIntroProps } from "../../../types/quiz";
 
 export default function QuizSectionIntroDesktop({
   onBegin,
+  onPrevious,
   backgroundImageUrl,
   desktopWomanImageUrl,
   desktopBackgroundImageUrl,
@@ -10,20 +11,18 @@ export default function QuizSectionIntroDesktop({
   bodyLines,
   buttonLabel,
 }: PersonalDetailsIntroProps) {
-  const [isBackgroundVisible, setIsBackgroundVisible] = useState(false);
-  const [isWomanImageVisible, setIsWomanImageVisible] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
   const [isButtonVisible, setIsButtonVisible] = useState(false);
 
   useEffect(() => {
-    // Анимация фонового изображения - задержка 300ms
-    const backgroundTimer = setTimeout(() => {
-      setIsBackgroundVisible(true);
-    }, 300);
+    // Сбрасываем состояние при монтировании
+    setIsAnimating(false);
+    setIsButtonVisible(false);
 
-    // Анимация изображения женщины - задержка 600ms (после фона)
-    const womanImageTimer = setTimeout(() => {
-      setIsWomanImageVisible(true);
-    }, 600);
+    // Запускаем анимацию с небольшой задержкой для плавности
+    const animationTimer = setTimeout(() => {
+      setIsAnimating(true);
+    }, 100);
 
     // Анимация кнопки - задержка 1000ms
     const buttonTimer = setTimeout(() => {
@@ -31,61 +30,77 @@ export default function QuizSectionIntroDesktop({
     }, 1000);
 
     return () => {
-      clearTimeout(backgroundTimer);
-      clearTimeout(womanImageTimer);
+      clearTimeout(animationTimer);
       clearTimeout(buttonTimer);
     };
   }, []);
 
-  // Defaults ensure backward compatibility and allow fixed manual line breaks
-  const effectiveWomanImage = desktopWomanImageUrl ?? "/PNG_models/0e01f32164645243d5b2427a89508c99e60d2531.png";
-  const effectiveBackgroundImage = desktopBackgroundImageUrl ?? "/PNG_models/background/Copy of A background.png";
-  const effectiveTitleLines = titleLines ?? ["PERSONAL", "DETAILS"];
-  const effectiveBodyLines = bodyLines ?? [
-    "Let's start with a few quick",
-    "details – to tailor your",
-    "wellness wardrobe",
-    "perfectly.",
-  ];
-  const effectiveButtonLabel = buttonLabel ?? "Begin Survey";
+  // Мемоизируем вычисления для оптимизации производительности
+  const effectiveWomanImage = useMemo(() =>
+    desktopWomanImageUrl ?? "/PNG_models/0e01f32164645243d5b2427a89508c99e60d2531.png",
+    [desktopWomanImageUrl]
+  );
+
+  const effectiveBackgroundImage = useMemo(() =>
+    desktopBackgroundImageUrl ?? "/PNG_models/background/Copy of A background.png",
+    [desktopBackgroundImageUrl]
+  );
+
+  const effectiveTitleLines = useMemo(() =>
+    titleLines ?? ["PERSONAL", "DETAILS"],
+    [titleLines]
+  );
+
+  const effectiveBodyLines = useMemo(() =>
+    bodyLines ?? [
+      "Let's start with a few quick",
+      "details – to tailor your",
+      "wellness wardrobe",
+      "perfectly.",
+    ],
+    [bodyLines]
+  );
+
+  const effectiveButtonLabel = useMemo(() =>
+    buttonLabel ?? "Begin Survey",
+    [buttonLabel]
+  );
 
   return (
     <div className="bg-white flex flex-col relative overflow-hidden min-h-screen">
       <div
-    className={`fixed inset-y-0 right-0 z-10 pointer-events-none transition-all duration-1000 ease-out ${
-      isBackgroundVisible
-        ? "opacity-100 translate-x-0"
-        : "opacity-0 translate-x-full"
-    }`}
-    style={{
-      backgroundImage: `url('${effectiveBackgroundImage}')`,
-      backgroundSize: "cover", // Заполняет всю область, обрезая лишнее
-      backgroundPosition: "right center", // Показывает правую часть
-      backgroundRepeat: "no-repeat",
-      width: "35%", // Четко 35% ширины
-      height: "100%",
-    }}
-  />
+        className="fixed inset-y-0 z-10 pointer-events-none transition-all duration-1000 ease-out"
+        style={{
+          backgroundImage: `url('${effectiveBackgroundImage}')`,
+          backgroundSize: "cover",
+          backgroundPosition: "right center",
+          backgroundRepeat: "no-repeat",
+          width: "35%",
+          height: "100%",
+          right: isAnimating ? "0%" : "-35%",
+          opacity: isAnimating ? 1 : 0,
+          willChange: "right, opacity", // GPU ускорение
+          transform: "translateZ(0)", // Принудительное использование GPU
+        }}
+      />
 
-<div
-  className={`fixed z-20 h-full pointer-events-none bg-no-repeat transition-all duration-1000 ease-out ${
-    isWomanImageVisible
-      ? "opacity-100 translate-x-0"
-      : "opacity-0 translate-x-full"
-  }`}
-  style={{
-    backgroundImage: `url('${effectiveWomanImage}')`,
-    backgroundSize: "contain",
-    backgroundPosition: "center center", // Центрируем изображение
-    backgroundRepeat: "no-repeat",
-    width: "100%",
-    height: "95%",
-    maxHeight: "1600px",
-    top: "50%",
-    left: "65%", // Позиционируем так, чтобы центр был на 65% от левого края
-    transform: "translate(-50%, -50%)", // Центрируем элемент относительно точки left: 65%
-  }}
-/>
+      <div
+        className="fixed z-20 h-full pointer-events-none bg-no-repeat transition-all duration-1000 ease-out"
+        style={{
+          backgroundImage: `url('${effectiveWomanImage}')`,
+          backgroundSize: "contain",
+          backgroundPosition: "center center",
+          backgroundRepeat: "no-repeat",
+          width: "50%",
+          height: "95%",
+          maxHeight: "1600px",
+          top: "50%",
+          left: isAnimating ? "65%" : "100%",
+          transform: "translate(-50%, -50%) translateZ(0)", // Центрируем + GPU ускорение
+          opacity: isAnimating ? 1 : 0,
+          willChange: "left, opacity", // GPU ускорение
+        }}
+      />
 
       {/* Content - absolute positioning to override QuizPage centering */}
       <div className="absolute inset-0 z-30 flex">
@@ -97,9 +112,8 @@ export default function QuizSectionIntroDesktop({
               {effectiveTitleLines.map((line, index) => (
                 <h1
                   key={`title-${index}`}
-                  className={`text-6xl text-[#1F2429] ${
-                    index === 0 ? "pt-10" : ""
-                  }`}
+                  className={`text-6xl text-[#1F2429] ${index === 0 ? "pt-10" : ""
+                    }`}
                 >
                   {line}
                 </h1>
@@ -124,20 +138,36 @@ export default function QuizSectionIntroDesktop({
                 alt="Project V"
                 className="w-[40%] h-[40%] pb-4"
               />
-              <button
-                onClick={onBegin}
-                className={`mt-3 bg-[#1F2429] text-white px-6 py-3 rounded-full hover:bg-black/80 transition-all duration-700 ease-out w-full max-w-[400px] ${
-                  isButtonVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
-                }`}
-              >
-                {effectiveButtonLabel}
-              </button>
+              <div className="flex flex-col gap-3 mt-3">
+                <button
+                  onClick={onBegin}
+                  className="bg-[#1F2429] text-white px-6 py-3 rounded-full hover:bg-black/80 transition-all duration-700 ease-out w-full max-w-[400px]"
+                  style={{
+                    opacity: isButtonVisible ? 1 : 0,
+                    transform: isButtonVisible ? "translateY(0)" : "translateY(32px)",
+                    willChange: "opacity, transform",
+                  }}
+                >
+                  {effectiveButtonLabel}
+                </button>
+                {onPrevious && (
+                  <button
+                    onClick={onPrevious}
+                    className="bg-gray-200 text-gray-700 px-6 py-3 rounded-full hover:bg-gray-300 transition-all duration-700 ease-out w-full max-w-[400px]"
+                    style={{
+                      opacity: isButtonVisible ? 1 : 0,
+                      transform: isButtonVisible ? "translateY(0)" : "translateY(32px)",
+                      willChange: "opacity, transform",
+                    }}
+                  >
+                    Previous
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </div>
-        
+
         {/* Right half - empty space for images */}
         <div className="w-1/2"></div>
       </div>

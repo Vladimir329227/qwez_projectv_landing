@@ -473,8 +473,8 @@ export default (props: any) => {
 					</div>
 				</div>
 				<span className=" self-center text-center text-[#1F2429] text-[30px] font-bold mb-[20px]" >
-						{"Real People. Real Results."}
-					</span>		
+					{"Real People. Real Results."}
+				</span>
 				<TestimonialsCarousel />
 
 				<div className="flex flex-col items-start self-stretch bg-[url('/figma/fashion_week_desktop(black).png')] bg-cover bg-center pt-[442px] pb-[79px] mb-24 gap-6">

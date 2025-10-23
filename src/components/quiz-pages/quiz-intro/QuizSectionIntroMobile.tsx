@@ -3,6 +3,7 @@ import { PersonalDetailsIntroProps } from "../../../types/quiz";
 
 export default function QuizSectionIntroMobile({
   onBegin,
+  onPrevious,
   backgroundImageUrl,
   titleLines,
   bodyLines,
@@ -103,16 +104,28 @@ export default function QuizSectionIntroMobile({
               className="w-[50%] max-w-[320px] h-auto pb-4"
             />
           </div>
-          {/* Button nearly full width */}
+          {/* Buttons */}
           <div className="relative">
-            <button
-              onClick={onBegin}
-              className={`relative z-10 pointer-events-auto bg-[#1F2429] text-white px-6 py-4 rounded-full hover:bg-black/80 transition-all duration-700 ease-out w-full ${
-                isButtonVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-            >
-              {effectiveButtonLabel}
-            </button>
+            <div className="flex gap-3">
+              {onPrevious && (
+                <button
+                  onClick={onPrevious}
+                  className={`relative z-10 pointer-events-auto bg-gray-200 text-gray-700 px-4 py-4 rounded-full hover:bg-gray-300 transition-all duration-700 ease-out flex-1 ${
+                    isButtonVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                  }`}
+                >
+                  Previous
+                </button>
+              )}
+              <button
+                onClick={onBegin}
+                className={`relative z-10 pointer-events-auto bg-[#1F2429] text-white px-6 py-4 rounded-full hover:bg-black/80 transition-all duration-700 ease-out flex-1 ${
+                  isButtonVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
+              >
+                {effectiveButtonLabel}
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -54,17 +54,32 @@ img { max-width: 100%; height: auto; }
     animation-duration: calc(40s * var(--duplicates, 3) / 3);
   }
 
-button {
+/* Global button styles - exclude quiz option buttons */
+button:not([class*="quiz-option"]):not([class*="question-form"]) {
     transition: transform 0.3s ease;
 }
 
-button:hover {
+button:not([class*="quiz-option"]):not([class*="question-form"]):hover {
     transform: scale(1.05);
 }
 
 /* Shrink back on click */
-button:active {
+button:not([class*="quiz-option"]):not([class*="question-form"]):active {
   transform: scale(0.98);
+}
+
+/* Quiz option button styles - prevent global button effects */
+.quiz-option-button {
+    transform: none !important;
+    transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease !important;
+}
+
+.quiz-option-button:hover {
+    transform: none !important;
+}
+
+.quiz-option-button:active {
+    transform: none !important;
 }
 
 /* Smooth scrolling and animations */

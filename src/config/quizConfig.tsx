@@ -3,7 +3,7 @@ import React from 'react';
 import AgeCarousel from '../bloks/AgeCarousel';
 import { EmailForm, NameForm, DisclaimerForm } from '../components/quiz-forms';
 import QuizResult from '../components/quiz-pages/quiz-results/QuizResult';
-import QuizIntermediatePage from '../components/quiz-pages/quiz-intermediate/QuizIntermediatePage';
+import QuizDiveSlidePage from '../components/quiz-pages/quiz-intro/quiz-dive-slide/QuizDiveSlidePage';
 
 
 export interface PersonalDetailsQuestion {
@@ -11,12 +11,14 @@ export interface PersonalDetailsQuestion {
     question: string;
     subtitle?: string;
     options?: QuestionOption[];
+    notification?: string;
 }
 
 export const personalDetailsQuestions: PersonalDetailsQuestion[] = [
     {
         key: "gender",
         question: "Select your gender?",
+        notification: 'We ask these questions only to personalize your results and ensure your supplements truly fit your needs.',
         options: [
             { value: "female", label: "Female" },
             { value: "male", label: "Male" },
@@ -424,7 +426,7 @@ export const createQuizSteps = (
     setAnswers: (answers: Record<string, any>) => void,
     setCurrentStep: (step: number) => void,
     currentStep: number,
-    QuizSectionIntro: React.ComponentType<{ onBegin: () => void; backgroundImageUrl?: string; desktopWomanImageUrl?: string; desktopBackgroundImageUrl?: string; titleLines?: string[]; bodyLines?: string[]; buttonLabel?: string }>,
+    QuizSectionIntro: React.ComponentType<{ onBegin: () => void; onPrevious?: () => void; backgroundImageUrl?: string; desktopWomanImageUrl?: string; desktopBackgroundImageUrl?: string; titleLines?: string[]; bodyLines?: string[]; buttonLabel?: string }>,
     QuestionForm: React.ComponentType<any>,
     goToLanding: () => void
 ): QuizStep[] => {
@@ -434,6 +436,7 @@ export const createQuizSteps = (
             content: (
                 <QuizSectionIntro 
                     onBegin={() => setCurrentStep(1)}
+                    onPrevious={() => goToLanding()}
                     backgroundImageUrl={'/women/yellow_woman.png'}
                     desktopWomanImageUrl={'/PNG_models/M.png'}
                     desktopBackgroundImageUrl={'/PNG_models/background/Copy of M background.png'}
@@ -444,8 +447,8 @@ export const createQuizSteps = (
                         "your body truly needs.",
                         " ㅤ",
                         "Most people guess — but",
-                        "we’re about to tailor science",
-                        " to you."
+                        "we're about to tailor science",
+                        " to you."
                     ]}
                     buttonLabel={'Begin Survey'}
                 />
@@ -523,7 +526,7 @@ export const createQuizSteps = (
                             subtitle={q.subtitle}
                             options={q.options}
                             isMulti={q.key === "goals" || q.key === "health-conditions"}
-                            selectedValue={q.key === "goals" || q.key === "health-conditions" ? undefined : (q.key === "age" ? (value ?? 37) : value)}
+                            selectedValue={q.key === "goals" || q.key === "health-conditions" ? undefined : (q.key === "age" ? (value ?? 37) : (value ?? null))}
                             selectedValues={q.key === "goals" || q.key === "health-conditions" ? (Array.isArray(value) ? value : []) : undefined}
                             onToggleSelect={q.key === "goals" || q.key === "health-conditions" ? ((v: any) => {
                                 const prev: any[] = Array.isArray(answers[key]) ? answers[key] : [];
@@ -536,6 +539,7 @@ export const createQuizSteps = (
                             onNext={() => setCurrentStep(currentStep + 1)}
                             nextLabel={idx === questions.length - 1 ? "Next" : "Next"}
                             bottomNote={null}
+                            notification={q.notification}
                     >
                             {(!q.options || q.options.length === 0) && renderCustom()}
                     </QuestionForm>
@@ -553,13 +557,13 @@ export const createQuizSteps = (
     
     // Add first part of personal details (gender, age, goals)
     const firstPartQuestions = personalDetailsQuestions.slice(0, 3); // gender, age, goals
-    pushQuestionBlock('PERSONAL DETAILS', firstPartQuestions);
+    pushQuestionBlock('Personal details', firstPartQuestions);
     
     // Add intermediate page after goals question
     steps.push({
         title: '',
         content: (
-            <QuizIntermediatePage
+            <QuizDiveSlidePage
                 onNext={() => setCurrentStep(currentStep + 1)}
                 onPrevious={() => setCurrentStep(currentStep - 1)}
             />
@@ -576,18 +580,19 @@ export const createQuizSteps = (
         content: (
             <QuizSectionIntro
                 onBegin={() => setCurrentStep(currentStep + 1)}
+                onPrevious={() => setCurrentStep(currentStep - 1)}
                 backgroundImageUrl={'/women/orange_woman.jpg'}
                 desktopWomanImageUrl={'/PNG_models/G.png'}
                 desktopBackgroundImageUrl={'/PNG_models/background/Copy of G background.png'}
                 titleLines={["WE SEE YOU"]}
                 bodyLines={[
                     'Struggling with focus? Low',
-                    'energy? Sleep that’s never',
+                    'energy? Sleep that\'s never',
                     'enough?',
                     'ㅤ',
-                    'You’re not alone — 3 in 4',
+                    'You\'re not alone — 3 in 4',
                     'women feel the same, even',
-                    'with a “healthy” lifestyle.',
+                    'with a "healthy" lifestyle.',
                 ]}
                 buttonLabel={'Next'}
             />
@@ -601,6 +606,7 @@ export const createQuizSteps = (
         content: (
             <QuizSectionIntro
                 onBegin={() => setCurrentStep(currentStep + 1)}
+                onPrevious={() => setCurrentStep(currentStep - 1)}
                 backgroundImageUrl={'/women/yellow-orange_woman.png'}
                 desktopWomanImageUrl={'/PNG_models/N.png'}
                 desktopBackgroundImageUrl={'/PNG_models/background/Copy of N background.png'}
@@ -626,6 +632,7 @@ export const createQuizSteps = (
         content: (
             <QuizSectionIntro
                 onBegin={() => setCurrentStep(currentStep + 1)}
+                onPrevious={() => setCurrentStep(currentStep - 1)}
                 backgroundImageUrl={'/women/green_woman.png'}
                 desktopWomanImageUrl={'/PNG_models/D.png'}
                 desktopBackgroundImageUrl={'/PNG_models/background/Copy of D background.png'}
@@ -649,6 +656,7 @@ export const createQuizSteps = (
         content: (
             <QuizSectionIntro
                 onBegin={() => setCurrentStep(currentStep + 1)}
+                onPrevious={() => setCurrentStep(currentStep - 1)}
                 backgroundImageUrl={'/women/purple_woman.png'}
                 desktopWomanImageUrl={'/PNG_models/P.png'}
                 desktopBackgroundImageUrl={'/PNG_models/background/Copy of P background.png'}
@@ -672,6 +680,7 @@ export const createQuizSteps = (
         content: (
             <QuizSectionIntro
                 onBegin={() => setCurrentStep(currentStep + 1)}
+                onPrevious={() => setCurrentStep(currentStep - 1)}
                 backgroundImageUrl={'/women/red_woman.png'}
                 desktopWomanImageUrl={'/PNG_models/S.png'}
                 desktopBackgroundImageUrl={'/PNG_models/background/Copy of SV background.png'}
@@ -695,6 +704,7 @@ export const createQuizSteps = (
         content: (
             <QuizSectionIntro
                 onBegin={() => setCurrentStep(currentStep + 1)}
+                onPrevious={() => setCurrentStep(currentStep - 1)}
                 backgroundImageUrl={'/women/pink_woman.jpg'}
                 desktopWomanImageUrl={'/PNG_models/A.png'}
                 desktopBackgroundImageUrl={'/PNG_models/background/Copy of A background.png'}

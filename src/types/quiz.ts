@@ -5,6 +5,7 @@ export interface QuestionOption {
 
 export interface PersonalDetailsIntroProps {
     onBegin: () => void;
+    onPrevious?: () => void;
     // Optional presentation props for intro screen
     backgroundImageUrl?: string;
     desktopWomanImageUrl?: string;
@@ -37,4 +38,5 @@ export interface QuestionFormProps {
     nextLabel?: string;
     bottomNote?: React.ReactNode;
     children?: React.ReactNode; // custom input like age carousel
+    notification?: string;
 }

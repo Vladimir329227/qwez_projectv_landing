@@ -1,8 +1,8 @@
 import React from "react";
-import { QuizStartPageProps } from "../../../../types/quiz";
-import { usePage } from "../../../../App";
+import { QuizStartPageProps } from "../../../../../types/quiz";
+import { usePage } from "../../../../../App";
 
-interface QuizIntermediateDesktopProps extends QuizStartPageProps {
+interface QuizDiveSlideDesktopProps extends QuizStartPageProps {
   isTitleVisible: boolean;
   isSubtitleVisible: boolean;
   isButtonsVisible: boolean;
@@ -10,7 +10,7 @@ interface QuizIntermediateDesktopProps extends QuizStartPageProps {
   subtitleFullText: string;
 }
 
-export default function QuizIntermediateDesktop({
+export default function QuizDiveSlideDesktop({
   onNext,
   onPrevious,
   isTitleVisible,
@@ -18,7 +18,7 @@ export default function QuizIntermediateDesktop({
   isButtonsVisible,
   fullText,
   subtitleFullText,
-}: QuizIntermediateDesktopProps) {
+}: QuizDiveSlideDesktopProps) {
   const { setPage } = usePage();
   return (
     <div className="flex items-start bg-white h-screen relative">

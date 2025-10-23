@@ -241,21 +241,21 @@ export default () => {
 					</div>
 				</div>
 				<InfiniteScroller />
-				<div className="flex flex-col self-stretch py-24 mb-[1px]">
+				<div className="flex flex-col self-stretch py-24">
 					<span className="text-[#1F2429] text-[40px] font-bold text-center mb-6 mx-[337px]" >
 						{"Purely Natural & Organic"}
 					</span>
-					<span className="text-[#1F2429] text-xl text-center mb-12 mx-[337px]" >
+					<span className="text-[#1F2429] text-xl text-center mb-6 mx-[20%]" >
 						{"Organic ingredients, cryogenically extracted to preserve their natural power — delivering pure, potent nourishment that supports your body's vitality, radiant skin, and lasting energy every day."}
 					</span>
 
 					{/* Desktop layout with image on left and stepped blocks on right */}
-					<div className="flex flex-col lg:flex-row items-center self-stretch mx-6 lg:mx-24 gap-8 lg:gap-4">
+					<div className="flex flex-col lg:flex-row items-center self-stretch mx-6 lg:mx-16 xl:mx-12 gap-8 lg:gap-8 xl:gap-4">
 						{/* Image on the left */}
-						<div className="w-full flex justify-center">
+						<div className="w-full lg:w-1/2 flex justify-center">
 							<img
 								src={"/figma/products_boom.png"}
-								className="w-full  object-cover"
+								className="w-full max-w-[400px] sm:max-w-[500px] md:max-w-[600px] lg:w-[650px] lg:max-h-[500px] object-contain"
 								alt="Product illustration"
 							/>
 						</div>
@@ -562,7 +562,7 @@ export default () => {
 					</span>
 					<TestimonialsCarousel />
 				</div>
-				<div className="flex flex-col items-start w-screen bg-[url('/figma/fashion_week_desktop(black).png')] bg-cover bg-center pt-[442px] pb-[79px] gap-6 relative left-1/2 transform -translate-x-1/2">
+				<div className="flex flex-col items-start w-screen bg-[url('/figma/fashion_week.png')] bg-cover bg-center pt-[442px] pb-[79px] gap-6 relative left-1/2 transform -translate-x-1/2">
 					<span className="text-white text-[40px] font-bold ml-24" >
 						{"As Seen At Fashion Week"}
 					</span>
