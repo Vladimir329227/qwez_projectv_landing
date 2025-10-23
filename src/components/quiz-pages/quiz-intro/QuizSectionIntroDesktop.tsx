@@ -10,6 +10,7 @@ export default function QuizSectionIntroDesktop({
   titleLines,
   bodyLines,
   buttonLabel,
+  nextSegment,
 }: PersonalDetailsIntroProps) {
   const [isAnimating, setIsAnimating] = useState(false);
   const [isButtonVisible, setIsButtonVisible] = useState(false);
@@ -107,18 +108,18 @@ export default function QuizSectionIntroDesktop({
         {/* Left half content */}
         <div className="w-1/2 flex flex-col pl-16">
           {/* Text content */}
-          <div className="flex-1 pt-10">
+          <div className="flex-1 pt-6">
             <div className="text-left">
               {effectiveTitleLines.map((line, index) => (
                 <h1
                   key={`title-${index}`}
-                  className={`text-6xl text-[#1F2429] ${index === 0 ? "pt-10" : ""
+                  className={`text-6xl text-[#1F2429] ${index === 0 ? "pt-6" : ""
                     }`}
                 >
                   {line}
                 </h1>
               ))}
-              <div className="pb-6"></div>
+              <div className="pb-4"></div>
               {effectiveBodyLines.map((line, index) => (
                 <div
                   key={`body-${index}`}
@@ -131,17 +132,24 @@ export default function QuizSectionIntroDesktop({
           </div>
 
           {/* Button section */}
-          <div className="pb-32 pt-4">
+          <div className="pb-8 pt-2">
             <div className="flex flex-col">
               <img
                 src="/Logo/Black.svg"
                 alt="Project V"
-                className="w-[40%] h-[40%] pb-4"
+                className="w-[30%] h-[30%] pb-2"
               />
-              <div className="flex flex-col gap-3 mt-3">
+              
+              {/* Next segment text below logo */}
+              {nextSegment && (
+                <div className="text-left text-gray-600 text-base font-medium mb-2">
+                  Up next... {nextSegment}
+                </div>
+              )}
+              <div className="flex flex-col gap-2 mt-2">
                 <button
                   onClick={onBegin}
-                  className="bg-[#1F2429] text-white px-6 py-3 rounded-full hover:bg-black/80 transition-all duration-700 ease-out w-full max-w-[400px]"
+                  className="bg-[#1F2429] text-white px-6 py-5 rounded-full hover:bg-gray-800 transition-all duration-700 ease-out w-full max-w-[400px]"
                   style={{
                     opacity: isButtonVisible ? 1 : 0,
                     transform: isButtonVisible ? "translateY(0)" : "translateY(32px)",
@@ -153,7 +161,7 @@ export default function QuizSectionIntroDesktop({
                 {onPrevious && (
                   <button
                     onClick={onPrevious}
-                    className="bg-gray-200 text-gray-700 px-6 py-3 rounded-full hover:bg-gray-300 transition-all duration-700 ease-out w-full max-w-[400px]"
+                    className="bg-white text-[#1F2429] border-2 border-[#1F2429] px-6 py-5 rounded-full hover:bg-gray-50 transition-all duration-700 ease-out w-full max-w-[400px]"
                     style={{
                       opacity: isButtonVisible ? 1 : 0,
                       transform: isButtonVisible ? "translateY(0)" : "translateY(32px)",

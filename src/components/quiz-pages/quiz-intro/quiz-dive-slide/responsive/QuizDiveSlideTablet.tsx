@@ -67,18 +67,26 @@ export default function QuizDiveSlideTablet({
           }`}
         >
           <button
-            className="flex flex-col items-center bg-[#1F2429] text-center w-full max-w-[350px] py-5 rounded-[100000px] border-0 hover:bg-gray-800 transition-colors"
+            className="bg-[#1F2429] text-white w-full max-w-[350px] py-5 rounded-full hover:bg-gray-800 transition-colors"
             onClick={onNext}
           >
-            <span className="text-white text-[20px]">Continue</span>
+            Continue
           </button>
+          {onPrevious && (
+            <button
+              className="bg-white text-[#1F2429] border-2 border-[#1F2429] w-full max-w-[350px] py-5 rounded-full hover:bg-gray-50 transition-colors"
+              onClick={onPrevious}
+            >
+              Previous
+            </button>
+          )}
         </div>
       </div>
 
       {/* Background Image - Tablet version */}
       <div className="absolute inset-0 w-full h-full">
         <img
-          src="/graphics/image.png"
+          src="/figma/quiz_dive_slide(desktop).png"
           className="w-full h-full object-cover object-center"
           alt="Quiz Background"
         />

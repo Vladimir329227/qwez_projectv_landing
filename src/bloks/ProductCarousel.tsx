@@ -530,7 +530,7 @@ const ProductCarousel = () => {
                         </div>
                       </div>
                     )}
-                     <a
+                     {/* <a
                       href="https://projectvint.at/en/nutraceuticals/"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -538,7 +538,7 @@ const ProductCarousel = () => {
                       onClick={(e) => e.stopPropagation()}
                     >
                       Buy Now
-                    </a>
+                    </a> */}
                   </div>
                 </div>
               </div>

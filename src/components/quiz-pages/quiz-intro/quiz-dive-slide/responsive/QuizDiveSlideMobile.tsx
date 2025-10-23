@@ -81,9 +81,17 @@ export default function QuizDiveSlideMobile({
 							? 'opacity-100 translate-y-0'
 							: 'opacity-0 translate-y-4'
 						}`}>
+						{onPrevious && (
+							<button
+								onClick={onPrevious}
+								className="flex-1 bg-white text-[#1F2429] border-2 border-[#1F2429] py-3 rounded-full hover:bg-gray-50 transition-colors text-lg"
+							>
+								Previous
+							</button>
+						)}
 						<button
 							onClick={onNext}
-							className="flex-1 bg-[#1F2429] text-white text-lg py-3 rounded-full hover:bg-gray-800 transition-colors"
+							className="flex-1 bg-[#1F2429] text-white py-3 rounded-full hover:bg-gray-800 transition-colors text-lg"
 						>
 							Continue
 						</button>

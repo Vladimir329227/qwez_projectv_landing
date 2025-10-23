@@ -27,7 +27,17 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
   const [input6, onChangeInput6] = useState("");
   const [input7, onChangeInput7] = useState("");
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [showFireworks, setShowFireworks] = useState(false);
   const videoRef = React.useRef<HTMLVideoElement>(null);
+
+  // Запуск анимации фейерверка при загрузке компонента
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowFireworks(true);
+    }, 300); // Небольшая задержка для плавного появления
+    
+    return () => clearTimeout(timer);
+  }, []);
 
   const faqData = [
 		{
@@ -60,12 +70,57 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
 
   return (
     <div className="flex flex-col bg-white mx-auto overflow-x-hidden w-full max-w-[100vw]">
-      <div className="self-stretch bg-white max-w-full rounded-[32px]">
+      {/* Голубой топ бар с фейерверком */}
+      <div className="relative w-full h-[150px] bg-gradient-to-b from-[#00A8E2] to-[#006283] overflow-hidden">
+        <img
+          src="/quiz-result-images/background_confetti.png"
+          className={`absolute inset-0 w-full h-full object-cover ${
+            showFireworks ? 'fireworks-animation' : 'opacity-0'
+          }`}
+          alt="Celebration confetti"
+        />
+        {/* Дополнительные анимированные частицы */}
+        <div className={`absolute inset-0 ${showFireworks ? 'fireworks-particles' : 'opacity-0'}`}>
+          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-yellow-300 rounded-full"></div>
+          <div className="absolute top-1/3 right-1/3 w-1.5 h-1.5 bg-pink-300 rounded-full"></div>
+          <div className="absolute top-1/2 left-1/2 w-2.5 h-2.5 bg-green-300 rounded-full"></div>
+          <div className="absolute bottom-1/3 left-1/3 w-1 h-1 bg-blue-300 rounded-full"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-2 h-2 bg-purple-300 rounded-full"></div>
+        </div>
+        <div className="relative z-10 flex flex-col items-center justify-center h-full px-5">
+          <div className={`text-center transition-all duration-1000 ${
+            showFireworks ? 'fireworks-burst' : 'opacity-0 scale-0'
+          }`}>
+            <h1 className="text-white text-2xl font-bold mb-2">
+              🎉 Congratulations! 🎉
+            </h1>
+            <p className="text-white/90 text-sm">
+              Your personalized wellness profile is ready
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div className="self-stretch bg-white max-w-full rounded-t-[32px] -mt-8 relative z-20 shadow-lg">
         <div className="flex flex-col self-stretch w-full max-w-full relative">
           <div className="flex flex-col w-full max-w-full self-stretch relative">
-            <div className="flex flex-col items-start bg-white pt-5 w-full max-w-full pb-[42px] rounded-3xl">
+            <div className="flex flex-col items-start bg-white pt-5 w-full max-w-full pb-[42px] rounded-t-[32px]">
               <div className="flex justify-between items-center self-stretch mb-6 mx-5">
-                <div className="flex shrink-0 items-center bg-[#E1E9FD] py-1.5 px-3.5 gap-[11px] rounded-[100000px]">
+                <div className="flex items-center gap-6">
+                  <div className="flex flex-col items-center ml-[1px]">
+                    <span className="text-[#1F2429] text-lg font-bold">
+                      {"Final Results"}
+                    </span>
+                  </div>
+                  <button className="flex flex-col items-center bg-[#626669] text-left w-[83px] py-1.5 rounded-[40px] border-0">
+                    <span className="text-white text-sm font-bold">
+                      {`${recommendations.effectiveness_score} points`}
+                    </span>
+                  </button>
+                </div>
+                
+                {/* Quiz duration */}
+                {/* <div className="flex shrink-0 items-center bg-[#E1E9FD] py-1.5 px-3.5 gap-[11px] rounded-[100000px]">
                   <div className="flex flex-col shrink-0 items-start">
                     <svg 
                       className="w-4 h-4 text-[#006283]" 
@@ -77,18 +132,7 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
                     </svg>
                   </div>
                     <span className="text-[#1F2429] text-[15px]">{getQuizDuration(answers)}</span>
-                </div>
-                <button className="flex shrink-0 items-start bg-[#1F2429] py-[15px] px-5 gap-2.5 rounded-[100000px]"
-                onClick={() => window.location.href = `tbank://transfer/card?number=2200 1234 5678 9012&amount=1000`}>
-                  <div className="flex flex-col shrink-0 items-start">
-                    <span className="text-white text-[15px]">
-                      {"Get My Plan"}
-                    </span>
-                  </div>
-                  <div className="flex flex-col shrink-0 items-start bg-white py-1 px-1.5 rounded-[10px]">
-                    <span className="text-[#1F2429] text-xs">{"20% Off"}</span>
-                  </div>
-                </button>
+                </div> */}
               </div>
               <div className="bg-[#E1E9FD] w-[90%] h-[1px] mb-6 mx-5"></div>
               <div className="flex flex-col items-center w-[100%]">

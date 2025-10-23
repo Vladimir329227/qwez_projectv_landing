@@ -329,7 +329,7 @@ export default (props: any) => {
 						</div>
 					</div>
 					<div className="flex flex-col self-stretch mx-4 gap-6">
-						<div className="flex items-center self-stretch py-6 px-4 gap-3 rounded-2xl border-2 border-solid border-[#00A8E2] hover:scale-105 transition-transform duration-300">
+						<div className="flex items-center self-stretch py-6 px-4 gap-3 rounded-2xl border-2 border-solid border-[#00A8E2]">
 							<img
 								src={"/figma/0ba9161254124881.png"}
 								className="w-8 h-8 rounded-2xl object-fill"
@@ -338,7 +338,7 @@ export default (props: any) => {
 								{"Maximum potency preserved"}
 							</span>
 						</div>
-						<div className="flex items-center self-stretch py-6 px-4 gap-3 rounded-2xl border-2 border-solid border-[#00A8E2] hover:scale-105 transition-transform duration-300">
+						<div className="flex items-center self-stretch py-6 px-4 gap-3 rounded-2xl border-2 border-solid border-[#00A8E2]">
 							<img
 								src={"/figma/a5a6ef83231c1039.png"}
 								className="w-8 h-8 rounded-2xl object-fill"
@@ -347,7 +347,7 @@ export default (props: any) => {
 								{"Zero additives, no compromise"}
 							</span>
 						</div>
-						<div className="flex items-center self-stretch py-6 px-4 gap-3 rounded-2xl border-2 border-solid border-[#00A8E2] hover:scale-105 transition-transform duration-300">
+						<div className="flex items-center self-stretch py-6 px-4 gap-3 rounded-2xl border-2 border-solid border-[#00A8E2]">
 							<img
 								src={"/figma/804ba4248dba24ae.png"}
 								className="w-8 h-8 rounded-2xl object-fill"
@@ -356,7 +356,7 @@ export default (props: any) => {
 								{"Oxidation resistant formula"}
 							</span>
 						</div>
-						<div className="flex items-center self-stretch py-6 px-4 gap-3 rounded-2xl border-2 border-solid border-[#00A8E2] hover:scale-105 transition-transform duration-300">
+						<div className="flex items-center self-stretch py-6 px-4 gap-3 rounded-2xl border-2 border-solid border-[#00A8E2]">
 							<img
 								src={"/figma/04339f2dcaa693fc.png"}
 								className="w-8 h-8 rounded-2xl object-fill"

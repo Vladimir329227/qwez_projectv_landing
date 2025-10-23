@@ -28,7 +28,17 @@ export default function QuizResultTablet({ answers, recommendations }: QuizResul
 	const [input6, onChangeInput6] = useState('');
 
 	const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+	const [showFireworks, setShowFireworks] = useState(false);
 	const videoRef = React.useRef<HTMLVideoElement>(null);
+
+	// Запуск анимации фейерверка при загрузке компонента
+	React.useEffect(() => {
+		const timer = setTimeout(() => {
+			setShowFireworks(true);
+		}, 300); // Небольшая задержка для плавного появления
+		
+		return () => clearTimeout(timer);
+	}, []);
 
 	const faqData = [
 		{
@@ -63,7 +73,38 @@ export default function QuizResultTablet({ answers, recommendations }: QuizResul
 	return (
 		// Замените самый внешний div:
 		<div className="items-start bg-white mx-auto overflow-x-hidden w-full max-w-[100vw]">
-			<div className="flex flex-col items-center bg-white max-w-full">
+			{/* Голубой топ бар с фейерверком */}
+			<div className="relative w-full h-[150px] bg-gradient-to-b from-[#00A8E2] to-[#006283] overflow-hidden">
+				<img
+					src="/quiz-result-images/background_confetti.png"
+					className={`absolute inset-0 w-full h-full object-cover ${
+						showFireworks ? 'fireworks-animation' : 'opacity-0'
+					}`}
+					alt="Celebration confetti"
+				/>
+				{/* Дополнительные анимированные частицы */}
+				<div className={`absolute inset-0 ${showFireworks ? 'fireworks-particles' : 'opacity-0'}`}>
+					<div className="absolute top-1/4 left-1/4 w-2 h-2 bg-yellow-300 rounded-full"></div>
+					<div className="absolute top-1/3 right-1/3 w-1.5 h-1.5 bg-pink-300 rounded-full"></div>
+					<div className="absolute top-1/2 left-1/2 w-2.5 h-2.5 bg-green-300 rounded-full"></div>
+					<div className="absolute bottom-1/3 left-1/3 w-1 h-1 bg-blue-300 rounded-full"></div>
+					<div className="absolute bottom-1/4 right-1/4 w-2 h-2 bg-purple-300 rounded-full"></div>
+				</div>
+				<div className="relative z-10 flex flex-col items-center justify-center h-full px-6">
+					<div className={`text-center transition-all duration-1000 ${
+						showFireworks ? 'fireworks-burst' : 'opacity-0 scale-0'
+					}`}>
+						<h1 className="text-white text-3xl font-bold mb-2">
+							🎉 Congratulations! 🎉
+						</h1>
+						<p className="text-white/90 text-base">
+							Your personalized wellness profile is ready
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div className="flex flex-col items-center bg-white max-w-full rounded-t-[32px] -mt-8 relative z-20 shadow-lg">
 				<div className="flex justify-between items-center self-stretch mt-[50px] mb-8 px-4 sm:px-8">
 					<div className="flex items-center gap-6">
 						<div className="flex flex-col items-center ml-[1px]">
@@ -78,7 +119,10 @@ export default function QuizResultTablet({ answers, recommendations }: QuizResul
 							</span>
 						</button>
 					</div>
-					<div className="flex items-center gap-6">
+
+					{/* Quiz duration  + Get My Plan button */}
+					
+					{/* <div className="flex items-center gap-6">
 						<div className="flex items-center bg-[#E1E9FD]  py-1.5 rounded-[100000px]">
 							<div className="flex flex-col items-center w-4 ml-3.5 mr-[11px]">
 								<svg
@@ -106,7 +150,7 @@ export default function QuizResultTablet({ answers, recommendations }: QuizResul
 								</span>
 							</div>
 						</div>
-					</div>
+					</div> */}
 				</div>
 				<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-8 px-4 sm:px-8">
 				</div>

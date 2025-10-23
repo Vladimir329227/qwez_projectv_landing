@@ -1,7 +1,7 @@
 import { QuestionOption } from '../types/quiz';
 import React from 'react';
 import AgeCarousel from '../bloks/AgeCarousel';
-import { EmailForm, NameForm, DisclaimerForm } from '../components/quiz-forms';
+import { EmailForm, NameForm } from '../components/quiz-forms';
 import QuizResult from '../components/quiz-pages/quiz-results/QuizResult';
 import QuizDiveSlidePage from '../components/quiz-pages/quiz-intro/quiz-dive-slide/QuizDiveSlidePage';
 
@@ -89,7 +89,7 @@ export const personalDetailsQuestions: PersonalDetailsQuestion[] = [
         question: "Which stage of your hormonal journey are you in right now?",
         options: [
             { value: 'monthly-periods', label: 'I get monthly periods' },
-            { value: 'perimenopause-menopause', label: 'Perimenopause /menopause stage' },
+            { value: 'perimenopause-menopause', label: 'Perimenopause / menopause stage' },
             { value: 'pregnant', label: 'Pregnant' },
             { value: 'postpartum', label: 'Postpartum - recently gave birth' },
             { value: 'other', label: 'Other' },
@@ -216,16 +216,16 @@ export const nutritionQuestions: PersonalDetailsQuestion[] = [
         key: 'dietType',
         question: 'How would you describe your diet?',
         options: [
-            { value: 'fresh-vibrant', label: 'Fresh and vibrant' },
-            { value: 'mixed-greens-convenience', label: 'Mixed greens & convenience' },
-            { value: 'mostly-beige', label: 'Mostly beige' },
+            { value: 'balanced-colorful', label: 'Balanced & colorful — lots of veggies, fruit, and variety' },
+            { value: 'mostly-healthy', label: 'Mostly healthy, but with some quick or packaged meals' },
+            { value: 'carbs-comfort', label: 'Carbs & comfort — more bread, pasta, or meat than greens' },
         ],
     },
     {
         key: 'cravings',
         question: 'What are your cravings like?',
         options: [
-            { value: 'balanced-chic', label: 'Balanced and chic' },
+            { value: 'balanced-in-control', label: 'Balanced and in control' },
             { value: 'sweet-salty', label: 'Sweet/salty' },
             { value: 'sugar-spirit-animal', label: 'Sugar is my spirit animal' },
         ],
@@ -426,7 +426,7 @@ export const createQuizSteps = (
     setAnswers: (answers: Record<string, any>) => void,
     setCurrentStep: (step: number) => void,
     currentStep: number,
-    QuizSectionIntro: React.ComponentType<{ onBegin: () => void; onPrevious?: () => void; backgroundImageUrl?: string; desktopWomanImageUrl?: string; desktopBackgroundImageUrl?: string; titleLines?: string[]; bodyLines?: string[]; buttonLabel?: string }>,
+    QuizSectionIntro: React.ComponentType<{ onBegin: () => void; onPrevious?: () => void; backgroundImageUrl?: string; desktopWomanImageUrl?: string; desktopBackgroundImageUrl?: string; titleLines?: string[]; bodyLines?: string[]; buttonLabel?: string; nextSegment?: string }>,
     QuestionForm: React.ComponentType<any>,
     goToLanding: () => void
 ): QuizStep[] => {
@@ -451,6 +451,7 @@ export const createQuizSteps = (
                         " to you."
                     ]}
                     buttonLabel={'Begin Survey'}
+                    nextSegment={'Personal Details'}
                 />
             )
         },
@@ -595,6 +596,7 @@ export const createQuizSteps = (
                     'with a "healthy" lifestyle.',
                 ]}
                 buttonLabel={'Next'}
+                nextSegment={'Morning Energy & Clarity'}
             />
         )
     });
@@ -621,6 +623,7 @@ export const createQuizSteps = (
                     'shortcuts, just results.',
                 ]}
                 buttonLabel={'Next'}
+                nextSegment={'Movement & Flexibility'}
             />
         )
     });
@@ -645,6 +648,7 @@ export const createQuizSteps = (
                     'your meals really are.',
                 ]}
                 buttonLabel={'Next'}
+                nextSegment={'Nutrition, Digestion & Detox'}
             />
         )
     });
@@ -669,6 +673,7 @@ export const createQuizSteps = (
                     "glow.",
                 ]}
                 buttonLabel={'Next'}
+                nextSegment={'Sleep, Stress & Self-Care'}
             />
         )
     });
@@ -693,6 +698,7 @@ export const createQuizSteps = (
                     "and moderation.",
                 ]}
                 buttonLabel={'Next'}
+                nextSegment={'Indulgence & Balance'}
             />
         )
     });
@@ -718,6 +724,7 @@ export const createQuizSteps = (
                     'despite the world around it.',
                 ]}
                 buttonLabel={'Next'}
+                nextSegment={'Contact Information'}
             />
         )
     });
@@ -744,24 +751,10 @@ export const createQuizSteps = (
         content: (
             <NameForm
                 onNext={(name) => {
-                    setAnswers({ ...answers, name });
-                    setCurrentStep(currentStep + 1);
-                }}
-                onPrevious={() => setCurrentStep(currentStep - 1)}
-                initialValue={answers.name || ''}
-            />
-        )
-    });
-
-    // Disclaimer step
-    steps.push({
-        title: '',
-        content: (
-            <DisclaimerForm
-                onNext={() => {
                     // Add quiz completion time to stop the timer
                     const updatedAnswers = {
                         ...answers,
+                        name,
                         quizEndTime: new Date().toISOString()
                     };
                     setAnswers(updatedAnswers);
@@ -769,10 +762,10 @@ export const createQuizSteps = (
                         localStorage.setItem('quiz.answers', JSON.stringify(updatedAnswers));
                     } catch {}
                     document.cookie = `page=results; path=/; max-age=${60 * 60 * 24 * 365}`;
-                    // Jump to synthetic final step to maintain flow if needed
                     setCurrentStep(currentStep + 1);
                 }}
                 onPrevious={() => setCurrentStep(currentStep - 1)}
+                initialValue={answers.name || ''}
             />
         )
     });

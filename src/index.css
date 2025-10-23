@@ -143,3 +143,57 @@ button:not([class*="quiz-option"]):not([class*="question-form"]):active {
 .animate-scroll:hover {
   animation-play-state: paused;
 }
+
+/* Fireworks animations */
+@keyframes fireworks-burst {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fireworks-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.8);
+  }
+  100% {
+    opacity: 0.3;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fireworks-particles {
+  0% {
+    opacity: 0;
+    transform: scale(0) translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) translateY(-10px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8) translateY(-30px);
+  }
+}
+
+.fireworks-animation {
+  animation: fireworks-fade-in 1.5s ease-out forwards;
+}
+
+.fireworks-burst {
+  animation: fireworks-burst 1.2s ease-out;
+}
+
+.fireworks-particles {
+  animation: fireworks-particles 2.5s ease-out infinite;
+}

@@ -62,20 +62,26 @@ export default function QuizDiveSlideDesktop({
     }`}
         >
           <button
-            className="flex flex-col items-center bg-[#1F2429] text-left w-[350px] sm:w-[375px] lg:w-[400px] py-4 sm:py-5 mx-5 rounded-[100000px] border-0 hover:bg-gray-800 transition-colors"
+            className="bg-[#1F2429] text-white w-[350px] sm:w-[375px] lg:w-[400px] py-5 mx-5 rounded-full hover:bg-gray-800 transition-colors"
             onClick={onNext}
           >
-            <div className="flex flex-col items-start">
-              <span className="text-white text-base sm:text-[18px]">Continue</span>
-            </div>
+            Continue
           </button>
+          {onPrevious && (
+            <button
+              className="bg-white text-[#1F2429] border-2 border-[#1F2429] w-[350px] sm:w-[375px] lg:w-[400px] py-5 mx-5 rounded-full hover:bg-gray-50 transition-colors"
+              onClick={onPrevious}
+            >
+              Previous
+            </button>
+          )}
         </div>
       </div>
 
       {/* Right Image - Desktop version */}
       <div className="absolute right-0 top-0 w-3/4 h-full overflow-hidden">
         <img
-          src="/graphics/image.png"
+          src="/figma/quiz_dive_slide(desktop).png"
           className="w-full h-full object-contain object-right"
           alt="Quiz Background"
         />

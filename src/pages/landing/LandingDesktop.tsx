@@ -379,7 +379,7 @@ export default () => {
 					</div>
 					<div className="flex flex-col items-center  gap-6">
 						<div className="flex items-stretch gap-6 w-full max-w-[600px]">
-							<button className="flex flex-1 items-center justify-center p-6 rounded-2xl border-2 border-solid border-[#00A8E2] hover:scale-105 transition-transform duration-300 text-center h-[140px] min-w-[280px]">
+							<div className="flex flex-1 items-center justify-center p-6 rounded-2xl border-2 border-solid border-[#00A8E2] text-center h-[140px] min-w-[280px]">
 								<img
 									src={"/figma/d76263ab341760a7.png"}
 									className="w-8 h-8 mr-3 rounded-2xl object-fill flex-shrink-0"
@@ -387,9 +387,8 @@ export default () => {
 								<span className="text-[#1F2429] text-base font-bold text-center leading-tight overflow-hidden">
 									{"Maximum potency preserved"}
 								</span>
-							</button>
-							<button className="flex flex-1 items-center justify-center p-6 rounded-2xl border-2 border-solid border-[#00A8E2] hover:scale-105 transition-transform duration-300 text-center h-[140px] min-w-[280px]"
-								onClick={() => alert("Pressed!")}>
+							</div>
+							<div className="flex flex-1 items-center justify-center p-6 rounded-2xl border-2 border-solid border-[#00A8E2] text-center h-[140px] min-w-[280px]">
 								<img
 									src={"/figma/075b42d52c992dfd.png"}
 									className="w-8 h-8 mr-3 rounded-2xl object-fill flex-shrink-0"
@@ -397,10 +396,10 @@ export default () => {
 								<span className="text-[#1F2429] text-base font-bold text-center leading-tight overflow-hidden">
 									{"Zero additives, no compromise"}
 								</span>
-							</button>
+							</div>
 						</div>
 						<div className="flex items-stretch gap-6 w-full max-w-[600px]">
-							<button className="flex flex-1 items-center justify-center p-6 rounded-2xl border-2 border-solid border-[#00A8E2] hover:scale-105 transition-transform duration-300 text-center h-[140px] min-w-[280px]">
+							<div className="flex flex-1 items-center justify-center p-6 rounded-2xl border-2 border-solid border-[#00A8E2] text-center h-[140px] min-w-[280px]">
 								<img
 									src={"/figma/e62b432c6a4d396d.png"}
 									className="w-8 h-8 mr-3 rounded-2xl object-fill flex-shrink-0"
@@ -408,8 +407,8 @@ export default () => {
 								<span className="text-[#1F2429] text-base font-bold text-center leading-tight overflow-hidden">
 									{"Oxidation resistant formula"}
 								</span>
-							</button>
-							<button className="flex flex-1 items-center justify-center p-6 rounded-2xl border-2 border-solid border-[#00A8E2] hover:scale-105 transition-transform duration-300 text-center h-[140px] min-w-[280px]">
+							</div>
+							<div className="flex flex-1 items-center justify-center p-6 rounded-2xl border-2 border-solid border-[#00A8E2] text-center h-[140px] min-w-[280px]">
 								<img
 									src={"/figma/280fa4d4b0e06585.png"}
 									className="w-8 h-8 mr-3 rounded-2xl object-fill flex-shrink-0"
@@ -417,7 +416,7 @@ export default () => {
 								<span className="text-[#1F2429] text-base font-bold text-center leading-tight overflow-hidden">
 									{"Visible & tangible results"}
 								</span>
-							</button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -562,7 +561,7 @@ export default () => {
 					</span>
 					<TestimonialsCarousel />
 				</div>
-				<div className="flex flex-col items-start w-screen bg-[url('/figma/fashion_week.png')] bg-cover bg-center pt-[442px] pb-[79px] gap-6 relative left-1/2 transform -translate-x-1/2">
+				<div className="flex flex-col items-start w-screen bg-[url('/figma/fashion_week_desktop(black).png')] bg-cover bg-center pt-[442px] pb-[79px] gap-6 relative left-1/2 transform -translate-x-1/2">
 					<span className="text-white text-[40px] font-bold ml-24" >
 						{"As Seen At Fashion Week"}
 					</span>

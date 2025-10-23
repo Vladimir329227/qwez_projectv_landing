@@ -13,6 +13,7 @@ export interface PersonalDetailsIntroProps {
     titleLines?: string[]; // e.g., ["PERSONAL", "DETAILS"]
     bodyLines?: string[];  // manual line breaks preserved per item
     buttonLabel?: string;
+    nextSegment?: string; // Name of the next segment to display "Up next..."
 }
 
 export interface QuizStartPageProps {

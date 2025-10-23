@@ -8,6 +8,7 @@ export default function QuizSectionIntroMobile({
   titleLines,
   bodyLines,
   buttonLabel,
+  nextSegment,
 }: PersonalDetailsIntroProps) {
   const [isImageVisible, setIsImageVisible] = useState(false);
   const [isButtonVisible, setIsButtonVisible] = useState(false);
@@ -51,9 +52,8 @@ export default function QuizSectionIntroMobile({
               {effectiveTitleLines.map((line, index) => (
                 <h1
                   key={`title-${index}`}
-                  className={`text-4xl text-[#1F2429] font-bold ${
-                    index === 0 ? "pt-10" : ""
-                  }`}
+                  className={`text-4xl text-[#1F2429] font-bold ${index === 0 ? "pt-10" : ""
+                    }`}
                 >
                   {line}
                 </h1>
@@ -77,11 +77,10 @@ export default function QuizSectionIntroMobile({
 
       {/* Background image layer (absolute, right-aligned, shows under left text) */}
       <div
-        className={`absolute inset-0 bg-no-repeat transition-all duration-1000 ease-out z-0 pointer-events-none ${
-          isImageVisible
+        className={`absolute inset-0 bg-no-repeat transition-all duration-1000 ease-out z-0 pointer-events-none ${isImageVisible
             ? "opacity-100 translate-x-0"
             : "opacity-0 translate-x-full"
-        }`}
+          }`}
         style={{
           backgroundImage: `url('${effectiveBackground}')`,
           backgroundSize: "auto 100%",
@@ -92,12 +91,22 @@ export default function QuizSectionIntroMobile({
       {/* Overlay layer: left-aligned logo above button at the bottom (do not push layout) */}
       <div className="absolute inset-0 z-[200] pointer-events-none">
         {/* Full-width blurred backdrop behind the bottom area */}
-        <div className="absolute left-0 right-0 bottom-0 h-[96px] bg-white/20 backdrop-blur-md shadow-md" />
+        <div className="absolute left-0 right-0 bottom-0 h-[95px] bg-white/20 backdrop-blur-md shadow-md" />
         <div className="absolute bottom-6 left-0 right-0 px-6">
+          {/* Next segment text above logo */}
+          {nextSegment && (
+            <div className={`transition-all duration-700 ease-out ${isImageVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+              }`}>
+              <div className="text-left text-[#1F2429] text-lg font-medium mb-4">
+                Up next...<br />
+                {nextSegment}
+              </div>
+            </div>
+          )}
+          
           {/* Logo above the button, aligned to left */}
-          <div className={`transition-all duration-700 ease-out ${
-            isImageVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
-          }`}>
+          <div className={`transition-all duration-700 ease-out ${isImageVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+            }`}>
             <img
               src="/Logo/Black.svg"
               alt="Project V"
@@ -110,18 +119,16 @@ export default function QuizSectionIntroMobile({
               {onPrevious && (
                 <button
                   onClick={onPrevious}
-                  className={`relative z-10 pointer-events-auto bg-gray-200 text-gray-700 px-4 py-4 rounded-full hover:bg-gray-300 transition-all duration-700 ease-out flex-1 ${
-                    isButtonVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                  }`}
+                  className={`relative z-10 pointer-events-auto bg-white text-[#1F2429] border-2 border-[#1F2429] px-4 py-4 rounded-full hover:bg-gray-50 transition-all duration-700 ease-out flex-1 ${isButtonVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                    }`}
                 >
                   Previous
                 </button>
               )}
               <button
                 onClick={onBegin}
-                className={`relative z-10 pointer-events-auto bg-[#1F2429] text-white px-6 py-4 rounded-full hover:bg-black/80 transition-all duration-700 ease-out flex-1 ${
-                  isButtonVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                }`}
+                className={`relative z-10 pointer-events-auto bg-[#1F2429] text-white px-6 py-4 rounded-full hover:bg-gray-800 transition-all duration-700 ease-out flex-1 ${isButtonVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                  }`}
               >
                 {effectiveButtonLabel}
               </button>
