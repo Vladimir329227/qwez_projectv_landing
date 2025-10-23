@@ -52,7 +52,7 @@ export default function QuizSectionIntroMobile({
               {effectiveTitleLines.map((line, index) => (
                 <h1
                   key={`title-${index}`}
-                  className={`text-4xl text-[#1F2429] font-bold ${index === 0 ? "pt-10" : ""
+                  className={`text-3xl text-[#1F2429] font-semibold ${index === 0 ? "pt-10" : ""
                     }`}
                 >
                   {line}
@@ -63,9 +63,8 @@ export default function QuizSectionIntroMobile({
                 <div
                   key={`body-${index}`}
                   className="w-full text-[15px] text-left"
-                >
-                  {line}
-                </div>
+                  dangerouslySetInnerHTML={{ __html: line || '' }}
+                />
               ))}
             </div>
           </div>

@@ -124,9 +124,8 @@ export default function QuizSectionIntroDesktop({
                 <div
                   key={`body-${index}`}
                   className="w-full text-[20px] text-left"
-                >
-                  {line}
-                </div>
+                  dangerouslySetInnerHTML={{ __html: line || '' }}
+                />
               ))}
             </div>
           </div>

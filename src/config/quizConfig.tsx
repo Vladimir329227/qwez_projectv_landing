@@ -1,6 +1,7 @@
 import { QuestionOption } from '../types/quiz';
 import React from 'react';
 import AgeCarousel from '../bloks/AgeCarousel';
+import TimeCarousel from '../components/TimeCarousel';
 import { EmailForm, NameForm } from '../components/quiz-forms';
 import QuizResult from '../components/quiz-pages/quiz-results/QuizResult';
 import QuizDiveSlidePage from '../components/quiz-pages/quiz-intro/quiz-dive-slide/QuizDiveSlidePage';
@@ -12,6 +13,10 @@ export interface PersonalDetailsQuestion {
     subtitle?: string;
     options?: QuestionOption[];
     notification?: string;
+    separateOption?: string; // Значение опции, которая должна отображаться отдельно
+    isMultiSelect?: boolean; // Позволяет выбирать несколько опций
+    columnLayout?: 'single' | 'double'; // Управляет количеством столбцов на десктопе
+    columnLayoutMobile?: 'single' | 'double'; // Управляет количеством столбцов на мобильных устройствах
 }
 
 export const personalDetailsQuestions: PersonalDetailsQuestion[] = [
@@ -19,29 +24,34 @@ export const personalDetailsQuestions: PersonalDetailsQuestion[] = [
         key: "gender",
         question: "Select your gender?",
         notification: 'We ask these questions only to personalize your results and ensure your supplements truly fit your needs.',
+        columnLayout: 'double', // Используем два столбца
         options: [
-            { value: "female", label: "Female" },
-            { value: "male", label: "Male" },
+            { value: "female", label: "Female", column: 1 },
+            { value: "male", label: "Male", column: 2 },
         ],
     },
     {
         key: "age",
         question: "Select your age",
+        notification: 'We ask these questions only to personalize your results and ensure your supplements truly fit your needs.',
+
     },
     {
         key: "goals",
         question: "What\'s your main goal?",
+        isMultiSelect: true, // Позволяет выбирать несколько опций
+        columnLayout: 'double', // Используем два столбца
         options: [
-            { value: 'clearer-skin', label: 'Clearer skin' },
-            { value: 'better-digestion', label: 'Better digestion' },
-            { value: 'less-stress', label: 'Less stress' },
-            { value: 'better-sleep', label: 'Better sleep' },
-            { value: 'sharper-focus', label: 'Sharper focus' },
-            { value: 'healthy-heart', label: 'Healthy heart' },
-            { value: 'longevity', label: 'Longevity' },
-            { value: 'detox', label: 'Detox' },
-            { value: 'natural-immunity', label: 'Natural immunity' },
-            { value: 'sustained-energy', label: 'Sustained energy' }
+            { value: 'clearer-skin', label: 'Clearer skin', column: 1 },
+            { value: 'better-digestion', label: 'Better digestion', column: 1 },
+            { value: 'less-stress', label: 'Less stress', column: 1 },
+            { value: 'better-sleep', label: 'Better sleep', column: 1 },
+            { value: 'sharper-focus', label: 'Sharper focus', column: 1 },
+            { value: 'healthy-heart', label: 'Healthy heart', column: 2 },
+            { value: 'longevity', label: 'Longevity', column: 2 },
+            { value: 'detox', label: 'Detox', column: 2 },
+            { value: 'natural-immunity', label: 'Natural immunity', column: 2 },
+            { value: 'sustained-energy', label: 'Sustained energy', column: 2 }
           ],
     },
     {
@@ -99,19 +109,24 @@ export const personalDetailsQuestions: PersonalDetailsQuestion[] = [
         key: "health-conditions",
         question: "Do you have any ongoing health conditions?",
         subtitle: "Choose as many as are relevant",
+        columnLayout: 'double', // Используем два столбца на десктопе
+        columnLayoutMobile: 'single', // Используем один столбец на мобильных устройствах
+        isMultiSelect: true, // Позволяет выбирать несколько опций
+        separateOption: "other", // Опция "Other" будет отображаться отдельно только на десктопе (два столбца)
         options: [
-            { value: 'no', label: 'No' },
-            { value: 'high-blood-pressure', label: 'High blood pressure' },
-            { value: 'diabetes', label: 'Diabetes' },
-            { value: 'autoimmune', label: 'Autoimmune condition' },
-            { value: 'digestive-disorder', label: 'Digestive disorder' },
-            { value: 'heart-cardiovascular', label: 'Heart or cardiovascular issues' },
-            { value: 'other', label: 'Other' },
+            { value: 'no', label: 'No', column: 1 },
+            { value: 'high-blood-pressure', label: 'High blood pressure', column: 1 },
+            { value: 'diabetes', label: 'Diabetes', column: 1 },
+            { value: 'autoimmune', label: 'Autoimmune condition', column: 1 },
+            { value: 'digestive-disorder', label: 'Digestive disorder', column: 2 },
+            { value: 'heart-cardiovascular', label: 'Heart or cardiovascular issues', column: 2 },
+            { value: 'other', label: 'Other', column: 2 },
           ]
     },    
     {
         key: "activity",
         question: "Have you had COVID-19?",
+        notification: 'We ask this to better understand possible long-term effects on your energy, mood, and overall health.',
         options: [
             { value: 'no', label: 'No' },
             { value: 'yes', label: 'Yes' },
@@ -121,6 +136,7 @@ export const personalDetailsQuestions: PersonalDetailsQuestion[] = [
     {
         key: "long-covid",
         question: "Have you experienced ongoing symptoms following COVID-19 (Long Covid)?",
+        notification: 'We ask this to better understand possible long-term effects on your energy, mood, and overall health.',  
         options: [
             { value: 'no', label: 'No' },
             { value: 'currently-experiencing', label: 'Yes — currently experiencing' },
@@ -144,6 +160,7 @@ export const morningEnergyQuestions: PersonalDetailsQuestion[] = [
     {
         key: 'energyLevel',
         question: "How's your energy throughout the day?",
+        notification: 'We ask this to better understand your daily rhythms and how they might relate to your focus, habits, and overall well-being.',
         options: [
             { value: 'energized-unstoppable', label: 'Energized and unstoppable' },
             { value: 'some-days-fab', label: 'Some days fab, some days flat' },
@@ -153,6 +170,7 @@ export const morningEnergyQuestions: PersonalDetailsQuestion[] = [
     {
         key: 'caffeineIntake',
         question: "What's your caffeine story?",
+        notification: 'Caffeine can boost focus — or mess with sleep. Knowing your habits helps us guide you better.',
         options: [
             { value: 'dont-drink', label: "I don't drink coffee" },
             { value: '1-2-cups', label: '1-2 cups a day' },
@@ -184,6 +202,7 @@ export const movementQuestions: PersonalDetailsQuestion[] = [
     {
         key: 'postureFlexibility',
         question: "What's your posture / flexibility like?",
+        notification: 'Your posture and flexibility can affect how you move, breathe, and even how your body manages stress.',
         options: [
             { value: 'graceful-grounded', label: 'Graceful and grounded' },
             { value: 'more-yoga', label: 'Could use more yoga' },
@@ -192,22 +211,69 @@ export const movementQuestions: PersonalDetailsQuestion[] = [
     },
     {
         key: 'jointsMuscles',
-        question: 'How do your joints/muscles feel?',
+        question: 'How do your joints usually feel?',
+        notification: 'Mobility depends on recovery, inflammation, and nutrient uptake. Backed by 25+ years of research, Project V supports joint and muscle resilience with pharmaceutical precision.',
         options: [
-            { value: 'flexible-fierce', label: 'Flexible and fierce' },
-            { value: 'on-off', label: 'On and off' },
+            { value: 'flexible-strong', label: 'Flexible and strong' },
+            { value: 'occasionally-stiff-achy', label: 'Occasionally stiff or achy' },
             { value: 'stiff-sore', label: 'Stiff and sore' },
         ],
     },
     {
-        key: 'stiffnessInflammation',
-        question: 'Do you experience stiffness / inflammation?',
+        key: 'musclesFeel',
+        question: 'How do your muscles usually feel?',
+        notification: 'Mobility depends on recovery, inflammation, and nutrient uptake. Backed by 25+ years of research, Project V supports joint and muscle resilience with pharmaceutical precision.',
         options: [
-            { value: 'stretch-cool', label: 'I stretch and cool down' },
+            { value: 'energised-ready', label: 'Energised and ready' },
+            { value: 'sometimes-tight-fatigued', label: 'Sometimes tight or fatigued' },
+            { value: 'often-sore-weak', label: 'Often sore or weak' },
+        ],
+    },
+    {
+        key: 'stiffnessInflammation',
+        question: 'Do you experience stiffness or inflammation?',
+        notification: 'Your posture and flexibility can affect how you move, breathe, and even how your body manages stress.',
+        options: [
+            { value: 'no-stiffness', label: 'No' },
             { value: 'mild-soreness', label: 'Mild soreness' },
             { value: 'constant-tension', label: 'Constant tension' },
         ],
     },
+    {
+        key: "workouts",
+        question: "What type of workouts do you do?",
+        subtitle: "Choose as many as you'd like",
+        separateOption: "not-any", // Опция "Not any" будет отображаться отдельно
+        isMultiSelect: true, // Позволяет выбирать несколько опций
+        columnLayout: 'double', // Используем два столбца на десктопе
+        columnLayoutMobile: 'double', // Используем два столбца на мобильных устройствах
+        options: [
+            { value: 'running', label: 'Running', column: 1 },
+            { value: 'walking', label: 'Walking', column: 1 },
+            { value: 'cycling', label: 'Cycling', column: 1 },
+            { value: 'weights', label: 'Weights', column: 1 },
+            { value: 'yoga', label: 'Yoga', column: 2 },
+            { value: 'pilates', label: 'Pilates', column: 2 },
+            { value: 'sport-training', label: 'Sport training', column: 2 },
+            { value: 'dance', label: 'Dance', column: 2 },
+            { value: 'not-any', label: 'Not any' },
+        ],
+    },
+    
+    {
+        key: "fitnessGoal",
+        question: "What is your main fitness goal?",
+        notification: 'Did you know? Adequate magnesium and B-vitamins improve energy metabolism, giving your workouts a natural boost.',
+        columnLayout: 'double', // Используем один столбец на десктопе
+        columnLayoutMobile: 'single', // Используем один столбец на мобильных устройствах
+        options: [
+            { value: 'build-strength', label: 'Build strength & tone muscles' },
+            { value: 'increase-flexibility', label: 'Increase flexibility & mobility' },
+            { value: 'lose-weight', label: 'Lose weight' },
+            { value: 'maintain-balance', label: 'Maintain overall wellness & balance' },
+            { value: 'just-keeping-up', label: 'Just trying to keep up with life' },
+        ],
+    },  
 ];
 
 // Nutrition & Digestion block
@@ -222,8 +288,32 @@ export const nutritionQuestions: PersonalDetailsQuestion[] = [
         ],
     },
     {
+        key: 'dietaryRestrictions',
+        question: 'Do you have any dietary restrictions?',
+        options: [
+            { value: 'none', label: 'None' },
+            { value: 'vegetarian', label: 'Vegetarian' },
+            { value: 'pescatarian', label: 'Pescatarian' },
+            { value: 'vegan', label: 'Vegan' },
+
+        ],
+    },
+    {
+        key: 'allergiesIntolerances',
+        question: 'Do you have any allergies or intolerances?',
+        options: [
+            { value: 'none', label: 'None' },
+            { value: 'lactose-dairy', label: 'Lactose or dairy' },
+            { value: 'nuts-seeds', label: 'Nuts or seeds' },
+            { value: 'soy', label: 'Soy' },
+            { value: 'other', label: 'Other' },
+
+        ],
+    },
+    {
         key: 'cravings',
         question: 'What are your cravings like?',
+        notification: 'Knowing what and when you crave helps us understand possible nutrient needs or emotional triggers.',
         options: [
             { value: 'balanced-in-control', label: 'Balanced and in control' },
             { value: 'sweet-salty', label: 'Sweet/salty' },
@@ -240,17 +330,18 @@ export const nutritionQuestions: PersonalDetailsQuestion[] = [
         ],
     },
     {
-        key: 'antioxidant-rich',
-        question: 'How often do you eat antioxidant-rich foods?',
+        key: 'fruitVegetables',
+        question: 'How often do you eat fruit and vegetables?',
+        notification: 'Berries, citrus, and leafy greens are rich in antioxidants that help protect your cells and support vitality.',
         options: [
-            { value: 'daily', label: 'Daily' },
-            { value: 'a-few-times', label: 'A few times a week' },
+            { value: 'everyday', label: 'Everyday' },
+            { value: 'a-few-times-a-week', label: 'A few times a week' },
             { value: 'rarely', label: 'Rarely' },
         ],
     },
     {
-        key: 'digestion',
-        question: "How's your digestion?",
+        key: 'stomachFeel',
+        question: "How does your stomach usually feel after meals?",
         options: [
             { value: 'balanced-breezy', label: 'Balanced and breezy' },
             { value: 'unpredictable', label: 'Unpredictable' },
@@ -260,6 +351,7 @@ export const nutritionQuestions: PersonalDetailsQuestion[] = [
     {
         key: 'detox',
         question: 'Do you detox?',
+        notification: 'A detox can include eating lighter, nutrient-rich foods, drinking plenty of water, or taking supplements to help your body naturally flush out waste and feel refreshed.',
         options: [
             { value: 'daily', label: 'Daily' },
             { value: 'weekly', label: 'Weekly reset' },
@@ -269,6 +361,7 @@ export const nutritionQuestions: PersonalDetailsQuestion[] = [
     {
         key: 'sugar-status',
         question: 'Blood sugar status?',
+        notification: 'No need for a diagnosis — just a sense of how steady or up-and-down your energy feels throughout the day.',
         options: [
             { value: 'balanced', label: 'Balanced' },
             { value: 'dips-spikes', label: 'Dips/spikes' },
@@ -279,6 +372,14 @@ export const nutritionQuestions: PersonalDetailsQuestion[] = [
 
 // Sleep & Stress block
 export const sleepQuestions: PersonalDetailsQuestion[] = [
+    {
+        key: 'sleepTime',
+        question: 'When do you usually go to bed?',
+    },
+    {
+        key: 'wakeUpTime',
+        question: 'When do you usually wake up?',
+    },
     {
         key: 'sleepQuality',
         question: 'How do you sleep?',
@@ -307,8 +408,9 @@ export const sleepQuestions: PersonalDetailsQuestion[] = [
         ],
     },
     {
-        key: 'self-care',
+        key: 'selfCare',
         question: 'Do you take care of yourself?',
+        notification: 'This isn’t about perfection — just a check-in on how much space you’re giving to rest, care, and balance.',
         options: [
             { value: 'weekly-luxe-rituals', label: 'Weekly luxe rituals' },
             { value: 'trying-my-best', label: 'Trying my best' },
@@ -316,12 +418,22 @@ export const sleepQuestions: PersonalDetailsQuestion[] = [
         ],
     },
     {
-        key: 'skin-saying',
-        question: "What's your skin saying?",
+        key: 'selfDescription',
+        question: 'How would you best describe yourself?',
+        options: [
+            { value: 'night-owl', label: 'Night owl' },
+            { value: 'early-bird', label: 'Early bird' },
+            { value: 'somewhere-in-the-middle', label: 'Somewhere in the middle' },
+        ],
+    },
+    {
+        key: 'skinType',
+        question: "What’s your skin type?",
         options: [
             { value: 'glowing', label: 'Glowing' },
-            { value: 'random', label: 'Random' },
-            { value: 'dull', label: 'Dull' },
+            { value: 'oily', label: 'Oily' },
+            { value: 'dull-dry', label: 'Dull & dry' },
+            { value: 'combination', label: 'Combination' },
         ],
     },
 ];
@@ -331,6 +443,7 @@ export const indulgenceQuestions: PersonalDetailsQuestion[] = [
     {
         key: 'alcohol',
         question: 'How often do you drink alcohol?',
+        notification: 'From social drinks to occasional sips — we’re interested in your usual patterns.',
         options: [
             { value: 'rarely', label: 'Rarely' },
             { value: 'weekends', label: 'Weekends' },
@@ -339,20 +452,20 @@ export const indulgenceQuestions: PersonalDetailsQuestion[] = [
     },
     {
         key: 'smoking',
-        question: 'Any habits like smoking/excess caffeine?',
+        question: 'Do you smoke or use tobacco products?',
         options: [
-            { value: 'none', label: 'None' },
-            { value: 'a-few', label: 'A few' },
+            { value: 'never', label: 'Never' },
+            { value: 'occasionally', label: 'Occasionally' },
             { value: "let-s-not-talk-about-it", label: "Let's not talk about it" },
         ],
     },
     {
-        key: 'sugar-drinks',
-        question: 'Sugary drinks?',
+        key: 'sugarIntake',
+        question: 'How often do you enjoy sugary foods or drinks?',
         options: [
             { value: 'almost-never', label: 'Almost never' },
-            { value: 'sometimes', label: 'Sometimes' },
-            { value: 'daily-dose-of-bubble-tea', label: 'Daily dose of bubble tea' },
+            { value: 'a-few-sweet-moments', label: 'A few sweet moments each week' },
+            { value: 'cant-resist', label: 'Can’t resist daily indulgence' },
         ],
     },
 ];
@@ -360,57 +473,61 @@ export const indulgenceQuestions: PersonalDetailsQuestion[] = [
 // Environment & Pollution block
 export const environmentQuestions: PersonalDetailsQuestion[] = [
     {
-        key: 'environment',
-        question: 'How often do you go outside?',
+        key: 'freshAir',
+        question: 'How often do you get outside and breathe fresh air?',
         options: [
             { value: 'daily', label: 'Daily' },
-            { value: 'weekends', label: 'Weekends' },
-            { value: 'concrete-jungle', label: 'Concrete jungle life' },
+            { value: 'mostly-weekends', label: 'Mostly on weekends' },
+            { value: 'hardly-ever', label: 'Hardly—concrete jungle life' },
         ],
     },
     {
-        key: 'fresh-air',
-        question: 'Fresh air breaks?',
+        key: 'sunlightExposure',
+        question: 'How much sunlight do you get on a typical week?',
+        notification: 'Sunlight helps your body make vitamin D, supporting bones, immunity, and mood.',
         options: [
-            { value: 'yes', label: 'Yes' },
-            { value: 'sometimes', label: 'Sometimes' },
-            { value: 'rarely', label: 'Rarely' },
+            { value: 'plenty', label: 'Plenty—out and about daily' },
+            { value: 'a-few-times-a-week', label: 'A few times a week' },
+            { value: 'rarely-mostly-indoors', label: 'Rarely—mostly indoors' },
         ],
     },
     {
-        key: 'sunlight-exposure',
-        question: 'Sunlight exposure?',
-        options: [
-            { value: '20+ minutes', label: '20+ minutes' },
-            { value: 'some-days', label: 'Some days' },
-            { value: 'barely-any', label: 'barely any' },
-        ],
-    },
-    {
-        key: 'pollution-exposure',
-        question: 'Pollution exposure?',
-        options: [
-            { value: 'i-detox-regularly', label: 'I detox regularly' },
-            { value: 'try', label: 'Try' },
-            { value: 'i-breathe-it-in', label: 'I breathe it in' },
-        ],
-    },
-    {
-        key: 'nature-escapes',
-        question: 'Nature escapes?',
+        key: 'natureEscapes',
+        question: 'How often do you escape into nature??',
+        notification: 'Do you get chances to step away from the noise and into the green?',
         options: [
             { value: 'monthly', label: 'Monthly' },
             { value: 'sometimes', label: 'Sometimes' },
-            { value: "what-s-that", label: "What’s that?" },
+            { value: 'what-s-that', label: 'What’s that?' },
         ],
     },
     {
-        key: 'disconnect-from-tech',
+        key: 'techDisconnect',
         question: 'Do you disconnect from tech?',
         options: [
             { value: 'half-scrolling', label: 'Half-scrolling' },
             { value: 'always-online', label: 'Always online' },
             { value: 'off-grid-goddess', label: 'Off-grid goddess' },
+        ],
+    },
+    {
+        key: 'coldFluFrequency',
+        question: 'How often do you catch colds or flu?',
+        notification: 'Understanding how often you get ill helps us tailor your supplements to support long-term immunity and resilience.',
+        options: [
+            { value: 'monthly', label: 'Rarely, my immune system’s strong' },
+            { value: 'sometimes', label: 'Occasionally, a few times a year' },
+            { value: "what-s-that", label: "Often, I get sick frequently" },
+        ],
+    },
+    {
+        key: 'disconnect-from-tech',
+        question: 'Have you tried nutraceuticals before?',
+        notification: 'Nutraceuticals are supplements made from natural ingredients designed to support your health and wellbeing.',
+        options: [
+            { value: 'new-but-curious', label: 'New but curious' },
+            { value: 'ive-tried-a-few', label: 'I’ve tried a few' },
+            { value: 'im-a-nutraceutical-veteran', label: 'I’m a nutraceutical veteran' },
         ],
     },
 ];
@@ -513,6 +630,36 @@ export const createQuizSteps = (
                         </div>
                     );
                     }
+                    if (q.key === "sleepTime") {
+                        return (
+                            <div className="flex justify-center">
+                                <div className="w-full max-w-2xl">
+                                    <TimeCarousel
+                                        min={18}
+                                        max={3}
+                                        value={typeof value === "number" ? value : 22}
+                                        onChange={(v: number) => setAnswers({ ...answers, [key]: v })}
+                                        label="Time"
+                                    />
+                                </div>
+                            </div>
+                        );
+                    }
+                    if (q.key === "wakeUpTime") {
+                        return (
+                            <div className="flex justify-center">
+                                <div className="w-full max-w-2xl">
+                                    <TimeCarousel
+                                        min={5}
+                                        max={12}
+                                        value={typeof value === "number" ? value : 7}
+                                        onChange={(v: number) => setAnswers({ ...answers, [key]: v })}
+                                        label="Time"
+                                    />
+                                </div>
+                            </div>
+                        );
+                    }
                     return null;
             };
 
@@ -526,21 +673,24 @@ export const createQuizSteps = (
                             question={q.question}
                             subtitle={q.subtitle}
                             options={q.options}
-                            isMulti={q.key === "goals" || q.key === "health-conditions"}
-                            selectedValue={q.key === "goals" || q.key === "health-conditions" ? undefined : (q.key === "age" ? (value ?? 37) : (value ?? null))}
-                            selectedValues={q.key === "goals" || q.key === "health-conditions" ? (Array.isArray(value) ? value : []) : undefined}
-                            onToggleSelect={q.key === "goals" || q.key === "health-conditions" ? ((v: any) => {
+                            isMulti={q.isMultiSelect || q.key === "goals" || q.key === "health-conditions"}
+                            selectedValue={q.isMultiSelect || q.key === "goals" || q.key === "health-conditions" ? undefined : (q.key === "age" ? (value ?? 37) : (value ?? null))}
+                            selectedValues={q.isMultiSelect || q.key === "goals" || q.key === "health-conditions" ? (Array.isArray(value) ? value : []) : undefined}
+                            onToggleSelect={q.isMultiSelect || q.key === "goals" || q.key === "health-conditions" ? ((v: any) => {
                                 const prev: any[] = Array.isArray(answers[key]) ? answers[key] : [];
                                 const exists = prev.includes(v);
                                 const next = exists ? prev.filter((it) => it !== v) : [...prev, v];
                                 setAnswers({ ...answers, [key]: next });
                             }) : undefined}
-                            onSelect={q.key === "goals" || q.key === "health-conditions" ? undefined : ((v: any) => setAnswers({ ...answers, [key]: v }))}
+                            onSelect={q.isMultiSelect || q.key === "goals" || q.key === "health-conditions" ? undefined : ((v: any) => setAnswers({ ...answers, [key]: v }))}
                             onPrevious={() => setCurrentStep(Math.max(0, currentStep - 1))}
                             onNext={() => setCurrentStep(currentStep + 1)}
                             nextLabel={idx === questions.length - 1 ? "Next" : "Next"}
                             bottomNote={null}
                             notification={q.notification}
+                            separateOption={q.separateOption}
+                            columnLayout={q.columnLayout}
+                            columnLayoutMobile={q.columnLayoutMobile}
                     >
                             {(!q.options || q.options.length === 0) && renderCustom()}
                     </QuestionForm>
@@ -639,13 +789,15 @@ export const createQuizSteps = (
                 backgroundImageUrl={'/women/green_woman.png'}
                 desktopWomanImageUrl={'/PNG_models/D.png'}
                 desktopBackgroundImageUrl={'/PNG_models/background/Copy of D background.png'}
-                titleLines={["NUTRITION,", "DIGESTION &", "DETOX"]}
+                titleLines={["WHY", "SYMPTOMS", "HIDE THE", "REAL CAUSE"]}
                 bodyLines={[
-                    'You are what you eat – and',
-                    'how you digest it. Here we',
-                    'explore how balanced,',
-                    'colorful, and detox-friendly',
-                    'your meals really are.',
+                    'Your brain and body are in constant conversation — but stress, pollution, and nutrient gaps disrupt this link.',
+                    'ㅤ',
+                    'Neuro-nutrition restores it, supporting:',
+                    'ㅤ',
+                    '• Neurogenesis (birth of new neurons)',
+                    '• Neuroplasticity (adaptability of the brain)',
+                    '• Angiogenesis (healthy blood vessel growth)',
                 ]}
                 buttonLabel={'Next'}
                 nextSegment={'Nutrition, Digestion & Detox'}
@@ -664,13 +816,12 @@ export const createQuizSteps = (
                 backgroundImageUrl={'/women/purple_woman.png'}
                 desktopWomanImageUrl={'/PNG_models/P.png'}
                 desktopBackgroundImageUrl={'/PNG_models/background/Copy of P background.png'}
-                titleLines={["SLEEP, STRESS", "& SELF-CARE"]}
-                bodyLines={[
-                    "Is your beauty sleep working",
-                    "overtime or are you running",
-                    "on empty? Let's take a look at",
-                    "your inner calm and outer",
-                    "glow.",
+                titleLines={["WHERE YOU", "COULD BE IN", "90 DAYS"]}
+                    bodyLines={[
+                    "• Steady energy from morning to night",
+                    "• Clearer skin & brighter eyes",
+                    "• Deep, restful sleep",
+                    "• Balanced appetite & light digestion",
                 ]}
                 buttonLabel={'Next'}
                 nextSegment={'Sleep, Stress & Self-Care'}
@@ -689,13 +840,14 @@ export const createQuizSteps = (
                 backgroundImageUrl={'/women/red_woman.png'}
                 desktopWomanImageUrl={'/PNG_models/S.png'}
                 desktopBackgroundImageUrl={'/PNG_models/background/Copy of SV background.png'}
-                titleLines={["INDULGENCE &", "BALANCE"]}
+                titleLines={["SCIENCE WITH", "A SOUL"]}
                 bodyLines={[
-                    "Wellness isn't about",
-                    "perfection – it's about",
-                    "balance. Let's look at your",
-                    "relationship with indulgence",
-                    "and moderation.",
+                    "<em>\"The brain and body are inseparable — nourish one and you transform the other.\"</em>",
+                    "ㅤ",
+                    "<strong>— Dr. Yann Rougier,</strong>",
+                    "Neurobiologist, Founder of the IN2A Institute of Neuronutrition",
+                    "ㅤ",
+                    "Every Project V formula is developed with world-leading experts in neurobiology, nutrition, and integrative medicine.",
                 ]}
                 buttonLabel={'Next'}
                 nextSegment={'Indulgence & Balance'}
@@ -714,14 +866,12 @@ export const createQuizSteps = (
                 backgroundImageUrl={'/women/pink_woman.jpg'}
                 desktopWomanImageUrl={'/PNG_models/A.png'}
                 desktopBackgroundImageUrl={'/PNG_models/background/Copy of A background.png'}
-                titleLines={["ENVIRONMENT", "& POLLUTION"]}
+                titleLines={["YOUR", "WELLNESS", "WARDROBE", "AWAITS"]}
                 bodyLines={[
-                    'Where you live shapes how',
-                    'you glow. This section looks',
-                    'at your exposure to the',
-                    'elements – and how well',
-                    'your body keeps its glow',
-                    'despite the world around it.',
+                    'Like a stylist curates your look,',
+                    'we select formulas to support your',
+                    'energy, skin, mood, and immunity',
+                    '— based on your answers.',
                 ]}
                 buttonLabel={'Next'}
                 nextSegment={'Contact Information'}

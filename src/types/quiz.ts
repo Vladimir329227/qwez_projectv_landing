@@ -1,6 +1,7 @@
 export interface QuestionOption {
     value: string | number;
     label: string;
+    column?: 1 | 2; // Указывает в какой столбец поместить опцию (1 или 2)
 }
 
 export interface PersonalDetailsIntroProps {
@@ -40,4 +41,7 @@ export interface QuestionFormProps {
     bottomNote?: React.ReactNode;
     children?: React.ReactNode; // custom input like age carousel
     notification?: string;
+    separateOption?: string; // Значение опции, которая должна отображаться отдельно
+    columnLayout?: 'single' | 'double'; // Управляет количеством столбцов на десктопе
+    columnLayoutMobile?: 'single' | 'double'; // Управляет количеством столбцов на мобильных устройствах
 }

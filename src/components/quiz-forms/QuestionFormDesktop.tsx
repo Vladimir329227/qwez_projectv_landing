@@ -38,6 +38,8 @@ export default function QuestionFormDesktop({
 	bottomNote,
 	children,
 	notification,
+	separateOption,
+	columnLayout,
 }: QuestionFormProps) {
 	const [isButtonsVisible, setIsButtonsVisible] = useState(false);
 
@@ -88,9 +90,9 @@ export default function QuestionFormDesktop({
 			</div>
 
 			{/* Content */}
-			<div className="flex justify-center p-6 pt-9 flex-1 pb-32">
-				<div className="w-full max-w-2xl">
-					<h1 className="text-5xl font-semibold text-center text-[#1F2429] mb-3">
+			<div className="flex justify-center p-4 pt-6 flex-1 pb-20">
+				<div className="w-full max-w-6xl">
+					<h1 className="text-3xl font-semibold text-center text-[#1F2429] mb-3">
 						{question}
 					</h1>
 					{subtitle && (
@@ -98,31 +100,91 @@ export default function QuestionFormDesktop({
 					)}
 					<div className="pb-4"></div>
                     {options && options.length > 0 ? (
-                        <div className={(question.toLowerCase().includes('gender') || question.toLowerCase().includes('goal')) ? "grid grid-cols-2 gap-3" : "grid gap-3"}>
-                            {options.map((opt) => {
-                                const isSelected = isMulti
-                                    ? (selectedValues ?? []).includes(opt.value)
-                                    : selectedValue === opt.value;
-                                const handleClick = () => {
-                                    if (isMulti) {
-                                        onToggleSelect && onToggleSelect(opt.value);
-                                    } else {
-                                        onSelect && onSelect(opt.value);
-                                    }
-                                };
-                                return (
-                                    <button
-                                        key={String(opt.value)}
-                                        onClick={handleClick}
-                                        className={`quiz-option-button w-full p-4 border-2 rounded-lg text-left text-lg transition-colors ${
-                                            isSelected ? "border-[#00A8E2] bg-blue-50 text-[#00A8E2]" : "border-gray-200 hover:border-[#00A8E2] hover:bg-blue-50"
-                                        }`}
-                                    >
-                                        {opt.label}
-                                    </button>
-                                );
-                            })}
-                        </div>
+                        <>
+                            {columnLayout === 'double' ? (
+                                <div className="grid grid-cols-2 gap-2 max-w-5xl mx-auto">
+                                    {options.filter(opt => !separateOption || opt.value !== separateOption).map((opt) => {
+                                        const isSelected = isMulti
+                                            ? (selectedValues ?? []).includes(opt.value)
+                                            : selectedValue === opt.value;
+                                        const handleClick = () => {
+                                            if (isMulti) {
+                                                onToggleSelect && onToggleSelect(opt.value);
+                                            } else {
+                                                onSelect && onSelect(opt.value);
+                                            }
+                                        };
+                                        return (
+                                            <button
+                                                key={String(opt.value)}
+                                                onClick={handleClick}
+                                                className={`quiz-option-button w-full p-3 border-2 rounded-lg text-center text-base transition-colors min-h-[60px] flex items-center justify-center ${
+                                                    isSelected ? "border-[#00A8E2] bg-blue-50 text-[#00A8E2]" : "border-gray-200 hover:border-[#00A8E2] hover:bg-blue-50"
+                                                }`}
+                                            >
+                                                {opt.label}
+                                            </button>
+                                        );
+                                    })}
+                                </div>
+                            ) : (
+                                <div className={(columnLayout === undefined && (question.toLowerCase().includes('gender') || question.toLowerCase().includes('goal') || question.toLowerCase().includes('workout'))) ? "grid grid-cols-2 gap-2 max-w-5xl mx-auto" : "grid gap-3"}>
+                                    {options.filter(opt => !separateOption || opt.value !== separateOption).map((opt) => {
+                                        const isSelected = isMulti
+                                            ? (selectedValues ?? []).includes(opt.value)
+                                            : selectedValue === opt.value;
+                                        const handleClick = () => {
+                                            if (isMulti) {
+                                                onToggleSelect && onToggleSelect(opt.value);
+                                            } else {
+                                                onSelect && onSelect(opt.value);
+                                            }
+                                        };
+                                        const isTwoColumns = columnLayout === undefined && (question.toLowerCase().includes('gender') || question.toLowerCase().includes('goal') || question.toLowerCase().includes('workout'));
+                                        return (
+                                            <button
+                                                key={String(opt.value)}
+                                                onClick={handleClick}
+                                                className={`quiz-option-button w-full p-3 border-2 rounded-lg text-center text-base transition-colors ${isTwoColumns ? 'min-h-[60px] flex items-center justify-center' : ''} ${
+                                                    isSelected ? "border-[#00A8E2] bg-blue-50 text-[#00A8E2]" : "border-gray-200 hover:border-[#00A8E2] hover:bg-blue-50"
+                                                }`}
+                                            >
+                                                {opt.label}
+                                            </button>
+                                        );
+                                    })}
+                                </div>
+                            )}
+                            {separateOption && (columnLayout === 'double' || (columnLayout === undefined && (question.toLowerCase().includes('gender') || question.toLowerCase().includes('goal') || question.toLowerCase().includes('workout')))) && options.find(opt => opt.value === separateOption) && (
+                                <div className="flex justify-center mt-4">
+                                    <div className="max-w-md w-full">
+                                        {(() => {
+                                            const separateOptionData = options.find(opt => opt.value === separateOption)!;
+                                            const isSelected = isMulti
+                                                ? (selectedValues ?? []).includes(separateOptionData.value)
+                                                : selectedValue === separateOptionData.value;
+                                            const handleClick = () => {
+                                                if (isMulti) {
+                                                    onToggleSelect && onToggleSelect(separateOptionData.value);
+                                                } else {
+                                                    onSelect && onSelect(separateOptionData.value);
+                                                }
+                                            };
+                                            return (
+                                                <button
+                                                    onClick={handleClick}
+                                                    className={`quiz-option-button w-full p-3 border-2 rounded-lg text-center text-base transition-colors min-h-[60px] flex items-center justify-center ${
+                                                        isSelected ? "border-[#00A8E2] bg-blue-50 text-[#00A8E2]" : "border-gray-200 hover:border-[#00A8E2] hover:bg-blue-50"
+                                                    }`}
+                                                >
+                                                    {separateOptionData.label}
+                                                </button>
+                                            );
+                                        })()}
+                                    </div>
+                                </div>
+                            )}
+                        </>
                     ) : (
 						children
 					)}
@@ -144,8 +206,10 @@ export default function QuestionFormDesktop({
 								: 'opacity-0 translate-y-8'
 						}`}>
 							<div className="flex items-start gap-3 p-4 bg-[#E5F6FC] border border-[#00A8E2] rounded-2xl">
-								<div className="text-[#00A8E2] text-xl font-bold flex-shrink-0 mt-0.5">ℹ️</div>
-								<p className="text-[#1F2429] text-base leading-relaxed">{notification}</p>
+								<div className="text-[#00A8E2] text-xl font-bold flex-shrink-0 mt-0.5">
+									<img src="/figma/info-icon.png" alt="Info" className="w-6 h-6" />
+								</div>
+								<p className="text-[#626669] text-sm font-medium leading-5 flex-1 min-w-0">{notification}</p>
 							</div>
 						</div>
 					)}

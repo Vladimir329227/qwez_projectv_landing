@@ -572,6 +572,48 @@ export default (props: any) => {
 					</div>
 				</div>
 
+				{/* Boutique Block */}
+				<div className="flex flex-col items-start self-stretch bg-[url('/figma/new_boutique.png')] bg-cover bg-center pt-[80%] pb-[20px] gap-6">
+					<span className="text-white text-[30px] font-bold ml-4" >
+						{"Visit Us At Our New Boutique"}
+					</span>
+					<span className="text-white text-lg w-full ml-4" >
+						{"Discover our curated collection at Kärntner Ring 10 in Vienna. Immerse yourself in an exclusive shopping experience unlike any other."}
+					</span>
+				</div>
+
+				<div className="flex flex-col items-start self-stretch p-4">
+					<span className="text-[#1F2429] text-[40px] font-bold w-[294px] mb-6" >
+						{"Frequently Asked Questions"}
+					</span>
+					<div className="flex flex-1 flex-col gap-4">
+						{faqData.map((faq, index) => (
+							<button
+								key={index}
+								className={`flex flex-col self-stretch bg-[#FCFDFF] py-4 gap-3 rounded-2xl border border-solid border-[#E1E9FD] transition-all duration-300 ${openFAQ === index ? 'shadow-lg' : ''
+									}`}
+								onClick={() => toggleFAQ(index)}
+							>
+								<div className="flex items-start self-stretch mx-4">
+									<span className="flex-1 text-[#1F2429] text-lg font-bold text-left">
+										{faq.question}
+									</span>
+									<img
+										src={openFAQ === index ? "/figma/171705bc9ae38148.png" : "/figma/beac637ba3d38921.png"}
+										className={`w-6 h-6 object-fill transition-transform duration-300 ${openFAQ === index ? 'rotate-180' : ''
+											}`}
+									/>
+								</div>
+								{openFAQ === index && (
+									<div className="text-[#1F2429] text-base mx-4 text-left animate-fadeIn">
+										{faq.answer}
+									</div>
+								)}
+							</button>
+						))}
+					</div>
+				</div>
+
 				{/* Instagram Section */}
 				<span className="text-[#1F2429] text-xl font-bold mb-1.5 ml-4" >
 					{"Follow Our Instagram"}
@@ -580,57 +622,26 @@ export default (props: any) => {
 					{"@projectv.international"}
 				</span>
 				<div className="flex flex-col items-center self-stretch">
-					<div className="flex flex-col items-center justify-center">
-						<div className="flex items-center justify-center">
+					<div className="flex flex-col items-center w-full">
+						<div className="flex items-center w-full">
 							<img
 								src={"/figma/143a6b1ae448f070.png"}
-								className="w-[180px] h-[180px] object-fill"
+								className="w-1/2 h-[180px] object-cover object-top"
 							/>
 							<img
 								src={"/figma/676e2e912a700476.png"}
-								className="w-[180px] h-[180px] object-fill"
+								className="w-1/2 h-[180px] object-cover object-top"
 							/>
 						</div>
-						<div className="flex items-center justify-center">
+						<div className="flex items-center w-full">
 							<img
 								src={"/figma/47483c572e515bf9.png"}
-								className="w-[180px] h-[180px] object-fill"
+								className="w-1/2 h-[180px] object-cover object-top"
 							/>
 							<img
 								src={"/figma/yellow_orange_woman.png"}
-								className="w-[180px] h-[180px] object-fill"
+								className="w-1/2 h-[180px] object-cover object-top"
 							/>
-						</div>
-					</div>
-					<div className="flex flex-col items-start self-stretch p-4">
-						<span className="text-[#1F2429] text-[40px] font-bold w-[294px] mb-6" >
-							{"Frequently Asked Questions"}
-						</span>
-						<div className="flex flex-1 flex-col gap-4">
-							{faqData.map((faq, index) => (
-								<button
-									key={index}
-									className={`flex flex-col self-stretch bg-[#FCFDFF] py-4 gap-3 rounded-2xl border border-solid border-[#E1E9FD] transition-all duration-300 ${openFAQ === index ? 'shadow-lg' : ''
-										}`}
-									onClick={() => toggleFAQ(index)}
-								>
-									<div className="flex items-start self-stretch mx-4">
-										<span className="flex-1 text-[#1F2429] text-lg font-bold text-left">
-											{faq.question}
-										</span>
-										<img
-											src={openFAQ === index ? "/figma/171705bc9ae38148.png" : "/figma/beac637ba3d38921.png"}
-											className={`w-6 h-6 object-fill transition-transform duration-300 ${openFAQ === index ? 'rotate-180' : ''
-												}`}
-										/>
-									</div>
-									{openFAQ === index && (
-										<div className="text-[#1F2429] text-base mx-4 text-left animate-fadeIn">
-											{faq.answer}
-										</div>
-									)}
-								</button>
-							))}
 						</div>
 					</div>
 				</div>
@@ -666,22 +677,26 @@ export default (props: any) => {
 
 					<div className="flex flex-col items-start justify-between self-stretch mb-6 w-full gap-4">
 						<div className="flex items-center gap-6">
-							<img
-								src={"/figma/9fc19f9778f0a6a4.png"}
-								className="w-10 h-10 object-fill"
-							/>
-							<img
-								src={"/figma/8e6dd44eb9eb84dc.png"}
-								className="w-10 h-10 object-fill"
-							/>
-							<img
-								src={"/figma/bbcc4d81cec4dbc5.png"}
-								className="w-10 h-10 object-fill"
-							/>
-							<img
-								src={"/figma/42530d79f7854fbc.png"}
-								className="w-10 h-10 object-fill"
-							/>
+							<a
+								href="https://www.facebook.com/projectv.global/"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<img
+									src={"/figma/logo_facebook.png"}
+									className="w-10 h-10 object-fill hover:opacity-80 transition-opacity cursor-pointer"
+								/>
+							</a>
+							<a
+								href="https://www.instagram.com/projectv.international/?hl=en"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<img
+									src={"/figma/logo_instagram.png"}
+									className="w-10 h-10 object-fill hover:opacity-80 transition-opacity cursor-pointer"
+								/>
+							</a>
 						</div>
 						<span className="text-white text-base" >
 							{"© 2025 Project V"}

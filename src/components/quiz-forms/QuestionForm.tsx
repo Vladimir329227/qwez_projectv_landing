@@ -25,6 +25,10 @@ export default function QuestionForm({
 	nextLabel = "Next",
 	bottomNote,
 	children,
+	notification,
+	separateOption,
+	columnLayout,
+	columnLayoutMobile,
 }: QuestionFormProps) {
     const sharedProps = {
         sectionTitle,
@@ -43,6 +47,10 @@ export default function QuestionForm({
         nextLabel,
         bottomNote,
         children,
+        notification,
+        separateOption,
+        columnLayout,
+        columnLayoutMobile,
     };
 
     return (

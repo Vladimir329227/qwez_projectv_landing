@@ -13,6 +13,7 @@ import {
 	getOutcomeIcon
 } from "../../../../utils/recommendationHelpers";
 import RecommendationCarousel from "../RecommendationCarousel";
+import TestimonialsCarousel from "../../../../bloks/TestimonialsCarousel";
 
 interface QuizResultTabletProps {
 	answers: Record<string, any>;
@@ -276,6 +277,22 @@ export default function QuizResultTablet({ answers, recommendations }: QuizResul
 				</div>
 				<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-8 mx-4 sm:mx-[50px]">
 				</div>
+				<div className="flex flex-col items-start mb-8 mx-4 sm:mx-[50px] gap-6">
+					<div className="flex flex-col items-start gap-4">
+						<span className="text-[#1F2429] text-sm">
+							{"We'll email you your full wellness results — plus let you know when our brand-new online shop opens so you can order your personalized supplements."}
+						</span>
+						<button className="flex items-start bg-[#1F2429] py-[15px] px-4 rounded-[100000px]">
+							<div className="flex flex-col items-center">
+								<span className="text-white text-[15px]">
+									{"Email my profile"}
+								</span>
+							</div>
+						</button>
+					</div>
+				</div>
+				
+				{/* Закомментированная секция с методами оплаты - можно вернуть при необходимости
 				<div className="flex flex-col items-start mb-8 mx-4 sm:mx-[236px] gap-10">
 					<div className="flex items-start bg-[#1F2429] w-full max-w-[362px] py-[15px] rounded-[100000px]">
 						<div className="flex flex-1 flex-col items-start ml-5 mr-3">
@@ -320,6 +337,7 @@ export default function QuizResultTablet({ answers, recommendations }: QuizResul
 						</button>
 					</div>
 				</div>
+				*/}
 				<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-8 mx-4 sm:mx-[50px]">
 				</div>
 				<div className="flex flex-col items-start self-stretch mb-8 mx-4 sm:mx-[50px] gap-4">
@@ -333,7 +351,10 @@ export default function QuizResultTablet({ answers, recommendations }: QuizResul
 						{"Project V creates innovative products helping millions of people strengthen their health and improve their quality of life on a daily basis. By using the healing powers of nature, new research and technologies, we aim to give everyone the chance to be healthy and happy."}
 					</span>
 					<button className="flex flex-col items-start bg-transparent text-left py-3 px-[23px] rounded-[100000px] border border-solid border-[#1F2429]"
-						onClick={navigateToLanding}>
+						onClick={() => {
+							document.cookie = 'page=landing; path=/; max-age=31536000';
+							window.open(window.location.origin, '_blank');
+						}}>
 						<span className="text-[#1F2429] text-xs font-bold" >
 							{"Learn More"}
 						</span>
@@ -384,98 +405,10 @@ export default function QuizResultTablet({ answers, recommendations }: QuizResul
 				</div>
 				<div className="self-stretch bg-[#E1E9FD] h-[1px] mb-8 mx-4 sm:mx-[50px]">
 				</div>
-				{/* Бегущая лента с карточками */}
-				<div className="flex animate-scroll">
-					{/* Первый набор карточек */}
-					<div className="flex flex-none gap-4 pr-4">
-						<div className="flex justify-between items-center bg-white w-[300px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
-							<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
-								<img
-									src="/quiz-result-images/lady1.png"
-									className="w-[60px] h-[60px] ml-[15px] object-fill"
-								/>
-								<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
-									{"Mia Robinson"}
-								</span>
-							</div>
-							<span className="text-[#1F2429] pl-2 text-sm flex-1 mr-[18px]" >
-								{"Sleep quality improved and I wake up less groggy"}
-							</span>
-						</div>
-						<div className="flex justify-between items-center bg-white w-[300px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
-							<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
-								<img
-									src="/quiz-result-images/lady2.png"
-									className="w-[60px] h-[60px] ml-[15px] object-fill"
-								/>
-								<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
-									{"Sarah Smith"}
-								</span>
-							</div>
-							<span className="text-[#1F2429] pl-2 text-sm flex-1 mr-[18px]" >
-								{"These supplements have helped me feel more balanced and energized throughout the day"}
-							</span>
-						</div>
-						<div className="flex justify-between items-center bg-white w-[300px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
-							<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
-								<img
-									src="/quiz-result-images/lady3.png"
-									className="w-[60px] h-[60px] ml-[15px] object-fill"
-								/>
-								<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
-									{"Isabella Rossi"}
-								</span>
-							</div>
-							<span className="text-[#1F2429] pl-2 text-sm flex-1 mr-[21px]" >
-								{"Sleep tracker shows longer deep sleep windows."}
-							</span>
-						</div>
-					</div>
-
-					{/* Дублированный набор для бесшовной анимации */}
-					<div className="flex flex-none gap-4 pr-4">
-						<div className="flex justify-between items-center bg-white w-[300px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
-							<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
-								<img
-									src="/quiz-result-images/lady1.png"
-									className="w-[60px] h-[60px] ml-[15px] object-fill"
-								/>
-								<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
-									{"Mia Robinson"}
-								</span>
-							</div>
-							<span className="text-[#1F2429] text-sm pl-2 flex-1 mr-[18px]" >
-								{"Sleep quality improved and I wake up less groggy"}
-							</span>
-						</div>
-						<div className="flex justify-between items-center bg-white w-[300px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
-							<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
-								<img
-									src="/quiz-result-images/lady2.png"
-									className="w-[60px] h-[60px] ml-[15px] object-fill"
-								/>
-								<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
-									{"Sarah Smith"}
-								</span>
-							</div>
-							<span className="text-[#1F2429] pl-2 text-sm flex-1 mr-[18px]" >
-								{"These supplements have helped me feel more balanced and energized throughout the day"}
-							</span>
-						</div>
-						<div className="flex justify-between items-center bg-white w-[300px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
-							<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
-								<img
-									src="/quiz-result-images/lady3.png"
-									className="w-[60px] h-[60px] ml-[15px] object-fill"
-								/>
-								<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
-									{"Isabella Rossi"}
-								</span>
-							</div>
-							<span className="text-[#1F2429] pl-2 text-sm flex-1 mr-[21px]" >
-								{"Sleep tracker shows longer deep sleep windows."}
-							</span>
-						</div>
+				{/* Карусель отзывов */}
+				<div className="w-full max-w-full overflow-hidden pb-6">
+					<div className="w-full max-w-full [&>div]:max-w-full [&>div]:mx-0 [&>div]:px-4 [&>div]:py-4">
+						<TestimonialsCarousel />
 					</div>
 				</div>
 				<div className="flex flex-col w-full max-w-[90%] items-center pb-6 gap-3">

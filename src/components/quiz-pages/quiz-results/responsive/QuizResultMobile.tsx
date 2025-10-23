@@ -12,6 +12,7 @@ import {
   getQuizDuration,
   getOutcomeIcon
 } from "../../../../utils/recommendationHelpers";
+import TestimonialsCarousel from "../../../../bloks/TestimonialsCarousel";
 
 interface QuizResultMobileProps {
   answers: Record<string, any>;
@@ -28,7 +29,9 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
   const [input7, onChangeInput7] = useState("");
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [showFireworks, setShowFireworks] = useState(false);
+  const [showStickyHeader, setShowStickyHeader] = useState(false);
   const videoRef = React.useRef<HTMLVideoElement>(null);
+  const headerRef = React.useRef<HTMLDivElement>(null);
 
   // Запуск анимации фейерверка при загрузке компонента
   React.useEffect(() => {
@@ -37,6 +40,20 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
     }, 300); // Небольшая задержка для плавного появления
     
     return () => clearTimeout(timer);
+  }, []);
+
+  // Отслеживание скролла для показа sticky панели
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if (headerRef.current) {
+        const headerRect = headerRef.current.getBoundingClientRect();
+        const shouldShow = headerRect.top < 0;
+        setShowStickyHeader(shouldShow);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const faqData = [
@@ -70,6 +87,35 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
 
   return (
     <div className="flex flex-col bg-white mx-auto overflow-x-hidden w-full max-w-[100vw]">
+      {/* Фиксированная панель, появляющаяся при скролле */}
+      {showStickyHeader && (
+        <div className="fixed top-0 left-0 right-0 bg-white z-50 py-3 shadow-lg">
+          <div className="flex justify-between items-center self-stretch mx-5">
+            <div className="flex items-center gap-3">
+              <div className="flex flex-col items-center">
+                <span className="text-[#1F2429] text-lg font-bold">
+                  {"Final Results"}
+                </span>
+              </div>
+              <button className="flex flex-col items-center bg-[#626669] text-left w-[83px] py-1.5 rounded-[40px] border-0">
+                <span className="text-white text-sm font-bold">
+                  {`${recommendations.effectiveness_score} points`}
+                </span>
+              </button>
+            </div>
+            <div className="flex items-center shrink-0">
+              <button className="flex items-start bg-[#1F2429] py-[12px] px-3 rounded-[100000px]">
+                <div className="flex flex-col items-center">
+                  <span className="text-white text-sm whitespace-nowrap">
+                    {"Email my profile"}
+                  </span>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Голубой топ бар с фейерверком */}
       <div className="relative w-full h-[150px] bg-gradient-to-b from-[#00A8E2] to-[#006283] overflow-hidden">
         <img
@@ -105,9 +151,9 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
         <div className="flex flex-col self-stretch w-full max-w-full relative">
           <div className="flex flex-col w-full max-w-full self-stretch relative">
             <div className="flex flex-col items-start bg-white pt-5 w-full max-w-full pb-[42px] rounded-t-[32px]">
-              <div className="flex justify-between items-center self-stretch mb-6 mx-5">
-                <div className="flex items-center gap-6">
-                  <div className="flex flex-col items-center ml-[1px]">
+              <div className="flex justify-between items-center self-stretch mb-6 mx-5" ref={headerRef}>
+                <div className="flex items-center gap-3">
+                  <div className="flex flex-col items-center">
                     <span className="text-[#1F2429] text-lg font-bold">
                       {"Final Results"}
                     </span>
@@ -119,20 +165,15 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
                   </button>
                 </div>
                 
-                {/* Quiz duration */}
-                {/* <div className="flex shrink-0 items-center bg-[#E1E9FD] py-1.5 px-3.5 gap-[11px] rounded-[100000px]">
-                  <div className="flex flex-col shrink-0 items-start">
-                    <svg 
-                      className="w-4 h-4 text-[#006283]" 
-                      fill="currentColor" 
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
-                      <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
-                    </svg>
-                  </div>
-                    <span className="text-[#1F2429] text-[15px]">{getQuizDuration(answers)}</span>
-                </div> */}
+                <div className="flex items-center shrink-0">
+                  <button className="flex items-start bg-[#1F2429] py-[12px] px-3 rounded-[100000px]">
+                    <div className="flex flex-col items-center">
+                      <span className="text-white text-sm whitespace-nowrap">
+                        {"Email my profile"}
+                      </span>
+                    </div>
+                  </button>
+                </div>
               </div>
               <div className="bg-[#E1E9FD] w-[90%] h-[1px] mb-6 mx-5"></div>
               <div className="flex flex-col items-center w-[100%]">
@@ -304,6 +345,22 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
                 </div>
               </div>
               <div className="bg-[#E1E9FD]  w-[90%] h-[1px] mb-10 mx-5"></div>
+              <div className="flex flex-col w-[100%] mb-10 items-center gap-6">
+                <div className="flex flex-col items-start w-[90%] gap-4">
+                  <span className="text-[#1F2429] text-sm">
+                    {"We'll email you your full wellness results — plus let you know when our brand-new online shop opens so you can order your personalized supplements."}
+                  </span>
+                  <button className="flex items-start bg-[#1F2429] py-[15px] px-4 rounded-[100000px]">
+                    <div className="flex flex-col items-center">
+                      <span className="text-white text-[15px]">
+                        {"Email my profile"}
+                      </span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              
+              {/* Закомментированная секция с методами оплаты - можно вернуть при необходимости
               <div className="flex flex-col w-[100%] mb-10 items-center gap-10">
                 <div className="flex items-start bg-[#1F2429] py-[15px] w-[90%] justify-between px-5 rounded-[100000px]">
                   <div className="flex flex-col shrink-0 items-center">
@@ -354,6 +411,7 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
                   </button>
                 </div>
               </div>
+              */}
               <div className="bg-[#E1E9FD] w-[90%] h-[1px] mb-10 mx-5"></div>
               <div className="flex flex-col items-start mb-10 mx-5 gap-4">
                 <span className="text-[#1F2429] w-full text-[15px] font-bold self-start">
@@ -369,7 +427,10 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
                 </span>
                 <button
                   className="flex flex-col items-start bg-transparent text-left py-3 px-[23px] rounded-[100000px] border border-solid border-[#1F2429]"
-                  onClick={navigateToLanding}
+                  onClick={() => {
+                    document.cookie = 'page=landing; path=/; max-age=31536000';
+                    window.open(window.location.origin, '_blank');
+                  }}
                 >
                   <span className="text-[#1F2429] text-xs font-bold">
                     {"Learn More"}
@@ -412,98 +473,10 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
                   />
                 </div>
               </div>
-              {/* Бегущая лента с карточками */}
-					<div className="flex animate-scroll pb-6">
-						{/* Первый набор карточек */}
-						<div className="flex flex-none gap-4 pr-4">
-						<div className="flex justify-between items-center bg-white w-[300px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
-							<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
-                            <img
-                              src="/quiz-result-images/lady1.png"
-                              className="w-[60px] h-[60px] max-[360px]:w-[48px] max-[360px]:h-[48px] ml-[15px] object-fill"
-                            />
-							<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
-								{"Mia Robinson"}
-							</span>
-							</div>
-							<span className="text-[#1F2429] pl-2 text-sm flex-1 mr-[18px]" >
-							{"Sleep quality improved and I wake up less groggy"}
-							</span>
-						</div>
-						<div className="flex justify-between items-center bg-white w-[300px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
-							<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
-                            <img
-                              src="/quiz-result-images/lady2.png"
-                              className="w-[60px] h-[60px] max-[360px]:w-[48px] max-[360px]:h-[48px] ml-[15px] object-fill"
-                            />
-							<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
-								{"Sarah Smith"}
-							</span>
-							</div>
-							<span className="text-[#1F2429] pl-2 text-sm flex-1 mr-[18px]" >
-							{"These supplements have helped me feel more balanced and energized throughout the day"}
-							</span>
-						</div>
-						<div className="flex justify-between items-center bg-white w-[300px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
-							<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
-                            <img
-                              src="/quiz-result-images/lady3.png"
-                              className="w-[60px] h-[60px] max-[360px]:w-[48px] max-[360px]:h-[48px] ml-[15px] object-fill"
-                            />
-							<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
-								{"Isabella Rossi"}
-							</span>
-							</div>
-							<span className="text-[#1F2429] pl-2 text-sm flex-1 mr-[21px]" >
-							{"Sleep tracker shows longer deep sleep windows."}
-							</span>
-						</div>
-						</div>
-						
-						{/* Дублированный набор для бесшовной анимации */}
-						<div className="flex flex-none gap-4 pr-4">
-						<div className="flex justify-between items-center bg-white w-[300px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
-							<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
-                            <img
-                              src="/quiz-result-images/lady1.png"
-                              className="w-[60px] h-[60px] max-[360px]:w-[48px] max-[360px]:h-[48px] ml-[15px] object-fill"
-                            />
-							<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
-								{"Mia Robinson"}
-							</span>
-							</div>
-							<span className="text-[#1F2429] text-sm pl-2 flex-1 mr-[18px]" >
-							{"Sleep quality improved and I wake up less groggy"}
-							</span>
-						</div>
-						<div className="flex justify-between items-center bg-white w-[300px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
-							<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
-                            <img
-                              src="/quiz-result-images/lady2.png"
-                              className="w-[60px] h-[60px] max-[360px]:w-[48px] max-[360px]:h-[48px] ml-[15px] object-fill"
-                            />
-							<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
-								{"Sarah Smith"}
-							</span>
-							</div>
-							<span className="text-[#1F2429] pl-2 text-sm flex-1 mr-[18px]" >
-							{"These supplements have helped me feel more balanced and energized throughout the day"}
-							</span>
-						</div>
-						<div className="flex justify-between items-center bg-white w-[300px] py-4 rounded-2xl border border-solid border-[#E1E9FD]">
-							<div className="flex flex-col items-start w-[75px] ml-4 gap-2">
-                            <img
-                              src="/quiz-result-images/lady3.png"
-                              className="w-[60px] h-[60px] max-[360px]:w-[48px] max-[360px]:h-[48px] ml-[15px] object-fill"
-                            />
-							<span className="text-[#1F2429] text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis" >
-								{"Isabella Rossi"}
-							</span>
-							</div>
-							<span className="text-[#1F2429] pl-2 text-sm flex-1 mr-[21px]" >
-							{"Sleep tracker shows longer deep sleep windows."}
-							</span>
-						</div>
+              {/* Карусель отзывов */}
+					<div className="w-full max-w-full overflow-hidden pb-6">
+						<div className="w-full max-w-full [&>div]:max-w-full [&>div]:mx-0 [&>div]:px-4 [&>div]:py-4">
+							<TestimonialsCarousel />
 						</div>
 					</div>
               <div className="bg-[#E1E9FD] w-[90%] h-[1px] mb-10 mx-5"></div>
