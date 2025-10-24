@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState, useContext } from 'react';
 import ResponsiveProjectV from './pages/ResponsiveProjectV';
 import QuizPage from './components/quiz-pages/QuizPage';
 import QuizResult from './components/quiz-pages/quiz-results/QuizResult';
-import ProductPage from './components/product-page/ProductPage';
+import ProductModal from './components/product-page/ProductModal';
 
 type Page = 'landing' | 'quiz' | 'results' | 'product' | 'test';
 
@@ -34,6 +34,28 @@ export function navigateToProduct(productNameOrKey: string) {
   // New: also store normalized productKey used by registry
   setCookie('productKey', productNameOrKey.toUpperCase(), 365);
   window.location.reload();
+}
+
+// Utility function to open product modal
+export function openProductModal(productNameOrKey: string) {
+  setCookie('productName', productNameOrKey, 365);
+  setCookie('productKey', productNameOrKey.toUpperCase(), 365);
+  setCookie('showProductModal', 'true', 365);
+  // Ensure we stay on results page
+  setCookie('page', 'results', 365);
+  // Force a small delay to ensure cookies are set, then reload
+  setTimeout(() => {
+    window.location.reload();
+  }, 50);
+}
+
+// Utility function to close product modal
+export function closeProductModal() {
+  setCookie('showProductModal', 'false', 365);
+  // Force a small delay to ensure cookies are set, then reload
+  setTimeout(() => {
+    window.location.reload();
+  }, 10);
 }
 
 
@@ -78,26 +100,67 @@ function App() {
   }, []);
 
   const [page, setPage] = useState<Page>(initialPage);
+  const [showProductModal, setShowProductModal] = useState<boolean>(() => {
+    return getCookie('showProductModal') === 'true';
+  });
 
   useEffect(() => {
     setCookie('page', page, 365);
   }, [page]);
+
+  useEffect(() => {
+    const modalState = getCookie('showProductModal') === 'true';
+    setShowProductModal(modalState);
+  }, []);
+
+  const handleCloseProductModal = () => {
+    setShowProductModal(false);
+    setCookie('showProductModal', 'false', 365);
+  };
+
+  const handleOpenProductModal = (productNameOrKey: string) => {
+    setCookie('productName', productNameOrKey, 365);
+    setCookie('productKey', productNameOrKey.toUpperCase(), 365);
+    setShowProductModal(true);
+    setCookie('showProductModal', 'true', 365);
+  };
 
   return (
     <PageContext.Provider value={{ page, setPage }}>
       {page === 'quiz' ? (
         <QuizPage />
       ) : page === 'results' ? (
-        <QuizResult answers={(() => {
-          try {
-            const raw = localStorage.getItem('quiz.answers');
-            return raw ? JSON.parse(raw) : {};
-          } catch {
-            return {};
-          }
-        })()} />
+        <>
+          <QuizResult answers={(() => {
+            try {
+              const raw = localStorage.getItem('quiz.answers');
+              return raw ? JSON.parse(raw) : {};
+            } catch {
+              return {};
+            }
+          })()} />
+          <ProductModal
+            isOpen={showProductModal}
+            onClose={handleCloseProductModal}
+            productName={getCookie('productName') || 'Antiox'}
+            productKey={getCookie('productKey')}
+            answers={(() => {
+              try {
+                const raw = localStorage.getItem('quiz.answers');
+                return raw ? JSON.parse(raw) : {};
+              } catch {
+                return {};
+              }
+            })()}
+          />
+        </>
       ) : page === 'product' ? (
-        <ProductPage 
+        <ProductModal
+          isOpen={true}
+          onClose={() => {
+            setPage('results');
+            setCookie('showProductModal', 'false', 365);
+          }}
           productName={getCookie('productName') || 'Antiox'}
           productKey={getCookie('productKey')}
           answers={(() => {
@@ -107,7 +170,7 @@ function App() {
             } catch {
               return {};
             }
-          })()} 
+          })()}
         />
       ) : (
         <ResponsiveProjectV />

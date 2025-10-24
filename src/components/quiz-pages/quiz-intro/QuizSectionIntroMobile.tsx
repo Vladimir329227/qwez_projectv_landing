@@ -44,7 +44,7 @@ export default function QuizSectionIntroMobile({
   return (
     <div className="bg-white flex h-screen overflow-hidden relative">
       {/* Left column - Content */}
-      <div className="flex flex-col w-[60%] relative z-10">
+      <div className="flex flex-col w-[55%] sm:w-[60%] relative z-10">
         {/* Text content */}
         <div className="flex justify-center p-6 flex-1">
           <div className="w-full max-w-xl">

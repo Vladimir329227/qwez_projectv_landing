@@ -12,8 +12,11 @@ export default function QuizPage() {
   const { setPage } = usePage();
   const [currentStep, setCurrentStep] = useState<number>(0);
   const [answers, setAnswers] = useState<Record<string, any>>(() => {
-    // Clear any existing answers when starting fresh
-    localStorage.removeItem("quiz.answers");
+    // Only clear answers if we're starting a fresh quiz (not coming from results)
+    const currentPage = document.cookie.split('; ').find(row => row.startsWith('page='))?.split('=')[1];
+    if (currentPage !== 'results') {
+      localStorage.removeItem("quiz.answers");
+    }
     return {};
   });
   const [isDebugVisible, setIsDebugVisible] = useState(() => {

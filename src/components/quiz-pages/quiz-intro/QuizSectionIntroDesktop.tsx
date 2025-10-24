@@ -113,7 +113,7 @@ export default function QuizSectionIntroDesktop({
               {effectiveTitleLines.map((line, index) => (
                 <h1
                   key={`title-${index}`}
-                  className={`text-6xl text-[#1F2429] ${index === 0 ? "pt-6" : ""
+                  className={`text-5xl text-[#1F2429] ${index === 0 ? "pt-6" : ""
                     }`}
                 >
                   {line}
@@ -123,7 +123,7 @@ export default function QuizSectionIntroDesktop({
               {effectiveBodyLines.map((line, index) => (
                 <div
                   key={`body-${index}`}
-                  className="w-full text-[20px] text-left"
+                  className="w-full text-[18px] text-left"
                   dangerouslySetInnerHTML={{ __html: line || '' }}
                 />
               ))}

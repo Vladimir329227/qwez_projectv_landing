@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { navigateToProduct } from "../../../App";
+import { openProductModal } from "../../../App";
 import { RecommendationResult } from "./recommendationEngine";
 import { 
   getProductImage2, 
@@ -209,7 +209,11 @@ const RecommendationCarousel = ({ recommendations }: RecommendationCarouselProps
                   <div className="flex flex-col items-start mr-4">
                     <button
                       aria-label="View product"
-                      onClick={() => navigateToProduct(product.product_id)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        openProductModal(product.product_id);
+                      }}
                       className="flex items-center bg-[#1F2429] hover:bg-[#0f1215] transition-colors duration-200 rounded-[120000000px] p-2"
                     >
                       <img

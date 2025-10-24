@@ -10,11 +10,56 @@ export default function EmailForm({ onNext, onPrevious, initialValue = "" }: Ema
     const [email, setEmail] = useState(initialValue);
     const [isValid, setIsValid] = useState(false);
     const [isButtonsVisible, setIsButtonsVisible] = useState(false);
+    const [suggestedEmail, setSuggestedEmail] = useState<string | null>(null);
+
+    // Популярные домены и их опечатки
+    const domainSuggestions: { [key: string]: string } = {
+        'gnail.com': 'gmail.com',
+        'gmial.com': 'gmail.com',
+        'gmail.co': 'gmail.com',
+        'gmail.cm': 'gmail.com',
+        'gmai.com': 'gmail.com',
+        'gmai.co': 'gmail.com',
+        'gmai.cm': 'gmail.com',
+        'gmial.co': 'gmail.com',
+        'gmial.cm': 'gmail.com',
+        'gnail.co': 'gmail.com',
+        'gnail.cm': 'gmail.com',
+        'yaho.com': 'yahoo.com',
+        'yahoo.co': 'yahoo.com',
+        'yahoo.cm': 'yahoo.com',
+        'yaho.co': 'yahoo.com',
+        'yaho.cm': 'yahoo.com',
+        'hotmial.com': 'hotmail.com',
+        'hotmail.co': 'hotmail.com',
+        'hotmail.cm': 'hotmail.com',
+        'hotmial.co': 'hotmail.com',
+        'hotmial.cm': 'hotmail.com',
+        'outlok.com': 'outlook.com',
+        'outlook.co': 'outlook.com',
+        'outlook.cm': 'outlook.com',
+        'outlok.co': 'outlook.com',
+        'outlok.cm': 'outlook.com'
+    };
 
     useEffect(() => {
         // Валидация email
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        setIsValid(emailRegex.test(email));
+        const isValidEmail = emailRegex.test(email);
+        setIsValid(isValidEmail);
+
+        // Проверка на опечатки в домене
+        if (email.includes('@')) {
+            const domain = email.split('@')[1]?.toLowerCase();
+            if (domain && domainSuggestions[domain]) {
+                const correctedEmail = email.replace(domain, domainSuggestions[domain]);
+                setSuggestedEmail(correctedEmail);
+            } else {
+                setSuggestedEmail(null);
+            }
+        } else {
+            setSuggestedEmail(null);
+        }
     }, [email]);
 
     useEffect(() => {
@@ -34,10 +79,17 @@ export default function EmailForm({ onNext, onPrevious, initialValue = "" }: Ema
         }
     };
 
+    const applySuggestion = () => {
+        if (suggestedEmail) {
+            setEmail(suggestedEmail);
+            setSuggestedEmail(null);
+        }
+    };
+
     return (
         <>
             {/* Desktop Version */}
-            <div className="block bg-white flex flex-col min-h-screen">
+            <div className="bg-white flex flex-col min-h-screen">
                 {/* Header */}
                 <div className="pt-6">
                     <div className="flex justify-center">
@@ -80,8 +132,21 @@ export default function EmailForm({ onNext, onPrevious, initialValue = "" }: Ema
                                 }`}
                                 autoFocus
                             />
-                            {email && !isValid && (
+                            {email && !isValid && !suggestedEmail && (
                                 <p className="mt-2 text-sm text-red-500">Please enter a valid email address</p>
+                            )}
+                            {suggestedEmail && (
+                                <div className="mt-2 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                                    <p className="text-sm text-blue-800 mb-2">
+                                        Did you mean <strong>{suggestedEmail}</strong> instead?
+                                    </p>
+                                    <button
+                                        onClick={applySuggestion}
+                                        className="text-sm text-blue-600 hover:text-blue-800 underline font-medium"
+                                    >
+                                        Yes, use this email
+                                    </button>
+                                </div>
                             )}
                         </div>
                     </div>

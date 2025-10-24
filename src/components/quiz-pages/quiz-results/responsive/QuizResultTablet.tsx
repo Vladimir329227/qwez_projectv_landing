@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { navigateToProduct, navigateToLanding } from "../../../../App";
+import { openProductModal, navigateToLanding } from "../../../../App";
 import { RecommendationResult } from "../recommendationEngine";
 import {
 	getProductImage,
@@ -442,6 +442,7 @@ export default function QuizResultTablet({ answers, recommendations }: QuizResul
 						))}
 					</div>
 				</div>
+				{/* Закомментированная кнопка "Get Full Package Now" - можно вернуть при необходимости
 				<div className="flex items-start bg-[#1F2429] w-full max-w-[362px] py-[15px] mb-[50px] mx-auto rounded-[100000px]">
 					<div className="flex flex-1 flex-col items-start ml-5 mr-3">
 						<span className="text-white text-[15px]" >
@@ -454,6 +455,7 @@ export default function QuizResultTablet({ answers, recommendations }: QuizResul
 						</span>
 					</div>
 				</div>
+				*/}
 			</div>
 		</div>
 	)

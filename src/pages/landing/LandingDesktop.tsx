@@ -8,7 +8,9 @@ import IngredientsMarquee from "../../bloks/IngredientsMarquee";
 export default () => {
 	const { setPage } = usePage();
 	const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+	const [showStickyHeader, setShowStickyHeader] = useState(false);
 	const videoRef = React.useRef<HTMLVideoElement>(null);
+	const logosRef = React.useRef<HTMLDivElement>(null);
 	const reviews = [
 		{
 			logo: "/figma/feea408cc3f29c3b.png",
@@ -34,6 +36,20 @@ export default () => {
 	];
 	const [reviewIndex, setReviewIndex] = useState(0);
 	const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+
+	// Отслеживание скролла для показа sticky панели
+	React.useEffect(() => {
+		const handleScroll = () => {
+			if (logosRef.current) {
+				const logosRect = logosRef.current.getBoundingClientRect();
+				const shouldShow = logosRect.bottom < 0;
+				setShowStickyHeader(shouldShow);
+			}
+		};
+
+		window.addEventListener('scroll', handleScroll);
+		return () => window.removeEventListener('scroll', handleScroll);
+	}, []);
 
 	const faqData = [
 		{
@@ -66,6 +82,31 @@ export default () => {
 	};
 	return (
 		<div className="flex flex-col bg-white w-full max-w-full overflow-x-hidden">
+			{/* Фиксированная панель, появляющаяся при скролле */}
+			{showStickyHeader && (
+				<div className="fixed top-0 left-0 right-0 bg-white z-50 py-4 shadow-lg">
+					<div className="flex justify-between items-center self-stretch mx-[50px]">
+						<div className="flex items-center gap-6">
+							<div className="flex flex-col items-center">
+								<span className="text-[#1F2429] text-2xl font-bold">
+									{"Project V"}
+								</span>
+							</div>
+						</div>
+						<div className="flex items-center gap-6 pr-4">
+							<button className="flex items-start bg-[#00A8E2] py-[15px] px-8 rounded-[100000px] shrink-0"
+								onClick={() => setPage('quiz')}>
+								<div className="flex flex-col items-center">
+									<span className="text-white text-base font-bold whitespace-nowrap">
+										{"Take Quiz"}
+									</span>
+								</div>
+							</button>
+						</div>
+					</div>
+				</div>
+			)}
+
 			<div className="flex flex-col items-start self-stretch bg-white min-h-screen w-full">
 				<div className="flex flex-col items-start self-stretch bg-[url('/figma/e6c250bfc01d12d8.png')] bg-cover bg-top pt-12 pb-[177px]">
 					<div className="flex flex-col items-center p-[1px] mb-24 ml-24">
@@ -138,7 +179,7 @@ export default () => {
 						</div>
 					</div>
 				</div>
-				<div className="flex justify-center items-center self-stretch bg-[#1F2429] py-4 w-full overflow-x-auto">
+				<div ref={logosRef} className="flex justify-center items-center self-stretch bg-[#1F2429] py-4 w-full overflow-x-auto">
 					<div className="flex items-center gap-8 min-w-max">
 						<span className="text-white text-[25px] font-bold" >
 							{"Featured In"}
@@ -183,10 +224,10 @@ export default () => {
 						<div className="flex flex-col w-full lg:w-1/2 gap-8 lg:gap-16">
 							{/* Первая группа: иконка + текст */}
 							<div className="flex items-start gap-4 lg:gap-6 w-full">
-								<div className="flex-shrink-0 flex items-center justify-center">
+								<div className="flex-shrink-0 w-10 h-10 flex items-start justify-center">
 									<img
 										src={"/figma/8db6b31549aa4a3d.png"}
-										className="w-[18px] h-10 object-contain"
+										className="w-10 h-10 object-contain"
 										alt="Cryogenic Technology icon"
 									/>
 								</div>
@@ -202,10 +243,10 @@ export default () => {
 
 							{/* Вторая группа: иконка + текст */}
 							<div className="flex items-start gap-4 lg:gap-6 w-full">
-								<div className="flex-shrink-0 flex items-center justify-center">
+								<div className="flex-shrink-0 w-10 h-10 flex items-start justify-center">
 									<img
 										src={"/figma/93e9f044d64676e6.png"}
-										className="w-[27px] h-[39px] object-contain"
+										className="w-10 h-10 object-contain"
 										alt="Science-Driven Research icon"
 									/>
 								</div>
@@ -221,7 +262,7 @@ export default () => {
 
 							{/* Третья группа: иконка + текст */}
 							<div className="flex items-start gap-4 lg:gap-6 w-full">
-								<div className="flex-shrink-0 flex items-center justify-center">
+								<div className="flex-shrink-0 w-10 h-10 flex items-start justify-center">
 									<img
 										src={"/figma/f48ae9570f9cd666.png"}
 										className="w-10 h-10 object-contain"
@@ -569,7 +610,7 @@ export default () => {
 						{"Partnering with fashion insiders to bring you beauty-backed wellness that stands out - on and off the runway."}
 					</span>
 				</div>
-				<div className="bg-[#EAEBEB] flex flex-col items-center self-stretch mb-[1px]">
+				<div className="bg-[#EAEBEB] flex flex-col items-center self-stretch pt-12 pb-12">
 					<ExpertsCarousel />
 				</div>
 				<div className="flex flex-col self-stretch py-24">

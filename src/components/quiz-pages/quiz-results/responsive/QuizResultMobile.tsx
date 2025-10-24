@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { navigateToProduct, navigateToLanding } from "../../../../App";
+import { openProductModal, navigateToLanding } from "../../../../App";
 import { RecommendationResult } from "../recommendationEngine";
 import { 
   getProductImage, 
@@ -246,7 +246,11 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
                       </div>
                       <button
                         aria-label="View product"
-                        onClick={() => navigateToProduct(product.product_id)}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          openProductModal(product.product_id);
+                        }}
                         className="ml-auto flex items-center bg-[#1F2429] hover:bg-[#0f1215] transition-colors duration-200 rounded-[120000000px] p-2"
                       >
                         <img
@@ -513,6 +517,7 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
                   ))}
                 </div>
               </div>
+              {/* Закомментированная кнопка "Get Full Package Now" - можно вернуть при необходимости
               <div className="flex items-center self-stretch justify-center w-[100%]">
                 <button className="flex items-start bg-[#1F2429] py-[15px] w-[90%] justify-between px-5 rounded-[100000px]">
                   <div className="flex flex-col shrink-0 items-center">
@@ -525,6 +530,7 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
                   </div>
                 </button>
               </div>
+              */}
             </div>
           </div>
         </div>

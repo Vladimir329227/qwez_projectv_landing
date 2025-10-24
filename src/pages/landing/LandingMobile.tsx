@@ -10,7 +10,9 @@ export default (props: any) => {
 	const { setPage } = usePage();
 	const [openFAQ, setOpenFAQ] = useState<number | null>(null);
 	const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+	const [showStickyHeader, setShowStickyHeader] = useState(false);
 	const videoRef = React.useRef<HTMLVideoElement>(null);
+	const logosRef = React.useRef<HTMLDivElement>(null);
 
 	const faqData = [
 		{
@@ -38,8 +40,47 @@ export default (props: any) => {
 	const toggleFAQ = (index: number) => {
 		setOpenFAQ(openFAQ === index ? null : index);
 	};
+
+	// Отслеживание скролла для показа sticky панели
+	React.useEffect(() => {
+		const handleScroll = () => {
+			if (logosRef.current) {
+				const logosRect = logosRef.current.getBoundingClientRect();
+				const shouldShow = logosRect.bottom < 0;
+				setShowStickyHeader(shouldShow);
+			}
+		};
+
+		window.addEventListener('scroll', handleScroll);
+		return () => window.removeEventListener('scroll', handleScroll);
+	}, []);
 	return (
 		<div className="flex flex-col bg-white w-full overflow-x-hidden">
+			{/* Фиксированная панель, появляющаяся при скролле */}
+			{showStickyHeader && (
+				<div className="fixed top-0 left-0 right-0 bg-white z-50 py-3 shadow-lg">
+					<div className="flex justify-between items-center self-stretch mx-5">
+						<div className="flex items-center gap-3">
+							<div className="flex flex-col items-center">
+								<span className="text-[#1F2429] text-lg font-bold">
+									{"Project V"}
+								</span>
+							</div>
+						</div>
+						<div className="flex items-center shrink-0">
+							<button className="flex items-start bg-[#00A8E2] py-[12px] px-4 rounded-[100000px]"
+								onClick={() => setPage('quiz')}>
+								<div className="flex flex-col items-center">
+									<span className="text-white text-sm font-bold whitespace-nowrap">
+										{"Take Quiz"}
+									</span>
+								</div>
+							</button>
+						</div>
+					</div>
+				</div>
+			)}
+
 			<div className="flex flex-col items-start self-stretch bg-white w-full">
 				<div className="flex flex-col items-start self-stretch bg-[url('/figma/a2faa45b0644ed10.jpg')] bg-cover bg-no-repeat bg-top py-12 gap-12">
 					<div className="flex flex-col items-center pb-[1px] ml-4">
@@ -112,7 +153,7 @@ export default (props: any) => {
 						</button>
 					</div>
 				</div>
-				<div className="flex flex-col items-center self-stretch bg-[#1F2429] p-4 gap-4">
+				<div ref={logosRef} className="flex flex-col items-center self-stretch bg-[#1F2429] p-4 gap-4">
 					<span className="text-white text-[25px] font-bold" >
 						{"Featured In"}
 					</span>
@@ -439,7 +480,7 @@ export default (props: any) => {
 						<span className="text-white text-[32px] font-bold w-full ml-4" >
 							{"Made In France.\nTrusted Worldwide."}
 						</span>
-						<span className="text-white text-lg w-full ml-4" >
+						<span className="text-white text-lg ml-4" >
 							{"Our manufacturing facility is located near the Bugatti plant in Strasbourg. Premium European manufacturing, backed by science and strict quality standards."}
 						</span>
 					</div>
@@ -506,7 +547,7 @@ export default (props: any) => {
 					<span className="text-white text-[30px] font-bold ml-4" >
 						{"As Seen At Fashion Week"}
 					</span>
-					<span className="text-white text-lg w-full ml-4" >
+					<span className="text-white text-lg ml-4" >
 						{"Partnering with fashion insiders to bring you beauty-backed wellness that stands out - on and off the runway."}
 					</span>
 				</div>
@@ -577,7 +618,7 @@ export default (props: any) => {
 					<span className="text-white text-[30px] font-bold ml-4" >
 						{"Visit Us At Our New Boutique"}
 					</span>
-					<span className="text-white text-lg w-full ml-4" >
+					<span className="text-white text-lg ml-4" >
 						{"Discover our curated collection at Kärntner Ring 10 in Vienna. Immerse yourself in an exclusive shopping experience unlike any other."}
 					</span>
 				</div>

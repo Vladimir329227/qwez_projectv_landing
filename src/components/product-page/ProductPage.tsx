@@ -7,10 +7,12 @@ export default function ProductPage({
   answers = {} as Record<string, any>,
   productName,
   productKey,
+  onClose,
 }: {
   answers?: Record<string, any>;
   productName?: string;
   productKey?: string;
+  onClose?: () => void;
 }) {
   return (
     <div className="flex flex-col bg-white">
@@ -20,6 +22,7 @@ export default function ProductPage({
           answers={answers}
           productName={productName}
           productKey={productKey}
+          onClose={onClose}
         />
       </div>
       {/* Tablet / Medium */}
@@ -28,6 +31,7 @@ export default function ProductPage({
           answers={answers}
           productName={productName}
           productKey={productKey}
+          onClose={onClose}
         />
       </div>
       {/* Desktop / Large */}
@@ -36,6 +40,7 @@ export default function ProductPage({
           answers={answers}
           productName={productName}
           productKey={productKey}
+          onClose={onClose}
         />
       </div>
     </div>

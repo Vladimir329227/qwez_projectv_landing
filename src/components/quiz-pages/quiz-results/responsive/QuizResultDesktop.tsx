@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { navigateToProduct, navigateToLanding } from "../../../../App";
+import { openProductModal, navigateToLanding } from "../../../../App";
 import { RecommendationResult } from "../recommendationEngine";
 import { 
   getProductImage, 
@@ -152,7 +152,7 @@ export default function QuizResultDesktop({ answers, recommendations }: QuizResu
 				</div>
 			</div>
 			
-			<div className="bg-white mx-auto rounded-t-[32px] -mt-8 relative z-20 shadow-lg">
+			<div className="bg-white mx-auto rounded-t-[32px] -mt-8 relative z-20">
 				<div className="flex flex-col items-center self-stretch mt-[50px] mb-16 mx-[50px]">
 					<div className="flex justify-between items-center self-stretch mb-10" ref={headerRef}>
 							<div className="flex justify-between items-center gap-6">
@@ -467,6 +467,7 @@ export default function QuizResultDesktop({ answers, recommendations }: QuizResu
 						</div>
 					</div>
 				</div>
+				{/* Закомментированная кнопка "Get Full Package Now" - можно вернуть при необходимости
 				<div className="flex flex-col items-center self-stretch mb-32">
 					<button className="flex items-start bg-[#1F2429] w-[362px] py-[15px] rounded-[100000px]">
 						<div className="flex flex-1 flex-col items-start ml-5 mr-3">
@@ -481,6 +482,7 @@ export default function QuizResultDesktop({ answers, recommendations }: QuizResu
 						</div>
 					</button>
 				</div>
+				*/}
 			</div>
 		</div>
 	)

@@ -1,3 +1,27 @@
+# Product Page Instructions
+
+## Modal Implementation (NEW)
+
+The product page now opens as a modal overlay instead of replacing the entire screen. This allows users to:
+- View product details while keeping the quiz results page visible in the background
+- Easily switch between different products without losing context
+- Close the modal and return to the results page
+
+### Key Changes:
+- `ProductModal.tsx` - New modal wrapper component
+- `openProductModal()` - New function to open products in modal mode
+- `navigateToProduct()` - Still available for full-page navigation (backward compatibility)
+- All quiz result components now use `openProductModal()` instead of `navigateToProduct()`
+
+### Modal Features:
+- Responsive design (mobile, tablet, desktop)
+- Click outside to close
+- Escape key to close
+- Prevents body scroll when open
+- Smooth animations and backdrop blur
+
+## Product Registration
+
 - Добавил поддержку ключа продукта: теперь можно открывать страницу по ключу реестра. В `App.tsx` `navigateToProduct` сохраняет `productKey` (и `productName` для обратной совместимости) в cookie и открывает `ProductPage`.
 - `ProductPage` принимает новый проп `productKey` и прокидывает его в `ProductPageDesktop`/`Tablet`/`Mobile`.
 - Компоненты рендерят контент через `getProductContent(productKey, { productName })`.
@@ -57,7 +81,8 @@ PRODUCTS.POWER_OF_MIND = {
 
 2. Переход на страницу:
 
-- Из любого места UI вызовите `navigateToProduct('POWER_OF_MIND')`. Кейс не важен: ключ нормализуется к верхнему регистру.
+- **Modal mode (recommended)**: Из любого места UI вызовите `openProductModal('POWER_OF_MIND')`. Кейс не важен: ключ нормализуется к верхнему регистру.
+- **Full page mode**: Из любого места UI вызовите `navigateToProduct('POWER_OF_MIND')`. Кейс не важен: ключ нормализуется к верхнему регистру.
 - Если вызываете со старым именем, тоже работает: сохранится и `productName`, и `productKey`.
 
-Готово: чтобы создать новую страницу — просто добавьте запись в `PRODUCTS` и вызовите `navigateToProduct` с этим ключом.
+Готово: чтобы создать новую страницу — просто добавьте запись в `PRODUCTS` и вызовите `openProductModal` с этим ключом для модального режима или `navigateToProduct` для полной страницы.

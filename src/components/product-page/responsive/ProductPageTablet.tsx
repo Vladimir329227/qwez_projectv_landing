@@ -1,33 +1,33 @@
 import React, { useRef, useState } from "react";
-import { navigateToLastPage } from "../../../App";
 import { getProductContent } from "../ProductContent";
 export default ({
   answers = {},
   productName = "Antiox",
   productKey,
+  onClose,
 }: {
   answers?: Record<string, any>;
   productName?: string;
   productKey?: string;
+  onClose?: () => void;
 }) => {
   const content = getProductContent(productKey);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  
+  // Фильтруем ингредиенты для отображения на странице продукта
+  const visibleIngredients = content.ingredients.filter(
+    ing => ing.showOnProductPage !== false
+  );
+  
+  // Получаем все ингредиенты для полного списка
+  const allIngredients = content.ingredients;
   return (
     <div className="items-start bg-white">
       <div
         className="flex flex-col items-start w-full bg-cover bg-center bg-no-repeat pt-12 pb-[35%]"
         style={{ backgroundImage: `url(${content.heroBackgroundSrc})` }}
       >
-        <button
-          className="flex flex-col items-start bg-[#1F2429] text-left py-1 ml-8 lg:ml-16 xl:ml-24 rounded-full border border-solid border-white"
-          onClick={() => navigateToLastPage()}
-        >
-          <img
-            src={content.closeIconSrc}
-            className="w-6 h-6 mx-1 rounded-full object-fill"
-          />
-        </button>
       </div>
       <div className="bg-white w-full -mt-12 relative z-10 rounded-t-3xl shadow-lg overflow-hidden">
         <div className="self-stretch">
@@ -37,10 +37,10 @@ export default ({
                 <div
                   className="grid w-full gap-3 items-stretch"
                   style={{
-                    gridTemplateColumns: `repeat(${content.ingredients.length}, minmax(0, 1fr))`,
+                    gridTemplateColumns: `repeat(${visibleIngredients.length}, minmax(0, 1fr))`,
                   }}
                 >
-                  {content.ingredients.map((ing) => (
+                  {visibleIngredients.map((ing) => (
                     <div
                       key={ing.title}
                       className="flex flex-col h-full bg-white py-3 px-3 gap-2 rounded-2xl border border-solid border-[#E1E9FD]"
@@ -152,16 +152,40 @@ export default ({
                 </span>
               </div>
             </div>
-            <a
-              href="https://projectvint.at/en/nutraceuticals/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex flex-col items-center bg-[#1F2429] text-left w-full max-w-sm py-3 rounded-full border-0"
+            
+            {/* Полный состав ингредиентов */}
+            <div className="flex flex-col items-start bg-white w-full p-4 gap-3 rounded-xl border border-solid border-[#E1E9FD]">
+              <span className="text-[#1F2429] text-base lg:text-lg font-bold">
+                Full Ingredients List
+              </span>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 w-full">
+                {allIngredients.map((ingredient, index) => (
+                  <div key={index} className="flex justify-between items-center py-1">
+                    <span className="text-[#1F2429] text-sm">
+                      {ingredient.title}
+                    </span>
+                    <span className="text-[#1F2429] text-sm font-medium">
+                      {ingredient.amount}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <button
+              onClick={() => {
+                if (onClose) {
+                  onClose();
+                } else {
+                  // Fallback: navigate back
+                  window.history.back();
+                }
+              }}
+              className="flex flex-col items-center bg-[#1F2429] text-left w-full max-w-sm py-3 rounded-full border-0 hover:bg-[#0f1215] transition-colors duration-200"
             >
               <span className="text-white text-base lg:text-lg">
-                {`Buy ${content.productName} Now!`}
+                Back to Results
               </span>
-            </a>
+            </button>
           </div>
         </div>
       </div>
