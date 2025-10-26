@@ -5,10 +5,43 @@ import InfiniteScroller from "../../bloks/InfiniteScroller";
 import ExpertsCarousel from "../../bloks/ExpertsCarousel";
 import TestimonialsCarousel from "../../bloks/TestimonialsCarousel";
 import IngredientsMarquee from "../../bloks/IngredientsMarquee";
+import { getTotalQuizSteps } from "../../config/quizConfig";
 export default () => {
-	const { setPage } = usePage();
+	const { setPage, showQuizProgressModalWithData } = usePage();
 	const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 	const [showStickyHeader, setShowStickyHeader] = useState(false);
+
+	const handleTakeQuiz = () => {
+		const savedAnswers = localStorage.getItem('quiz.answers');
+		const savedStep = localStorage.getItem('quiz.currentStep');
+		
+		if (savedAnswers) {
+			try {
+				const answers = JSON.parse(savedAnswers);
+				const currentStep = parseInt(savedStep || '0', 10);
+				const totalSteps = getTotalQuizSteps();
+				
+				// Quiz is completed if:
+				// 1. quizEndTime exists, OR
+				// 2. currentStep is at the last step (quiz completed but step not saved properly)
+				const isCompleted = !!answers.quizEndTime || currentStep >= totalSteps - 1;
+				
+				// Show modal with progress information
+				showQuizProgressModalWithData({
+					isCompleted,
+					currentStep: isCompleted ? 0 : Math.min(currentStep, totalSteps - 1), // If completed, don't show step info
+					totalSteps: totalSteps // Use actual total steps
+				});
+			} catch (error) {
+				console.warn('Failed to parse saved quiz data:', error);
+				// If parsing fails, start fresh
+				setPage('quiz');
+			}
+		} else {
+			// No saved progress, start fresh
+			setPage('quiz');
+		}
+	};
 	const videoRef = React.useRef<HTMLVideoElement>(null);
 	const logosRef = React.useRef<HTMLDivElement>(null);
 	const reviews = [
@@ -95,7 +128,7 @@ export default () => {
 						</div>
 						<div className="flex items-center gap-6 pr-4">
 							<button className="flex items-start bg-[#00A8E2] py-[15px] px-8 rounded-[100000px] shrink-0"
-								onClick={() => setPage('quiz')}>
+								onClick={handleTakeQuiz}>
 								<div className="flex flex-col items-center">
 									<span className="text-white text-base font-bold whitespace-nowrap">
 										{"Take Quiz"}
@@ -171,7 +204,7 @@ export default () => {
 						</div>
 						<div className="flex gap-4">
 							<button className="flex flex-col items-start bg-[#00A8E2] text-left py-[15px] px-[79px] rounded-[1000px] border-0"
-								onClick={() => setPage('quiz')}>
+								onClick={handleTakeQuiz}>
 								<span className="text-white text-base font-bold" >
 									{"Take Quiz"}
 								</span>
@@ -521,7 +554,7 @@ export default () => {
 						{/* Кнопка */}
 						<button
 							className="w-full lg:w-auto text-[#00A8E2] py-3 px-8 lg:py-[15px] lg:px-[79px] rounded-full border-2 border-solid border-gray-200 text-base hover:bg-white-600 transition-colors lg:mt-12 self-start mt-auto"
-							onClick={() => setPage('quiz')}
+							onClick={handleTakeQuiz}
 						>
 							Start Now
 						</button>
@@ -588,7 +621,7 @@ export default () => {
 								</span>
 							</div>
 							<button className="flex flex-col items-start bg-[#1F2429] text-left py-[15px] px-[79px] rounded-[100000px] border-0"
-								onClick={() => setPage('quiz')}>
+								onClick={handleTakeQuiz}>
 								<span className="text-white text-base font-bold" >
 									{"Take Quiz"}
 								</span>

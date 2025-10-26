@@ -1,6 +1,35 @@
 // Telegram Bot API configuration
 const TELEGRAM_BOT_TOKEN = "8010738456:AAEoag7AQtUnTAvAzMJVHJ3DYUXnA0b8MO4";
-const TELEGRAM_CHAT_ID = "1924632942";
+const TELEGRAM_CHAT_ID = "-1003229604443";
+
+// Track recent messages to prevent duplicates
+const recentMessages = new Map<string, number>();
+const DUPLICATE_PREVENTION_WINDOW = 30000; // 30 seconds
+
+// Create a hash from message content (works with Unicode)
+async function createMessageHash(message: string): Promise<string> {
+  try {
+    // Try using Web Crypto API (modern browsers)
+    if (typeof crypto !== 'undefined' && crypto.subtle) {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(message);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('').substring(0, 16);
+    }
+  } catch (error) {
+    console.warn('Web Crypto API not available, using fallback hash');
+  }
+  
+  // Fallback: simple hash using string manipulation
+  let hash = 0;
+  for (let i = 0; i < message.length; i++) {
+    const char = message.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash; // Convert to 32-bit integer
+  }
+  return Math.abs(hash).toString(16).substring(0, 16);
+}
 
 export interface QuizSubmissionData {
   answers: Record<string, any>;
@@ -34,10 +63,54 @@ export interface QuizSubmissionData {
   };
 }
 
-export const sendQuizResultsToTelegram = async (data: QuizSubmissionData): Promise<boolean> => {
+// Test function to get chat information
+export const testTelegramConnection = async (): Promise<void> => {
+  try {
+    const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getUpdates`);
+    const data = await response.json();
+    console.log('Telegram bot updates:', data);
+    
+    if (data.result && data.result.length > 0) {
+      console.log('Available chats:', data.result.map((update: any) => ({
+        chat_id: update.message?.chat?.id,
+        chat_type: update.message?.chat?.type,
+        chat_title: update.message?.chat?.title || update.message?.chat?.first_name
+      })));
+    }
+  } catch (error) {
+    console.error('Failed to test Telegram connection:', error);
+  }
+};
+
+export const sendQuizResultsToTelegram = async (data: QuizSubmissionData, retryCount: number = 0): Promise<boolean> => {
+  const maxRetries = 3;
+  
   try {
     // Format the message for Telegram
     const message = formatQuizResultsMessage(data);
+    
+    // Create a hash of the message content to check for duplicates
+    const messageHash = await createMessageHash(message);
+    const now = Date.now();
+    
+    // Check if we've sent this message recently
+    if (recentMessages.has(messageHash)) {
+      const lastSent = recentMessages.get(messageHash)!;
+      if (now - lastSent < DUPLICATE_PREVENTION_WINDOW) {
+        console.log('🚫 Duplicate message detected, skipping send');
+        return true; // Return true as if it was sent successfully
+      }
+    }
+    
+    // Mark this message as sent
+    recentMessages.set(messageHash, now);
+    
+    // Clean up old entries
+    for (const [hash, timestamp] of recentMessages.entries()) {
+      if (now - timestamp > DUPLICATE_PREVENTION_WINDOW) {
+        recentMessages.delete(hash);
+      }
+    }
     
     const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
       method: 'POST',
@@ -49,18 +122,58 @@ export const sendQuizResultsToTelegram = async (data: QuizSubmissionData): Promi
         text: message,
         parse_mode: 'HTML',
         disable_web_page_preview: true
-      })
+      }),
+      // Add timeout and retry configuration
+      signal: AbortSignal.timeout(30000) // 30 second timeout
     });
 
     if (!response.ok) {
       const errorData = await response.json();
       console.error('Telegram API error:', errorData);
+      
+      // Log specific error details
+      if (errorData.error_code === 400) {
+        if (errorData.description?.includes('chat not found')) {
+          console.error('❌ Chat not found. Please check:');
+          console.error('1. Is the bot added to the group?');
+          console.error('2. Is the chat ID correct? (should be negative for groups)');
+          console.error('3. Does the bot have permission to send messages?');
+          console.error('Current chat ID:', TELEGRAM_CHAT_ID);
+        }
+      }
+      
       return false;
     }
 
+    console.log('✅ Telegram message sent successfully!');
     return true;
   } catch (error) {
     console.error('Failed to send quiz results to Telegram:', error);
+    
+    // Handle specific error types
+    if (error instanceof Error) {
+      if (error.name === 'AbortError') {
+        console.error('❌ Request timeout - Telegram API is not responding');
+        
+        // Retry logic for timeout errors
+        if (retryCount < maxRetries) {
+          console.log(`🔄 Retrying after timeout... (${retryCount + 1}/${maxRetries})`);
+          await new Promise(resolve => setTimeout(resolve, 2000 * (retryCount + 1))); // Longer delay for timeouts
+          return sendQuizResultsToTelegram(data, retryCount + 1);
+        }
+      } else if (error.message.includes('ERR_CONNECTION_RESET') || 
+                 error.message.includes('Failed to fetch')) {
+        console.error('❌ Network error - Connection was reset or failed');
+        
+        // Retry logic for network errors
+        if (retryCount < maxRetries) {
+          console.log(`🔄 Retrying after network error... (${retryCount + 1}/${maxRetries})`);
+          await new Promise(resolve => setTimeout(resolve, 1000 * (retryCount + 1))); // Exponential backoff
+          return sendQuizResultsToTelegram(data, retryCount + 1);
+        }
+      }
+    }
+    
     return false;
   }
 };

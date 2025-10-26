@@ -116,7 +116,7 @@ export default function QuestionFormMobile({
                                             <button
                                                 key={String(opt.value)}
                                                 onClick={handleClick}
-                                                className={`quiz-option-button w-full p-5 border-2 rounded-lg text-center text-lg transition-colors ${
+                                                className={`quiz-option-button w-full p-4 border-2 rounded-lg text-center text-lg transition-colors ${
                                                     isSelected ? "border-[#00A8E2] bg-blue-50 text-[#00A8E2]" : "border-gray-200 hover:border-[#00A8E2] hover:bg-blue-50"
                                                 }`}
                                             >
@@ -142,7 +142,7 @@ export default function QuestionFormMobile({
                                             <button
                                                 key={String(opt.value)}
                                                 onClick={handleClick}
-                                                className={`quiz-option-button w-full p-5 border-2 rounded-lg text-center text-lg transition-colors ${
+                                                className={`quiz-option-button w-full p-4 border-2 rounded-lg text-center text-lg transition-colors ${
                                                     isSelected ? "border-[#00A8E2] bg-blue-50 text-[#00A8E2]" : "border-gray-200 hover:border-[#00A8E2] hover:bg-blue-50"
                                                 }`}
                                             >
@@ -170,7 +170,7 @@ export default function QuestionFormMobile({
                                             return (
                                                 <button
                                                     onClick={handleClick}
-                                                    className={`quiz-option-button w-full p-5 border-2 rounded-lg text-center text-lg transition-colors ${
+                                                    className={`quiz-option-button w-full p-4 border-2 rounded-lg text-center text-lg transition-colors ${
                                                         isSelected ? "border-[#00A8E2] bg-blue-50 text-[#00A8E2]" : "border-gray-200 hover:border-[#00A8E2] hover:bg-blue-50"
                                                     }`}
                                                 >

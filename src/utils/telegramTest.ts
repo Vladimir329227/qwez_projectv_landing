@@ -1,5 +1,5 @@
 // Test file for Telegram functionality
-import { sendQuizResultsToTelegram, QuizSubmissionData } from './telegramSender';
+import { sendQuizResultsToTelegram, QuizSubmissionData, testTelegramConnection } from './telegramSender';
 
 // Test data for Telegram sending
 export const testQuizSubmission: QuizSubmissionData = {
@@ -67,6 +67,22 @@ export const testQuizSubmission: QuizSubmissionData = {
     age: 30,
     gender: 'female'
   }
+};
+
+// Function to reset Telegram sent status (for testing)
+export const resetTelegramSentStatus = (): void => {
+  try {
+    localStorage.removeItem('telegram.results.sent');
+    console.log('Telegram sent status reset - next quiz completion will send to Telegram');
+  } catch (error) {
+    console.error('Failed to reset Telegram sent status:', error);
+  }
+};
+
+// Function to test Telegram connection and get chat info
+export const testConnection = async (): Promise<void> => {
+  console.log('Testing Telegram connection...');
+  await testTelegramConnection();
 };
 
 // Function to test Telegram sending

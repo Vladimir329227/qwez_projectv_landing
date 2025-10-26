@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useLayoutEffect } from "react";
 import { PRODUCTS } from "../components/product-page/ProductContent";
-import { navigateToProduct } from "../App";
+import { openProductModal } from "../App";
 
 const ProductCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -244,9 +244,9 @@ const ProductCarousel = () => {
   // Функция для получения gap в зависимости от размера экрана
   const getGap = () => {
     const width = window.innerWidth;
-    if (width < 640) return 6;
-    if (width < 1024) return 10;
-    return 14;
+    if (width < 640) return 8; // Увеличиваем gap для мобильных устройств
+    if (width < 1024) return 12;
+    return 16;
   };
 
   // Более точный расчет ширины карточки
@@ -423,9 +423,9 @@ const ProductCarousel = () => {
               >
                 {/* Карточка товара с адаптивными размерами */}
                  <div
-                   className={`flex flex-col items-center bg-[#F6F6F6] rounded-2xl w-full max-w-[280px] sm:max-w-[300px] lg:max-w-[320px] overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 ${
+                   className={`flex flex-col items-center bg-[#F6F6F6] rounded-2xl w-full max-w-[300px] sm:max-w-[320px] lg:max-w-[340px] overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 ${
                      !isExpanded
-                       ? "min-h-[520px] sm:min-h-[580px] lg:min-h-[620px]"
+                       ? "min-h-[540px] sm:min-h-[600px] lg:min-h-[640px]"
                        : ""
                    }`}
                  >
@@ -436,7 +436,7 @@ const ProductCarousel = () => {
                       aria-label={`Open ${product.title}`}
                       title="View product"
                       className="cursor-pointer group relative rounded-2xl overflow-hidden"
-                      onClick={() => navigateToProduct(product.id)}
+                      onClick={() => openProductModal(product.id)}
                     >
                       <img
                         src={product.image}
@@ -450,19 +450,33 @@ const ProductCarousel = () => {
                       </div>
                     </button>
                   </div>
+                  
+                  {/* Блок "Check the product" с серым текстом и стрелкой */}
+                  <div className="w-full px-3 sm:px-4 pt-2">
+                    <div className="flex items-center gap-2">
+                      <span className="text-gray-500 text-xs sm:text-sm text-left">
+                        *Click*
+                      </span>
+                      <img 
+                        src="/figma/arrow.png" 
+                        alt="arrow" 
+                        className="h-10 w-10"
+                      />
+                    </div>
+                  </div>
 
                   {/* Контент карточки с адаптивными размерами */}
                    <div className="p-3 sm:p-4 flex flex-col w-full">
                     <button
                       type="button"
-                      onClick={() => navigateToProduct(product.id)}
-                      className="text-[#1F2429] text-lg font-bold mb-2 text-left hover:underline"
+                      onClick={() => openProductModal(product.id)}
+                      className="text-[#1F2429] text-lg font-bold mb-2 text-left hover:underline break-words"
                     >
                       {product.title}
                     </button>
 
-                     <div className="mb-3 h-24 sm:h-28 md:h-28 lg:h-28 overflow-hidden">
-                      <span className="text-[#1F2429] text-sm leading-relaxed block">
+                     <div className="mb-3 min-h-[96px] sm:min-h-[112px] md:min-h-[112px] lg:min-h-[112px]">
+                      <span className="text-[#1F2429] text-sm leading-relaxed block break-words">
                         {product.description}
                       </span>
                     </div>

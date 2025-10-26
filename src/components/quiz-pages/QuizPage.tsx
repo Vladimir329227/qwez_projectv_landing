@@ -8,15 +8,58 @@ import DebugNavigation from "../debug/DebugNavigation";
 import DebugToggle from "../debug/DebugToggle";
 import { canUseDebugMode, canEnableDebugViaUrl, canEnableDebugViaStorage } from "../../config/debugConfig";
 
-export default function QuizPage() {
+interface QuizPageProps {
+  startFresh?: boolean;
+}
+
+export default function QuizPage({ startFresh = false }: QuizPageProps) {
   const { setPage } = usePage();
-  const [currentStep, setCurrentStep] = useState<number>(0);
-  const [answers, setAnswers] = useState<Record<string, any>>(() => {
-    // Only clear answers if we're starting a fresh quiz (not coming from results)
-    const currentPage = document.cookie.split('; ').find(row => row.startsWith('page='))?.split('=')[1];
-    if (currentPage !== 'results') {
+  const [currentStep, setCurrentStep] = useState<number>(() => {
+    // If starting fresh, clear localStorage and start from step 0
+    if (startFresh) {
+      localStorage.removeItem("quiz.currentStep");
       localStorage.removeItem("quiz.answers");
+      return 0;
     }
+    
+    // Try to restore current step from localStorage
+    try {
+      const savedStep = localStorage.getItem("quiz.currentStep");
+      if (savedStep) {
+        const step = parseInt(savedStep, 10);
+        if (!isNaN(step) && step >= 0) {
+          return step;
+        }
+      }
+    } catch (error) {
+      console.warn('Failed to parse saved quiz step:', error);
+    }
+    return 0;
+  });
+  const [answers, setAnswers] = useState<Record<string, any>>(() => {
+    // If starting fresh, return empty answers
+    if (startFresh) {
+      return {};
+    }
+    
+    // Try to restore answers from localStorage first
+    try {
+      const savedAnswers = localStorage.getItem("quiz.answers");
+      if (savedAnswers) {
+        const parsed = JSON.parse(savedAnswers);
+        // Only clear answers if we're starting a completely fresh quiz
+        // (no saved answers and not coming from results)
+        const currentPage = document.cookie.split('; ').find(row => row.startsWith('page='))?.split('=')[1];
+        if (currentPage === 'results' || Object.keys(parsed).length > 0) {
+          return parsed;
+        }
+      }
+    } catch (error) {
+      console.warn('Failed to parse saved quiz answers:', error);
+    }
+    
+    // Clear localStorage only if we're starting a completely fresh quiz
+    localStorage.removeItem("quiz.answers");
     return {};
   });
   const [isDebugVisible, setIsDebugVisible] = useState(() => {
@@ -39,6 +82,10 @@ export default function QuizPage() {
   useEffect(() => {
     localStorage.setItem("quiz.answers", JSON.stringify(answers));
   }, [answers]);
+
+  useEffect(() => {
+    localStorage.setItem("quiz.currentStep", currentStep.toString());
+  }, [currentStep]);
 
   // Save debug mode preference
   const toggleDebugMode = () => {

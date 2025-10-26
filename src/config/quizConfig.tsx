@@ -5,6 +5,7 @@ import TimeCarousel from '../components/TimeCarousel';
 import { EmailForm, NameForm } from '../components/quiz-forms';
 import QuizResult from '../components/quiz-pages/quiz-results/QuizResult';
 import QuizDiveSlidePage from '../components/quiz-pages/quiz-intro/quiz-dive-slide/QuizDiveSlidePage';
+import { navigateToPage, isHistorySupported } from '../utils/navigationUtils';
 
 
 export interface PersonalDetailsQuestion {
@@ -538,6 +539,37 @@ export interface QuizStep {
     content: React.ReactNode;
 }
 
+// Function to calculate total quiz steps
+export const getTotalQuizSteps = (): number => {
+    let totalSteps = 1; // Initial intro step
+    
+    // Personal Details: 3 questions + 1 intermediate page + 2 remaining questions = 6 steps
+    totalSteps += 6;
+    
+    // Morning Energy: 1 intro + questions
+    totalSteps += 1 + morningEnergyQuestions.length;
+    
+    // Movement: 1 intro + questions  
+    totalSteps += 1 + movementQuestions.length;
+    
+    // Nutrition: 1 intro + questions
+    totalSteps += 1 + nutritionQuestions.length;
+    
+    // Sleep & Stress: 1 intro + questions
+    totalSteps += 1 + sleepQuestions.length;
+    
+    // Indulgence: 1 intro + questions
+    totalSteps += 1 + indulgenceQuestions.length;
+    
+    // Environment: 1 intro + questions
+    totalSteps += 1 + environmentQuestions.length;
+    
+    // Email form + Name form + Results = 3 steps
+    totalSteps += 3;
+    
+    return totalSteps;
+};
+
 export const createQuizSteps = (
     answers: Record<string, any>,
     setAnswers: (answers: Record<string, any>) => void,
@@ -911,7 +943,13 @@ export const createQuizSteps = (
                     try {
                         localStorage.setItem('quiz.answers', JSON.stringify(updatedAnswers));
                     } catch {}
-                    document.cookie = `page=results; path=/; max-age=${60 * 60 * 24 * 365}`;
+                    
+                    // Navigate to results page using browser history if supported
+                    if (isHistorySupported()) {
+                        navigateToPage('results');
+                    } else {
+                        document.cookie = `page=results; path=/; max-age=${60 * 60 * 24 * 365}`;
+                    }
                     setCurrentStep(currentStep + 1);
                 }}
                 onPrevious={() => setCurrentStep(currentStep - 1)}

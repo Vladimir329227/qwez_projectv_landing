@@ -1326,11 +1326,17 @@ export const PRODUCTS: Record<string, ProductContent> = {
 // Auto-merge generated product content if present (from CSVs)
 // @ts-ignore
 let GENERATED_PRODUCTS: Record<string, ProductContent> = {};
+
+// Try to load generated products dynamically (only in browser environment)
 try { 
-  const path = require('path');
-  const generatedPath = path.join(__dirname, 'ProductContent.generated.ts');
-  GENERATED_PRODUCTS = require(generatedPath).GENERATED_PRODUCTS; 
-  console.log('Loaded GENERATED_PRODUCTS keys:', Object.keys(GENERATED_PRODUCTS));
+  // Check if we're in a browser environment
+  if (typeof window !== 'undefined') {
+    // In browser, we can't use require, so we'll skip loading generated products
+    console.log('Browser environment detected - skipping generated products load');
+  } else {
+    // This would only work in Node.js environment (build time)
+    console.log('Node.js environment detected - generated products loading not implemented for runtime');
+  }
 } catch (e) {
   console.log('Failed to load GENERATED_PRODUCTS:', (e as Error).message);
 }

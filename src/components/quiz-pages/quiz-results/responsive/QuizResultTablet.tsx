@@ -108,6 +108,20 @@ export default function QuizResultTablet({ answers, recommendations }: QuizResul
 			<div className="flex flex-col items-center bg-white max-w-full rounded-t-[32px] -mt-8 relative z-20 shadow-lg">
 				<div className="flex justify-between items-center self-stretch mt-[50px] mb-8 px-4 sm:px-8">
 					<div className="flex items-center gap-6">
+						<button 
+							className="flex items-center gap-2 text-[#1F2429] hover:text-[#00A8E2] transition-colors"
+							onClick={navigateToLanding}
+						>
+							<svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+							</svg>
+							<span className="text-sm font-medium">
+								Back to main page
+							</span>
+						</button>
+					</div>
+					
+					<div className="flex items-center gap-6">
 						<div className="flex flex-col items-center ml-[1px]">
 							<span className="text-[#1F2429] text-base font-bold" >
 								{"Final Results"}
@@ -118,6 +132,13 @@ export default function QuizResultTablet({ answers, recommendations }: QuizResul
 							<span className="text-white text-sm font-bold" >
 								{`${recommendations.effectiveness_score} points`}
 							</span>
+						</button>
+						<button className="flex items-start bg-[#1F2429] py-[12px] px-3 rounded-[100000px]">
+							<div className="flex flex-col items-center">
+								<span className="text-white text-sm whitespace-nowrap">
+									{"Email my profile"}
+								</span>
+							</div>
 						</button>
 					</div>
 

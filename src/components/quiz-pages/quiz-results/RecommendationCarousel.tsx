@@ -25,16 +25,16 @@ const RecommendationCarousel = ({ recommendations }: RecommendationCarouselProps
       const width = window.innerWidth;
       if (width < 768) {
         setCardsToShow(1);
-        setGap(6);
+        setGap(8); // Увеличиваем gap для мобильных устройств
       } else if (width < 1024) {
         setCardsToShow(2);
-        setGap(10);
+        setGap(12);
       } else if (width < 1280) {
         setCardsToShow(3);
-        setGap(14);
+        setGap(16);
       } else {
         setCardsToShow(3);
-        setGap(14);
+        setGap(16);
       }
     };
 
@@ -186,7 +186,7 @@ const RecommendationCarousel = ({ recommendations }: RecommendationCarouselProps
                   </div>
                   <div className="flex flex-col self-stretch gap-3">
                     <div className="flex flex-col items-start self-stretch gap-1.5">
-                      <span className="text-[#1F2429] text-base font-bold" >
+                      <span className="text-[#1F2429] text-base font-bold break-words" >
                         {product.product_name}
                       </span>
                       <div className="flex items-center ml-[1px] gap-1.5">
@@ -199,7 +199,7 @@ const RecommendationCarousel = ({ recommendations }: RecommendationCarouselProps
                       </div>
                     </div>
                     <div className="flex flex-col items-center self-stretch">
-                      <span className="text-[#626669] text-[15px] w-full" >
+                      <span className="text-[#626669] text-[15px] w-full break-words" >
                         {getProductDescription(product)}
                       </span>
                     </div>

@@ -90,20 +90,16 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
       {/* Фиксированная панель, появляющаяся при скролле */}
       {showStickyHeader && (
         <div className="fixed top-0 left-0 right-0 bg-white z-50 py-3 shadow-lg">
-          <div className="flex justify-between items-center self-stretch mx-5">
+          <div className="flex flex-col items-center gap-3 mx-5">
+            <span className="text-[#1F2429] text-lg font-bold text-center">
+              {"Final Results"}
+            </span>
             <div className="flex items-center gap-3">
-              <div className="flex flex-col items-center">
-                <span className="text-[#1F2429] text-lg font-bold">
-                  {"Final Results"}
-                </span>
-              </div>
               <button className="flex flex-col items-center bg-[#626669] text-left w-[83px] py-1.5 rounded-[40px] border-0">
                 <span className="text-white text-sm font-bold">
                   {`${recommendations.effectiveness_score} points`}
                 </span>
               </button>
-            </div>
-            <div className="flex items-center shrink-0">
               <button className="flex items-start bg-[#1F2429] py-[12px] px-3 rounded-[100000px]">
                 <div className="flex flex-col items-center">
                   <span className="text-white text-sm whitespace-nowrap">
@@ -151,28 +147,42 @@ export default function QuizResultMobile({ answers, recommendations }: QuizResul
         <div className="flex flex-col self-stretch w-full max-w-full relative">
           <div className="flex flex-col w-full max-w-full self-stretch relative">
             <div className="flex flex-col items-start bg-white pt-5 w-full max-w-full pb-[42px] rounded-t-[32px]">
-              <div className="flex justify-between items-center self-stretch mb-6 mx-5" ref={headerRef}>
-                <div className="flex items-center gap-3">
-                  <div className="flex flex-col items-center">
-                    <span className="text-[#1F2429] text-lg font-bold">
-                      {"Final Results"}
-                    </span>
-                  </div>
-                  <button className="flex flex-col items-center bg-[#626669] text-left w-[83px] py-1.5 rounded-[40px] border-0">
-                    <span className="text-white text-sm font-bold">
-                      {`${recommendations.effectiveness_score} points`}
+              <div className="flex flex-col items-center self-stretch mb-6 mx-5" ref={headerRef}>
+                {/* Кнопка "Back to main page" слева */}
+                <div className="flex justify-start items-center w-full mb-3">
+                  <button 
+                    className="flex items-center gap-2 text-[#1F2429] hover:text-[#00A8E2] transition-colors"
+                    onClick={navigateToLanding}
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                    <span className="text-sm font-medium">
+                      Back to main page
                     </span>
                   </button>
                 </div>
                 
-                <div className="flex items-center shrink-0">
-                  <button className="flex items-start bg-[#1F2429] py-[12px] px-3 rounded-[100000px]">
-                    <div className="flex flex-col items-center">
-                      <span className="text-white text-sm whitespace-nowrap">
-                        {"Email my profile"}
+                {/* Центральный заголовок с кнопками */}
+                <div className="flex flex-col items-center gap-3 w-full">
+                  <span className="text-[#1F2429] text-lg font-bold text-center">
+                    {"Final Results"}
+                  </span>
+                  
+                  <div className="flex items-center gap-3">
+                    <button className="flex flex-col items-center bg-[#626669] text-left w-[83px] py-1.5 rounded-[40px] border-0">
+                      <span className="text-white text-sm font-bold">
+                        {`${recommendations.effectiveness_score} points`}
                       </span>
-                    </div>
-                  </button>
+                    </button>
+                    <button className="flex items-start bg-[#1F2429] py-[12px] px-3 rounded-[100000px]">
+                      <div className="flex flex-col items-center">
+                        <span className="text-white text-sm whitespace-nowrap">
+                          {"Email my profile"}
+                        </span>
+                      </div>
+                    </button>
+                  </div>
                 </div>
               </div>
               <div className="bg-[#E1E9FD] w-[90%] h-[1px] mb-6 mx-5"></div>

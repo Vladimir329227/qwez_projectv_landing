@@ -9,7 +9,17 @@ export default function QuizResult({ answers = {} as Record<string, any> }) {
     "mobile"
   );
 
-  const { recommendations, isLoading, error, hasRecommendations } = useRecommendations(answers);
+  // Check if results have already been sent to Telegram
+  const shouldSendToTelegram = React.useMemo(() => {
+    try {
+      const telegramSent = localStorage.getItem('telegram.results.sent');
+      return !telegramSent; // Send only if not sent before
+    } catch {
+      return true; // If localStorage fails, send by default
+    }
+  }, []);
+
+  const { recommendations, isLoading, error, hasRecommendations } = useRecommendations(answers, shouldSendToTelegram);
 
   useEffect(() => {
     const computeDevice = () => {
