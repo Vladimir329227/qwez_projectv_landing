@@ -5,7 +5,7 @@ import InfiniteScroller from "../../bloks/InfiniteScroller";
 import ExpertsCarousel from "../../bloks/ExpertsCarousel";
 import TestimonialsCarousel from "../../bloks/TestimonialsCarousel";
 import IngredientsMarquee from "../../bloks/IngredientsMarquee";
-import { getTotalQuizSteps } from "../../config/quizConfig";
+import { getTotalQuizSteps, calculateProgressFromAnswers } from "../../config/quizConfig";
 export default () => {
 	const { setPage, showQuizProgressModalWithData } = usePage();
 	const [isVideoPlaying, setIsVideoPlaying] = useState(false);
@@ -18,13 +18,24 @@ export default () => {
 		if (savedAnswers) {
 			try {
 				const answers = JSON.parse(savedAnswers);
-				const currentStep = parseInt(savedStep || '0', 10);
-				const totalSteps = getTotalQuizSteps();
+				const savedStepNum = parseInt(savedStep || '0', 10);
+				const totalSteps = getTotalQuizSteps(answers);
+				
+				// Calculate actual progress from answers to handle cases where currentStep is reset
+				const calculatedStep = calculateProgressFromAnswers(answers);
+				
+				// Use the maximum of saved step and calculated step to get the most accurate progress
+				const currentStep = Math.max(savedStepNum, calculatedStep);
 				
 				// Quiz is completed if:
 				// 1. quizEndTime exists, OR
 				// 2. currentStep is at the last step (quiz completed but step not saved properly)
 				const isCompleted = !!answers.quizEndTime || currentStep >= totalSteps - 1;
+				
+				// Update localStorage with the corrected step
+				if (!isCompleted) {
+					localStorage.setItem('quiz.currentStep', currentStep.toString());
+				}
 				
 				// Show modal with progress information
 				showQuizProgressModalWithData({

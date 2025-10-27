@@ -5,7 +5,6 @@ import TimeCarousel from '../components/TimeCarousel';
 import { EmailForm, NameForm } from '../components/quiz-forms';
 import QuizResult from '../components/quiz-pages/quiz-results/QuizResult';
 import QuizDiveSlidePage from '../components/quiz-pages/quiz-intro/quiz-dive-slide/QuizDiveSlidePage';
-import { navigateToPage, isHistorySupported } from '../utils/navigationUtils';
 
 
 export interface PersonalDetailsQuestion {
@@ -18,6 +17,7 @@ export interface PersonalDetailsQuestion {
     isMultiSelect?: boolean; // Позволяет выбирать несколько опций
     columnLayout?: 'single' | 'double'; // Управляет количеством столбцов на десктопе
     columnLayoutMobile?: 'single' | 'double'; // Управляет количеством столбцов на мобильных устройствах
+    condition?: (answers: Record<string, any>) => boolean; // Условие для показа вопроса
 }
 
 export const personalDetailsQuestions: PersonalDetailsQuestion[] = [
@@ -104,7 +104,8 @@ export const personalDetailsQuestions: PersonalDetailsQuestion[] = [
             { value: 'pregnant', label: 'Pregnant' },
             { value: 'postpartum', label: 'Postpartum - recently gave birth' },
             { value: 'other', label: 'Other' },
-          ]
+          ],
+        condition: (answers) => answers.gender === 'female'
     },
     {
         key: "health-conditions",
@@ -125,7 +126,7 @@ export const personalDetailsQuestions: PersonalDetailsQuestion[] = [
           ]
     },    
     {
-        key: "activity",
+        key: "have_covid-19",
         question: "Have you had COVID-19?",
         notification: 'We ask this to better understand possible long-term effects on your energy, mood, and overall health.',
         options: [
@@ -142,7 +143,8 @@ export const personalDetailsQuestions: PersonalDetailsQuestion[] = [
             { value: 'no', label: 'No' },
             { value: 'currently-experiencing', label: 'Yes — currently experiencing' },
             { value: 'symptoms-improved', label: 'Yes — but symptoms have improved' },
-          ]
+          ],
+        condition: (answers) => answers['have_covid-19'] !== 'no'
     },
 
 ];
@@ -540,34 +542,157 @@ export interface QuizStep {
 }
 
 // Function to calculate total quiz steps
-export const getTotalQuizSteps = (): number => {
+export const getTotalQuizSteps = (answers: Record<string, any> = {}): number => {
     let totalSteps = 1; // Initial intro step
     
-    // Personal Details: 3 questions + 1 intermediate page + 2 remaining questions = 6 steps
-    totalSteps += 6;
+    // Helper to count filtered questions
+    const countFiltered = (questions: PersonalDetailsQuestion[]) => {
+        return questions.filter(q => !q.condition || q.condition(answers)).length;
+    };
+    
+    // Personal Details: First 3 questions
+    const firstPart = personalDetailsQuestions.slice(0, 3);
+    totalSteps += countFiltered(firstPart);
+    
+    // Add intermediate page
+    totalSteps += 1;
+    
+    // Remaining personal details questions
+    const remainingPart = personalDetailsQuestions.slice(3);
+    totalSteps += countFiltered(remainingPart);
     
     // Morning Energy: 1 intro + questions
-    totalSteps += 1 + morningEnergyQuestions.length;
+    totalSteps += 1 + countFiltered(morningEnergyQuestions);
     
     // Movement: 1 intro + questions  
-    totalSteps += 1 + movementQuestions.length;
+    totalSteps += 1 + countFiltered(movementQuestions);
     
     // Nutrition: 1 intro + questions
-    totalSteps += 1 + nutritionQuestions.length;
+    totalSteps += 1 + countFiltered(nutritionQuestions);
     
     // Sleep & Stress: 1 intro + questions
-    totalSteps += 1 + sleepQuestions.length;
+    totalSteps += 1 + countFiltered(sleepQuestions);
     
     // Indulgence: 1 intro + questions
-    totalSteps += 1 + indulgenceQuestions.length;
+    totalSteps += 1 + countFiltered(indulgenceQuestions);
     
     // Environment: 1 intro + questions
-    totalSteps += 1 + environmentQuestions.length;
+    totalSteps += 1 + countFiltered(environmentQuestions);
     
     // Email form + Name form + Results = 3 steps
     totalSteps += 3;
     
     return totalSteps;
+};
+
+// Function to calculate current progress based on answers
+export const calculateProgressFromAnswers = (answers: Record<string, any> = {}): number => {
+    // Helper to check if an answer is valid
+    const hasValidAnswer = (key: string): boolean => {
+        if (!(key in answers)) return false;
+        const value = answers[key];
+        if (value === null || value === undefined || value === '') return false;
+        if (Array.isArray(value)) return value.length > 0;
+        if (typeof value === 'object') return Object.keys(value).length > 0;
+        return true;
+    };
+    
+    // Helper to count questions with answers in a section
+    const countAnswered = (questions: PersonalDetailsQuestion[]): number => {
+        return questions.filter(q => q.condition ? q.condition(answers) && hasValidAnswer(q.key) : hasValidAnswer(q.key)).length;
+    };
+    
+    let step = 0; // Start at intro step
+    
+    // After intro, first part of personal details (gender, age, goals)
+    const firstPart = personalDetailsQuestions.slice(0, 3);
+    step += countAnswered(firstPart);
+    
+    // If all first part questions are answered, add intermediate page
+    if (countAnswered(firstPart) === firstPart.filter(q => !q.condition || q.condition(answers)).length) {
+        step += 1; // Intermediate page
+    }
+    
+    // Remaining personal details
+    const remainingPart = personalDetailsQuestions.slice(3);
+    step += countAnswered(remainingPart);
+    
+    // Check if we've progressed past personal details (all answered)
+    const allPersonalDetailsAnswered = countAnswered(personalDetailsQuestions) === 
+        personalDetailsQuestions.filter(q => !q.condition || q.condition(answers)).length;
+    
+    if (allPersonalDetailsAnswered) {
+        // Morning Energy intro
+        step += 1;
+        step += countAnswered(morningEnergyQuestions);
+        
+        // Check if we've progressed past morning energy
+        const allMorningEnergyAnswered = countAnswered(morningEnergyQuestions) === 
+            morningEnergyQuestions.filter(q => !q.condition || q.condition(answers)).length;
+        
+        if (allMorningEnergyAnswered) {
+            // Movement intro
+            step += 1;
+            step += countAnswered(movementQuestions);
+            
+            // Check if we've progressed past movement
+            const allMovementAnswered = countAnswered(movementQuestions) === 
+                movementQuestions.filter(q => !q.condition || q.condition(answers)).length;
+            
+            if (allMovementAnswered) {
+                // Nutrition intro
+                step += 1;
+                step += countAnswered(nutritionQuestions);
+                
+                // Check if we've progressed past nutrition
+                const allNutritionAnswered = countAnswered(nutritionQuestions) === 
+                    nutritionQuestions.filter(q => !q.condition || q.condition(answers)).length;
+                
+                if (allNutritionAnswered) {
+                    // Sleep & Stress intro
+                    step += 1;
+                    step += countAnswered(sleepQuestions);
+                    
+                    // Check if we've progressed past sleep & stress
+                    const allSleepAnswered = countAnswered(sleepQuestions) === 
+                        sleepQuestions.filter(q => !q.condition || q.condition(answers)).length;
+                    
+                    if (allSleepAnswered) {
+                        // Indulgence intro
+                        step += 1;
+                        step += countAnswered(indulgenceQuestions);
+                        
+                        // Check if we've progressed past indulgence
+                        const allIndulgenceAnswered = countAnswered(indulgenceQuestions) === 
+                            indulgenceQuestions.filter(q => !q.condition || q.condition(answers)).length;
+                        
+                        if (allIndulgenceAnswered) {
+                            // Environment intro
+                            step += 1;
+                            step += countAnswered(environmentQuestions);
+                            
+                            // Check if we've progressed past environment
+                            const allEnvironmentAnswered = countAnswered(environmentQuestions) === 
+                                environmentQuestions.filter(q => !q.condition || q.condition(answers)).length;
+                            
+                            if (allEnvironmentAnswered) {
+                                // Email step
+                                if (hasValidAnswer('email')) {
+                                    step += 1;
+                                    // Name step
+                                    if (hasValidAnswer('name')) {
+                                        step += 1;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    return step;
 };
 
 export const createQuizSteps = (
@@ -608,9 +733,10 @@ export const createQuizSteps = (
 
     // Helper to push a block of questions using QuestionForm
     const pushQuestionBlock = (sectionTitle: string, questions: PersonalDetailsQuestion[]) => {
+        const filteredQuestions = questions.filter(q => !q.condition || q.condition(answers));
         steps.push(
-            ...questions.map((q, idx) => {
-                const total = questions.length;
+            ...filteredQuestions.map((q, idx) => {
+                const total = filteredQuestions.length;
                 const questionIndex = idx;
             const key = q.key;
             const value = answers[key] ?? null;
@@ -701,7 +827,7 @@ export const createQuizSteps = (
                     <QuestionForm
                             sectionTitle={sectionTitle}
                             questionIndex={questionIndex}
-                            totalQuestions={questions.length}
+                            totalQuestions={total}
                             question={q.question}
                             subtitle={q.subtitle}
                             options={q.options}
@@ -944,12 +1070,6 @@ export const createQuizSteps = (
                         localStorage.setItem('quiz.answers', JSON.stringify(updatedAnswers));
                     } catch {}
                     
-                    // Navigate to results page using browser history if supported
-                    if (isHistorySupported()) {
-                        navigateToPage('results');
-                    } else {
-                        document.cookie = `page=results; path=/; max-age=${60 * 60 * 24 * 365}`;
-                    }
                     setCurrentStep(currentStep + 1);
                 }}
                 onPrevious={() => setCurrentStep(currentStep - 1)}

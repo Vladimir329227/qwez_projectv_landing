@@ -5,7 +5,7 @@ import ProductCarousel from "../../bloks/ProductCarousel";
 import ExpertsCarousel from "../../bloks/ExpertsCarousel";
 import IngredientsMarquee from "../../bloks/IngredientsMarquee";
 import TestimonialsCarousel from "../../bloks/TestimonialsCarousel";
-import { getTotalQuizSteps } from "../../config/quizConfig";
+import { getTotalQuizSteps, calculateProgressFromAnswers } from "../../config/quizConfig";
 export default (props: any) => {
 	const { setPage, showQuizProgressModalWithData } = usePage();
 	const [openFAQ, setOpenFAQ] = useState<number | null>(null);
@@ -19,13 +19,24 @@ export default (props: any) => {
 		if (savedAnswers) {
 			try {
 				const answers = JSON.parse(savedAnswers);
-				const currentStep = parseInt(savedStep || '0', 10);
-				const totalSteps = getTotalQuizSteps();
+				const savedStepNum = parseInt(savedStep || '0', 10);
+				const totalSteps = getTotalQuizSteps(answers);
+				
+				// Calculate actual progress from answers to handle cases where currentStep is reset
+				const calculatedStep = calculateProgressFromAnswers(answers);
+				
+				// Use the maximum of saved step and calculated step to get the most accurate progress
+				const currentStep = Math.max(savedStepNum, calculatedStep);
 				
 				// Quiz is completed if:
 				// 1. quizEndTime exists, OR
 				// 2. currentStep is at the last step (quiz completed but step not saved properly)
 				const isCompleted = !!answers.quizEndTime || currentStep >= totalSteps - 1;
+				
+				// Update localStorage with the corrected step
+				if (!isCompleted) {
+					localStorage.setItem('quiz.currentStep', currentStep.toString());
+				}
 				
 				// Show modal with progress information
 				showQuizProgressModalWithData({
