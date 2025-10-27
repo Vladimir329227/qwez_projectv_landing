@@ -6,6 +6,17 @@ const TELEGRAM_CHAT_ID = "-1003229604443";
 const recentMessages = new Map<string, number>();
 const DUPLICATE_PREVENTION_WINDOW = 30000; // 30 seconds
 
+// Функция для экранирования HTML-символов (защита от XSS)
+function escapeHtml(text: string | undefined | null): string {
+  if (!text) return '';
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#x27;');
+}
+
 // Create a hash from message content (works with Unicode)
 async function createMessageHash(message: string): Promise<string> {
   try {
@@ -181,11 +192,11 @@ export const sendQuizResultsToTelegram = async (data: QuizSubmissionData, retryC
 const formatQuizResultsMessage = (data: QuizSubmissionData): string => {
   const { userInfo, recommendations, answers, timestamp } = data;
   
-  // Format user info
+  // Format user info - экранируем пользовательский ввод для защиты от XSS
   const userInfoText = `
-👤 <b>Пользователь:</b> ${userInfo.name || 'Не указано'}
-📧 <b>Email:</b> ${userInfo.email || 'Не указано'}
-⚧ <b>Пол:</b> ${userInfo.gender || 'Не указано'}
+👤 <b>Пользователь:</b> ${escapeHtml(userInfo.name) || 'Не указано'}
+📧 <b>Email:</b> ${escapeHtml(userInfo.email) || 'Не указано'}
+⚧ <b>Пол:</b> ${escapeHtml(userInfo.gender) || 'Не указано'}
 🕐 <b>Время прохождения:</b> ${new Date(timestamp).toLocaleString('ru-RU')}
 `;
 

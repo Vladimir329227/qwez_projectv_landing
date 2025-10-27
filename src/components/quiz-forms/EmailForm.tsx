@@ -6,6 +6,16 @@ interface EmailFormProps {
     initialValue?: string;
 }
 
+// Функция для санитизации email
+function sanitizeEmail(input: string): string {
+    return input
+        .trim()
+        .toLowerCase()
+        .replace(/<[^>]*>/g, '') // Удаляем HTML теги
+        .replace(/javascript:/gi, '') // Блокируем javascript: протокол
+        .slice(0, 254); // Максимальная длина email адреса
+}
+
 export default function EmailForm({ onNext, onPrevious, initialValue = "" }: EmailFormProps) {
     const [email, setEmail] = useState(initialValue);
     const [isValid, setIsValid] = useState(false);
@@ -75,7 +85,8 @@ export default function EmailForm({ onNext, onPrevious, initialValue = "" }: Ema
 
     const handleNext = () => {
         if (isValid) {
-            onNext(email);
+            // Отправляем санитизированное значение
+            onNext(sanitizeEmail(email));
         }
     };
 

@@ -179,7 +179,7 @@ export default ({
               className="flex flex-col items-center self-stretch bg-[#1F2429] text-left py-3.5 rounded-[100000px] border-0 hover:bg-[#0f1215] transition-colors duration-200"
             >
               <span className="text-white text-[15px]">
-                Back to Results
+                Back to the page
               </span>
             </button>
           </div>

@@ -6,14 +6,52 @@ interface NameFormProps {
     initialValue?: string;
 }
 
+// Функция для санитизации имени от потенциально опасных символов
+function sanitizeName(input: string): string {
+    // Удаляем HTML теги, скрипты и потенциально опасные символы
+    return input
+        .trim()
+        .replace(/<[^>]*>/g, '') // Удаляем HTML теги
+        .replace(/[<>\"'&]/g, '') // Удаляем опасные символы
+        .replace(/javascript:/gi, '') // Блокируем javascript: протокол
+        .replace(/on\w+=/gi, '') // Блокируем event handlers
+        .slice(0, 50); // Ограничиваем длину
+}
+
+// Функция для валидации имени
+function validateName(input: string): { isValid: boolean; error?: string } {
+    const sanitized = sanitizeName(input);
+    
+    // Проверка минимальной длины
+    if (sanitized.length < 2) {
+        return { isValid: false, error: "Please enter at least 2 characters" };
+    }
+    
+    // Проверка максимальной длины
+    if (sanitized.length > 50) {
+        return { isValid: false, error: "Name cannot exceed 50 characters" };
+    }
+    
+    // Проверка на допустимые символы (буквы, пробелы, дефисы, апострофы)
+    const nameRegex = /^[a-zA-Zа-яА-ЯёЁ\s\-']+$/;
+    if (!nameRegex.test(sanitized)) {
+        return { isValid: false, error: "Name can only contain letters, spaces, hyphens, and apostrophes" };
+    }
+    
+    return { isValid: true };
+}
+
 export default function NameForm({ onNext, onPrevious, initialValue = "" }: NameFormProps) {
     const [name, setName] = useState(initialValue);
     const [isValid, setIsValid] = useState(false);
     const [isButtonsVisible, setIsButtonsVisible] = useState(false);
+    const [errorMessage, setErrorMessage] = useState<string>("");
 
     useEffect(() => {
-        // Валидация имени - минимум 2 символа
-        setIsValid(name.trim().length >= 2);
+        // Валидация имени с полной проверкой
+        const validation = validateName(name);
+        setIsValid(validation.isValid);
+        setErrorMessage(validation.error || "");
     }, [name]);
 
     useEffect(() => {
@@ -29,14 +67,15 @@ export default function NameForm({ onNext, onPrevious, initialValue = "" }: Name
 
     const handleNext = () => {
         if (isValid) {
-            onNext(name.trim());
+            // Отправляем санитизированное значение
+            onNext(sanitizeName(name));
         }
     };
 
     return (
         <>
             {/* Desktop Version */}
-            <div className="block bg-white flex flex-col min-h-screen">
+            <div className="flex flex-col min-h-screen bg-white">
                 {/* Header */}
                 <div className="pt-6">
                     <div className="flex justify-center">
@@ -79,8 +118,8 @@ export default function NameForm({ onNext, onPrevious, initialValue = "" }: Name
                                 }`}
                                 autoFocus
                             />
-                            {name && !isValid && (
-                                <p className="mt-2 text-sm text-red-500">Please enter at least 2 characters</p>
+                            {name && !isValid && errorMessage && (
+                                <p className="mt-2 text-sm text-red-500">{errorMessage}</p>
                             )}
                         </div>
                     </div>

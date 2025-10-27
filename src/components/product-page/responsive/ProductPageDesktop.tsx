@@ -185,7 +185,7 @@ export default ({
             >
               <div className="flex flex-col items-start">
                 <span className="text-white text-sm lg:text-base">
-                  Back to Results
+                  Back to the page
                 </span>
               </div>
             </button>

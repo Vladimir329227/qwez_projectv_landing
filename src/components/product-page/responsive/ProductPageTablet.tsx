@@ -183,7 +183,7 @@ export default ({
               className="flex flex-col items-center bg-[#1F2429] text-left w-full max-w-sm py-3 rounded-full border-0 hover:bg-[#0f1215] transition-colors duration-200"
             >
               <span className="text-white text-base lg:text-lg">
-                Back to Results
+                Back to the page
               </span>
             </button>
           </div>
