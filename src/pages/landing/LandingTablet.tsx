@@ -128,14 +128,14 @@ export default (props: any) => {
 				<div className="flex flex-col items-start self-stretch bg-[url('/figma/main_woman.png')] bg-cover bg-center py-12">
 					<div className="flex flex-col items-center pb-[1px] mb-24 ml-24">
 						<img
-							src={"https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/f712b188-06a5-4e83-a515-9fbd9128f837"}
+							src={"/figma/94b86f1bce187b0c.png"}
 							className="w-[148px] h-[37px] object-fill"
 						/>
 					</div>
 					<div className="flex flex-col items-start self-stretch mx-24 gap-8">
 						<div className="flex items-center">
 							<img
-								src={"https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/be319cdc-ab8e-4785-87a1-3ee8f1dd8cf0"}
+								src={"/figma/0d248eedc7b320e0.png"}
 								className="w-[81px] h-3 mr-1.5 object-fill"
 							/>
 							<span className="text-white text-lg font-bold mr-2.5" >

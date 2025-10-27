@@ -4,6 +4,7 @@ import QuizPage from './components/quiz-pages/QuizPage';
 import QuizResult from './components/quiz-pages/quiz-results/QuizResult';
 import ProductModal from './components/product-page/ProductModal';
 import QuizProgressModal from './components/QuizProgressModal';
+import ConsentBanner from './components/ConsentBanner';
 import { 
   Page, 
   navigateToPage, 
@@ -11,6 +12,7 @@ import {
   isHistorySupported,
   getPageFromPath
 } from './utils/navigationUtils';
+import { initializeConsent } from './utils/consentUtils';
 
 
 function getCookie(name: string): string | undefined {
@@ -140,6 +142,11 @@ function App() {
     currentStep: number;
     totalSteps: number;
   } | null>(null);
+
+  // Initialize consent mode on app load
+  useEffect(() => {
+    initializeConsent();
+  }, []);
 
   // Initialize browser history support for manual navigation only
   useEffect(() => {
@@ -335,6 +342,9 @@ function App() {
           totalSteps={quizProgressData.totalSteps}
         />
       )}
+
+      {/* Consent Banner */}
+      <ConsentBanner />
     </PageContext.Provider>
   );
 }
